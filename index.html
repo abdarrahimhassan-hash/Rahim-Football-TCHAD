@@ -15,6 +15,7 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 .card-td{border:1px solid #dce9f3;box-shadow:0 8px 24px rgba(7,26,43,.06)}
 .hero-td{background:linear-gradient(135deg,#0066b3,#034d82)}
 .hidden{display:none}
+input,select,textarea{font-family:inherit}
 </style>
 </head>
 <body>
@@ -65,23 +66,17 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <div id="tournamentsContainer"></div>
 <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
 <h3 class="font-black text-amber-800 text-sm">💰 Vous voulez créer votre tournoi ?</h3>
-<p class="text-xs text-amber-700 mt-1">Publiez votre tournoi pour 2 500 FCFA et touchez des centaines de joueurs.</p>
+<p class="text-xs text-amber-700 mt-1">Publiez votre tournoi pour 2 500 FCFA et gérez tout vous-même.</p>
 <a href="https://wa.me/23562496176?text=Je%20veux%20cr%C3%A9er%20un%20tournoi%20sur%20Rahim%20Football" target="_blank" class="inline-block mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black"><i class="fa-brands fa-whatsapp"></i> Payer 2 500 FCFA</a>
 </div>
 </section>
 
 <section id="sec-matchs" class="tab-content hidden">
 <div class="flex justify-between items-center mb-3">
-<h2 class="text-xl font-black">⚽ Résultats des matchs</h2>
+<h2 class="text-xl font-black">⚽ Résultats</h2>
 <button onclick="tryAddMatch()" class="td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">+ Ajouter</button>
 </div>
-<p class="text-xs text-gray-500 mb-3">Résultats des matchs de tournoi</p>
 <div id="matchesContainer"></div>
-<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
-<h3 class="font-black text-amber-800 text-sm">💰 Ajouter un résultat de match ?</h3>
-<p class="text-xs text-amber-700 mt-1">Service payant : 500 FCFA par match.</p>
-<a href="https://wa.me/23562496176?text=Je%20veux%20ajouter%20un%20match" target="_blank" class="inline-block mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black"><i class="fa-brands fa-whatsapp"></i> Payer 500 FCFA</a>
-</div>
 </section>
 
 <section id="sec-coachs" class="tab-content hidden">
@@ -120,13 +115,13 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <button onclick="switchTab('business')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">💰<span class="text-[9px]">Business</span></button>
 </nav>
 
+<!-- MODAL AUTH -->
 <div id="authModal" class="hidden fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
 <div class="bg-white rounded-2xl p-5 max-w-sm w-full">
 <div class="flex justify-between items-center">
 <h2 class="font-black td-text-blue">Connexion Admin</h2>
 <button onclick="closeAuth()" class="text-gray-400 text-2xl">&times;</button>
 </div>
-<p class="text-xs text-gray-500 mt-2">Réservé à l'administrateur.</p>
 <form id="authForm" class="space-y-3 mt-4">
 <input id="authEmail" required type="email" placeholder="Email" class="w-full border rounded-lg p-3 text-sm">
 <input id="authPassword" required type="password" placeholder="Mot de passe" class="w-full border rounded-lg p-3 text-sm">
@@ -135,60 +130,94 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <p id="authStatus" class="text-xs mt-3"></p>
 </div></div>
 
+<!-- MODAL CRÉATION TOURNOI -->
+<div id="createTournamentModal" class="hidden fixed inset-0 bg-black/60 z-50 items-center justify-center p-4 overflow-y-auto">
+<div class="bg-white rounded-2xl p-5 max-w-lg w-full my-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-black td-text-blue text-lg">🏆 Nouveau tournoi</h2>
+<button onclick="closeCreateTournament()" class="text-gray-400 text-2xl">&times;</button>
+</div>
+
+<div class="space-y-3">
+<input id="tName" placeholder="Nom du tournoi" class="w-full border rounded-lg p-3 text-sm">
+<input id="tCity" placeholder="Ville" class="w-full border rounded-lg p-3 text-sm">
+<input id="tStart" placeholder="Date début (ex: 15 jan 2027)" class="w-full border rounded-lg p-3 text-sm">
+<input id="tEnd" placeholder="Date fin (ex: 30 jan 2027)" class="w-full border rounded-lg p-3 text-sm">
+<input id="tOrganizer" placeholder="Organisateur" class="w-full border rounded-lg p-3 text-sm">
+<input id="tContact" placeholder="Téléphone contact" class="w-full border rounded-lg p-3 text-sm">
+
+<select id="tFormat" class="w-full border rounded-lg p-3 text-sm">
+<option value="">-- Format du tournoi --</option>
+<option value="elimination">Élimination directe (1 match)</option>
+<option value="aller-retour">Aller-retour</option>
+<option value="poules+elimination">Poules + Élimination</option>
+</select>
+
+<div class="border-t pt-3 mt-2">
+<h3 class="font-bold text-sm mb-2">📋 Équipes (min. 4)</h3>
+<div id="teamsList" class="space-y-2 mb-2"></div>
+<div class="flex gap-2">
+<input id="newTeamName" placeholder="Nom équipe" class="flex-1 border rounded-lg p-2 text-sm">
+<button onclick="addTeam()" class="td-blue text-white px-3 py-2 rounded-lg text-sm font-bold">+</button>
+</div>
+</div>
+
+<button onclick="saveTournament()" class="w-full td-blue text-white py-3 rounded-lg font-bold mt-2">💾 Créer le tournoi</button>
+<p id="createStatus" class="text-xs mt-2"></p>
+</div>
+</div></div>
+
+<!-- MODAL GESTION TOURNOI -->
+<div id="manageModal" class="hidden fixed inset-0 bg-black/60 z-50 items-center justify-center p-4 overflow-y-auto">
+<div class="bg-white rounded-2xl p-5 max-w-3xl w-full my-4 max-h-[92vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-black td-text-blue text-lg" id="manageTitle">Gestion</h2>
+<button onclick="closeManage()" class="text-gray-400 text-2xl">&times;</button>
+</div>
+<div id="manageContent"></div>
+</div></div>
+
 <script>
 // =============================================================
-// 🏆 LISTE DES TOURNOIS (vide au départ)
+// DONNÉES (auto-sauvegardées en localStorage)
 // =============================================================
-const TOURNAMENTS = [];
+function loadData(key, def){
+  try { return JSON.parse(localStorage.getItem("rf_"+key)) || def; } catch(e){ return def; }
+}
+function saveData(key, val){ localStorage.setItem("rf_"+key, JSON.stringify(val)); }
 
-// =============================================================
-// ⚽ LISTE DES MATCHS (vide au départ)
-// =============================================================
-const MATCHES = [];
+let TOURNAMENTS = loadData("tournaments", []);
+let MATCHES = loadData("matches", []);
+let PRODUCTS = loadData("products", [
+  { name: "Maillot Tchad", price: 5000, category: "Maillots", description: "Maillot équipe nationale" },
+  { name: "Chaussures Nike", price: 12000, category: "Chaussures", description: "Crampons pro" },
+  { name: "Short Tchad", price: 2500, category: "Maillots", description: "Short bleu équipe" },
+  { name: "Gants gardien", price: 4500, category: "Équipement", description: "Gants pro taille L" },
+  { name: "Protège-tibias", price: 2000, category: "Équipement", description: "Protection match" }
+]);
 
-// =============================================================
-// 👤 LISTE DES COACHS
-// =============================================================
 const COACHES = [
-  {
-    name: "ABDARRAHIM HASSAN MAHAMAT",
-    type: "Coach & Formateur",
-    city: "N'Djamena",
-    phone: "+235 62 49 61 76",
+  { name: "ABDARRAHIM HASSAN MAHAMAT", type: "Coach & Formateur", city: "N'Djamena", phone: "+235 62 49 61 76",
     bio: `Entraîneur et Formateur de Football
 
 Expérience & Stabilité : Pilier du Centre de Formation EL-NOURY depuis sa création en 2016 (10 ans d'engagement et de constance dans un projet de long terme).
 
 Expertise : Spécialiste de la pré-formation, de la post-formation et du développement individuel et tactique des jeunes talents.
 
-Arguments Solides pour un Nouveau Défi :
-• Expertise prouvée dans la structuration de projets : A participé activement à la construction, au développement et à la pérennisation d'une structure de formation de A à Z (EL-NOURY, fondée en 2016), démontrant une forte capacité à implanter une identité de jeu et une méthodologie rigoureuse.
-• Maîtrise de la post-formation : Capacité avérée à détecter, accompagner et faire éclore de jeunes talents en maximisant leur potentiel technique, tactique, mental et athlétique.
-• Vision globale du développement : Expérience complète englobant la gestion des entraînements, le suivi individualisé des joueurs, l'application d'une discipline de groupe et la transmission des valeurs sportives et humaines.
-• Résilience et fidélité : Une décennie d'implication au sein de la même structure témoigne d'une loyauté exemplaire, d'une grande capacité de travail et d'un investissement total dans les objectifs du club.
-• Soif d'évolution et d'impact : Prêt à transposer cette solide expérience de terrain et cette culture de la gagne dans un nouveau projet ambitieux (académie, club professionnel ou structure de formation de plus grande envergure) pour franchir un nouveau palier dans sa carrière.`
-  }
+Arguments Solides :
+• Expertise prouvée dans la structuration de projets (EL-NOURY, 2016).
+• Maîtrise de la post-formation et développement des jeunes.
+• Vision globale : entraînements, suivi individualisé, discipline, valeurs.
+• Résilience et fidélité : 10 ans au même club.
+• Soif d'évolution : prêt pour un nouveau défi ambitieux.` }
 ];
 
-// =============================================================
-// 🛒 LISTE DES PRODUITS
-// =============================================================
-const PRODUCTS = [
-  { name: "Maillot Tchad", price: 5000, category: "Maillots", description: "Maillot équipe nationale" },
-  { name: "Chaussures Nike", price: 12000, category: "Chaussures", description: "Crampons pro" },
-  { name: "Short Tchad", price: 2500, category: "Maillots", description: "Short bleu équipe" },
-  { name: "Gants gardien", price: 4500, category: "Équipement", description: "Gants pro taille L" },
-  { name: "Protège-tibias", price: 2000, category: "Équipement", description: "Protection match" }
-];
-
-// =============================================================
-// 🔐 CONFIGURATION ADMIN
-// =============================================================
 const ADMIN_EMAIL = "abdarrahimhassan@gmail.com";
 const ADMIN_PASSWORD = "Maarif2024";
 const WA = "23562496176";
 
 let isAdmin = localStorage.getItem("rf_admin") === "1";
+let tempTeams = [];
 
 // =============================================================
 // NAVIGATION
@@ -215,10 +244,18 @@ function renderTournaments(){
     c.innerHTML = '<div class="bg-white p-6 rounded-xl card-td text-center"><p class="text-gray-500 font-bold">Aucun tournoi pour le moment</p><p class="text-xs text-gray-400 mt-1">Les tournois apparaîtront ici dès leur publication.</p></div>';
     return;
   }
-  TOURNAMENTS.forEach(t => {
+  TOURNAMENTS.forEach((t, idx) => {
     const card = document.createElement("div");
     card.className = "bg-white p-4 rounded-xl card-td mb-3";
-    card.innerHTML = '<div class="flex justify-between items-start"><h3 class="font-black text-sm">'+safe(t.name)+'</h3><span class="text-[10px] bg-blue-50 td-text-blue px-2 py-1 rounded-full font-bold">'+safe(t.city)+'</span></div><p class="text-xs text-gray-500 mt-2">📅 Du '+safe(t.start)+' au '+safe(t.end)+'</p><p class="text-xs text-gray-500">👤 '+safe(t.organizer)+'</p><p class="text-xs text-gray-500">📞 '+safe(t.contact)+'</p>';
+    let matchsHTML = "";
+    if (t.matchs && t.matchs.length > 0) {
+      matchsHTML = '<div class="mt-3 border-t pt-3 space-y-2">';
+      t.matchs.forEach(m => {
+        matchsHTML += '<div class="flex justify-between items-center text-xs"><span class="font-bold">'+safe(m.home)+'</span><span class="bg-blue-50 px-2 py-1 rounded">'+(m.hs ?? "-")+' - '+(m.as ?? "-")+'</span><span class="font-bold">'+safe(m.away)+'</span></div>';
+      });
+      matchsHTML += '</div>';
+    }
+    card.innerHTML = '<div class="flex justify-between items-start"><h3 class="font-black text-sm">'+safe(t.name)+'</h3><span class="text-[10px] bg-blue-50 td-text-blue px-2 py-1 rounded-full font-bold">'+safe(t.city)+'</span></div><p class="text-xs text-gray-500 mt-2">📅 '+safe(t.start)+' → '+safe(t.end)+'</p><p class="text-xs text-gray-500">👤 '+safe(t.organizer)+'</p><p class="text-xs text-gray-500">📞 '+safe(t.contact)+'</p><p class="text-[10px] td-text-red font-bold mt-2">Format : '+safe(t.format)+'</p>' + matchsHTML + (isAdmin ? '<button onclick="openManage('+idx+')" class="mt-3 td-blue text-white text-xs py-2 px-3 rounded-lg font-bold">✏️ Gérer</button>' : '');
     c.appendChild(card);
   });
 }
@@ -229,14 +266,18 @@ function renderTournaments(){
 function renderMatches(){
   const c = document.getElementById("matchesContainer");
   c.innerHTML = "";
-  if (MATCHES.length === 0) {
-    c.innerHTML = '<div class="bg-white p-6 rounded-xl card-td text-center"><p class="text-gray-500 font-bold">Aucun match pour le moment</p><p class="text-xs text-gray-400 mt-1">Les résultats apparaîtront ici dès leur publication.</p></div>';
+  let allMatches = [];
+  TOURNAMENTS.forEach(t => {
+    if (t.matchs) t.matchs.forEach(m => allMatches.push({tournament: t.name, ...m}));
+  });
+  if (allMatches.length === 0) {
+    c.innerHTML = '<div class="bg-white p-6 rounded-xl card-td text-center"><p class="text-gray-500 font-bold">Aucun match pour le moment</p></div>';
     return;
   }
-  MATCHES.forEach(m => {
+  allMatches.forEach(m => {
     const card = document.createElement("div");
     card.className = "bg-white p-4 rounded-xl card-td mb-3";
-    card.innerHTML = '<div class="flex justify-between text-xs text-gray-500 mb-2"><span class="font-bold">🏆 '+safe(m.tournament)+'</span><b class="'+(m.status==='Terminé'?'td-text-blue':'td-text-yellow')+'">'+safe(m.status)+'</b></div><div class="flex justify-between items-center font-bold"><span>'+safe(m.home)+'</span><span class="bg-blue-50 px-3 py-1 rounded-full">'+m.hs+' - '+m.as+'</span><span>'+safe(m.away)+'</span></div>';
+    card.innerHTML = '<div class="flex justify-between text-xs text-gray-500 mb-2"><span class="font-bold">🏆 '+safe(m.tournament)+'</span><b>'+(m.phase || '')+'</b></div><div class="flex justify-between items-center font-bold"><span>'+safe(m.home)+'</span><span class="bg-blue-50 px-3 py-1 rounded-full">'+(m.hs ?? "-")+' - '+(m.as ?? "-")+'</span><span>'+safe(m.away)+'</span></div>';
     c.appendChild(card);
   });
 }
@@ -269,24 +310,188 @@ function renderProducts(){
   });
 }
 
-// =============================================================
-// ACHETER UN PRODUIT
-// =============================================================
 function buy(name, price){
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux commander : "+decodeURIComponent(name)+" — "+fmt(price)+" FCFA."), "_blank");
 }
 
 // =============================================================
-// CRÉER UN TOURNOI (ADMIN UNIQUEMENT)
+// CRÉER UN TOURNOI
 // =============================================================
 function tryCreateTournament(){
-  if (isAdmin) {
-    alert("✅ Tu es admin !\n\nPour créer un tournoi :\n\n1. Va sur GitHub (lien qui va s'ouvrir)\n2. Cherche 'const TOURNAMENTS'\n3. Ajoute une ligne dans [ ]\n4. Commit changes");
-    window.open("https://github.com/abdarrahimhassan-hash/Rahim-Football-TCHAD/edit/main/index.html", "_blank");
-  } else {
-    alert("💰 Créer un tournoi coûte 2 500 FCFA.\n\nContacte l'administrateur par WhatsApp pour publier ton tournoi.");
+  if (!isAdmin) {
     window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux créer un tournoi sur Rahim Football Tchad (2 500 FCFA)."), "_blank");
+    return;
   }
+  tempTeams = [];
+  document.getElementById("tName").value = "";
+  document.getElementById("tCity").value = "";
+  document.getElementById("tStart").value = "";
+  document.getElementById("tEnd").value = "";
+  document.getElementById("tOrganizer").value = "";
+  document.getElementById("tContact").value = "";
+  document.getElementById("tFormat").value = "";
+  renderTempTeams();
+  document.getElementById("createTournamentModal").classList.remove("hidden");
+  document.getElementById("createTournamentModal").classList.add("flex");
+}
+function closeCreateTournament(){
+  document.getElementById("createTournamentModal").classList.add("hidden");
+  document.getElementById("createTournamentModal").classList.remove("flex");
+}
+function addTeam(){
+  const input = document.getElementById("newTeamName");
+  const name = input.value.trim();
+  if (!name) return;
+  tempTeams.push(name);
+  input.value = "";
+  renderTempTeams();
+}
+function renderTempTeams(){
+  const list = document.getElementById("teamsList");
+  list.innerHTML = "";
+  tempTeams.forEach((t, i) => {
+    const div = document.createElement("div");
+    div.className = "flex justify-between items-center bg-gray-50 p-2 rounded";
+    div.innerHTML = '<span class="text-sm font-bold">'+safe(t)+'</span><button onclick="removeTeam('+i+')" class="text-red-500 text-xs">✕</button>';
+    list.appendChild(div);
+  });
+}
+function removeTeam(i){ tempTeams.splice(i,1); renderTempTeams(); }
+
+// =============================================================
+// GÉNÉRER LES MATCHS AUTOMATIQUEMENT
+// =============================================================
+function generateMatches(teams, format){
+  const matchs = [];
+  const shuffled = [...teams].sort(() => Math.random() - 0.5);
+
+  if (format === "elimination" || format === "aller-retour") {
+    // Élimination directe
+    for (let i = 0; i < shuffled.length - 1; i += 2) {
+      matchs.push({ phase: "1/8", home: shuffled[i], away: shuffled[i+1] || "Exempt", hs: null, as: null });
+    }
+    if (format === "aller-retour") {
+      // Matchs retour
+      const retour = [];
+      matchs.forEach(m => {
+        if (m.away !== "Exempt") retour.push({ phase: m.phase + " (retour)", home: m.away, away: m.home, hs: null, as: null });
+      });
+      matchs.push(...retour);
+    }
+  } else if (format === "poules+elimination") {
+    // Phase de poules (2 groupes)
+    const groupeA = shuffled.slice(0, Math.ceil(shuffled.length/2));
+    const groupeB = shuffled.slice(Math.ceil(shuffled.length/2));
+    // Matchs dans chaque groupe
+    for (let i = 0; i < groupeA.length; i++) {
+      for (let j = i+1; j < groupeA.length; j++) {
+        matchs.push({ phase: "Poule A", home: groupeA[i], away: groupeA[j], hs: null, as: null });
+      }
+    }
+    for (let i = 0; i < groupeB.length; i++) {
+      for (let j = i+1; j < groupeB.length; j++) {
+        matchs.push({ phase: "Poule B", home: groupeB[i], away: groupeB[j], hs: null, as: null });
+      }
+    }
+    // Quart de finale (à compléter par les vainqueurs)
+    matchs.push({ phase: "1/2 finale", home: "1er Poule A", away: "2e Poule B", hs: null, as: null });
+    matchs.push({ phase: "1/2 finale", home: "1er Poule B", away: "2e Poule A", hs: null, as: null });
+    matchs.push({ phase: "FINALE", home: "Vainqueur 1", away: "Vainqueur 2", hs: null, as: null });
+  }
+  return matchs;
+}
+
+function saveTournament(){
+  const name = document.getElementById("tName").value.trim();
+  const city = document.getElementById("tCity").value.trim();
+  const start = document.getElementById("tStart").value.trim();
+  const end = document.getElementById("tEnd").value.trim();
+  const organizer = document.getElementById("tOrganizer").value.trim();
+  const contact = document.getElementById("tContact").value.trim();
+  const format = document.getElementById("tFormat").value;
+  const st = document.getElementById("createStatus");
+
+  if (!name || !city || !organizer || !format) {
+    st.textContent = "❌ Remplissez tous les champs obligatoires";
+    st.className = "text-xs mt-2 text-red-600";
+    return;
+  }
+  if (tempTeams.length < 4) {
+    st.textContent = "❌ Ajoutez au moins 4 équipes";
+    st.className = "text-xs mt-2 text-red-600";
+    return;
+  }
+
+  const formatLabel = format === "elimination" ? "Élimination directe" : format === "aller-retour" ? "Aller-retour" : "Poules + Élimination";
+  const matchs = generateMatches(tempTeams, format);
+
+  const tournament = {
+    name, city, start, end, organizer, contact,
+    format: formatLabel,
+    teams: [...tempTeams],
+    matchs: matchs
+  };
+
+  TOURNAMENTS.push(tournament);
+  saveData("tournaments", TOURNAMENTS);
+
+  st.textContent = "✅ Tournoi créé ! " + matchs.length + " matchs générés.";
+  st.className = "text-xs mt-2 text-green-700";
+
+  setTimeout(() => {
+    closeCreateTournament();
+    renderTournaments();
+    renderMatches();
+    alert("✅ Tournoi créé !\n\n⚠️ POUR LE PUBLIER POUR TOUS :\nOuvre GitHub → index.html → cherche 'loadData(\"tournaments\"' → remplace par le JSON ci-dessous.\n\nUn JSON sera affiché dans la console (F12).");
+    console.log("=== COPIE CE JSON DANS GITHUB ===");
+    console.log(JSON.stringify(TOURNAMENTS));
+  }, 1500);
+}
+
+// =============================================================
+// GÉRER UN TOURNOI (admin)
+// =============================================================
+function openManage(idx){
+  const t = TOURNAMENTS[idx];
+  document.getElementById("manageTitle").textContent = "Gérer : " + t.name;
+  let html = '<div class="space-y-3">';
+  html += '<p class="text-xs text-gray-500">Remplis les scores des matchs. Les scores sauvegardés ici restent sur ton navigateur.</p>';
+  t.matchs.forEach((m, i) => {
+    html += '<div class="bg-gray-50 p-3 rounded-lg"><p class="text-[10px] font-bold td-text-red mb-2">'+safe(m.phase)+'</p><div class="flex items-center gap-2"><span class="flex-1 text-sm font-bold text-right">'+safe(m.home)+'</span><input type="number" min="0" value="'+(m.hs ?? "")+'" onchange="updateScore('+idx+','+i+',\'hs\',this.value)" class="w-14 border rounded p-1 text-center text-sm"><span class="text-gray-400">-</span><input type="number" min="0" value="'+(m.as ?? "")+'" onchange="updateScore('+idx+','+i+',\'as\',this.value)" class="w-14 border rounded p-1 text-center text-sm"><span class="flex-1 text-sm font-bold">'+safe(m.away)+'</span></div></div>';
+  });
+  html += '<button onclick="exportTournament('+idx+')" class="w-full td-yellow text-gray-900 py-3 rounded-lg font-bold mt-3">📤 Générer le code pour GitHub</button>';
+  html += '<button onclick="deleteTournament('+idx+')" class="w-full bg-red-500 text-white py-2 rounded-lg font-bold mt-2 text-sm">🗑️ Supprimer ce tournoi</button>';
+  html += '</div>';
+  document.getElementById("manageContent").innerHTML = html;
+  document.getElementById("manageModal").classList.remove("hidden");
+  document.getElementById("manageModal").classList.add("flex");
+}
+function closeManage(){
+  document.getElementById("manageModal").classList.add("hidden");
+  document.getElementById("manageModal").classList.remove("flex");
+}
+function updateScore(tIdx, mIdx, field, val){
+  TOURNAMENTS[tIdx].matchs[mIdx][field] = val === "" ? null : Number(val);
+  saveData("tournaments", TOURNAMENTS);
+  renderTournaments();
+  renderMatches();
+}
+function deleteTournament(idx){
+  if (!confirm("Supprimer ce tournoi ?")) return;
+  TOURNAMENTS.splice(idx, 1);
+  saveData("tournaments", TOURNAMENTS);
+  closeManage();
+  renderTournaments();
+  renderMatches();
+}
+function exportTournament(idx){
+  const data = JSON.stringify(TOURNAMENTS);
+  navigator.clipboard.writeText(data).then(() => {
+    alert("✅ Code copié !\n\nVa sur GitHub → index.html → cherche la ligne :\n\nlet TOURNAMENTS = loadData(\"tournaments\", []);\n\nRemplace par :\n\nlet TOURNAMENTS = " + data + ";");
+    window.open("https://github.com/abdarrahimhassan-hash/Rahim-Football-TCHAD/edit/main/index.html", "_blank");
+  }).catch(() => {
+    alert("Copie manuelle :\n\n" + data);
+  });
 }
 
 // =============================================================
@@ -294,16 +499,15 @@ function tryCreateTournament(){
 // =============================================================
 function tryAddMatch(){
   if (isAdmin) {
-    alert("✅ Tu es admin !\n\nPour ajouter un match :\n\n1. Va sur GitHub\n2. Cherche 'const MATCHES'\n3. Ajoute une ligne dans [ ]\n4. Commit changes");
-    window.open("https://github.com/abdarrahimhassan-hash/Rahim-Football-TCHAD/edit/main/index.html", "_blank");
+    switchTab('tournois');
+    alert("Pour ajouter un match, clique sur ✏️ Gérer sur un tournoi existant, ou crée un nouveau tournoi.");
   } else {
-    alert("💰 Ajouter un résultat de match coûte 500 FCFA.\n\nContacte l'administrateur par WhatsApp.");
-    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux ajouter un résultat de match (500 FCFA)."), "_blank");
+    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux créer un tournoi sur Rahim Football Tchad (2 500 FCFA)."), "_blank");
   }
 }
 
 // =============================================================
-// AUTHENTIFICATION ADMIN
+// AUTH
 // =============================================================
 function openAuth(){
   document.getElementById("authModal").classList.remove("hidden");
@@ -313,26 +517,24 @@ function closeAuth(){
   document.getElementById("authModal").classList.add("hidden");
   document.getElementById("authModal").classList.remove("flex");
 }
-
 document.getElementById("authForm").addEventListener("submit", function(e){
   e.preventDefault();
   const email = document.getElementById("authEmail").value.trim();
   const pass = document.getElementById("authPassword").value;
   const st = document.getElementById("authStatus");
-
   if (email === ADMIN_EMAIL && pass === ADMIN_PASSWORD) {
     isAdmin = true;
     localStorage.setItem("rf_admin", "1");
     st.textContent = "✅ Connexion réussie";
     st.className = "text-xs mt-3 text-green-700";
     updateAuthUI();
+    renderTournaments();
     setTimeout(closeAuth, 800);
   } else {
-    st.textContent = "❌ Email ou mot de passe incorrect";
+    st.textContent = "❌ Identifiants incorrects";
     st.className = "text-xs mt-3 text-red-600";
   }
 });
-
 function updateAuthUI(){
   const btn = document.getElementById("authBtn");
   if (isAdmin) {
@@ -340,14 +542,10 @@ function updateAuthUI(){
     btn.style.background = "#10b981";
     btn.style.color = "white";
     btn.style.borderColor = "#10b981";
-  } else {
-    btn.textContent = "Admin";
   }
 }
 
-// =============================================================
-// INITIALISATION
-// =============================================================
+// INIT
 renderTournaments();
 renderMatches();
 renderCoaches();
