@@ -3,295 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahim Football Tchad | Matchs, tournois, boutique et services football</title>
-<meta name="description" content="Rahim Football Tchad : plateforme sportive tchadienne pour matchs, tournois, clubs, coachs, académies, boutique et services football.">
-<meta name="robots" content="index,follow">
+<title>Rahim Football Tchad</title>
 <meta name="theme-color" content="#0066B3">
-<link rel="icon" href="assets/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--td-blue:#0066B3;--td-yellow:#FECB00;--td-red:#C8102E}
-html{scroll-behavior:smooth}
-body{padding-bottom:84px;background:linear-gradient(180deg,#eef7ff 0,#f8fafc 38%,#f8fafc 100%)}
-.td-blue{background:var(--td-blue)} .td-red{background:var(--td-red)} .td-yellow{background:var(--td-yellow)}
-.td-text-blue{color:var(--td-blue)} .td-text-red{color:var(--td-red)} .td-text-yellow{color:#8a6500}
-.flag-line{height:5px;background:linear-gradient(90deg,var(--td-blue) 0 33.33%,var(--td-yellow) 33.33% 66.66%,var(--td-red) 66.66%)}
+body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
+.td-blue{background:#0066B3}.td-red{background:#C8102E}.td-yellow{background:#FECB00}
+.td-text-blue{color:#0066B3}.td-text-red{color:#C8102E}
+.flag-line{height:5px;background:linear-gradient(90deg,#0066B3 33%,#FECB00 33% 66%,#C8102E 66%)}
 .card-td{border:1px solid #dce9f3;box-shadow:0 8px 24px rgba(7,26,43,.06)}
-.hero-td{background:radial-gradient(circle at 85% 15%,rgba(254,203,0,.35),transparent 30%),radial-gradient(circle at 5% 90%,rgba(200,16,46,.28),transparent 32%),linear-gradient(135deg,#0066b3,#034d82)}
-.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pulse-dot{animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-.card-hover{transition:transform .2s,box-shadow .2s}.card-hover:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(7,26,43,.12)}
+.hero-td{background:linear-gradient(135deg,#0066b3,#034d82)}
+.hidden{display:none}
 </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body>
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-  <div class="flag-line"></div>
-  <div class="max-w-5xl mx-auto p-3 flex items-center justify-between gap-3">
-    <a href="#" class="flex items-center gap-3 min-w-0" onclick="switchTab('accueil');return false">
-      <div class="relative"><img src="assets/logo.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" class="w-12 h-12 rounded-full object-cover bg-white ring-2 ring-blue-100" alt="Logo"><div style="display:none" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-yellow-400 to-red-600 items-center justify-center text-white font-black text-xl">R</div></div>
-      <div class="min-w-0"><h1 class="font-black text-lg truncate td-text-blue">Rahim Football <span class="td-text-red">Tchad</span></h1><p class="text-[11px] text-slate-500">🇹🇩 La plateforme du football tchadien</p></div>
-    </a>
-    <div class="flex gap-2 items-center">
-      <button onclick="openAuth()" id="authBtn" class="border border-blue-200 td-text-blue font-black text-xs px-3 py-2 rounded-lg bg-blue-50">Admin</button>
-      <a href="https://wa.me/23562496176" target="_blank" rel="noopener" class="td-yellow text-gray-900 font-black text-xs px-3 py-2 rounded-lg whitespace-nowrap"><i class="fa-brands fa-whatsapp"></i> Contact</a>
-    </div>
-  </div>
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="flag-line"></div>
+<div class="max-w-5xl mx-auto p-3 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-yellow-400 to-red-600 flex items-center justify-center text-white font-black text-xl">R</div>
+<div><h1 class="font-black text-lg td-text-blue">Rahim Football <span class="td-text-red">Tchad</span></h1><p class="text-[11px] text-slate-500">🇹🇩 La plateforme du football tchadien</p></div>
+</div>
+<a href="https://wa.me/23562496176" target="_blank" class="td-yellow text-gray-900 font-black text-xs px-3 py-2 rounded-lg"><i class="fa-brands fa-whatsapp"></i> Contact</a>
+</div>
 </header>
 
 <main class="max-w-5xl mx-auto p-3 md:p-5">
 
 <section id="sec-accueil" class="tab-content">
-  <div class="hero-td rounded-3xl shadow-lg overflow-hidden text-white">
-    <div class="p-5 md:p-8">
-      <span class="inline-flex items-center gap-2 text-xs font-black bg-white/15 border border-white/25 px-3 py-1 rounded-full"><span class="w-2 h-2 rounded-full bg-green-400 pulse-dot"></span> 🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
-      <h2 class="text-3xl md:text-4xl font-black mt-3 text-white leading-tight">Tout le football tchadien,<br><span class="text-yellow-300">dans ta poche.</span></h2>
-      <p class="text-sm text-blue-50 mt-3">Résultats LINAFOOT, tournois, coachs, académies et boutique.</p>
-      <div class="flex gap-2 flex-wrap mt-5">
-        <button onclick="switchTab('matchs')" class="td-yellow text-gray-900 px-4 py-2 rounded-lg text-sm font-black"><i class="fa-solid fa-futbol"></i> Résultats LINAFOOT</button>
-        <button onclick="switchTab('boutique')" class="bg-white/15 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fa-solid fa-shop"></i> Boutique</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-3 gap-2 mt-4">
-    <div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black td-text-blue">+50</div><div class="text-[10px] text-gray-500 font-bold uppercase">Clubs</div></div>
-    <div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black td-text-red">+200</div><div class="text-[10px] text-gray-500 font-bold uppercase">Matchs</div></div>
-    <div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black td-text-yellow">+15</div><div class="text-[10px] text-gray-500 font-bold uppercase">Tournois</div></div>
-  </div>
-
-  <div class="mt-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-5 text-white shadow-lg">
-    <h3 class="font-black text-lg">🔔 Rejoins la communauté ⚽</h3>
-    <p class="text-xs text-blue-100 mb-4">Résultats, tournois et promos. C'est gratuit.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-      <a href="https://wa.me/23562496176" target="_blank" class="bg-green-500 text-white font-bold text-xs py-3 rounded-lg text-center"><i class="fa-brands fa-whatsapp"></i> Canal WhatsApp</a>
-      <a href="https://facebook.com/" target="_blank" class="bg-blue-500 text-white font-bold text-xs py-3 rounded-lg text-center"><i class="fa-brands fa-facebook"></i> Page Facebook</a>
-      <a href="https://tiktok.com/" target="_blank" class="bg-black text-white font-bold text-xs py-3 rounded-lg text-center"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-    </div>
-  </div>
+<div class="hero-td rounded-3xl shadow-lg p-6 md:p-8 text-white">
+<span class="text-xs font-black bg-white/15 border border-white/25 px-3 py-1 rounded-full">🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
+<h2 class="text-3xl md:text-4xl font-black mt-3 text-white">Tout le football tchadien,<br><span class="text-yellow-300">dans ta poche.</span></h2>
+<p class="text-sm text-blue-50 mt-3">Résultats LINAFOOT, tournois, coachs, académies et boutique.</p>
+<div class="flex gap-2 flex-wrap mt-5">
+<button onclick="switchTab('matchs')" class="td-yellow text-gray-900 px-4 py-2 rounded-lg text-sm font-black">⚽ LINAFOOT</button>
+<button onclick="switchTab('boutique')" class="bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-black">🛍️ Boutique</button>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mt-4">
+<div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black td-text-blue">+50</div><div class="text-[10px] text-gray-500 font-bold">CLUBS</div></div>
+<div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black td-text-red">+200</div><div class="text-[10px] text-gray-500 font-bold">MATCHS</div></div>
+<div class="bg-white rounded-xl p-3 text-center card-td"><div class="text-2xl font-black" style="color:#8a6500">+15</div><div class="text-[10px] text-gray-500 font-bold">TOURNOIS</div></div>
+</div>
+<div class="mt-4 rounded-2xl p-5 text-white shadow-lg" style="background:linear-gradient(135deg,#0066b3,#034d82)">
+<h3 class="font-black text-lg">🔔 Rejoins la communauté</h3>
+<p class="text-xs text-blue-100 mb-3">Résultats et promos gratuits.</p>
+<a href="https://wa.me/23562496176" target="_blank" class="block bg-green-500 text-white font-bold text-sm py-3 rounded-lg text-center"><i class="fa-brands fa-whatsapp"></i> Canal WhatsApp</a>
+</div>
 </section>
 
 <section id="sec-matchs" class="tab-content hidden">
-  <div class="flex justify-between items-center mb-3">
-    <h2 class="text-xl font-black">⚽ Résultats LINAFOOT</h2>
-  </div>
-  <div id="matchesContainer" class="space-y-3">
-    <div class="text-center p-6 text-gray-500">Chargement des matchs...</div>
-  </div>
+<h2 class="text-xl font-black mb-3">⚽ Résultats LINAFOOT</h2>
+<div id="matchesContainer"></div>
 </section>
 
 <section id="sec-tournois" class="tab-content hidden">
-  <h2 class="text-xl font-black mb-3">🏆 Tournois</h2>
-  <div class="bg-white rounded-xl p-4 shadow-sm card-td">
-    <h3 class="font-black">Publication et promotion de tournois</h3>
-    <p class="text-xs text-gray-600 mt-1">La consultation reste gratuite. Les organisateurs peuvent payer pour de la visibilité et la promotion.</p>
-    <button onclick="openPaid('Promotion tournoi','2500')" class="mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black">Promouvoir mon tournoi — 2 500 FCFA</button>
-  </div>
+<h2 class="text-xl font-black mb-3">🏆 Tournois</h2>
+<div class="bg-white rounded-xl p-4 card-td mb-3">
+<h3 class="font-black">Coupe du Maire — N'Djamena</h3>
+<p class="text-xs text-gray-500 mt-1">Du 15 nov. au 20 déc. 2026</p>
+<p class="text-xs text-gray-500">Mairie de N'Djamena</p>
+</div>
+<div class="bg-white rounded-xl p-4 card-td">
+<h3 class="font-black">Tournoi des Quartiers — Moundou</h3>
+<p class="text-xs text-gray-500 mt-1">Du 1er au 30 déc. 2026</p>
+<p class="text-xs text-gray-500">Association Sport Moundou</p>
+</div>
 </section>
 
 <section id="sec-coachs" class="tab-content hidden">
-  <h2 class="text-xl font-black mb-3">👤 Coachs & académies</h2>
-  <div class="grid md:grid-cols-2 gap-3">
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-bold">Profil coach</h3><p class="text-xs text-gray-500 mt-1">Les profils gratuits peuvent être listés.</p><button onclick="openPaid('Profil coach mis en avant','1500')" class="mt-3 td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">Mettre en avant — 1 500 FCFA</button></div>
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-bold">Académie</h3><p class="text-xs text-gray-500 mt-1">Présence sur la plateforme + promotion locale.</p><button onclick="openPaid('Promotion académie','3000')" class="mt-3 td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">Promouvoir — 3 000 FCFA</button></div>
-  </div>
+<h2 class="text-xl font-black mb-3">👤 Coachs & académies</h2>
+<div class="bg-white rounded-xl p-4 card-td mb-3">
+<h3 class="font-bold">Mahamat Ali — Coach</h3>
+<p class="text-xs text-gray-500 mt-1">📍 N'Djamena | Coach certifié CAF B</p>
+</div>
+<div class="bg-white rounded-xl p-4 card-td">
+<h3 class="font-bold">Abakar Idriss — Académie</h3>
+<p class="text-xs text-gray-500 mt-1">📍 Moundou | Académie jeunes talents</p>
+</div>
 </section>
 
 <section id="sec-boutique" class="tab-content hidden">
-  <div class="flex justify-between items-center mb-3 gap-2">
-    <h2 class="text-xl font-black">🛍️ Boutique</h2>
-    <button onclick="openProductManager()" id="addProductBtn" class="hidden td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">+ Produit</button>
-  </div>
-  <div class="bg-blue-50 border border-blue-200 p-3 rounded-xl text-xs mb-4"><b>Modèle :</b> vente directe, frais de service ou commission convenus avec le vendeur.</div>
-  <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
-  <p id="emptyProducts" class="text-center bg-white rounded-xl p-6 text-sm text-gray-500">Aucun produit pour l'instant.</p>
+<h2 class="text-xl font-black mb-3">🛍️ Boutique</h2>
+<div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
 </section>
 
 <section id="sec-business" class="tab-content hidden">
-  <h2 class="text-2xl font-black">💰 Comment gagner avec la plateforme</h2>
-  <p class="text-sm text-gray-600 mt-2">Accès gratuit + services professionnels payants.</p>
-  <div class="grid md:grid-cols-2 gap-3 mt-4">
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-black">1. Promotion de tournoi</h3><p class="text-xs text-gray-500 mt-1">Publication prioritaire, bannière.</p><button onclick="openPaid('Promotion tournoi','2500')" class="mt-3 bg-amber-400 px-3 py-2 rounded-lg text-xs font-bold">2 500 FCFA</button></div>
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-black">2. Annonce sponsorisée</h3><p class="text-xs text-gray-500 mt-1">Entreprises, restaurants, équipements.</p><button onclick="openPaid('Annonce sponsorisée','5000')" class="mt-3 bg-amber-400 px-3 py-2 rounded-lg text-xs font-bold">Dès 5 000 FCFA</button></div>
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-black">3. Profil professionnel</h3><p class="text-xs text-gray-500 mt-1">Coach, académie, arbitre.</p><button onclick="openPaid('Profil professionnel','1500')" class="mt-3 bg-amber-400 px-3 py-2 rounded-lg text-xs font-bold">1 500 FCFA</button></div>
-    <div class="bg-white rounded-xl p-4 shadow-sm card-td"><h3 class="font-black">4. Boutique / commission</h3><p class="text-xs text-gray-500 mt-1">Vendez vos produits.</p><button onclick="contactBusiness()" class="mt-3 td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">Devenir vendeur</button></div>
-  </div>
+<h2 class="text-2xl font-black">💰 Gagner avec la plateforme</h2>
+<div class="grid md:grid-cols-2 gap-3 mt-4">
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Promotion tournoi</h3><p class="text-xs text-gray-500 mt-1">Publication prioritaire</p><a href="https://wa.me/23562496176?text=Promotion%20tournoi" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">2 500 FCFA</a></div>
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Annonce sponsorisée</h3><p class="text-xs text-gray-500 mt-1">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce%20sponsorisee" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">5 000 FCFA</a></div>
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Profil coach</h3><p class="text-xs text-gray-500 mt-1">Mise en avant</p><a href="https://wa.me/23562496176?text=Profil%20coach" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">1 500 FCFA</a></div>
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Devenir vendeur</h3><p class="text-xs text-gray-500 mt-1">Vendez vos produits</p><a href="https://wa.me/23562496176?text=Vendeur" target="_blank" class="inline-block mt-3 td-blue text-white px-3 py-2 rounded-lg text-xs font-black">Nous contacter</a></div>
+</div>
 </section>
 
 </main>
 
-<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-slate-200 shadow-lg flex justify-around py-2">
-<button onclick="switchTab('accueil')" class="tab-btn td-text-blue font-bold flex flex-col items-center"><i class="fa-solid fa-house"></i><span class="text-[10px]">Accueil</span></button>
-<button onclick="switchTab('matchs')" class="tab-btn text-gray-400 flex flex-col items-center"><i class="fa-solid fa-futbol"></i><span class="text-[10px]">Matchs</span></button>
-<button onclick="switchTab('tournois')" class="tab-btn text-gray-400 flex flex-col items-center"><i class="fa-solid fa-trophy"></i><span class="text-[10px]">Tournois</span></button>
-<button onclick="switchTab('coachs')" class="tab-btn text-gray-400 flex flex-col items-center"><i class="fa-solid fa-user-tie"></i><span class="text-[10px]">Coachs</span></button>
-<button onclick="switchTab('boutique')" class="tab-btn text-gray-400 flex flex-col items-center"><i class="fa-solid fa-shop"></i><span class="text-[10px]">Boutique</span></button>
-<button onclick="switchTab('business')" class="tab-btn text-gray-400 flex flex-col items-center"><i class="fa-solid fa-coins"></i><span class="text-[10px]">Business</span></button>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t flex justify-around py-2">
+<button onclick="switchTab('accueil')" class="tab-btn td-text-blue font-bold flex flex-col items-center text-xs">🏠<span class="text-[9px]">Accueil</span></button>
+<button onclick="switchTab('matchs')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">⚽<span class="text-[9px]">Matchs</span></button>
+<button onclick="switchTab('tournois')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">🏆<span class="text-[9px]">Tournois</span></button>
+<button onclick="switchTab('coachs')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">👤<span class="text-[9px]">Coachs</span></button>
+<button onclick="switchTab('boutique')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">🛍️<span class="text-[9px]">Boutique</span></button>
+<button onclick="switchTab('business')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">💰<span class="text-[9px]">Business</span></button>
 </nav>
 
-<div id="paidModal" class="fixed inset-0 bg-black/60 z-[60] hidden items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-5 max-w-sm w-full">
-<button onclick="closePaid()" class="float-right text-2xl text-gray-400">&times;</button>
-<h2 class="font-black text-lg">Service professionnel</h2>
-<p class="text-sm text-gray-600 mt-2">Service : <b id="paidService"></b></p>
-<p class="text-2xl font-black td-text-blue mt-2"><span id="paidAmount"></span> FCFA</p>
-<p class="text-xs text-gray-500 mt-3">Paiement via WhatsApp (Mobile Money / Airtel Money).</p>
-<a id="paidWhatsapp" target="_blank" rel="noopener" class="block text-center td-blue text-white font-bold py-3 rounded-lg mt-4"><i class="fa-brands fa-whatsapp"></i> Demander le paiement</a>
-</div></div>
-
-<div id="authModal" class="fixed inset-0 bg-black/60 z-[70] hidden items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-5 max-w-sm w-full">
-<div class="flex justify-between"><h2 class="font-black td-text-blue">Connexion administrateur</h2><button onclick="closeAuth()" class="text-2xl text-gray-400">&times;</button></div>
-<p class="text-xs text-gray-500 mt-2">Réservé à l'administrateur de la plateforme.</p>
-<form id="authForm" class="space-y-3 mt-4">
-<input id="authEmail" required type="email" placeholder="Email administrateur" class="w-full border rounded-lg p-3 text-sm">
-<input id="authPassword" required type="password" placeholder="Mot de passe" class="w-full border rounded-lg p-3 text-sm">
-<button class="w-full td-blue text-white py-3 rounded-lg font-bold">Se connecter</button>
-</form>
-<button onclick="logout()" id="logoutBtn" class="hidden w-full td-red text-white py-2 rounded-lg font-bold mt-2">Se déconnecter</button>
-<p id="authStatus" class="text-xs mt-3"></p></div></div>
-
-<div id="productModal" class="fixed inset-0 bg-black/60 z-[60] hidden items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-5 max-w-md w-full max-h-[92vh] overflow-y-auto">
-<div class="flex justify-between"><h2 class="font-black td-text-blue">Ajouter un produit</h2><button onclick="closeProductManager()" class="text-2xl text-gray-400">&times;</button></div>
-<form id="productForm" class="space-y-3 mt-4">
-<input id="pName" required maxlength="80" placeholder="Nom du produit" class="w-full border rounded-lg p-3 text-sm">
-<input id="pPrice" required type="number" min="0" placeholder="Prix FCFA" class="w-full border rounded-lg p-3 text-sm">
-<input id="pCategory" maxlength="50" placeholder="Catégorie (ex: Maillots)" class="w-full border rounded-lg p-3 text-sm">
-<textarea id="pDesc" maxlength="180" placeholder="Description" class="w-full border rounded-lg p-3 text-sm"></textarea>
-<input id="pImage" required type="file" accept="image/*" class="w-full text-xs">
-<img id="pPreview" class="hidden w-full h-40 object-cover rounded-xl">
-<button class="w-full td-blue text-white py-3 rounded-lg font-bold">Enregistrer</button>
-</form>
-</div></div>
-
 <script>
-const WA="23562496176";
+const PRODUCTS = [
+  { name: "Maillot Tchad", price: 5000, category: "Maillots", description: "Maillot équipe nationale" },
+  { name: "Chaussures Nike", price: 12000, category: "Chaussures", description: "Crampons pro" },
+  { name: "Short Tchad", price: 2500, category: "Maillots", description: "Short bleu équipe" },
+  { name: "Gants gardien", price: 4500, category: "Équipement", description: "Gants pro taille L" },
+  { name: "Protège-tibias", price: 2000, category: "Équipement", description: "Protection match" }
+];
 
-// ✅ URL Supabase via proxy codetabs (contourne le blocage au Tchad)
-const SUPABASE_URL="https://api.codetabs.com/v1/proxy/?quest=https://yqdjafqyzisuauwjsmtm.supabase.co";
-const SUPABASE_KEY="sb_publishable_dUFkCA2Tto_lzN_zzRDJBQ_QhRQ5Rn4";
+const MATCHES = [
+  { home: "Gazelle FC", away: "Elect-Sport", hs: 2, as: 1, status: "Terminé", stadium: "Stade Idriss Mahamat Ouya" },
+  { home: "Foullah Edifice", away: "Renaissance FC", hs: 0, as: 0, status: "À venir", stadium: "Stade de N'Djamena" },
+  { home: "AS CotonTchad", away: "Tourbillon FC", hs: 1, as: 3, status: "Terminé", stadium: "Stade Omnisports" }
+];
 
-// On créé 2 clients : un pour l'Auth (qui a besoin du vrai domaine),
-// un pour la base de données (qui peut passer par le proxy)
-const SUPABASE_REAL_URL="https://yqdjafqyzisuauwjsmtm.supabase.co";
-const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const sbAuth=window.supabase.createClient(SUPABASE_REAL_URL,SUPABASE_KEY);
-let currentUser=null;
+const WA = "23562496176";
 
 function switchTab(id){
   document.querySelectorAll(".tab-content").forEach(x=>x.classList.add("hidden"));
   document.querySelectorAll(".tab-btn").forEach(x=>{x.classList.remove("td-text-blue","font-bold");x.classList.add("text-gray-400")});
   document.getElementById("sec-"+id).classList.remove("hidden");
-  const b=document.querySelectorAll(".tab-btn")[["accueil","matchs","tournois","coachs","boutique","business"].indexOf(id)];
-  b.classList.remove("text-gray-400");b.classList.add("td-text-blue","font-bold");
-  if(id==="boutique")loadProducts();
-  if(id==="matchs")loadMatches();
+  const idx = ["accueil","matchs","tournois","coachs","boutique","business"].indexOf(id);
+  const b = document.querySelectorAll(".tab-btn")[idx];
+  b.classList.remove("text-gray-400"); b.classList.add("td-text-blue","font-bold");
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function fmt(n){return new Intl.NumberFormat("fr-FR").format(Number(n)||0)}
-function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function fmt(n){ return new Intl.NumberFormat("fr-FR").format(Number(n)||0); }
+function safe(s){ return String(s??""); }
 
-async function loadProducts(){
-  const grid=document.getElementById("productGrid");
-  const empty=document.getElementById("emptyProducts");
-  grid.innerHTML='<div class="text-center col-span-4 p-6 text-gray-500">Chargement...</div>';
-  const {data,error}=await sb.from("products").select("*").eq("published",true).order("created_at",{ascending:false});
-  grid.innerHTML="";
-  if(error||!data||data.length===0){empty.classList.remove("hidden");return}
-  empty.classList.add("hidden");
-  data.forEach(p=>{
-    const c=document.createElement("article");
-    c.className="bg-white rounded-2xl card-td overflow-hidden flex flex-col card-hover";
-    c.innerHTML=`<div class="relative"><img src="${safe(p.image_url||'')}" alt="${safe(p.name)}" class="w-full h-40 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/0066B3/FFF?text=Rahim'"><span class="absolute top-2 left-2 bg-white/90 td-text-blue text-[10px] font-black px-2 py-1 rounded-full">🇹🇩 TCHAD</span></div><div class="p-3 flex flex-col flex-1"><span class="text-[10px] font-bold td-text-red">${safe(p.category||"Football")}</span><h3 class="font-bold text-sm mt-1">${safe(p.name)}</h3><p class="text-xs text-gray-500 mt-1 line-clamp-2">${safe(p.description||"")}</p><b class="td-text-blue mt-2">${fmt(p.price)} FCFA</b><button onclick="buy('${encodeURIComponent(p.name)}',${Number(p.price)||0})" class="mt-auto td-blue text-white text-xs py-2 rounded-lg mt-2 font-bold"><i class="fa-brands fa-whatsapp"></i> Commander</button></div>`;
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = "";
+  PRODUCTS.forEach(p => {
+    const c = document.createElement("article");
+    c.className = "bg-white rounded-2xl card-td overflow-hidden flex flex-col";
+    c.innerHTML = '<div class="p-3 flex flex-col flex-1"><span class="text-[10px] font-bold td-text-red">'+safe(p.category)+'</span><h3 class="font-bold text-sm mt-1">'+safe(p.name)+'</h3><p class="text-xs text-gray-500 mt-1">'+safe(p.description)+'</p><b class="td-text-blue mt-2">'+fmt(p.price)+' FCFA</b><button onclick="buy(\''+encodeURIComponent(p.name)+'\','+p.price+')" class="mt-auto td-blue text-white text-xs py-2 rounded-lg mt-2 font-bold"><i class="fa-brands fa-whatsapp"></i> Commander</button></div>';
     grid.appendChild(c);
   });
 }
 
-async function loadMatches(){
-  const c=document.getElementById("matchesContainer");
-  c.innerHTML='<div class="text-center p-6 text-gray-500">Chargement...</div>';
-  const {data,error}=await sb.from("matches").select("*").order("match_date",{ascending:false}).limit(20);
-  if(error||!data||data.length===0){c.innerHTML='<div class="bg-white p-6 rounded-xl text-center text-gray-500"><p class="font-bold">Résultats bientôt disponibles</p><p class="text-xs mt-1">Les matchs LINAFOOT seront mis à jour automatiquement.</p></div>';return}
-  c.innerHTML=data.map(m=>`<div class="bg-white p-4 rounded-xl shadow-sm card-td"><div class="flex justify-between text-xs text-gray-500"><span>${safe(m.competition||'LINAFOOT')}</span><b class="${m.status==='Termine'||m.status==='Terminé'?'td-text-blue':'td-text-yellow'}">${safe(m.status||'À venir')}</b></div><div class="flex justify-between items-center font-bold mt-2"><span>${safe(m.home_team)}</span><span class="bg-blue-50 px-3 py-1 rounded-full">${m.home_score} - ${m.away_score}</span><span>${safe(m.away_team)}</span></div>${m.stadium?'<div class="text-[10px] text-gray-400 mt-1">📍 '+safe(m.stadium)+'</div>':''}</div>`).join("");
+function renderMatches(){
+  const c = document.getElementById("matchesContainer");
+  c.innerHTML = "";
+  MATCHES.forEach(m => {
+    const card = document.createElement("div");
+    card.className = "bg-white p-4 rounded-xl card-td mb-3";
+    card.innerHTML = '<div class="flex justify-between text-xs text-gray-500"><span>LINAFOOT</span><b class="'+(m.status==='Terminé'?'td-text-blue':'td-text-yellow')+'">'+safe(m.status)+'</b></div><div class="flex justify-between items-center font-bold mt-2"><span>'+safe(m.home)+'</span><span class="bg-blue-50 px-3 py-1 rounded-full">'+m.hs+' - '+m.as+'</span><span>'+safe(m.away)+'</span></div><div class="text-[10px] text-gray-400 mt-1">📍 '+safe(m.stadium)+'</div>';
+    c.appendChild(card);
+  });
 }
 
-function buy(name,price){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour Rahim Football Tchad, je veux commander : "+decodeURIComponent(name)+" au prix de "+fmt(price)+" FCFA."),"_blank")}
-function openPaid(service,amount){
-  document.getElementById("paidService").textContent=service;
-  document.getElementById("paidAmount").textContent=fmt(amount);
-  document.getElementById("paidWhatsapp").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux acheter : "+service+" au prix de "+fmt(amount)+" FCFA.");
-  document.getElementById("paidModal").classList.remove("hidden");document.getElementById("paidModal").classList.add("flex");
+function buy(name, price){
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux commander : "+decodeURIComponent(name)+" — "+fmt(price)+" FCFA."), "_blank");
 }
-function closePaid(){document.getElementById("paidModal").classList.add("hidden");document.getElementById("paidModal").classList.remove("flex")}
-function contactBusiness(){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux devenir vendeur sur Rahim Football Tchad."),"_blank")}
 
-function openAuth(){document.getElementById("authModal").classList.remove("hidden");document.getElementById("authModal").classList.add("flex")}
-function closeAuth(){document.getElementById("authModal").classList.add("hidden");document.getElementById("authModal").classList.remove("flex")}
-async function login(e){
-  e.preventDefault();
-  const email=document.getElementById("authEmail").value.trim();
-  const pw=document.getElementById("authPassword").value;
-  const st=document.getElementById("authStatus");
-  st.textContent="Connexion en cours...";st.className="text-xs mt-3 text-gray-500";
-  try{
-    const {data,error}=await sbAuth.auth.signInWithPassword({email,password:pw});
-    if(error){st.textContent="❌ "+error.message;st.className="text-xs mt-3 text-red-600";return}
-    currentUser=data.user;
-    st.textContent="Connexion réussie ✅";
-    st.className="text-xs mt-3 text-green-700";
-    updateAuthUI();setTimeout(closeAuth,700);
-  }catch(err){
-    st.textContent="❌ Erreur réseau : "+err.message;
-    st.className="text-xs mt-3 text-red-600";
-  }
-}
-async function logout(){try{await sbAuth.auth.signOut()}catch(e){}currentUser=null;updateAuthUI();closeAuth()}
-function updateAuthUI(){
-  const btn=document.getElementById("authBtn");
-  const addBtn=document.getElementById("addProductBtn");
-  if(currentUser){btn.textContent="Admin ✅";if(addBtn)addBtn.classList.remove("hidden");document.getElementById("logoutBtn").classList.remove("hidden")}
-  else{btn.textContent="Admin";if(addBtn)addBtn.classList.add("hidden");document.getElementById("logoutBtn").classList.add("hidden")}
-}
-function openProductManager(){if(!currentUser){openAuth();return}document.getElementById("productModal").classList.remove("hidden");document.getElementById("productModal").classList.add("flex")}
-function closeProductManager(){document.getElementById("productModal").classList.add("hidden");document.getElementById("productModal").classList.remove("flex")}
-
-document.getElementById("pImage").addEventListener("change",function(){
-  const f=this.files[0];if(!f)return;
-  if(f.size>5*1024*1024){alert("Image max 5 Mo");this.value="";return}
-  const r=new FileReader();
-  r.onload=e=>{document.getElementById("pPreview").src=e.target.result;document.getElementById("pPreview").classList.remove("hidden")};
-  r.readAsDataURL(f);
-});
-
-document.getElementById("productForm").addEventListener("submit",async function(e){
-  e.preventDefault();
-  if(!currentUser){alert("Connexion admin requise.");return}
-  const f=document.getElementById("pImage").files[0];if(!f){alert("Choisis une image.");return}
-  const name=document.getElementById("pName").value.trim();
-  const price=Number(document.getElementById("pPrice").value);
-  const category=document.getElementById("pCategory").value.trim();
-  const description=document.getElementById("pDesc").value.trim();
-  const btn=this.querySelector("button[type=submit]");btn.textContent="Envoi...";btn.disabled=true;
-  const ins=await sb.from("products").insert({name,price,category,description,image_url:"",published:true});
-  if(ins.error){alert("Erreur produit : "+ins.error.message);btn.textContent="Enregistrer";btn.disabled=false;return}
-  this.reset();document.getElementById("pPreview").classList.add("hidden");
-  btn.textContent="Enregistrer";btn.disabled=false;
-  alert("✅ Produit publié !");
-  closeProductManager();loadProducts();
-});
-document.getElementById("authForm").addEventListener("submit",login);
-
-(async()=>{
-  try{
-    const {data}=await sbAuth.auth.getSession();
-    currentUser=data.session?.user||null;
-    sbAuth.auth.onAuthStateChange((_e,s)=>{currentUser=s?.user||null;updateAuthUI()});
-  }catch(e){}
-  updateAuthUI();
-  loadProducts();
-})();
+renderProducts();
+renderMatches();
 </script>
 </body></html>
