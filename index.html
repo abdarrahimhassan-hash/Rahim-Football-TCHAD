@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahim Football Tchad | Matchs, tournois, boutique et services football</title>
 <meta name="description" content="Rahim Football Tchad : plateforme sportive tchadienne pour matchs, tournois, clubs, coachs, académies, boutique et services football.">
-<meta name="keywords" content="football Tchad, Rahim Football Tchad, championnat Tchad, tournoi football Tchad, boutique football Tchad, coach football Tchad, académie football Tchad, clubs Tchad">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0066B3">
 <link rel="icon" href="assets/logo.png">
@@ -36,7 +35,7 @@ body{padding-bottom:84px;background:linear-gradient(180deg,#eef7ff 0,#f8fafc 38%
       <div class="min-w-0"><h1 class="font-black text-lg truncate td-text-blue">Rahim Football <span class="td-text-red">Tchad</span></h1><p class="text-[11px] text-slate-500">🇹🇩 La plateforme du football tchadien</p></div>
     </a>
     <div class="flex gap-2 items-center">
-      <button onclick="openAuth()" id="authBtn" class="hidden sm:block border border-blue-200 td-text-blue font-black text-xs px-3 py-2 rounded-lg bg-blue-50">Admin</button>
+      <button onclick="openAuth()" id="authBtn" class="border border-blue-200 td-text-blue font-black text-xs px-3 py-2 rounded-lg bg-blue-50">Admin</button>
       <a href="https://wa.me/23562496176" target="_blank" rel="noopener" class="td-yellow text-gray-900 font-black text-xs px-3 py-2 rounded-lg whitespace-nowrap"><i class="fa-brands fa-whatsapp"></i> Contact</a>
     </div>
   </div>
@@ -72,19 +71,11 @@ body{padding-bottom:84px;background:linear-gradient(180deg,#eef7ff 0,#f8fafc 38%
       <a href="https://tiktok.com/" target="_blank" class="bg-black text-white font-bold text-xs py-3 rounded-lg text-center"><i class="fa-brands fa-tiktok"></i> TikTok</a>
     </div>
   </div>
-
-  <h3 class="font-black text-lg mt-5 mb-2">Pourquoi nous suivre ?</h3>
-  <div class="grid md:grid-cols-3 gap-3">
-    <div class="bg-white rounded-xl p-4 card-td card-hover"><div class="text-2xl">⚽</div><b class="td-text-blue text-sm">Résultats LINAFOOT</b><p class="text-xs text-gray-500 mt-1">Score et classement mis à jour.</p></div>
-    <div class="bg-white rounded-xl p-4 card-td card-hover"><div class="text-2xl">💼</div><b class="td-text-red text-sm">Visibilité pro</b><p class="text-xs text-gray-500 mt-1">Coachs, académies et vendeurs.</p></div>
-    <div class="bg-white rounded-xl p-4 card-td card-hover"><div class="text-2xl">🛒</div><b class="td-text-yellow text-sm">Boutique locale</b><p class="text-xs text-gray-500 mt-1">Maillots, ballons, équipements.</p></div>
-  </div>
 </section>
 
 <section id="sec-matchs" class="tab-content hidden">
   <div class="flex justify-between items-center mb-3">
     <h2 class="text-xl font-black">⚽ Résultats LINAFOOT</h2>
-    <span class="text-xs text-gray-500" id="lastUpdate"></span>
   </div>
   <div id="matchesContainer" class="space-y-3">
     <div class="text-center p-6 text-gray-500">Chargement des matchs...</div>
@@ -178,9 +169,16 @@ body{padding-bottom:84px;background:linear-gradient(180deg,#eef7ff 0,#f8fafc 38%
 
 <script>
 const WA="23562496176";
-const SUPABASE_URL="https://yqdjafqyzisuauwjsmtm.supabase.co";
+
+// ✅ URL Supabase via proxy codetabs (contourne le blocage au Tchad)
+const SUPABASE_URL="https://api.codetabs.com/v1/proxy/?quest=https://yqdjafqyzisuauwjsmtm.supabase.co";
 const SUPABASE_KEY="sb_publishable_dUFkCA2Tto_lzN_zzRDJBQ_QhRQ5Rn4";
+
+// On créé 2 clients : un pour l'Auth (qui a besoin du vrai domaine),
+// un pour la base de données (qui peut passer par le proxy)
+const SUPABASE_REAL_URL="https://yqdjafqyzisuauwjsmtm.supabase.co";
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const sbAuth=window.supabase.createClient(SUPABASE_REAL_URL,SUPABASE_KEY);
 let currentUser=null;
 
 function switchTab(id){
@@ -207,7 +205,7 @@ async function loadProducts(){
   data.forEach(p=>{
     const c=document.createElement("article");
     c.className="bg-white rounded-2xl card-td overflow-hidden flex flex-col card-hover";
-    c.innerHTML=`<div class="relative"><img src="${safe(p.image_url||'')}" alt="${safe(p.name)}" class="w-full h-40 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/0066B3/FFF?text='+encodeURIComponent('${safe(p.name)}')"><span class="absolute top-2 left-2 bg-white/90 td-text-blue text-[10px] font-black px-2 py-1 rounded-full">🇹🇩 TCHAD</span></div><div class="p-3 flex flex-col flex-1"><span class="text-[10px] font-bold td-text-red">${safe(p.category||"Football")}</span><h3 class="font-bold text-sm mt-1">${safe(p.name)}</h3><p class="text-xs text-gray-500 mt-1 line-clamp-2">${safe(p.description||"")}</p><b class="td-text-blue mt-2">${fmt(p.price)} FCFA</b><button onclick="buy('${encodeURIComponent(p.name)}',${Number(p.price)||0})" class="mt-auto td-blue text-white text-xs py-2 rounded-lg mt-2 font-bold"><i class="fa-brands fa-whatsapp"></i> Commander</button></div>`;
+    c.innerHTML=`<div class="relative"><img src="${safe(p.image_url||'')}" alt="${safe(p.name)}" class="w-full h-40 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/0066B3/FFF?text=Rahim'"><span class="absolute top-2 left-2 bg-white/90 td-text-blue text-[10px] font-black px-2 py-1 rounded-full">🇹🇩 TCHAD</span></div><div class="p-3 flex flex-col flex-1"><span class="text-[10px] font-bold td-text-red">${safe(p.category||"Football")}</span><h3 class="font-bold text-sm mt-1">${safe(p.name)}</h3><p class="text-xs text-gray-500 mt-1 line-clamp-2">${safe(p.description||"")}</p><b class="td-text-blue mt-2">${fmt(p.price)} FCFA</b><button onclick="buy('${encodeURIComponent(p.name)}',${Number(p.price)||0})" class="mt-auto td-blue text-white text-xs py-2 rounded-lg mt-2 font-bold"><i class="fa-brands fa-whatsapp"></i> Commander</button></div>`;
     grid.appendChild(c);
   });
 }
@@ -236,14 +234,21 @@ async function login(e){
   e.preventDefault();
   const email=document.getElementById("authEmail").value.trim();
   const pw=document.getElementById("authPassword").value;
-  const {data,error}=await sb.auth.signInWithPassword({email,password:pw});
-  if(error){document.getElementById("authStatus").textContent=error.message;document.getElementById("authStatus").className="text-xs mt-3 text-red-600";return}
-  currentUser=data.user;
-  document.getElementById("authStatus").textContent="Connexion réussie ✅";
-  document.getElementById("authStatus").className="text-xs mt-3 text-green-700";
-  updateAuthUI();setTimeout(closeAuth,700);
+  const st=document.getElementById("authStatus");
+  st.textContent="Connexion en cours...";st.className="text-xs mt-3 text-gray-500";
+  try{
+    const {data,error}=await sbAuth.auth.signInWithPassword({email,password:pw});
+    if(error){st.textContent="❌ "+error.message;st.className="text-xs mt-3 text-red-600";return}
+    currentUser=data.user;
+    st.textContent="Connexion réussie ✅";
+    st.className="text-xs mt-3 text-green-700";
+    updateAuthUI();setTimeout(closeAuth,700);
+  }catch(err){
+    st.textContent="❌ Erreur réseau : "+err.message;
+    st.className="text-xs mt-3 text-red-600";
+  }
 }
-async function logout(){await sb.auth.signOut();currentUser=null;updateAuthUI();closeAuth()}
+async function logout(){try{await sbAuth.auth.signOut()}catch(e){}currentUser=null;updateAuthUI();closeAuth()}
 function updateAuthUI(){
   const btn=document.getElementById("authBtn");
   const addBtn=document.getElementById("addProductBtn");
@@ -270,12 +275,7 @@ document.getElementById("productForm").addEventListener("submit",async function(
   const category=document.getElementById("pCategory").value.trim();
   const description=document.getElementById("pDesc").value.trim();
   const btn=this.querySelector("button[type=submit]");btn.textContent="Envoi...";btn.disabled=true;
-  const ext=(f.name.split(".").pop()||"jpg").toLowerCase();
-  const path="products/"+Date.now()+"-"+Math.random().toString(36).slice(2)+"."+ext;
-  const up=await sb.storage.from("product-images").upload(path,f,{contentType:f.type,cacheControl:"3600"});
-  if(up.error){alert("Erreur image : "+up.error.message);btn.textContent="Enregistrer";btn.disabled=false;return}
-  const image_url=sb.storage.from("product-images").getPublicUrl(path).data.publicUrl;
-  const ins=await sb.from("products").insert({name,price,category,description,image_url,published:true});
+  const ins=await sb.from("products").insert({name,price,category,description,image_url:"",published:true});
   if(ins.error){alert("Erreur produit : "+ins.error.message);btn.textContent="Enregistrer";btn.disabled=false;return}
   this.reset();document.getElementById("pPreview").classList.add("hidden");
   btn.textContent="Enregistrer";btn.disabled=false;
@@ -285,9 +285,11 @@ document.getElementById("productForm").addEventListener("submit",async function(
 document.getElementById("authForm").addEventListener("submit",login);
 
 (async()=>{
-  const {data}=await sb.auth.getSession();
-  currentUser=data.session?.user||null;
-  sb.auth.onAuthStateChange((_e,s)=>{currentUser=s?.user||null;updateAuthUI()});
+  try{
+    const {data}=await sbAuth.auth.getSession();
+    currentUser=data.session?.user||null;
+    sbAuth.auth.onAuthStateChange((_e,s)=>{currentUser=s?.user||null;updateAuthUI()});
+  }catch(e){}
   updateAuthUI();
   loadProducts();
 })();
