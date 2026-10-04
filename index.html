@@ -26,7 +26,10 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-yellow-400 to-red-600 flex items-center justify-center text-white font-black text-xl">R</div>
 <div><h1 class="font-black text-lg td-text-blue">Rahim Football <span class="td-text-red">Tchad</span></h1><p class="text-[11px] text-slate-500">🇹🇩 La plateforme du football tchadien</p></div>
 </div>
+<div class="flex gap-2">
+<button onclick="openAuth()" id="authBtn" class="border border-blue-200 td-text-blue font-black text-xs px-3 py-2 rounded-lg bg-blue-50">Admin</button>
 <a href="https://wa.me/23562496176" target="_blank" class="td-yellow text-gray-900 font-black text-xs px-3 py-2 rounded-lg"><i class="fa-brands fa-whatsapp"></i> Contact</a>
+</div>
 </div>
 </header>
 
@@ -36,10 +39,10 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <div class="hero-td rounded-3xl shadow-lg p-6 md:p-8 text-white">
 <span class="text-xs font-black bg-white/15 border border-white/25 px-3 py-1 rounded-full">🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
 <h2 class="text-3xl md:text-4xl font-black mt-3 text-white">Tout le football tchadien,<br><span class="text-yellow-300">dans ta poche.</span></h2>
-<p class="text-sm text-blue-50 mt-3">Résultats LINAFOOT, tournois, coachs, académies et boutique.</p>
+<p class="text-sm text-blue-50 mt-3">Tournois, résultats en direct, coachs, académies et boutique.</p>
 <div class="flex gap-2 flex-wrap mt-5">
-<button onclick="switchTab('matchs')" class="td-yellow text-gray-900 px-4 py-2 rounded-lg text-sm font-black">⚽ LINAFOOT</button>
-<button onclick="switchTab('boutique')" class="bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-black">🛍️ Boutique</button>
+<button onclick="switchTab('tournois')" class="td-yellow text-gray-900 px-4 py-2 rounded-lg text-sm font-black">🏆 Voir les tournois</button>
+<button onclick="switchTab('matchs')" class="bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg text-sm font-black">⚽ Résultats</button>
 </div>
 </div>
 <div class="grid grid-cols-3 gap-2 mt-4">
@@ -54,34 +57,40 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 </div>
 </section>
 
-<section id="sec-matchs" class="tab-content hidden">
-<h2 class="text-xl font-black mb-3">⚽ Résultats LINAFOOT</h2>
-<div id="matchesContainer"></div>
+<section id="sec-tournois" class="tab-content hidden">
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-xl font-black">🏆 Tournois</h2>
+<button onclick="tryCreateTournament()" class="td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">+ Créer</button>
+</div>
+<div id="tournamentsContainer"></div>
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+<h3 class="font-black text-amber-800 text-sm">💰 Vous voulez créer votre tournoi ?</h3>
+<p class="text-xs text-amber-700 mt-1">Publiez votre tournoi pour 2 500 FCFA et touchez des centaines de joueurs.</p>
+<a href="https://wa.me/23562496176?text=Je%20veux%20cr%C3%A9er%20un%20tournoi%20sur%20Rahim%20Football" target="_blank" class="inline-block mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black"><i class="fa-brands fa-whatsapp"></i> Payer 2 500 FCFA</a>
+</div>
 </section>
 
-<section id="sec-tournois" class="tab-content hidden">
-<h2 class="text-xl font-black mb-3">🏆 Tournois</h2>
-<div class="bg-white rounded-xl p-4 card-td mb-3">
-<h3 class="font-black">Coupe du Maire — N'Djamena</h3>
-<p class="text-xs text-gray-500 mt-1">Du 15 nov. au 20 déc. 2026</p>
-<p class="text-xs text-gray-500">Mairie de N'Djamena</p>
+<section id="sec-matchs" class="tab-content hidden">
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-xl font-black">⚽ Résultats des matchs</h2>
+<button onclick="tryAddMatch()" class="td-blue text-white px-3 py-2 rounded-lg text-xs font-bold">+ Ajouter</button>
 </div>
-<div class="bg-white rounded-xl p-4 card-td">
-<h3 class="font-black">Tournoi des Quartiers — Moundou</h3>
-<p class="text-xs text-gray-500 mt-1">Du 1er au 30 déc. 2026</p>
-<p class="text-xs text-gray-500">Association Sport Moundou</p>
+<p class="text-xs text-gray-500 mb-3">Résultats des matchs de tournoi</p>
+<div id="matchesContainer"></div>
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+<h3 class="font-black text-amber-800 text-sm">💰 Ajouter un résultat de match ?</h3>
+<p class="text-xs text-amber-700 mt-1">Service payant : 500 FCFA par match.</p>
+<a href="https://wa.me/23562496176?text=Je%20veux%20ajouter%20un%20match" target="_blank" class="inline-block mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black"><i class="fa-brands fa-whatsapp"></i> Payer 500 FCFA</a>
 </div>
 </section>
 
 <section id="sec-coachs" class="tab-content hidden">
 <h2 class="text-xl font-black mb-3">👤 Coachs & académies</h2>
-<div class="bg-white rounded-xl p-4 card-td mb-3">
-<h3 class="font-bold">Mahamat Ali — Coach</h3>
-<p class="text-xs text-gray-500 mt-1">📍 N'Djamena | Coach certifié CAF B</p>
-</div>
-<div class="bg-white rounded-xl p-4 card-td">
-<h3 class="font-bold">Abakar Idriss — Académie</h3>
-<p class="text-xs text-gray-500 mt-1">📍 Moundou | Académie jeunes talents</p>
+<div id="coachesContainer" class="space-y-3"></div>
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+<h3 class="font-black text-amber-800 text-sm">💰 Promouvoir votre profil ?</h3>
+<p class="text-xs text-amber-700 mt-1">Mettez en avant votre profil de coach ou académie pour 1 500 FCFA.</p>
+<a href="https://wa.me/23562496176?text=Promouvoir%20mon%20profil%20coach" target="_blank" class="inline-block mt-3 bg-amber-400 text-gray-900 px-4 py-2 rounded-lg text-xs font-black"><i class="fa-brands fa-whatsapp"></i> Payer 1 500 FCFA</a>
 </div>
 </section>
 
@@ -93,8 +102,8 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 <section id="sec-business" class="tab-content hidden">
 <h2 class="text-2xl font-black">💰 Gagner avec la plateforme</h2>
 <div class="grid md:grid-cols-2 gap-3 mt-4">
-<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Promotion tournoi</h3><p class="text-xs text-gray-500 mt-1">Publication prioritaire</p><a href="https://wa.me/23562496176?text=Promotion%20tournoi" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">2 500 FCFA</a></div>
-<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Annonce sponsorisée</h3><p class="text-xs text-gray-500 mt-1">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce%20sponsorisee" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">5 000 FCFA</a></div>
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Créer un tournoi</h3><p class="text-xs text-gray-500 mt-1">Publiez votre tournoi</p><a href="https://wa.me/23562496176?text=Cr%C3%A9er%20tournoi" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">2 500 FCFA</a></div>
+<div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Annonce sponsorisée</h3><p class="text-xs text-gray-500 mt-1">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">5 000 FCFA</a></div>
 <div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Profil coach</h3><p class="text-xs text-gray-500 mt-1">Mise en avant</p><a href="https://wa.me/23562496176?text=Profil%20coach" target="_blank" class="inline-block mt-3 td-yellow px-3 py-2 rounded-lg text-xs font-black">1 500 FCFA</a></div>
 <div class="bg-white rounded-xl p-4 card-td"><h3 class="font-black">Devenir vendeur</h3><p class="text-xs text-gray-500 mt-1">Vendez vos produits</p><a href="https://wa.me/23562496176?text=Vendeur" target="_blank" class="inline-block mt-3 td-blue text-white px-3 py-2 rounded-lg text-xs font-black">Nous contacter</a></div>
 </div>
@@ -104,14 +113,66 @@ body{padding-bottom:84px;background:#f8fafc;font-family:sans-serif}
 
 <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t flex justify-around py-2">
 <button onclick="switchTab('accueil')" class="tab-btn td-text-blue font-bold flex flex-col items-center text-xs">🏠<span class="text-[9px]">Accueil</span></button>
-<button onclick="switchTab('matchs')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">⚽<span class="text-[9px]">Matchs</span></button>
 <button onclick="switchTab('tournois')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">🏆<span class="text-[9px]">Tournois</span></button>
+<button onclick="switchTab('matchs')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">⚽<span class="text-[9px]">Matchs</span></button>
 <button onclick="switchTab('coachs')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">👤<span class="text-[9px]">Coachs</span></button>
 <button onclick="switchTab('boutique')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">🛍️<span class="text-[9px]">Boutique</span></button>
 <button onclick="switchTab('business')" class="tab-btn text-gray-400 flex flex-col items-center text-xs">💰<span class="text-[9px]">Business</span></button>
 </nav>
 
+<div id="authModal" class="hidden fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+<div class="bg-white rounded-2xl p-5 max-w-sm w-full">
+<div class="flex justify-between items-center">
+<h2 class="font-black td-text-blue">Connexion Admin</h2>
+<button onclick="closeAuth()" class="text-gray-400 text-2xl">&times;</button>
+</div>
+<p class="text-xs text-gray-500 mt-2">Réservé à l'administrateur.</p>
+<form id="authForm" class="space-y-3 mt-4">
+<input id="authEmail" required type="email" placeholder="Email" class="w-full border rounded-lg p-3 text-sm">
+<input id="authPassword" required type="password" placeholder="Mot de passe" class="w-full border rounded-lg p-3 text-sm">
+<button class="w-full td-blue text-white py-3 rounded-lg font-bold">Se connecter</button>
+</form>
+<p id="authStatus" class="text-xs mt-3"></p>
+</div></div>
+
 <script>
+// =============================================================
+// 🏆 LISTE DES TOURNOIS (vide au départ)
+// =============================================================
+const TOURNAMENTS = [];
+
+// =============================================================
+// ⚽ LISTE DES MATCHS (vide au départ)
+// =============================================================
+const MATCHES = [];
+
+// =============================================================
+// 👤 LISTE DES COACHS
+// =============================================================
+const COACHES = [
+  {
+    name: "ABDARRAHIM HASSAN MAHAMAT",
+    type: "Coach & Formateur",
+    city: "N'Djamena",
+    phone: "+235 62 49 61 76",
+    bio: `Entraîneur et Formateur de Football
+
+Expérience & Stabilité : Pilier du Centre de Formation EL-NOURY depuis sa création en 2016 (10 ans d'engagement et de constance dans un projet de long terme).
+
+Expertise : Spécialiste de la pré-formation, de la post-formation et du développement individuel et tactique des jeunes talents.
+
+Arguments Solides pour un Nouveau Défi :
+• Expertise prouvée dans la structuration de projets : A participé activement à la construction, au développement et à la pérennisation d'une structure de formation de A à Z (EL-NOURY, fondée en 2016), démontrant une forte capacité à implanter une identité de jeu et une méthodologie rigoureuse.
+• Maîtrise de la post-formation : Capacité avérée à détecter, accompagner et faire éclore de jeunes talents en maximisant leur potentiel technique, tactique, mental et athlétique.
+• Vision globale du développement : Expérience complète englobant la gestion des entraînements, le suivi individualisé des joueurs, l'application d'une discipline de groupe et la transmission des valeurs sportives et humaines.
+• Résilience et fidélité : Une décennie d'implication au sein de la même structure témoigne d'une loyauté exemplaire, d'une grande capacité de travail et d'un investissement total dans les objectifs du club.
+• Soif d'évolution et d'impact : Prêt à transposer cette solide expérience de terrain et cette culture de la gagne dans un nouveau projet ambitieux (académie, club professionnel ou structure de formation de plus grande envergure) pour franchir un nouveau palier dans sa carrière.`
+  }
+];
+
+// =============================================================
+// 🛒 LISTE DES PRODUITS
+// =============================================================
 const PRODUCTS = [
   { name: "Maillot Tchad", price: 5000, category: "Maillots", description: "Maillot équipe nationale" },
   { name: "Chaussures Nike", price: 12000, category: "Chaussures", description: "Crampons pro" },
@@ -120,19 +181,23 @@ const PRODUCTS = [
   { name: "Protège-tibias", price: 2000, category: "Équipement", description: "Protection match" }
 ];
 
-const MATCHES = [
-  { home: "Gazelle FC", away: "Elect-Sport", hs: 2, as: 1, status: "Terminé", stadium: "Stade Idriss Mahamat Ouya" },
-  { home: "Foullah Edifice", away: "Renaissance FC", hs: 0, as: 0, status: "À venir", stadium: "Stade de N'Djamena" },
-  { home: "AS CotonTchad", away: "Tourbillon FC", hs: 1, as: 3, status: "Terminé", stadium: "Stade Omnisports" }
-];
-
+// =============================================================
+// 🔐 CONFIGURATION ADMIN
+// =============================================================
+const ADMIN_EMAIL = "abdarrahimhassan@gmail.com";
+const ADMIN_PASSWORD = "Maarif2024";
 const WA = "23562496176";
 
+let isAdmin = localStorage.getItem("rf_admin") === "1";
+
+// =============================================================
+// NAVIGATION
+// =============================================================
 function switchTab(id){
   document.querySelectorAll(".tab-content").forEach(x=>x.classList.add("hidden"));
   document.querySelectorAll(".tab-btn").forEach(x=>{x.classList.remove("td-text-blue","font-bold");x.classList.add("text-gray-400")});
   document.getElementById("sec-"+id).classList.remove("hidden");
-  const idx = ["accueil","matchs","tournois","coachs","boutique","business"].indexOf(id);
+  const idx = ["accueil","tournois","matchs","coachs","boutique","business"].indexOf(id);
   const b = document.querySelectorAll(".tab-btn")[idx];
   b.classList.remove("text-gray-400"); b.classList.add("td-text-blue","font-bold");
   window.scrollTo({top:0,behavior:"smooth"});
@@ -140,6 +205,59 @@ function switchTab(id){
 function fmt(n){ return new Intl.NumberFormat("fr-FR").format(Number(n)||0); }
 function safe(s){ return String(s??""); }
 
+// =============================================================
+// RENDU TOURNOIS
+// =============================================================
+function renderTournaments(){
+  const c = document.getElementById("tournamentsContainer");
+  c.innerHTML = "";
+  if (TOURNAMENTS.length === 0) {
+    c.innerHTML = '<div class="bg-white p-6 rounded-xl card-td text-center"><p class="text-gray-500 font-bold">Aucun tournoi pour le moment</p><p class="text-xs text-gray-400 mt-1">Les tournois apparaîtront ici dès leur publication.</p></div>';
+    return;
+  }
+  TOURNAMENTS.forEach(t => {
+    const card = document.createElement("div");
+    card.className = "bg-white p-4 rounded-xl card-td mb-3";
+    card.innerHTML = '<div class="flex justify-between items-start"><h3 class="font-black text-sm">'+safe(t.name)+'</h3><span class="text-[10px] bg-blue-50 td-text-blue px-2 py-1 rounded-full font-bold">'+safe(t.city)+'</span></div><p class="text-xs text-gray-500 mt-2">📅 Du '+safe(t.start)+' au '+safe(t.end)+'</p><p class="text-xs text-gray-500">👤 '+safe(t.organizer)+'</p><p class="text-xs text-gray-500">📞 '+safe(t.contact)+'</p>';
+    c.appendChild(card);
+  });
+}
+
+// =============================================================
+// RENDU MATCHS
+// =============================================================
+function renderMatches(){
+  const c = document.getElementById("matchesContainer");
+  c.innerHTML = "";
+  if (MATCHES.length === 0) {
+    c.innerHTML = '<div class="bg-white p-6 rounded-xl card-td text-center"><p class="text-gray-500 font-bold">Aucun match pour le moment</p><p class="text-xs text-gray-400 mt-1">Les résultats apparaîtront ici dès leur publication.</p></div>';
+    return;
+  }
+  MATCHES.forEach(m => {
+    const card = document.createElement("div");
+    card.className = "bg-white p-4 rounded-xl card-td mb-3";
+    card.innerHTML = '<div class="flex justify-between text-xs text-gray-500 mb-2"><span class="font-bold">🏆 '+safe(m.tournament)+'</span><b class="'+(m.status==='Terminé'?'td-text-blue':'td-text-yellow')+'">'+safe(m.status)+'</b></div><div class="flex justify-between items-center font-bold"><span>'+safe(m.home)+'</span><span class="bg-blue-50 px-3 py-1 rounded-full">'+m.hs+' - '+m.as+'</span><span>'+safe(m.away)+'</span></div>';
+    c.appendChild(card);
+  });
+}
+
+// =============================================================
+// RENDU COACHS
+// =============================================================
+function renderCoaches(){
+  const c = document.getElementById("coachesContainer");
+  c.innerHTML = "";
+  COACHES.forEach(coach => {
+    const card = document.createElement("div");
+    card.className = "bg-white p-5 rounded-xl card-td";
+    card.innerHTML = '<div class="flex justify-between items-start mb-3"><div><h3 class="font-black text-base td-text-blue">'+safe(coach.name)+'</h3><p class="text-xs td-text-red font-bold mt-1">'+safe(coach.type)+'</p></div><span class="text-[10px] bg-green-50 text-green-700 px-2 py-1 rounded-full font-bold">✓ Promu</span></div><p class="text-xs text-gray-500">📍 '+safe(coach.city)+'</p><p class="text-xs text-gray-500">📞 '+safe(coach.phone)+'</p><div class="mt-3 text-xs text-gray-700 leading-relaxed whitespace-pre-line bg-gray-50 p-3 rounded-lg">'+safe(coach.bio)+'</div><a href="https://wa.me/23562496176?text=Bonjour%20Coach%20Abdarrahim" target="_blank" class="block mt-3 td-blue text-white text-xs py-2 rounded-lg text-center font-bold"><i class="fa-brands fa-whatsapp"></i> Contacter ce coach</a>';
+    c.appendChild(card);
+  });
+}
+
+// =============================================================
+// RENDU PRODUITS
+// =============================================================
 function renderProducts(){
   const grid = document.getElementById("productGrid");
   grid.innerHTML = "";
@@ -151,22 +269,89 @@ function renderProducts(){
   });
 }
 
-function renderMatches(){
-  const c = document.getElementById("matchesContainer");
-  c.innerHTML = "";
-  MATCHES.forEach(m => {
-    const card = document.createElement("div");
-    card.className = "bg-white p-4 rounded-xl card-td mb-3";
-    card.innerHTML = '<div class="flex justify-between text-xs text-gray-500"><span>LINAFOOT</span><b class="'+(m.status==='Terminé'?'td-text-blue':'td-text-yellow')+'">'+safe(m.status)+'</b></div><div class="flex justify-between items-center font-bold mt-2"><span>'+safe(m.home)+'</span><span class="bg-blue-50 px-3 py-1 rounded-full">'+m.hs+' - '+m.as+'</span><span>'+safe(m.away)+'</span></div><div class="text-[10px] text-gray-400 mt-1">📍 '+safe(m.stadium)+'</div>';
-    c.appendChild(card);
-  });
-}
-
+// =============================================================
+// ACHETER UN PRODUIT
+// =============================================================
 function buy(name, price){
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux commander : "+decodeURIComponent(name)+" — "+fmt(price)+" FCFA."), "_blank");
 }
 
-renderProducts();
+// =============================================================
+// CRÉER UN TOURNOI (ADMIN UNIQUEMENT)
+// =============================================================
+function tryCreateTournament(){
+  if (isAdmin) {
+    alert("✅ Tu es admin !\n\nPour créer un tournoi :\n\n1. Va sur GitHub (lien qui va s'ouvrir)\n2. Cherche 'const TOURNAMENTS'\n3. Ajoute une ligne dans [ ]\n4. Commit changes");
+    window.open("https://github.com/abdarrahimhassan-hash/Rahim-Football-TCHAD/edit/main/index.html", "_blank");
+  } else {
+    alert("💰 Créer un tournoi coûte 2 500 FCFA.\n\nContacte l'administrateur par WhatsApp pour publier ton tournoi.");
+    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux créer un tournoi sur Rahim Football Tchad (2 500 FCFA)."), "_blank");
+  }
+}
+
+// =============================================================
+// AJOUTER UN MATCH (ADMIN UNIQUEMENT)
+// =============================================================
+function tryAddMatch(){
+  if (isAdmin) {
+    alert("✅ Tu es admin !\n\nPour ajouter un match :\n\n1. Va sur GitHub\n2. Cherche 'const MATCHES'\n3. Ajoute une ligne dans [ ]\n4. Commit changes");
+    window.open("https://github.com/abdarrahimhassan-hash/Rahim-Football-TCHAD/edit/main/index.html", "_blank");
+  } else {
+    alert("💰 Ajouter un résultat de match coûte 500 FCFA.\n\nContacte l'administrateur par WhatsApp.");
+    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux ajouter un résultat de match (500 FCFA)."), "_blank");
+  }
+}
+
+// =============================================================
+// AUTHENTIFICATION ADMIN
+// =============================================================
+function openAuth(){
+  document.getElementById("authModal").classList.remove("hidden");
+  document.getElementById("authModal").classList.add("flex");
+}
+function closeAuth(){
+  document.getElementById("authModal").classList.add("hidden");
+  document.getElementById("authModal").classList.remove("flex");
+}
+
+document.getElementById("authForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const email = document.getElementById("authEmail").value.trim();
+  const pass = document.getElementById("authPassword").value;
+  const st = document.getElementById("authStatus");
+
+  if (email === ADMIN_EMAIL && pass === ADMIN_PASSWORD) {
+    isAdmin = true;
+    localStorage.setItem("rf_admin", "1");
+    st.textContent = "✅ Connexion réussie";
+    st.className = "text-xs mt-3 text-green-700";
+    updateAuthUI();
+    setTimeout(closeAuth, 800);
+  } else {
+    st.textContent = "❌ Email ou mot de passe incorrect";
+    st.className = "text-xs mt-3 text-red-600";
+  }
+});
+
+function updateAuthUI(){
+  const btn = document.getElementById("authBtn");
+  if (isAdmin) {
+    btn.textContent = "Admin ✅";
+    btn.style.background = "#10b981";
+    btn.style.color = "white";
+    btn.style.borderColor = "#10b981";
+  } else {
+    btn.textContent = "Admin";
+  }
+}
+
+// =============================================================
+// INITIALISATION
+// =============================================================
+renderTournaments();
 renderMatches();
+renderCoaches();
+renderProducts();
+updateAuthUI();
 </script>
 </body></html>
