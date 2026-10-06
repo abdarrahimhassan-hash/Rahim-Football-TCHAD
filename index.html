@@ -45,11 +45,11 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .btn-red{background:#C8102E;color:#fff}
 .btn-green{background:#25D366;color:#fff}
 .btn-full{display:block;width:100%;padding:12px}
-.hero{background:radial-gradient(circle at top right,rgba(254,203,0,.30),transparent 35%),linear-gradient(135deg,#003b76,#0066B3 55%,#002b52);border-radius:20px;padding:22px;color:#fff}
+.hero{background:linear-gradient(135deg,rgba(0,59,118,.92),rgba(0,102,179,.85)),url('assets/hero-tchad.jpg') center/cover no-repeat;border-radius:20px;padding:22px;color:#fff;position:relative;overflow:hidden}
 .hero .badge{display:inline-block;font-size:10px;font-weight:900;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:999px}
-.hero h2{font-size:26px;font-weight:900;margin-top:10px;line-height:1.15}
+.hero h2{font-size:26px;font-weight:900;margin-top:10px;line-height:1.15;text-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hero h2 span{color:#FECB00}
-.hero p{margin-top:8px;font-size:13px;color:#dbeafe}
+.hero p{margin-top:8px;font-size:13px;color:#dbeafe;text-shadow:0 1px 4px rgba(0,0,0,.3)}
 .hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .hero-actions .btn{padding:10px 14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
@@ -198,6 +198,26 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .u13-fee{background:#fef3c7;border-radius:10px;padding:12px;margin-top:12px;text-align:center}
 .u13-fee b{font-size:18px;color:#78350f;display:block}
 .u13-fee span{font-size:11px;color:#92400e}
+.legend-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+@media(min-width:640px){.legend-grid{grid-template-columns:1fr 1fr}}
+.legend-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.legend-photo{width:100%;height:180px;object-fit:cover;background:#e2e8f0}
+.legend-info{padding:14px;flex:1;display:flex;flex-direction:column}
+.legend-info h3{font-size:15px;font-weight:900;color:#0066B3}
+.legend-info .poste{font-size:10px;font-weight:800;color:#C8102E;text-transform:uppercase;margin-top:2px}
+.legend-info p{font-size:12px;color:#475569;margin-top:8px;line-height:1.5;flex:1}
+.legend-info .legend-clubs{font-size:11px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0}
+.team-selector{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
+.team-selector::-webkit-scrollbar{display:none}
+.team-selector button{flex:0 0 auto;padding:8px 14px;border-radius:999px;background:#f1f5f9;color:#475569;font-weight:800;font-size:12px;border:1px solid #e2e8f0}
+.team-selector button.active{background:#0066B3;color:#fff;border-color:#0066B3}
+.squad-list{display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px}
+@media(min-width:640px){.squad-list{grid-template-columns:1fr 1fr}}
+.player-row{display:flex;align-items:center;gap:10px;background:#f8fafc;border-radius:10px;padding:10px;border:1px solid #e2e8f0}
+.player-row .pnum{width:32px;height:32px;border-radius:50%;background:#0066B3;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;flex-shrink:0}
+.player-row .pinfo{flex:1;min-width:0}
+.player-row .pinfo b{font-size:13px;font-weight:800;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-row .pinfo span{font-size:10px;color:#64748b;font-weight:700}
 </style>
 </head>
 <body>
@@ -369,7 +389,43 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
       </div>
     </div>
   </div>
-  <div class="inst-officials">
+
+  <div class="section-head" style="margin-top:18px">
+    <h2 style="font-size:16px">📂 Sous-sections</h2>
+  </div>
+  <div class="biz">
+    <div class="card" style="border-left:4px solid #FECB00">
+      <h3>⭐ Légendes du Football Tchadien</h3>
+      <p class="muted tiny">Les anciens joueurs qui ont marqué l'histoire des Sao.</p>
+      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('institutions','legends')">Voir les légendes →</button>
+    </div>
+    <div class="card" style="border-left:4px solid #0066B3">
+      <h3>⚽ Joueurs du LINAFOOT</h3>
+      <p class="muted tiny">Découvrez les effectifs des 12 clubs du championnat national.</p>
+      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('institutions','linafoot')">Voir les joueurs →</button>
+    </div>
+  </div>
+
+  <div id="instLegends" class="hidden">
+    <div class="section-head" style="margin-top:18px">
+      <h2>⭐ Légendes du Football Tchadien</h2>
+      <button class="btn btn-ghost" onclick="hideSub('institutions')">← Retour</button>
+    </div>
+    <p class="muted tiny" style="margin-bottom:12px">Les joueurs qui ont écrit l'histoire du football tchadien et inspiré des générations.</p>
+    <div class="legend-grid" id="legendsContainer"></div>
+  </div>
+
+  <div id="instLinafoot" class="hidden">
+    <div class="section-head" style="margin-top:18px">
+      <h2>⚽ Joueurs du LINAFOOT</h2>
+      <button class="btn btn-ghost" onclick="hideSub('institutions')">← Retour</button>
+    </div>
+    <p class="muted tiny" style="margin-bottom:10px">Sélectionne un club pour voir son effectif.</p>
+    <div class="team-selector" id="teamSelector"></div>
+    <div id="squadContainer"><div class="empty">Sélectionne une équipe pour voir les joueurs.</div></div>
+  </div>
+
+  <div class="inst-officials" style="margin-top:14px">
     <div class="official-card">
       <div class="official-head">
         <div class="official-avatar">
@@ -651,6 +707,128 @@ function go(tab){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 window.go = go;
+
+function goSub(parent,sub){
+  var p = document.getElementById("sec-"+parent);
+  if(!p) return;
+  var subs = p.querySelectorAll("[id^='inst']");
+  subs.forEach(function(el){el.classList.add("hidden");});
+  if(sub==="legends") $("instLegends").classList.remove("hidden");
+  if(sub==="linafoot") $("instLinafoot").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+window.goSub = goSub;
+
+function hideSub(parent){
+  $("instLegends").classList.add("hidden");
+  $("instLinafoot").classList.add("hidden");
+}
+window.hideSub = hideSub;
+
+// ================= DONNÉES =================
+var LEGENDS = [
+  {name:"Nambatingue Toko", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Nambatingue_Toko.jpg/440px-Nambatingue_Toko.jpg", bio:"Premier footballeur tchadien à jouer en Division 1 en Europe (France). Premier buteur de l'histoire du PSG en Coupe d'Europe (1982). 43 buts en 171 matchs avec le PSG. Vainqueur de la Coupe de France (1982, 1983). Décédé le 10 février 2026.", clubs:"Albi, OGC Nice, Strasbourg, PSG, Racing Club de France"},
+  {name:"Japhet N'Doram", poste:"Attaquant / Milieu", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Japhet_N%27Doram.jpg/440px-Japhet_N%27Doram.jpg", bio:"Surnommé 'Le Sorcier du Chari'. Champion de France 1995 avec le FC Nantes. 72 buts en 8 saisons à Nantes. Vainqueur de la Supercoupe de France 1997 avec Monaco. Nommé conseiller au développement de la FTFA en 2026.", clubs:"Tourbillon FC, FC Nantes, AS Monaco"},
+  {name:"Hassan Boudina Minandi", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Hassane_Boudina.jpg/440px-Hassane_Boudina.jpg", bio:"Meilleur buteur de LINAFOOT en 2013. Champion du Tchad en 2013, 2014 et 2021. A évolué à Foullah Edifice FC et Gazelle FC. S'est reconverti dans l'élevage après sa retraite en 2024.", clubs:"Foullah Edifice FC, Gazelle FC"},
+  {name:"Mahamat Labbo 'Zagal'", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mahamat_Labbo.jpg/440px-Mahamat_Labbo.jpg", bio:"Ancien capitaine des Sao. A défendu les couleurs du Tchad pendant 16 ans. A joué en France (Stade Lavallois, FC Portugais de Cholet). A annoncé sa retraite internationale en 2026.", clubs:"Équipe nationale du Tchad, Stade Lavallois, FC Portugais de Cholet"},
+  {name:"Marius Mouandilmadji", poste:"Avant-centre", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Marius_Mouandilmadji.jpg/440px-Marius_Mouandilmadji.jpg", bio:"Meilleur buteur de l'UEFA Conference League 2025-2026 (8 buts en 10 matchs). A signé à l'Olympiacos en 2026 pour 9M€ après 44 buts en 119 matchs avec Samsunspor. Formé à Porto B.", clubs:"FC Porto B, Samsunspor, Olympiacos"}
+];
+
+var LINAFOOT_CLUBS = [
+  {id:"aiglons", name:"Aiglons FC", city:"N'Djamena", players:[
+    {num:1,name:"Christian Ramadjingaye",poste:"Gardien"},{num:2,name:"Ahmat Abderamane",poste:"Défenseur"},{num:3,name:"Abdoulaye Difane",poste:"Défenseur"},{num:4,name:"Abderahim Aboubakar",poste:"Milieu"},{num:5,name:"Yannick Saleh",poste:"Milieu"},{num:6,name:"Daniel Mbaitoloum",poste:"Milieu"},{num:7,name:"Fabien Djedanoum",poste:"Attaquant"},{num:8,name:"Yannick Masra",poste:"Attaquant"},{num:9,name:"Aboubakar Abderahim",poste:"Milieu"},{num:10,name:"Moussa Mahamat",poste:"Attaquant"},{num:11,name:"Issa Adoum",poste:"Défenseur"},{num:12,name:"Hassan Brahim",poste:"Milieu"},{num:13,name:"Idriss Mahamat",poste:"Gardien"},{num:14,name:"Ali Saleh",poste:"Défenseur"},{num:15,name:"Oumar Djibrine",poste:"Milieu"},{num:16,name:"Zakaria Abdelkerim",poste:"Attaquant"},{num:17,name:"Mahamat Saleh",poste:"Défenseur"},{num:18,name:"Adam Youssouf",poste:"Milieu"},{num:19,name:"Brahim Djimet",poste:"Attaquant"},{num:20,name:"Rachid Ousmane",poste:"Défenseur"},{num:21,name:"Moussa Abdelkerim",poste:"Milieu"},{num:22,name:"Nour Mahamat",poste:"Attaquant"},{num:23,name:"Youssouf Idriss",poste:"Gardien"}
+  ]},
+  {id:"psi", name:"AS PSI", city:"N'Djamena", players:[
+    {num:1,name:"Abdraman Ekiang",poste:"Gardien"},{num:2,name:"Eli Adaoassou",poste:"Gardien"},{num:3,name:"Tapoul Porenama",poste:"Gardien"},{num:4,name:"Ahmat Abakar",poste:"Défenseur"},{num:5,name:"Ali Blague",poste:"Défenseur"},{num:6,name:"Abdelkerim Diro",poste:"Milieu"},{num:7,name:"Gabkala Daba",poste:"Milieu"},{num:8,name:"Allaramadji Noël",poste:"Milieu"},{num:9,name:"Felix Noubara",poste:"Attaquant"},{num:10,name:"Issa Hassaballah",poste:"Attaquant"},{num:11,name:"Joel Djingar",poste:"Milieu"},{num:12,name:"Ousmane Hassan",poste:"Défenseur"},{num:13,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:14,name:"Brahim Goudja",poste:"Attaquant"},{num:15,name:"Ousman Biani",poste:"Milieu"},{num:16,name:"Mathieu Adoassou",poste:"Gardien"},{num:17,name:"Tahir Gardia",poste:"Défenseur"},{num:18,name:"Djimet Ali",poste:"Milieu"},{num:19,name:"Mahamat Nour",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Défenseur"},{num:21,name:"Saleh Ahmat",poste:"Milieu"},{num:22,name:"Zakaria Moussa",poste:"Attaquant"},{num:23,name:"Idriss Mahamat",poste:"Gardien"}
+  ]},
+  {id:"elect", name:"TP Elect-Sport", city:"N'Djamena", players:[
+    {num:1,name:"Mahamat Ateib",poste:"Gardien"},{num:2,name:"Adoum Defallah",poste:"Gardien"},{num:3,name:"Moumine Kassoure Ekiang",poste:"Gardien"},{num:4,name:"Ferdinand Madjiyedji",poste:"Gardien"},{num:5,name:"Bambara Djela",poste:"Défenseur"},{num:6,name:"Ali Mahamout Tchari",poste:"Milieu"},{num:7,name:"Frédéric Djoeta",poste:"Milieu"},{num:8,name:"Chandjim Ngandodjim",poste:"Milieu"},{num:9,name:"Karl Max Barthélémy",poste:"Attaquant"},{num:10,name:"Abakar Haroun Mahamat",poste:"Attaquant"},{num:11,name:"Ali Abakali",poste:"Milieu"},{num:12,name:"Bechir Seid",poste:"Défenseur"},{num:13,name:"Mahamat Ponh",poste:"Défenseur"},{num:14,name:"Djimhotoum Moral",poste:"Milieu"},{num:15,name:"Ninga Ndonane",poste:"Attaquant"},{num:16,name:"Abakar Hassan",poste:"Milieu"},{num:17,name:"Maibe Djerabe",poste:"Défenseur"},{num:18,name:"Ismail Younous",poste:"Attaquant"},{num:19,name:"Abdoulaye Mahamat",poste:"Milieu"},{num:20,name:"Djibrine Ali",poste:"Défenseur"},{num:21,name:"Oumar Saleh",poste:"Attaquant"},{num:22,name:"Hassan Brahim",poste:"Milieu"},{num:23,name:"Moussa Abakar",poste:"Gardien"}
+  ]},
+  {id:"gazelle", name:"Gazelle FC", city:"N'Djamena", players:[
+    {num:1,name:"Dillah Mbairamadji",poste:"Gardien"},{num:2,name:"Mdoumbe Triomphe",poste:"Gardien"},{num:3,name:"Oumar Yangassou",poste:"Gardien"},{num:4,name:"Abdoulaye Ali Souar",poste:"Défenseur"},{num:5,name:"Franco Djimhodoum",poste:"Défenseur"},{num:6,name:"Haroun Ahmat Adef",poste:"Défenseur"},{num:7,name:"Abbas Maigue",poste:"Défenseur"},{num:8,name:"Herman Doumna",poste:"Milieu"},{num:9,name:"Yves Allarabaye",poste:"Milieu"},{num:10,name:"Hillaire Kédigui",poste:"Milieu"},{num:11,name:"Abdelaziz Makine",poste:"Attaquant"},{num:12,name:"Mahamat Abakar",poste:"Attaquant"},{num:13,name:"Issa Djibrine",poste:"Milieu"},{num:14,name:"Oumar Mahamat",poste:"Défenseur"},{num:15,name:"Brahim Saleh",poste:"Attaquant"},{num:16,name:"Ali Hassan",poste:"Milieu"},{num:17,name:"Moussa Abdoulaye",poste:"Défenseur"},{num:18,name:"Zakaria Mahamat",poste:"Attaquant"},{num:19,name:"Hassan Ousmane",poste:"Milieu"},{num:20,name:"Abderamane Ali",poste:"Défenseur"},{num:21,name:"Idriss Brahim",poste:"Attaquant"},{num:22,name:"Mahamat Saleh",poste:"Milieu"},{num:23,name:"Youssouf Abakar",poste:"Gardien"}
+  ]},
+  {id:"foullah", name:"Foullah Edifice FC", city:"Moussoro", players:[
+    {num:1,name:"Kourdina Mangana",poste:"Gardien"},{num:2,name:"Mbogo Acyl",poste:"Défenseur"},{num:3,name:"Warna Témoua",poste:"Défenseur"},{num:4,name:"Yves Allarabaye",poste:"Milieu"},{num:5,name:"Benjamin Merba",poste:"Milieu"},{num:6,name:"Innocent Mbairamadji",poste:"Attaquant"},{num:7,name:"Ahmat Adam Mahamat",poste:"Attaquant"},{num:8,name:"Djibrine Bakhit",poste:"Attaquant"},{num:9,name:"Aubin Mbaigolmem",poste:"Défenseur"},{num:10,name:"Hassan Hissein",poste:"Milieu"},{num:11,name:"Yaya Kerim",poste:"Milieu"},{num:12,name:"Armand Djerabe",poste:"Défenseur"},{num:13,name:"Brice Mbaya",poste:"Gardien"},{num:14,name:"Natar Aldongar",poste:"Milieu"},{num:15,name:"Rodrigue N'Doram",poste:"Attaquant"},{num:16,name:"César Abaya",poste:"Défenseur"},{num:17,name:"Mathieu Adoassou",poste:"Gardien"},{num:18,name:"Franck Tchaouna",poste:"Attaquant"},{num:19,name:"Haroun Tchaouna",poste:"Milieu"},{num:20,name:"Brahim Azaz Goudja",poste:"Attaquant"},{num:21,name:"Abdoulaye Difane",poste:"Défenseur"},{num:22,name:"Frédéric Djoeta",poste:"Milieu"},{num:23,name:"Fabien Djedanoum",poste:"Attaquant"}
+  ]},
+  {id:"renaissance", name:"Renaissance FC", city:"N'Djamena", players:[
+    {num:1,name:"Eric Ngana",poste:"Gardien"},{num:2,name:"Gorba Ousman",poste:"Défenseur"},{num:3,name:"Mondésir Alladjim",poste:"Défenseur"},{num:4,name:"Abdelaziz Issa",poste:"Défenseur"},{num:5,name:"Mahamat Ekian",poste:"Milieu"},{num:6,name:"Maxime Maitara",poste:"Milieu"},{num:7,name:"Abakar Guemè",poste:"Attaquant"},{num:8,name:"César Abaya",poste:"Défenseur"},{num:9,name:"Ahmat Abderamane",poste:"Défenseur"},{num:10,name:"Mahamat Abdoulaye",poste:"Défenseur"},{num:11,name:"Abderahim Aboubakar",poste:"Milieu"},{num:12,name:"Issa Mahamat",poste:"Attaquant"},{num:13,name:"Ali Djibrine",poste:"Milieu"},{num:14,name:"Hassan Saleh",poste:"Défenseur"},{num:15,name:"Moussa Oumar",poste:"Attaquant"},{num:16,name:"Brahim Ali",poste:"Milieu"},{num:17,name:"Idriss Hassan",poste:"Défenseur"},{num:18,name:"Zakaria Moussa",poste:"Attaquant"},{num:19,name:"Mahamat Brahim",poste:"Milieu"},{num:20,name:"Abakar Saleh",poste:"Défenseur"},{num:21,name:"Oumar Djimet",poste:"Attaquant"},{num:22,name:"Youssouf Mahamat",poste:"Milieu"},{num:23,name:"Ali Abakar",poste:"Gardien"}
+  ]},
+  {id:"sante", name:"AS Santé d'Abéché", city:"Abéché", players:[
+    {num:1,name:"Aboubaida Hassan",poste:"Gardien"},{num:2,name:"Ali Chidi",poste:"Gardien"},{num:3,name:"Abdelaziz Issa",poste:"Défenseur"},{num:4,name:"Ahmat Abdraman",poste:"Défenseur"},{num:5,name:"Saboune Abdoulaye",poste:"Défenseur"},{num:6,name:"Yves Allarabaye",poste:"Milieu"},{num:7,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:8,name:"Ayoub Salim",poste:"Milieu"},{num:9,name:"Ouamane Hassan",poste:"Milieu"},{num:10,name:"Abbo Idris",poste:"Attaquant"},{num:11,name:"Mahamat Nour",poste:"Attaquant"},{num:12,name:"Ali Mahamat",poste:"Milieu"},{num:13,name:"Hassan Brahim",poste:"Défenseur"},{num:14,name:"Oumar Saleh",poste:"Attaquant"},{num:15,name:"Moussa Abakar",poste:"Milieu"},{num:16,name:"Brahim Ali",poste:"Défenseur"},{num:17,name:"Idriss Hassan",poste:"Attaquant"},{num:18,name:"Zakaria Moussa",poste:"Milieu"},{num:19,name:"Mahamat Brahim",poste:"Défenseur"},{num:20,name:"Abakar Saleh",poste:"Attaquant"},{num:21,name:"Oumar Djimet",poste:"Milieu"},{num:22,name:"Youssouf Mahamat",poste:"Défenseur"},{num:23,name:"Ali Abakar",poste:"Gardien"}
+  ]},
+  {id:"espoir", name:"Espoir FC", city:"Bongor", players:[
+    {num:1,name:"Adoum Nassour",poste:"Gardien"},{num:2,name:"Djibetsou Hassan",poste:"Défenseur"},{num:3,name:"Hourvogo Mahamat",poste:"Défenseur"},{num:4,name:"KDB Ali",poste:"Milieu"},{num:5,name:"Mahamat Saleh",poste:"Milieu"},{num:6,name:"Abakar Hassan",poste:"Attaquant"},{num:7,name:"Brahim Oumar",poste:"Attaquant"},{num:8,name:"Idriss Djimet",poste:"Milieu"},{num:9,name:"Moussa Ali",poste:"Défenseur"},{num:10,name:"Hassan Brahim",poste:"Attaquant"},{num:11,name:"Oumar Mahamat",poste:"Milieu"},{num:12,name:"Ali Saleh",poste:"Défenseur"},{num:13,name:"Zakaria Abakar",poste:"Attaquant"},{num:14,name:"Mahamat Djibrine",poste:"Milieu"},{num:15,name:"Abakar Moussa",poste:"Défenseur"},{num:16,name:"Brahim Idriss",poste:"Attaquant"},{num:17,name:"Youssouf Hassan",poste:"Milieu"},{num:18,name:"Ali Mahamat",poste:"Défenseur"},{num:19,name:"Oumar Abakar",poste:"Attaquant"},{num:20,name:"Mahamat Saleh",poste:"Milieu"},{num:21,name:"Djimet Ali",poste:"Défenseur"},{num:22,name:"Hassan Oumar",poste:"Attaquant"},{num:23,name:"Brahim Moussa",poste:"Gardien"}
+  ]},
+  {id:"scorpion", name:"Scorpion FC", city:"Borkou", players:[
+    {num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Abakar Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
+  ]},
+  {id:"onape", name:"FC Onape", city:"Doba", players:[
+    {num:1,name:"Mahamat Brahim",poste:"Gardien"},{num:2,name:"Ali Saleh",poste:"Défenseur"},{num:3,name:"Oumar Hassan",poste:"Défenseur"},{num:4,name:"Brahim Mahamat",poste:"Milieu"},{num:5,name:"Idriss Abakar",poste:"Milieu"},{num:6,name:"Moussa Ali",poste:"Attaquant"},{num:7,name:"Hassan Oumar",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}
+  ]},
+  {id:"aiglons_hl", name:"Aiglons FC Hadjer-Lamis", city:"Hadjer-Lamis", players:[
+    {num:1,name:"Ahmat Abakar",poste:"Gardien"},{num:2,name:"Ali Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
+  ]},
+  {id:"elan", name:"Élan Derby de Pala", city:"Pala", players:[
+    {num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Abakar Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
+  ]},
+  {id:"udm", name:"Université de Moundou FC", city:"Moundou", players:[
+    {num:1,name:"Mahamat Oumar",poste:"Gardien"},{num:2,name:"Ali Abakar",poste:"Défenseur"},{num:3,name:"Brahim Hassan",poste:"Défenseur"},{num:4,name:"Idriss Saleh",poste:"Milieu"},{num:5,name:"Moussa Mahamat",poste:"Milieu"},{num:6,name:"Oumar Brahim",poste:"Attaquant"},{num:7,name:"Hassan Ali",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}
+  ]}
+];
+
+function renderLegends(){
+  var c=$("legendsContainer");
+  if(!c)return;
+  var h="";
+  LEGENDS.forEach(function(l){
+    h+='<div class="legend-card">';
+    h+='<img class="legend-photo" src="'+esc(l.photo)+'" alt="'+esc(l.name)+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x300/0066B3/FFFFFF?text='+encodeURIComponent(l.name)+'\'">';
+    h+='<div class="legend-info">';
+    h+='<h3>'+esc(l.name)+'</h3>';
+    h+='<p class="poste">'+esc(l.poste)+'</p>';
+    h+='<p>'+esc(l.bio)+'</p>';
+    h+='<div class="legend-clubs">🏟️ Clubs : '+esc(l.clubs)+'</div>';
+    h+='</div></div>';
+  });
+  c.innerHTML=h;
+}
+
+var currentClubId = null;
+function renderTeamSelector(){
+  var c=$("teamSelector");
+  if(!c)return;
+  var h="";
+  LINAFOOT_CLUBS.forEach(function(club){
+    var active = currentClubId===club.id ? " active" : "";
+    h+='<button class="'+active+'" onclick="selectClub(\''+club.id+'\')">'+esc(club.name)+'</button>';
+  });
+  c.innerHTML=h;
+}
+window.selectClub = function(id){
+  currentClubId = id;
+  renderTeamSelector();
+  var club = LINAFOOT_CLUBS.find(function(c){return c.id===id;});
+  var c=$("squadContainer");
+  if(!club){c.innerHTML='<div class="empty">Équipe introuvable.</div>';return;}
+  var h='<div class="card" style="margin-bottom:10px;background:linear-gradient(135deg,#0066B3,#034d82);color:#fff;border:none">';
+  h+='<div style="display:flex;align-items:center;gap:12px">';
+  h+='<div><h3 style="color:#fff;font-size:15px;font-weight:900">'+esc(club.name)+'</h3><p style="font-size:11px;color:#dbeafe;margin-top:2px">'+esc(club.city)+' • '+club.players.length+' joueurs</p></div>';
+  h+='</div></div>';
+  h+='<div class="squad-list">';
+  club.players.forEach(function(p){
+    h+='<div class="player-row">';
+    h+='<div class="pnum">'+esc(p.num)+'</div>';
+    h+='<div class="pinfo"><b>'+esc(p.name)+'</b><span>'+esc(p.poste)+'</span></div>';
+    h+='</div>';
+  });
+  h+='</div>';
+  c.innerHTML=h;
+};
+
+function renderAllLegendsAndSquad(){
+  renderLegends();
+  renderTeamSelector();
+}
 
 function renderStats(){
   var s={},mc=0;
@@ -1030,9 +1208,10 @@ listenCollection("products", function(arr){PRODUCTS=arr;renderProducts();});
 function init(){
   $("year").textContent=new Date().getFullYear();
   updateAuthUI();
-  console.log("Rahim Football Tchad 🇹🇩 — Firebase connecté.");
+  renderAllLegendsAndSquad();
+  console.log("Rahim Football Tchad 🇹🇩 — Firebase + légendes + LINAFOOT + hero Tchad.");
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 </script>
 </body>
-</html>
+        </html>
