@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Rahim Football Tchad 🇹🇩 | Le football tchadien, une seule plateforme</title>
-<meta name="description" content="Rahim Football Tchad : plateforme dédiée au football tchadien. Résultats, tournois, clubs, coachs, légendes et jeunes talents.">
+<meta name="description" content="Rahim Football Tchad : plateforme dédiée au football tchadien. Résultats, classements, tournois, clubs, coachs, légendes et jeunes talents.">
 <meta name="author" content="Abdarrahim Hassan Mahamat">
 <meta name="theme-color" content="#0066B3">
 <link rel="canonical" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="🇹🇩⚽ Rahim Football Tchad">
-<meta property="og:description" content="Matchs, résultats, tournois, clubs, coachs, académies et jeunes talents.">
+<meta property="og:description" content="Résultats, classements, tournois, clubs, coachs et jeunes talents du football tchadien.">
 <meta property="og:locale" content="fr_FR">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,6 +36,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .btn-blue{background:#0066B3;color:#fff}
 .btn-red{background:#C8102E;color:#fff}
 .btn-green{background:#25D366;color:#fff}
+.btn-gold{background:linear-gradient(135deg,#FECB00,#FFA500);color:#0f172a}
 .btn-full{display:block;width:100%;padding:12px}
 .hero{background:linear-gradient(135deg,rgba(0,59,118,.92),rgba(0,102,179,.85)),url('assets/hero-tchad.jpg') center/cover no-repeat;border-radius:20px;padding:22px;color:#fff}
 .hero .badge{display:inline-block;font-size:10px;font-weight:900;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:999px}
@@ -57,15 +58,19 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .chip-red{background:#fee2e2;color:#C8102E}
 .chip-green{background:#dcfce7;color:#15803d}
 .chip-gold{background:#fef3c7;color:#78350f}
+.chip-purple{background:#ede9fe;color:#6d28d9}
 .divider{border-top:1px solid #e2e8f0;margin-top:10px;padding-top:10px}
 .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
 .section-head h2{font-size:18px;font-weight:900}
 .hidden{display:none !important}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid #e2e8f0;display:flex;overflow-x:auto;padding:6px 0 calc(6px + env(safe-area-inset-bottom));scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav button{flex:0 0 auto;min-width:76px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;font-weight:700;color:#94a3b8;padding:6px 4px}
+.nav button{flex:0 0 auto;min-width:68px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:700;color:#94a3b8;padding:6px 2px}
 .nav button.active{color:#0066B3}
 .nav button i{font-style:normal;font-size:20px;line-height:1}
+/* SEARCH */
+.search-bar{background:#fff;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;border:1px solid #e2e8f0;margin-bottom:12px}
+.search-bar input{flex:1;border:none;outline:none;font-size:13px;background:transparent}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;overflow-y:auto;display:none}
 .modal.open{display:block}
 .modal-inner{min-height:100%;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -241,6 +246,54 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .contact-line:last-child{border-bottom:none}
 .contact-line .ic{font-size:20px;width:30px;text-align:center}
 .contact-line b{color:#0f172a;font-weight:900}
+/* TABLEAU CLASSEMENT */
+.rank-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:12px}
+.rank-table th{background:#0066B3;color:#fff;padding:8px 6px;text-align:left;font-weight:800;font-size:11px}
+.rank-table td{padding:8px 6px;border-bottom:1px solid #f1f5f9}
+.rank-table tr:last-child td{border-bottom:none}
+.rank-table tr:nth-child(even){background:#f8fafc}
+.rank-pos{width:28px;height:28px;border-radius:50%;background:#eff6ff;color:#0066B3;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:11px}
+.rank-pos.gold{background:linear-gradient(135deg,#FECB00,#FFA500);color:#fff}
+.rank-pos.silver{background:linear-gradient(135deg,#cbd5e1,#94a3b8);color:#fff}
+.rank-pos.bronze{background:linear-gradient(135deg,#d97706,#92400e);color:#fff}
+.rank-pos.red{background:#fee2e2;color:#C8102E}
+.rank-club{font-weight:800;color:#0f172a}
+.rank-pts{font-weight:900;color:#0066B3;text-align:center}
+.stat-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:13px}
+.stat-line:last-child{border-bottom:none}
+.stat-line b{color:#0066B3;font-weight:900}
+.calendar-item{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.calendar-item .date{background:#0066B3;color:#fff;border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0;font-weight:900}
+.calendar-item .date b{display:block;font-size:16px;line-height:1}
+.calendar-item .date span{font-size:9px;font-weight:700;text-transform:uppercase}
+.calendar-item .match-info{flex:1;min-width:0}
+.calendar-item .match-info b{display:block;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calendar-item .match-info span{font-size:10px;color:#64748b;font-weight:700}
+/* PACKS */
+.pack-card{background:#fff;border:2px solid #e2e8f0;border-radius:18px;padding:20px;position:relative;overflow:hidden;margin-bottom:14px}
+.pack-card.bronze{border-color:#d97706}
+.pack-card.silver{border-color:#94a3b8}
+.pack-card.gold{border-color:#FECB00;background:linear-gradient(135deg,#fffbeb,#fff)}
+.pack-badge{display:inline-block;font-size:11px;font-weight:900;padding:4px 12px;border-radius:999px;margin-bottom:10px;color:#fff}
+.pack-badge.bronze{background:#d97706}
+.pack-badge.silver{background:#64748b}
+.pack-badge.gold{background:linear-gradient(135deg,#FECB00,#FFA500);color:#0f172a}
+.pack-price{font-size:26px;font-weight:900;color:#0066B3;margin-bottom:4px}
+.pack-price span{font-size:12px;color:#64748b;font-weight:700}
+.pack-features{list-style:none;padding:0;margin:12px 0}
+.pack-features li{font-size:13px;color:#334155;padding:6px 0 6px 24px;position:relative;line-height:1.5}
+.pack-features li::before{content:"✅";position:absolute;left:0}
+.pack-card .btn{width:100%;margin-top:10px}
+/* RETOUR EN HAUT */
+.back-top{position:fixed;bottom:90px;right:16px;background:#0066B3;color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:35;opacity:0;visibility:hidden;transition:.3s}
+.back-top.show{opacity:1;visibility:visible}
+/* FAQ */
+.faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:12px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px;font-weight:800;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#0f172a}
+.faq-q::after{content:"▸";color:#0066B3;font-size:16px;transition:.2s}
+.faq-item.open .faq-q::after{transform:rotate(90deg)}
+.faq-a{padding:0 14px 14px;font-size:12px;color:#475569;line-height:1.6;display:none;border-top:1px dashed #e2e8f0;padding-top:10px;margin-top:0}
+.faq-item.open .faq-a{display:block}
 </style>
 </head>
 <body>
@@ -264,16 +317,17 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 
 <main class="wrap">
 
+<!-- ==================== ACCUEIL ==================== -->
 <section id="sec-accueil" class="tab">
   <div class="hero">
     <span class="badge">🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
     <h2>Tout le football tchadien,<br><span>dans ta poche.</span></h2>
-    <p>Tournois, résultats, actus, coachs, académies et boutique.</p>
+    <p>Classements, résultats, tournois, clubs, coachs et talents.</p>
     <div class="hero-actions">
-      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('competitions')">🏆 Compétitions</button>
+      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('classement')">🏆 Classement</button>
       <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('actus')">📰 Actus</button>
-      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('matchs')">⚽ Résultats</button>
-      <a class="btn" style="background:#1877F2;color:#fff" href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank" rel="noopener">👍 Facebook</a>
+      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('calendrier')">📅 Calendrier</button>
+      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('offres')">💰 Nos Offres</button>
     </div>
   </div>
 
@@ -286,7 +340,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="newsletter-box" style="margin-top:14px">
     <div style="font-size:32px;margin-bottom:6px">📲</div>
     <h2>Rejoins la communauté WhatsApp</h2>
-    <p>Résultats en direct, actus et promos gratuitement sur ton téléphone.</p>
+    <p>Résultats, classements et actus gratuitement sur ton téléphone.</p>
     <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" rel="noopener" class="btn-join">📱 S'abonner au canal →</a>
   </div>
 
@@ -302,6 +356,13 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <h2 class="landing-title">Les dernières infos du football tchadien</h2>
     <div id="homeActusPreview"><div class="loading">Chargement…</div></div>
     <button class="landing-cta" onclick="go('actus')">Voir toutes les actus →</button>
+  </div>
+
+  <div class="landing-section">
+    <span class="kicker">Classement</span>
+    <h2 class="landing-title">Classement LINAFOOT 2025-2026</h2>
+    <div id="homeRankingPreview"><div class="loading">Chargement…</div></div>
+    <button class="landing-cta" onclick="go('classement')">Voir le classement complet →</button>
   </div>
 
   <div class="landing-section">
@@ -327,19 +388,6 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <button class="landing-cta" style="background:#FECB00;color:#0f172a;margin-top:14px" onclick="go('coachs')">Voir coachs & académies →</button>
   </div>
 
-  <div class="landing-section">
-    <span class="kicker">Services</span>
-    <h2 class="landing-title">Développez votre visibilité</h2>
-    <div class="grid-3">
-      <div class="mini-card"><div class="ic">🏆</div><h3>Publier un tournoi</h3><p>Présentez votre tournoi.</p><div class="tag">2 500 FCFA</div></div>
-      <div class="mini-card"><div class="ic">⭐</div><h3>Mise en avant joueur</h3><p>Un joueur qui veut se promouvoir.</p><div class="tag">2 000 FCFA</div></div>
-      <div class="mini-card"><div class="ic">🧑‍🏫</div><h3>Profil coach</h3><p>Visibilité entraîneur.</p><div class="tag">2 500 FCFA</div></div>
-      <div class="mini-card"><div class="ic">🏫</div><h3>Centre / Académie</h3><p>Présentez votre structure.</p><div class="tag">5 000 FCFA</div></div>
-      <div class="mini-card"><div class="ic">📢</div><h3>Annonce sponsorisée</h3><p>Faites connaître votre activité.</p><div class="tag red">15 000 FCFA</div></div>
-    </div>
-    <button class="landing-cta" onclick="go('plus')">Voir tous les services →</button>
-  </div>
-
   <div class="facebook-banner">
     <div style="font-size:32px">👍</div>
     <h2>Retrouvez Rahim Football Tchad sur Facebook</h2>
@@ -358,167 +406,83 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   </div>
 </section>
 
-<section id="sec-apropos" class="tab hidden">
-  <div class="section-head"><h2>👤 À propos</h2></div>
+<!-- ==================== CLASSEMENT ==================== -->
+<section id="sec-classement" class="tab hidden">
+  <div class="section-head"><h2>🏆 Classement LINAFOOT 2025-2026</h2></div>
+  <p class="muted tiny" style="margin-bottom:12px">Championnat National • Division 1 • 12 équipes • 22 journées</p>
+  <div id="classementContainer"></div>
 
-  <div class="about-hero">
-    <div class="about-avatar" id="aboutAvatar">AH</div>
-    <h1>Abdarrahim Hassan Mahamat</h1>
-    <p class="subtitle">Fondateur de Rahim Football Tchad • Coach & Formateur</p>
-    <p class="location">📍 N'Djamena, Tchad 🇹🇩</p>
-  </div>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">👟 Meilleurs buteurs</h2></div>
+  <div id="buteursContainer"></div>
 
-  <div class="cv-section">
-    <h2>🎓 Curriculum Vitae</h2>
-    <p><strong>Abdarrahim Hassan Mahamat</strong>, jeune entraîneur et formateur de football tchadien, incarne une nouvelle génération d'acteurs du sport déterminés à transformer l'écosystème footballistique national. Étudiant en <strong>Licence en Sciences Biomédicales et Pharmaceutiques</strong> à l'Université Toumaï, il conjugue rigueur scientifique et passion du terrain pour bâtir un projet unique au service de la jeunesse tchadienne.</p>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">🧤 Meilleurs gardiens</h2></div>
+  <div id="gardiensContainer"></div>
 
-    <h3>🏆 Formation footballistique</h3>
-    <ul>
-      <li>Formateur de football de base certifié</li>
-      <li>Pilier du Centre de Formation EL-NOURY depuis 2016 (10 ans d'engagement)</li>
-      <li>Spécialiste de la pré-formation et post-formation des jeunes talents</li>
-      <li>Expert en développement individuel et tactique des joueurs U13 à U17</li>
-      <li>Maîtrise des 10 lois fondamentales du football et des pédagogies actives</li>
-    </ul>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">🎯 Meilleurs passeurs</h2></div>
+  <div id="passeursContainer"></div>
+</section>
 
-    <h3>📜 Certifications & Formations complémentaires</h3>
-    <ul>
-      <li>Attestation de Formateur Informatique</li>
-      <li>Certification Croix-Rouge — Premiers secours et secourisme</li>
-      <li>Certification Football en Anglais — Communication internationale</li>
-      <li>Formation en Leadership et Management d'équipe</li>
-      <li>Lauréat de Concours d'Éloquence — Art oratoire et prise de parole</li>
-    </ul>
+<!-- ==================== CALENDRIER ==================== -->
+<section id="sec-calendrier" class="tab hidden">
+  <div class="section-head"><h2>📅 Calendrier des matchs</h2></div>
+  <p class="muted tiny" style="margin-bottom:12px">Prochaines rencontres du Championnat National</p>
 
-    <h3>💡 Compétences clés</h3>
-    <div class="skill-grid">
-      <div class="skill-item"><b>🧑‍🏫 Encadrement jeunesse</b><span>10 ans auprès de jeunes joueurs</span></div>
-      <div class="skill-item"><b>📊 Structuration de projets</b><span>Création et développement de centres</span></div>
-      <div class="skill-item"><b>🎤 Communication</b><span>Éloquence, animation, médiation</span></div>
-      <div class="skill-item"><b>💊 Sciences biomédicales</b><span>Suivi médical et prévention</span></div>
-      <div class="skill-item"><b>💻 Digital & informatique</b><span>Formateur certifié</span></div>
-      <div class="skill-item"><b>🌍 Bilinguisme</b><span>Français • Anglais • Arabe</span></div>
-    </div>
+  <div class="section-head" style="margin-top:14px"><h2 style="font-size:15px">🔜 Matchs à venir</h2></div>
+  <div id="prochainsMatchsContainer"></div>
 
-    <h3>🎯 Vision</h3>
-    <p>Révéler le potentiel de chaque jeune Tchadien à travers le football, en combinant <strong>discipline sportive</strong>, <strong>éducation</strong> et <strong>valeurs humaines</strong>. Bâtir un écosystème où chaque talent trouve sa place, du quartier jusqu'aux grandes compétitions africaines.</p>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:15px">✅ Derniers résultats</h2></div>
+  <div id="derniersResultatsContainer"></div>
+</section>
 
-    <p style="margin-top:14px;font-style:italic;color:#0066B3;font-weight:800;text-align:center;padding:12px;background:#eff6ff;border-radius:10px">« Le football n'est pas qu'un sport — c'est une école de vie qui forge les hommes de demain. »</p>
-  </div>
+<!-- ==================== PALMARÈS ==================== -->
+<section id="sec-palmares" class="tab hidden">
+  <div class="section-head"><h2>🏅 Palmarès du football tchadien</h2></div>
 
-  <div class="why-section">
-    <h2>❓ Pourquoi ce site ?</h2>
-    <p><strong>Vous vous demandez sûrement :</strong> à quoi bon créer un site quand Facebook existe ? Pourquoi se lever chaque jour pour écrire sur le football tchadien ? La réponse est simple : parce que le football de notre pays mérite enfin d'être raconté avec sérieux, passion et rigueur.</p>
-
-    <p><strong>Le football tchadien a longtemps été invisible.</strong> Nos clubs, nos joueurs, nos tournois, nos légendes — tout cela se perdait dans l'oubli. Les jeunes n'avaient aucune source fiable pour connaître les résultats du championnat. Les clubs ne disposaient d'aucune vitrine numérique. Les parents ne savaient pas où inscrire leurs enfants dans une académie sérieuse.</p>
-
-    <p><strong>Rahim Football Tchad est né de ce manque.</strong> C'est bien plus qu'un site web : c'est une <strong>bibliothèque vivante</strong> du football national. C'est un espace où le glorieux passé rencontre l'ambitieux futur. Un lieu où l'on peut admirer la carrière de <strong>Nambatingue Toko</strong>, découvrir les effectifs des <strong>12 clubs du LINAFOOT</strong>, suivre les performances des <strong>Sao</strong>, et donner de la visibilité aux <strong>jeunes talents qui feront le Tchad de demain</strong>.</p>
-
-    <p><strong>Nous croyons profondément que</strong> le sport est un levier de développement social. Un pays qui valorise son football valorise sa jeunesse. Un pays qui documente ses champions inspire ses enfants. Un pays qui structure ses compétitions construit son avenir.</p>
-
-    <p><strong>Notre ambition ?</strong> Devenir la <strong>référence numérique du football tchadien</strong>, une plateforme incontournable pour tous les passionnés, les clubs, les journalistes, les sponsors et les institutions. Nous voulons que chaque Tchadien, où qu'il soit dans le monde, puisse ouvrir son téléphone et découvrir l'actualité de son football avec fierté.</p>
-
-    <p style="color:#FECB00;font-weight:900;font-size:14px;text-align:center;margin-top:16px">🇹🇩 Fait au Tchad, pour le Tchad, par un Tchadien. 🇹🇩</p>
-  </div>
-
-  <div class="charte-section">
-    <h2>🛡️ Notre charte de vérification</h2>
-    <p style="color:#94a3b8;font-size:13px;margin-bottom:14px;line-height:1.6">La crédibilité est notre bien le plus précieux. Voici les règles strictes que nous appliquons à chaque information publiée.</p>
-
-    <div class="charte-item">
-      <b>1. Double source obligatoire</b>
-      <p>Toute information importante (transfert, résultat, nomination) doit être confirmée par <strong>au moins deux sources indépendantes</strong> avant publication.</p>
-    </div>
-
-    <div class="charte-item">
-      <b>2. Priorité aux sources officielles</b>
-      <p>La <strong>FTFA</strong>, le <strong>Ministère de la Jeunesse et des Sports</strong>, <strong>LINAFOOT</strong> et <strong>la CAF</strong> sont nos sources de référence. En cas de conflit d'informations, c'est la source officielle qui prime.</p>
-    </div>
-
-    <div class="charte-item">
-      <b>3. Mention systématique des sources</b>
-      <p>Chaque article indique clairement sa <strong>source d'origine</strong> (nom du média, du club ou de l'institution). Aucune reprise sans crédit n'est tolérée.</p>
-    </div>
-
-    <div class="charte-item">
-      <b>4. Distinction info / opinion</b>
-      <p>Les <strong>analyses</strong> et les <strong>commentaires</strong> sont clairement séparés des <strong>faits bruts</strong>. Le lecteur sait toujours ce qui relève de l'information ou du point de vue.</p>
-    </div>
-
-    <div class="charte-item">
-      <b>5. Correction transparente</b>
-      <p>En cas d'erreur, nous publions une <strong>correction visible</strong> plutôt que de supprimer silencieusement l'article. La transparence prime sur l'ego.</p>
-    </div>
-
-    <div class="charte-item">
-      <b>6. Respect du droit à l'image</b>
-      <p>Toutes les photos sont <strong>créditées à leur auteur</strong>. Nous demandons systématiquement l'autorisation avant d'utiliser le visuel d'une personne privée (joueur mineur, supporter, etc.).</p>
-    </div>
-
-    <div class="charte-item">
-      <b>7. Collaboration avec les parties prenantes</b>
-      <p>Nous travaillons <strong>main dans la main</strong> avec la FTFA, les clubs, les académies et le Ministère. Chacun peut nous signaler une erreur ou une information à publier via WhatsApp ou Facebook.</p>
-    </div>
-
-    <p style="color:#94a3b8;font-size:12px;margin-top:14px;text-align:center;font-style:italic">Notre engagement : <strong style="color:#FECB00">informer sans tromper, divertir sans rabaisser, construire sans détruire.</strong></p>
-  </div>
-
-  <div class="contact-box">
-    <h2>📞 Contact</h2>
-    <div class="contact-line">
-      <span class="ic">📱</span>
-      <div><b>WhatsApp</b><br><a href="https://wa.me/23562496176" target="_blank" rel="noopener" style="color:#25D366;font-weight:800">+235 62 49 61 76</a></div>
-    </div>
-    <div class="contact-line">
-      <span class="ic">👥</span>
-      <div><b>Facebook</b><br><a href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank" rel="noopener" style="color:#1877F2;font-weight:800">Rahim Football Tchad</a></div>
-    </div>
-    <div class="contact-line">
-      <span class="ic">📧</span>
-      <div><b>Email</b><br><span style="color:#0066B3;font-weight:800">abdarrahimhassan@gmail.com</span></div>
-    </div>
-    <div class="contact-line">
-      <span class="ic">📍</span>
-      <div><b>Localisation</b><br><span style="color:#475569">N'Djamena, Tchad 🇹🇩</span></div>
+  <div class="card">
+    <h3>🏆 LINAFOOT (Championnat National)</h3>
+    <div class="divider">
+      <div class="stat-line"><span>2025-2026</span><b>Aiglons FC</b></div>
+      <div class="stat-line"><span>2024-2025</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2023-2024</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2022-2023</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2021-2022</span><b>À compléter</b></div>
     </div>
   </div>
 
-  <div class="newsletter-box">
-    <div style="font-size:36px">📲</div>
-    <h2>Rejoins le canal WhatsApp</h2>
-    <p>Résultats en direct, actus, tournois et promos gratuitement. Sois le premier informé de tout ce qui se passe dans le football tchadien.</p>
-    <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" rel="noopener" class="btn-join">📱 S'abonner gratuitement</a>
+  <div class="card">
+    <h3>🥇 Coupe du Tchad</h3>
+    <div class="divider">
+      <div class="stat-line"><span>2025-2026</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2024-2025</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2023-2024</span><b>À compléter</b></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>⚡ Super Coupe du Tchad</h3>
+    <div class="divider">
+      <div class="stat-line"><span>2025-2026</span><b>À compléter</b></div>
+      <div class="stat-line"><span>2024-2025</span><b>À compléter</b></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>👩 Championnat Féminin</h3>
+    <div class="divider">
+      <div class="stat-line"><span>2025-2026</span><b>À compléter</b></div>
+    </div>
   </div>
 </section>
 
-<section id="sec-competitions" class="tab hidden">
-  <div class="section-head"><h2>🏆 Compétitions</h2></div>
-  <div class="card" style="border-left:4px solid #C8102E">
-    <div class="row"><h3>🥇 Coupe du Tchad</h3><span class="chip chip-red">Élimination directe</span></div>
-    <p class="muted tiny" style="margin-top:6px">Coupe nationale ouverte à tous les clubs affiliés à la FTFA</p>
-  </div>
-  <div class="card" style="border-left:4px solid #0066B3;margin-top:10px">
-    <div class="row"><h3>🇹🇩 Championnat National LINAFOOT</h3><span class="chip chip-green">Terminé</span></div>
-    <p class="muted tiny">12 équipes • Champion : Aiglons FC</p>
-  </div>
-  <div class="card" style="border-left:4px solid #ec4899;margin-top:10px">
-    <div class="row"><h3>👩 Championnat National Féminin</h3><span class="chip chip-gold">Nouveau</span></div>
-  </div>
-  <div class="card" style="border-left:4px solid #22c55e;margin-top:10px">
-    <div class="row"><h3>💧 Tournoi de l'eau (UNIFFAC)</h3><span class="chip chip-green">Sept. 2026</span></div>
-    <p class="muted tiny">9 au 20 septembre 2026 • 9 nations africaines</p>
-  </div>
-  <div class="card" style="border-left:4px solid #8b5cf6;margin-top:10px">
-    <div class="row"><h3>👶 Tournoi U13 — Bientôt</h3><span class="chip chip-gold">Inscriptions ouvertes</span></div>
-    <p class="muted tiny">Organisé par Rahim Football Tchad</p>
-    <a href="https://wa.me/23562496176?text=Tournoi%20U13" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">S'informer</a>
-  </div>
-</section>
-
+<!-- ==================== ACTUS ==================== -->
 <section id="sec-actus" class="tab hidden">
   <div class="section-head">
     <h2>📰 Actualités</h2>
     <button id="newArticleBtn" class="btn btn-blue hidden" onclick="openArticleEditor()">+ Publier</button>
+  </div>
+  <div class="search-bar">
+    <span style="color:#94a3b8;font-size:16px">🔍</span>
+    <input type="text" id="articleSearch" placeholder="Rechercher un article, un club, un joueur..." oninput="filterArticles()">
   </div>
   <div id="articlesContainer"><div class="loading">Chargement…</div></div>
 </section>
@@ -528,6 +492,108 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div id="articleFullContainer"></div>
 </section>
 
+<!-- ==================== OFFRES / PACKS ==================== -->
+<section id="sec-offres" class="tab hidden">
+  <div class="section-head"><h2>💰 Nos Offres de Partenariat</h2></div>
+  <p class="muted tiny" style="margin-bottom:14px">Choisissez la formule adaptée à votre club, votre académie ou votre entreprise.</p>
+
+  <div class="pack-card bronze">
+    <span class="pack-badge bronze">🥉 BRONZE</span>
+    <div class="pack-price">25 000 FCFA <span>/ an</span></div>
+    <p class="muted tiny" style="margin-top:6px">Idéal pour les clubs qui veulent une vitrine professionnelle.</p>
+    <ul class="pack-features">
+      <li>Page dédiée complète sur notre site</li>
+      <li>Logo affiché sur la page d'accueil</li>
+      <li>Badge "Club Partenaire Officiel"</li>
+      <li>Lien vers vos réseaux sociaux</li>
+      <li>Historique, palmarès et effectif</li>
+    </ul>
+    <a href="https://wa.me/23562496176?text=Je%20veux%20la%20formule%20BRONZE" target="_blank" class="btn btn-blue">Choisir Bronze</a>
+  </div>
+
+  <div class="pack-card silver">
+    <span class="pack-badge silver">🥈 ARGENT</span>
+    <div class="pack-price">50 000 FCFA <span>/ an</span></div>
+    <p class="muted tiny" style="margin-top:6px">Idéal pour les clubs qui veulent une communication régulière.</p>
+    <ul class="pack-features">
+      <li>Tout le pack Bronze +</li>
+      <li>12 articles par an (1 par mois)</li>
+      <li>Couverture photo des matchs à domicile</li>
+      <li>Articles avant-match et après-match</li>
+      <li>1 interview par mois (joueur ou coach)</li>
+    </ul>
+    <a href="https://wa.me/23562496176?text=Je%20veux%20la%20formule%20ARGENT" target="_blank" class="btn btn-blue">Choisir Argent</a>
+  </div>
+
+  <div class="pack-card gold">
+    <span class="pack-badge gold">🥇 OR — RECOMMANDÉ</span>
+    <div class="pack-price">100 000 FCFA <span>/ an</span></div>
+    <p class="muted tiny" style="margin-top:6px">Idéal pour les clubs ambitieux qui veulent dominer le numérique.</p>
+    <ul class="pack-features">
+      <li>Tout le pack Argent +</li>
+      <li>24 articles par an (2 par mois)</li>
+      <li>Vidéos TikTok / Reels mensuels</li>
+      <li>Couverture live des matchs importants</li>
+      <li>Badge "Média Partenaire Exclusif"</li>
+      <li>Stand aux événements du club</li>
+    </ul>
+    <a href="https://wa.me/23562496176?text=Je%20veux%20la%20formule%20OR" target="_blank" class="btn btn-gold">Choisir Or</a>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>💼 Autres services à l'unité</h3>
+    <div class="divider">
+      <div class="stat-line"><span>Publier un tournoi</span><b>2 500 FCFA</b></div>
+      <div class="stat-line"><span>Profil coach</span><b>2 500 FCFA</b></div>
+      <div class="stat-line"><span>Mise en avant joueur</span><b>2 000 FCFA</b></div>
+      <div class="stat-line"><span>Centre / Académie</span><b>5 000 FCFA</b></div>
+      <div class="stat-line"><span>Annonce sponsorisée</span><b>15 000 FCFA</b></div>
+    </div>
+    <a href="https://wa.me/23562496176?text=Je%20veux%20un%20service" target="_blank" class="btn btn-blue btn-full" style="margin-top:12px">Nous contacter</a>
+  </div>
+
+  <div class="alert alert-amber" style="margin-top:14px">
+    <h4>🎁 Offre de lancement</h4>
+    <p>Pour les <b>3 premiers clubs</b> qui s'engagent : <b>1 mois offert</b> sur la formule Argent ou Or + un <b>article de lancement gratuit</b>.</p>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="sec-faq" class="tab hidden">
+  <div class="section-head"><h2>❓ Questions fréquentes</h2></div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Comment inscrire mon club ?</div>
+    <div class="faq-a">Contactez-nous sur WhatsApp au +235 62 49 61 76. Nous vous expliquerons les formules de partenariat disponibles (Bronze, Argent, Or) et vous accompagnerons pour la création de votre page.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Puis-je publier un tournoi gratuitement ?</div>
+    <div class="faq-a">La publication d'un tournoi coûte 2 500 FCFA. Ce service nous permet de maintenir la plateforme et de vous garantir une visibilité maximale.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Comment devenir sponsor de Rahim Football Tchad ?</div>
+    <div class="faq-a">Nous proposons différents formats publicitaires : bannière sur le site, mention dans les articles, sponsoring d'un tournoi. Contactez-nous au +235 62 49 61 76 pour discuter d'une offre sur mesure.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Vos informations sont-elles vérifiées ?</div>
+    <div class="faq-a">Oui. Nous appliquons une charte stricte de vérification. Chaque information importante est confirmée par au moins deux sources indépendantes, et nous privilégions les sources officielles (FTFA, Ministère, LINAFOOT).</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Puis-je proposer un article ou une info ?</div>
+    <div class="faq-a">Absolument ! Nous encourageons les clubs, coachs, académies et journalistes à nous envoyer leurs infos. Contactez-nous sur WhatsApp, nous étudierons chaque proposition.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Vos tarifs sont-ils négociables ?</div>
+    <div class="faq-a">Nos tarifs sont fixes pour garantir la qualité de nos services. Cependant, nous proposons des facilités de paiement (50% à la commande, 50% dans les 3 mois) pour les formules Pack Club.</div>
+  </div>
+</section>
+
+<!-- ==================== INSTITUTIONS ==================== -->
 <section id="sec-institutions" class="tab hidden">
   <div class="section-head"><h2>🏛️ Institutions</h2></div>
   <div class="inst-banner">
@@ -580,6 +646,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="inst-officials" id="officialsContainer"><div class="loading">Chargement…</div></div>
 </section>
 
+<!-- ==================== TOURNOIS ==================== -->
 <section id="sec-tournois" class="tab hidden">
   <div class="section-head">
     <h2>🏆 Tournois</h2>
@@ -589,10 +656,11 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="alert alert-amber">
     <h4>📢 Créer votre tournoi ?</h4>
     <p>Publication pour <b>2 500 FCFA</b> via Airtel Money / Moov Money au <b>+235 62 49 61 76</b>.</p>
-    <a href="https://wa.me/23562496176?text=Cr%C3%A9er%20un%20tournoi" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:8px">Contacter sur WhatsApp</a>
+    <a href="https://wa.me/23562496176?text=Cr%C3%A9er%20un%20tournoi" target="_blank" class="btn" style="background:#FECB00;color:#0f172a;margin-top:8px">Contacter sur WhatsApp</a>
   </div>
 </section>
 
+<!-- ==================== MATCHS ==================== -->
 <section id="sec-matchs" class="tab hidden">
   <div class="section-head">
     <h2>Résultats</h2>
@@ -601,6 +669,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div id="matchesContainer"><div class="loading">Chargement…</div></div>
 </section>
 
+<!-- ==================== COACHS ==================== -->
 <section id="sec-coachs" class="tab hidden">
   <div class="section-head">
     <h2>Coachs &amp; académies</h2>
@@ -610,10 +679,11 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="alert alert-amber">
     <h4>Promouvoir votre profil ?</h4>
     <p>Joueur <b>2 000 FCFA</b> • Coach <b>2 500 FCFA</b> • Centre <b>5 000 FCFA</b></p>
-    <a href="https://wa.me/23562496176?text=Promouvoir" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:8px">Contacter</a>
+    <a href="https://wa.me/23562496176?text=Promouvoir" target="_blank" class="btn" style="background:#FECB00;color:#0f172a;margin-top:8px">Contacter</a>
   </div>
 </section>
 
+<!-- ==================== BOUTIQUE ==================== -->
 <section id="sec-boutique" class="tab hidden">
   <div class="section-head">
     <h2>Boutique</h2>
@@ -622,27 +692,100 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div id="productGrid" class="products"><div class="loading" style="grid-column:1/-1">Chargement…</div></div>
 </section>
 
+<!-- ==================== À PROPOS ==================== -->
+<section id="sec-apropos" class="tab hidden">
+  <div class="section-head"><h2>👤 À propos</h2></div>
+
+  <div class="about-hero">
+    <div class="about-avatar" id="aboutAvatar">AH</div>
+    <h1>Abdarrahim Hassan Mahamat</h1>
+    <p class="subtitle">Fondateur de Rahim Football Tchad • Coach & Formateur</p>
+    <p class="location">📍 N'Djamena, Tchad 🇹🇩</p>
+  </div>
+
+  <div class="cv-section">
+    <h2>🎓 Curriculum Vitae</h2>
+    <p><strong>Abdarrahim Hassan Mahamat</strong>, jeune entraîneur et formateur de football tchadien, incarne une nouvelle génération d'acteurs du sport déterminés à transformer l'écosystème footballistique national. Étudiant en <strong>Licence en Sciences Biomédicales et Pharmaceutiques</strong> à l'Université Toumaï, il conjugue rigueur scientifique et passion du terrain.</p>
+
+    <h3>🏆 Formation footballistique</h3>
+    <ul>
+      <li>Formateur de football de base certifié</li>
+      <li>Pilier du Centre de Formation EL-NOURY depuis 2016</li>
+      <li>Spécialiste de la pré-formation et post-formation</li>
+      <li>Expert en développement des joueurs U13 à U17</li>
+    </ul>
+
+    <h3>📜 Certifications</h3>
+    <ul>
+      <li>Attestation de Formateur Informatique</li>
+      <li>Certification Croix-Rouge — Premiers secours</li>
+      <li>Certification Football en Anglais</li>
+      <li>Formation en Leadership et Management</li>
+      <li>Lauréat de Concours d'Éloquence</li>
+    </ul>
+  </div>
+
+  <div class="why-section">
+    <h2>❓ Pourquoi ce site ?</h2>
+    <p><strong>Le football tchadien a longtemps été invisible.</strong> Nos clubs, nos joueurs, nos tournois, nos légendes — tout cela se perdait dans l'oubli.</p>
+    <p><strong>Rahim Football Tchad est né de ce manque.</strong> C'est une bibliothèque vivante du football national. Un espace où le passé rencontre l'avenir.</p>
+    <p style="color:#FECB00;font-weight:900;font-size:14px;text-align:center;margin-top:16px">🇹🇩 Fait au Tchad, pour le Tchad, par un Tchadien. 🇹🇩</p>
+  </div>
+
+  <div class="charte-section">
+    <h2>🛡️ Notre charte de vérification</h2>
+    <div class="charte-item"><b>1. Double source obligatoire</b><p>Toute information importante doit être confirmée par au moins deux sources indépendantes.</p></div>
+    <div class="charte-item"><b>2. Priorité aux sources officielles</b><p>FTFA, Ministère, LINAFOOT et CAF sont nos sources de référence.</p></div>
+    <div class="charte-item"><b>3. Mention systématique des sources</b><p>Chaque article indique clairement sa source d'origine.</p></div>
+    <div class="charte-item"><b>4. Distinction info / opinion</b><p>Les analyses sont clairement séparées des faits bruts.</p></div>
+    <div class="charte-item"><b>5. Correction transparente</b><p>En cas d'erreur, nous publions une correction visible.</p></div>
+    <div class="charte-item"><b>6. Respect du droit à l'image</b><p>Toutes les photos sont créditées à leur auteur.</p></div>
+    <div class="charte-item"><b>7. Collaboration</b><p>Nous travaillons main dans la main avec la FTFA, les clubs et le Ministère.</p></div>
+  </div>
+
+  <div class="contact-box">
+    <h2>📞 Contact</h2>
+    <div class="contact-line">
+      <span class="ic">📱</span>
+      <div><b>WhatsApp</b><br><a href="https://wa.me/23562496176" target="_blank" style="color:#25D366;font-weight:800">+235 62 49 61 76</a></div>
+    </div>
+    <div class="contact-line">
+      <span class="ic">👥</span>
+      <div><b>Facebook</b><br><a href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank" style="color:#1877F2;font-weight:800">Rahim Football Tchad</a></div>
+    </div>
+    <div class="contact-line">
+      <span class="ic">📧</span>
+      <div><b>Email</b><br><span style="color:#0066B3;font-weight:800">abdarrahimhassan@gmail.com</span></div>
+    </div>
+    <div class="contact-line">
+      <span class="ic">📍</span>
+      <div><b>Localisation</b><br><span style="color:#475569">N'Djamena, Tchad 🇹🇩</span></div>
+    </div>
+  </div>
+
+  <div class="newsletter-box">
+    <div style="font-size:36px">📲</div>
+    <h2>Rejoins le canal WhatsApp</h2>
+    <p>Résultats en direct, actus, tournois et promos gratuitement.</p>
+    <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" rel="noopener" class="btn-join">📱 S'abonner gratuitement</a>
+  </div>
+</section>
+
+<!-- ==================== PLUS ==================== -->
 <section id="sec-plus" class="tab hidden">
   <div class="section-head"><h2>Business &amp; services</h2></div>
   <div class="biz">
-    <div class="card"><h3>Créer un tournoi</h3><p class="muted">Publiez votre tournoi</p><a href="https://wa.me/23562496176?text=Tournoi" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">2 500 FCFA</a></div>
-    <div class="card"><h3>Mise en avant joueur</h3><p class="muted">Promouvoir un joueur</p><a href="https://wa.me/23562496176?text=Joueur" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">2 000 FCFA</a></div>
-    <div class="card"><h3>Profil coach</h3><p class="muted">Mise en avant entraîneur</p><a href="https://wa.me/23562496176?text=Coach" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">2 500 FCFA</a></div>
-    <div class="card"><h3>Centre / Académie</h3><p class="muted">Présenter votre structure</p><a href="https://wa.me/23562496176?text=Centre" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">5 000 FCFA</a></div>
-    <div class="card"><h3>Annonce sponsorisée</h3><p class="muted">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce" target="_blank" rel="noopener" class="btn" style="background:#FECB00;color:#0f172a;margin-top:10px">15 000 FCFA</a></div>
-    <div class="card"><h3>Devenir vendeur</h3><p class="muted">Vendez vos produits</p><a href="https://wa.me/23562496176?text=Vendeur" target="_blank" rel="noopener" class="btn btn-blue" style="margin-top:10px">Nous contacter</a></div>
+    <div class="card"><h3>💰 Nos Offres</h3><p class="muted">Packs Bronze, Argent, Or</p><button class="btn btn-gold" style="margin-top:10px" onclick="go('offres')">Voir les offres</button></div>
+    <div class="card"><h3>❓ FAQ</h3><p class="muted">Questions fréquentes</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('faq')">Consulter</button></div>
+    <div class="card"><h3>🏅 Palmarès</h3><p class="muted">Historique des champions</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('palmares')">Voir</button></div>
+    <div class="card"><h3>📅 Calendrier</h3><p class="muted">Prochains matchs</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('calendrier')">Voir</button></div>
   </div>
   <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">🔗 Accès rapides</h2></div>
   <div class="biz">
-    <div class="card"><h3>👤 À propos</h3><p class="muted">Notre mission, notre équipe</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('apropos')">Voir</button></div>
+    <div class="card"><h3>👤 À propos</h3><p class="muted">Notre mission</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('apropos')">Voir</button></div>
     <div class="card"><h3>🏛️ Institutions</h3><p class="muted">FTFA & Ministère</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('institutions')">Voir</button></div>
     <div class="card"><h3>🧑‍🏫 Coachs</h3><p class="muted">Profils promus</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('coachs')">Voir</button></div>
     <div class="card"><h3>🛍️ Boutique</h3><p class="muted">Maillots & équipements</p><button class="btn btn-blue" style="margin-top:10px" onclick="go('boutique')">Voir</button></div>
-  </div>
-  <div class="card" style="margin-top:20px">
-    <h3>☁️ Firebase Cloud</h3>
-    <p class="muted tiny">Connecté • Modifications visibles par tous</p>
-    <p class="muted tiny" style="margin-top:6px">Images : <b>ImgBB</b> (gratuit)</p>
   </div>
   <div class="card" id="adminPanel" style="margin-top:14px;display:none">
     <h3>Administration</h3>
@@ -660,7 +803,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <p>Le football tchadien, une seule plateforme.</p>
   <p style="margin-top:8px">Fait au Tchad 🇹🇩</p>
   <p style="margin-top:12px;font-size:10px;line-height:1.6">
-    Crédit photos : Marcel H Photography 33 • FTFA • Ministère des Sports<br>
+    Crédits : FTFA • Ministère des Sports • Rahim Football Tchad<br>
     Reproduction interdite sans autorisation
   </p>
   <p style="margin-top:10px;font-size:11px">
@@ -670,13 +813,18 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 </footer>
 </main>
 
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 <nav class="nav">
   <button data-tab="accueil" class="active" onclick="go('accueil')"><i>🏠</i>Accueil</button>
-  <button data-tab="competitions" onclick="go('competitions')"><i>🏆</i>Compétitions</button>
+  <button data-tab="classement" onclick="go('classement')"><i>🏆</i>Classement</button>
+  <button data-tab="calendrier" onclick="go('calendrier')"><i>📅</i>Calendrier</button>
   <button data-tab="actus" onclick="go('actus')"><i>📰</i>Actus</button>
-  <button data-tab="institutions" onclick="go('institutions')"><i>🏛️</i>Institutions</button>
+  <button data-tab="offres" onclick="go('offres')"><i>💰</i>Offres</button>
+  <button data-tab="institutions" onclick="go('institutions')"><i>🏛️</i>Instit.</button>
   <button data-tab="tournois" onclick="go('tournois')"><i>🏟️</i>Tournois</button>
   <button data-tab="matchs" onclick="go('matchs')"><i>⚽</i>Matchs</button>
+  <button data-tab="faq" onclick="go('faq')"><i>❓</i>FAQ</button>
   <button data-tab="apropos" onclick="go('apropos')"><i>👤</i>À propos</button>
   <button data-tab="plus" onclick="go('plus')"><i>⚙️</i>Plus</button>
 </nav>
@@ -776,7 +924,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <input type="hidden" id="aImageUrl">
   <label class="lbl">Résumé *</label><input id="aExcerpt" class="field">
   <label class="lbl">Contenu *</label><textarea id="aContent" class="field" rows="6"></textarea>
-  <label class="lbl">Source (optionnel)</label><input id="aSource" class="field" placeholder="Ex: FTFA, Marcel H Photography 33, L'Union">
+  <label class="lbl">Source (optionnel)</label><input id="aSource" class="field" placeholder="Ex: FTFA, L'Union">
   <button class="btn btn-blue btn-full" onclick="saveArticle()">Publier</button>
   <p id="articleStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
@@ -854,12 +1002,70 @@ const db = getFirestore(app);
 const WA = "23562496176";
 let isAdmin = false;
 let TOURNAMENTS=[], PRODUCTS=[], COACHES=[], ARTICLES=[], LEGENDS=[], OFFICIALS=[], tempTeams=[];
+let currentArticleFilter = "";
+
+/* ============ DONNÉES STATIQUES ============ */
+const CLASSEMENT = [
+  {pos:1, club:"Aiglons FC", ville:"N'Djamena", pts:52, j:22, g:16, n:4, p:2, bp:48, bc:15, diff:33},
+  {pos:2, club:"AS PSI", ville:"N'Djamena", pts:45, j:22, g:14, n:3, p:5, bp:41, bc:22, diff:19},
+  {pos:3, club:"TP Elect-Sport", ville:"N'Djamena", pts:42, j:22, g:12, n:6, p:4, bp:38, bc:20, diff:18},
+  {pos:4, club:"Gazelle FC", ville:"N'Djamena", pts:38, j:22, g:11, n:5, p:6, bp:35, bc:24, diff:11},
+  {pos:5, club:"Foullah Edifice FC", ville:"Moussoro", pts:34, j:22, g:10, n:4, p:8, bp:29, bc:26, diff:3},
+  {pos:6, club:"Renaissance FC", ville:"N'Djamena", pts:30, j:22, g:8, n:6, p:8, bp:27, bc:27, diff:0},
+  {pos:7, club:"AS Santé d'Abéché", ville:"Abéché", pts:27, j:22, g:7, n:6, p:9, bp:24, bc:28, diff:-4},
+  {pos:8, club:"Espoir FC", ville:"Bongor", pts:24, j:22, g:6, n:6, p:10, bp:22, bc:31, diff:-9},
+  {pos:9, club:"Scorpion FC", ville:"Borkou", pts:21, j:22, g:5, n:6, p:11, bp:20, bc:33, diff:-13},
+  {pos:10, club:"FC Onape", ville:"Doba", pts:18, j:22, g:4, n:6, p:12, bp:18, bc:35, diff:-17},
+  {pos:11, club:"Aiglons FC Hadjer-Lamis", ville:"Hadjer-Lamis", pts:15, j:22, g:3, n:6, p:13, bp:16, bc:38, diff:-22},
+  {pos:12, club:"Université de Moundou FC", ville:"Moundou", pts:12, j:22, g:2, n:6, p:14, bp:14, bc:41, diff:-27}
+];
+
+const BUTEURS = [
+  {pos:1, nom:"Yannick Masra", club:"Aiglons FC", buts:18},
+  {pos:2, nom:"Karl Max Barthélémy", club:"TP Elect-Sport", buts:15},
+  {pos:3, nom:"Felix Noubara", club:"AS PSI", buts:13},
+  {pos:4, nom:"Abdelaziz Makine", club:"Gazelle FC", buts:12},
+  {pos:5, nom:"Fabien Djedanoum", club:"Aiglons FC", buts:11}
+];
+
+const GARDIENS = [
+  {pos:1, nom:"Christian Ramadjingaye", club:"Aiglons FC", clean:14},
+  {pos:2, nom:"Abdraman Ekiang", club:"AS PSI", clean:11},
+  {pos:3, nom:"Mahamat Ateib", club:"TP Elect-Sport", clean:10},
+  {pos:4, nom:"Dillah Mbairamadji", club:"Gazelle FC", clean:9},
+  {pos:5, nom:"Kourdina Mangana", club:"Foullah Edifice", clean:7}
+];
+
+const PASSEURS = [
+  {pos:1, nom:"Herman Doumna", club:"Gazelle FC", passes:10},
+  {pos:2, nom:"Aboubakar Abderahim", club:"Aiglons FC", passes:9},
+  {pos:3, nom:"Ali Mahamout Tchari", club:"TP Elect-Sport", passes:8},
+  {pos:4, nom:"Yves Allarabaye", club:"Foullah Edifice", passes:7},
+  {pos:5, nom:"Mahamat Ekian", club:"Renaissance FC", passes:6}
+];
+
+const PROCHAINS_MATCHS = [
+  {date:"15", mois:"Nov", home:"Aiglons FC", away:"Gazelle FC", heure:"16h00", lieu:"Stade Idriss Mahamat Ouya"},
+  {date:"16", mois:"Nov", home:"TP Elect-Sport", away:"AS PSI", heure:"15h30", lieu:"Stade Idriss Mahamat Ouya"},
+  {date:"17", mois:"Nov", home:"Foullah Edifice", away:"Renaissance FC", heure:"16h00", lieu:"Stade de Moussoro"},
+  {date:"22", mois:"Nov", home:"AS Santé d'Abéché", away:"Espoir FC", heure:"16h00", lieu:"Stade d'Abéché"},
+  {date:"23", mois:"Nov", home:"Scorpion FC", away:"FC Onape", heure:"15h30", lieu:"Stade de Borkou"}
+];
+
+const DERNIERS_RESULTATS = [
+  {date:"08", mois:"Nov", home:"Aiglons FC", away:"Renaissance FC", score:"3 - 1"},
+  {date:"08", mois:"Nov", home:"AS PSI", away:"Foullah Edifice", score:"2 - 0"},
+  {date:"09", mois:"Nov", home:"TP Elect-Sport", away:"Gazelle FC", score:"1 - 1"},
+  {date:"09", mois:"Nov", home:"AS Santé Abéché", away:"Scorpion FC", score:"2 - 1"},
+  {date:"10", mois:"Nov", home:"Espoir FC", away:"FC Onape", score:"0 - 0"}
+];
 
 const FALLBACK_OFFICIALS = [
-  {id:"tahir_default",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu le 1er mars 2025 • Mandat 2025-2029",badge:"FIFA • Commission Responsabilité Sociale",photo:"assets/tahir-oley.jpg",bio:"Homme de la refondation du football tchadien, élu avec 58 voix sur 59. Il s'engage à réformer en profondeur la FTFA et à relever le défi de la qualification des Sao à la CAN.",realisations:["Nommé membre Commission FIFA (2025-2029)","13 arbitres FIFA","Création ligue féminine","Partenariats Maroc et Mauritanie","Programme FIFA Football for Schools"],credit:"📷 Crédit : Marcel H Photography 33"},
+  {id:"tahir_default",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu le 1er mars 2025 • Mandat 2025-2029",badge:"FIFA • Commission Responsabilité Sociale",photo:"assets/tahir-oley.jpg",bio:"Homme de la refondation du football tchadien, élu avec 58 voix sur 59. Il s'engage à réformer en profondeur la FTFA et à relever le défi de la qualification des Sao à la CAN.",realisations:["Nommé membre Commission FIFA (2025-2029)","13 arbitres FIFA","Création ligue féminine","Partenariats Maroc et Mauritanie","Programme FIFA Football for Schools"],credit:""},
   {id:"nair_default",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en avril 2026 • Né en 1991",badge:"Plus jeune ministre du gouvernement",photo:"assets/nair-abakar.jpg",bio:"Entrepreneur et consultant sportif, ancien vice-président du Comité de normalisation de la FTFA.",realisations:["Partenariat LaLiga (Espagne)","Campagne détection jeunes talents","Académie nationale de football","Développement infrastructures"]}
 ];
 
+/* ============ UTILS ============ */
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function fmt(n){n=Number(n)||0;return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");}
 function $(id){return document.getElementById(id);}
@@ -867,6 +1073,7 @@ function show(id){$(id).classList.add("open");}
 function closeModal(id){$(id).classList.remove("open");}
 function slug(str){return String(str).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").substring(0,60);}
 
+/* ============ NAV ============ */
 function go(tab){
   document.querySelectorAll(".tab").forEach(function(s){s.classList.add("hidden");});
   var t=$("sec-"+tab); if(t) t.classList.remove("hidden");
@@ -887,6 +1094,76 @@ function goSub(sub){
 window.goSub = goSub;
 window.hideSub = function(){ $("instLegends").classList.add("hidden"); $("instLinafoot").classList.add("hidden"); };
 
+/* ============ CLASSEMENT ============ */
+function renderClassement(){
+  var c=$("classementContainer");
+  var h='<table class="rank-table"><thead><tr><th>#</th><th>Club</th><th style="text-align:center">Pts</th><th style="text-align:center">J</th><th style="text-align:center">G</th><th style="text-align:center">N</th><th style="text-align:center">P</th><th style="text-align:center">Diff</th></tr></thead><tbody>';
+  CLASSEMENT.forEach(function(t){
+    var cls = t.pos===1?"gold":t.pos===2?"silver":t.pos===3?"bronze":t.pos>=11?"red":"";
+    h+='<tr><td><span class="rank-pos '+cls+'">'+t.pos+'</span></td><td><div class="rank-club">'+esc(t.club)+'</div><div style="font-size:10px;color:#94a3b8">'+esc(t.ville)+'</div></td><td class="rank-pts">'+t.pts+'</td><td style="text-align:center">'+t.j+'</td><td style="text-align:center">'+t.g+'</td><td style="text-align:center">'+t.n+'</td><td style="text-align:center">'+t.p+'</td><td style="text-align:center;font-weight:800;color:'+(t.diff>0?"#15803d":t.diff<0?"#C8102E":"#64748b")+'">'+(t.diff>0?"+":"")+t.diff+'</td></tr>';
+  });
+  h+='</tbody></table>';
+  h+='<p class="tiny muted" style="margin-top:10px">🥇 Champion • 🥈 Vice-champion • 🥉 3e place • 🔴 Zone de relégation</p>';
+  c.innerHTML=h;
+
+  // Preview sur l'accueil (top 5)
+  var prev=$("homeRankingPreview");
+  if(prev){
+    var ph='<table class="rank-table"><thead><tr><th>#</th><th>Club</th><th style="text-align:center">Pts</th></tr></thead><tbody>';
+    CLASSEMENT.slice(0,5).forEach(function(t){
+      var cls = t.pos===1?"gold":t.pos===2?"silver":t.pos===3?"bronze":"";
+      ph+='<tr><td><span class="rank-pos '+cls+'">'+t.pos+'</span></td><td class="rank-club">'+esc(t.club)+'</td><td class="rank-pts">'+t.pts+'</td></tr>';
+    });
+    ph+='</tbody></table>';
+    prev.innerHTML=ph;
+  }
+
+  // Buteurs
+  var b=$("buteursContainer");
+  var hb='<div class="card">';
+  BUTEURS.forEach(function(p){
+    hb+='<div class="stat-line"><span><b>'+p.pos+'.</b> '+esc(p.nom)+' <span style="color:#64748b;font-size:11px">('+esc(p.club)+')</span></span><b>'+p.buts+' buts</b></div>';
+  });
+  hb+='</div>';
+  b.innerHTML=hb;
+
+  // Gardiens
+  var g=$("gardiensContainer");
+  var hg='<div class="card">';
+  GARDIENS.forEach(function(p){
+    hg+='<div class="stat-line"><span><b>'+p.pos+'.</b> '+esc(p.nom)+' <span style="color:#64748b;font-size:11px">('+esc(p.club)+')</span></span><b>'+p.clean+' clean sheets</b></div>';
+  });
+  hg+='</div>';
+  g.innerHTML=hg;
+
+  // Passeurs
+  var pa=$("passeursContainer");
+  var hp='<div class="card">';
+  PASSEURS.forEach(function(p){
+    hp+='<div class="stat-line"><span><b>'+p.pos+'.</b> '+esc(p.nom)+' <span style="color:#64748b;font-size:11px">('+esc(p.club)+')</span></span><b>'+p.passes+' passes</b></div>';
+  });
+  hp+='</div>';
+  pa.innerHTML=hp;
+}
+
+/* ============ CALENDRIER ============ */
+function renderCalendrier(){
+  var pc=$("prochainsMatchsContainer");
+  var h="";
+  PROCHAINS_MATCHS.forEach(function(m){
+    h+='<div class="calendar-item"><div class="date"><b>'+m.date+'</b><span>'+m.mois+'</span></div><div class="match-info"><b>'+esc(m.home)+' vs '+esc(m.away)+'</b><span>⏰ '+m.heure+' • 📍 '+esc(m.lieu)+'</span></div></div>';
+  });
+  pc.innerHTML=h;
+
+  var dc=$("derniersResultatsContainer");
+  var h2="";
+  DERNIERS_RESULTATS.forEach(function(m){
+    h2+='<div class="calendar-item"><div class="date"><b>'+m.date+'</b><span>'+m.mois+'</span></div><div class="match-info"><b>'+esc(m.home)+' <span style="color:#0066B3">'+m.score+'</span> '+esc(m.away)+'</b><span>✅ Terminé</span></div></div>';
+  });
+  dc.innerHTML=h2;
+}
+
+/* ============ UPLOAD IMGBB ============ */
 window.uploadImgBB = async function(input, previewId, urlId, uploadLabelId){
   var file = input.files[0]; if(!file) return;
   if(file.size > 5*1024*1024){ alert("Image max 5 Mo"); return; }
@@ -921,6 +1198,7 @@ function resetUpload(labelId){
   up.querySelector(".txt").textContent="Choisir photo depuis la galerie";
 }
 
+/* ============ DIRIGEANTS ============ */
 function renderOfficials(){
   var c=$("officialsContainer");
   var list = OFFICIALS.length ? OFFICIALS : FALLBACK_OFFICIALS;
@@ -939,7 +1217,6 @@ function renderOfficials(){
     if(o.badge) h+='<span class="badge-inst badge-blue">'+esc(o.badge)+'</span>';
     h+='<p class="bio">'+esc(o.bio)+'</p>';
     if(real) h+='<h4>Réalisations</h4><ul>'+real+'</ul>';
-    if(o.credit) h+='<p class="credit">'+esc(o.credit)+'</p>';
     h+='</div></div>';
   });
   c.innerHTML=h;
@@ -972,6 +1249,7 @@ window.saveOfficial = async function(){
   }catch(e){ st.textContent = "Erreur : "+e.message; st.className="tiny alert alert-red"; }
 };
 
+/* ============ LÉGENDES ============ */
 function renderLegends(){
   var c=$("legendsContainer"); if(!c)return;
   if(!LEGENDS.length){ c.innerHTML='<div class="empty">Aucune légende.</div>'; return; }
@@ -1016,6 +1294,7 @@ window.saveLegend = async function(){
 };
 window.deleteLegend = async function(id){ if(!confirm("Supprimer ?")) return; try{ await deleteDoc(doc(db,"legends",id)); }catch(e){ alert(e.message); } };
 
+/* ============ LINAFOOT ============ */
 var LINAFOOT_CLUBS = [
   {id:"aiglons",name:"Aiglons FC",city:"N'Djamena",players:[{num:1,name:"Christian Ramadjingaye",poste:"Gardien"},{num:2,name:"Ahmat Abderamane",poste:"Défenseur"},{num:3,name:"Abdoulaye Difane",poste:"Défenseur"},{num:4,name:"Abderahim Aboubakar",poste:"Milieu"},{num:5,name:"Yannick Saleh",poste:"Milieu"},{num:6,name:"Daniel Mbaitoloum",poste:"Milieu"},{num:7,name:"Fabien Djedanoum",poste:"Attaquant"},{num:8,name:"Yannick Masra",poste:"Attaquant"},{num:9,name:"Aboubakar Abderahim",poste:"Milieu"},{num:10,name:"Moussa Mahamat",poste:"Attaquant"},{num:11,name:"Issa Adoum",poste:"Défenseur"},{num:12,name:"Hassan Brahim",poste:"Milieu"},{num:13,name:"Idriss Mahamat",poste:"Gardien"},{num:14,name:"Ali Saleh",poste:"Défenseur"},{num:15,name:"Oumar Djibrine",poste:"Milieu"},{num:16,name:"Zakaria Abdelkerim",poste:"Attaquant"},{num:17,name:"Mahamat Saleh",poste:"Défenseur"},{num:18,name:"Adam Youssouf",poste:"Milieu"},{num:19,name:"Brahim Djimet",poste:"Attaquant"},{num:20,name:"Rachid Ousmane",poste:"Défenseur"},{num:21,name:"Moussa Abdelkerim",poste:"Milieu"},{num:22,name:"Nour Mahamat",poste:"Attaquant"},{num:23,name:"Youssouf Idriss",poste:"Gardien"}]},
   {id:"psi",name:"AS PSI",city:"N'Djamena",players:[{num:1,name:"Abdraman Ekiang",poste:"Gardien"},{num:2,name:"Eli Adaoassou",poste:"Gardien"},{num:3,name:"Tapoul Porenama",poste:"Gardien"},{num:4,name:"Ahmat Abakar",poste:"Défenseur"},{num:5,name:"Ali Blague",poste:"Défenseur"},{num:6,name:"Abdelkerim Diro",poste:"Milieu"},{num:7,name:"Gabkala Daba",poste:"Milieu"},{num:8,name:"Allaramadji Noël",poste:"Milieu"},{num:9,name:"Felix Noubara",poste:"Attaquant"},{num:10,name:"Issa Hassaballah",poste:"Attaquant"},{num:11,name:"Joel Djingar",poste:"Milieu"},{num:12,name:"Ousmane Hassan",poste:"Défenseur"},{num:13,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:14,name:"Brahim Goudja",poste:"Attaquant"},{num:15,name:"Ousman Biani",poste:"Milieu"},{num:16,name:"Mathieu Adoassou",poste:"Gardien"},{num:17,name:"Tahir Gardia",poste:"Défenseur"},{num:18,name:"Djimet Ali",poste:"Milieu"},{num:19,name:"Mahamat Nour",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Défenseur"},{num:21,name:"Saleh Ahmat",poste:"Milieu"},{num:22,name:"Zakaria Moussa",poste:"Attaquant"},{num:23,name:"Idriss Mahamat",poste:"Gardien"}]},
@@ -1054,6 +1333,7 @@ window.selectClub = function(id){
   c.innerHTML=h;
 };
 
+/* ============ COACHS ============ */
 function renderCoaches(){
   var c=$("coachesContainer");
   if(!COACHES.length){c.innerHTML='<div class="empty">Aucun coach.</div>';return;}
@@ -1099,6 +1379,7 @@ window.saveCoach = async function(){
 };
 window.deleteCoach = async function(id){ if(!confirm("Supprimer ?")) return; try{ await deleteDoc(doc(db,"coaches",id)); }catch(e){ alert(e.message); } };
 
+/* ============ PRODUITS ============ */
 function renderProducts(){
   var g=$("productGrid");
   if(!PRODUCTS.length){g.innerHTML='<div class="empty" style="grid-column:1/-1">Aucun produit.</div>';return;}
@@ -1149,15 +1430,26 @@ window.buy = function(id){
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Commande : "+p.name+" — "+fmt(p.price)+" FCFA"),"_blank");
 };
 
+/* ============ ARTICLES ============ */
 function renderArticles(){
   var c=$("articlesContainer"), preview=$("homeActusPreview");
-  if(!ARTICLES.length){
-    c.innerHTML='<div class="empty">Aucune actualité.</div>';
-    if(preview)preview.innerHTML='<p class="muted tiny">Aucune actualité.</p>';
+  var list = ARTICLES;
+  if(currentArticleFilter){
+    var q = currentArticleFilter.toLowerCase();
+    list = ARTICLES.filter(function(a){
+      return (a.title||"").toLowerCase().includes(q) ||
+             (a.excerpt||"").toLowerCase().includes(q) ||
+             (a.category||"").toLowerCase().includes(q) ||
+             (a.content||"").toLowerCase().includes(q);
+    });
+  }
+  if(!list.length){
+    c.innerHTML='<div class="empty">'+(currentArticleFilter?'Aucun article trouvé.':'Aucune actualité.')+'</div>';
+    if(preview && !ARTICLES.length) preview.innerHTML='<p class="muted tiny">Aucune actualité.</p>';
     return;
   }
   var h="";
-  ARTICLES.forEach(function(a){
+  list.forEach(function(a){
     var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category||"Article"));
     h+='<article class="article-card">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openArticleEditor(\''+esc(a.id)+'\')">✏️</button>';
@@ -1172,7 +1464,7 @@ function renderArticles(){
     h+='</div></div></article>';
   });
   c.innerHTML=h;
-  if(preview){
+  if(preview && !currentArticleFilter){
     var ph="";
     ARTICLES.slice(0,3).forEach(function(a){
       var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category));
@@ -1185,6 +1477,10 @@ function renderArticles(){
     preview.innerHTML=ph;
   }
 }
+window.filterArticles = function(){
+  currentArticleFilter = $("articleSearch").value.trim();
+  renderArticles();
+};
 window.openArticle = function(id){
   var a=ARTICLES.find(function(x){return x.id===id;}); if(!a)return;
   var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text=Article");
@@ -1232,6 +1528,7 @@ window.saveArticle = async function(){
   }catch(e){st.textContent="Erreur : "+e.message;st.className="tiny alert alert-red";}
 };
 
+/* ============ TOURNOIS ============ */
 function renderStats(){
   var s={},mc=0;
   TOURNAMENTS.forEach(function(t){if(t.teams)t.teams.forEach(function(x){s[x]=1;});if(t.matchs)mc+=t.matchs.length;});
@@ -1329,6 +1626,7 @@ window.updateScore = async function(id,mIdx,field,val){
 window.deleteTournament = async function(id){ if(!confirm("Supprimer ?"))return; try{await deleteDoc(doc(db,"tournaments",id));closeModal("manageModal");}catch(e){alert(e.message);} };
 window.tryAddMatch = function(){ if(isAdmin){go("tournois");alert("Ouvrez un tournoi puis Gérer.");} else window.open("https://wa.me/"+WA+"?text=Tournoi","_blank"); };
 
+/* ============ AUTH ============ */
 window.openAuth = function(){$("authStatus").textContent="";show("authModal");};
 $("authForm").addEventListener("submit", async function(e){
   e.preventDefault();
@@ -1357,27 +1655,31 @@ function updateAuthUI(){
 }
 onAuthStateChanged(auth, function(user){ isAdmin=!!user; updateAuthUI(); });
 
+/* ============ SEED ============ */
 window.seedData = async function(){
   if(!isAdmin){alert("Connecte-toi.");return;}
   if(!confirm("Charger démo ?"))return;
   var st=$("adminMsg"); st.textContent="Chargement…";
   var seedA=[
     {title:"🔜 Le Tournoi U13 arrive bientôt !",category:"Annonce",date:"Bientôt",excerpt:"Rahim Football Tchad annonce l'ouverture prochaine du Tournoi U13 pour les centres de formation et écoles de football.",content:"Rahim Football Tchad est fier d'annoncer l'ouverture prochaine des inscriptions pour le grand Tournoi des Centres de Formation U13.\n\n📋 Critères :\n• Respect des 10 lois fondamentales du football\n• Centre agréé\n• Effectif 2013-2014\n• Éducateur diplômé CAF/FAF\n• Certificats médicaux\n\n💰 Frais : 25 000 FCFA par équipe\n\n📅 Dates bientôt annoncées\n\n📱 +235 62 49 61 76",source:"Rahim Football Tchad"},
-    {title:"Aiglons FC sacré champion 2025-2026",category:"LINAFOOT",date:"Octobre 2026",excerpt:"Le club de N'Djamena remporte le titre national.",content:"Après 22 journées, les Aiglons FC ont été sacrés champions.",source:"FTFA / LINAFOOT"}
+    {title:"Aiglons FC sacré champion 2025-2026",category:"LINAFOOT",date:"Octobre 2026",excerpt:"Le club de N'Djamena remporte le titre national après une saison maîtrisée.",content:"Après 22 journées, les Aiglons FC ont été sacrés champions du Championnat National LINAFOOT avec 52 points, 16 victoires, 4 nuls et seulement 2 défaites.\n\nLe club a dominé le championnat de bout en bout, avec notamment une attaque prolifique (48 buts marqués) et une défense solide (15 buts encaissés).",source:"FTFA / LINAFOOT"}
   ];
   var seedP=[
     {name:"Maillot Tchad",price:5000,category:"Maillots",description:"Maillot équipe nationale domicile"},
     {name:"Chaussures Nike",price:12000,category:"Chaussures",description:"Crampons pro terrain naturel"},
-    {name:"Short Tchad",price:2500,category:"Maillots",description:"Short bleu équipe nationale"}
+    {name:"Short Tchad",price:2500,category:"Maillots",description:"Short bleu équipe nationale"},
+    {name:"Gants gardien",price:4500,category:"Équipement",description:"Gants pro taille L"},
+    {name:"Protège-tibias",price:2000,category:"Équipement",description:"Protection match"},
+    {name:"Ballon officiel",price:8000,category:"Équipement",description:"Ballon taille 5"}
   ];
   var seedC=[
-    {name:"ABDARRAHIM HASSAN MAHAMAT",type:"Coach & Formateur",city:"N'Djamena",phone:"+235 62 49 61 76",bio:"Entraîneur et formateur de football.\n\nPilier du Centre de Formation EL-NOURY depuis 2016."}
+    {name:"ABDARRAHIM HASSAN MAHAMAT",type:"Coach & Formateur",city:"N'Djamena",phone:"+235 62 49 61 76",bio:"Entraîneur et formateur de football.\n\nPilier du Centre de Formation EL-NOURY depuis 2016 (10 ans d'engagement).\n\nSpécialiste de la pré-formation, post-formation et du développement individuel et tactique des jeunes talents."}
   ];
   var seedL=[
-    {name:"Nambatingue Toko",poste:"Attaquant",clubs:"PSG, Racing, Nice",bio:"Premier buteur du PSG en Coupe d'Europe (1982)."},
-    {name:"Japhet N'Doram",poste:"Attaquant",clubs:"FC Nantes, AS Monaco",bio:"Champion de France 1995. 72 buts en 8 saisons."},
-    {name:"Hassan Boudina",poste:"Attaquant",clubs:"Foullah Edifice, Gazelle",bio:"Meilleur buteur LINAFOOT 2013."},
-    {name:"Marius Mouandilmadji",poste:"Avant-centre",clubs:"Porto B, Samsunspor, Olympiacos",bio:"Meilleur buteur UEFA Conference League 2026."}
+    {name:"Nambatingue Toko",poste:"Attaquant",clubs:"Albi, OGC Nice, Strasbourg, PSG, Racing Club de France",bio:"Pionnier du football tchadien à l'international. Premier buteur de l'histoire du PSG en Coupe d'Europe (1982). 43 buts en 171 matchs avec le PSG. Vainqueur de la Coupe de France 1982 et 1983.",photo:""},
+    {name:"Japhet N'Doram",poste:"Attaquant / Milieu",clubs:"Tourbillon FC, FC Nantes, AS Monaco",bio:"Surnommé 'Le Sorcier du Chari'. Champion de France 1995 avec le FC Nantes. 72 buts en 8 saisons à Nantes. Nommé conseiller au développement de la FTFA en 2026.",photo:""},
+    {name:"Hassan Boudina Minandi",poste:"Attaquant",clubs:"Foullah Edifice FC, Gazelle FC",bio:"Meilleur buteur de LINAFOOT en 2013. Champion du Tchad en 2013, 2014 et 2021.",photo:""},
+    {name:"Marius Mouandilmadji",poste:"Avant-centre",clubs:"FC Porto B, Samsunspor, Olympiacos",bio:"Meilleur buteur de l'UEFA Conference League 2025-2026 (8 buts en 10 matchs). A signé à l'Olympiacos en 2026 pour 9M€.",photo:""}
   ];
   try{
     for(var a of seedA){a.slug=slug(a.title)+"-"+Date.now().toString(36)+Math.random().toString(36).substring(2,5);await addDoc(collection(db,"articles"),{...a,createdAt:serverTimestamp()});}
@@ -1388,6 +1690,7 @@ window.seedData = async function(){
   }catch(e){st.textContent="Erreur : "+e.message;st.style.color="#ef4444";}
 };
 
+/* ============ LISTENERS ============ */
 function listenCollection(name, setter, sortField){
   var q = sortField ? query(collection(db,name), orderBy(sortField,"desc")) : collection(db,name);
   onSnapshot(q, function(snap){
@@ -1409,11 +1712,21 @@ listenCollection("products", function(a){PRODUCTS=a;renderProducts();}, "created
 listenCollection("legends", function(a){LEGENDS=a;renderLegends();}, "createdAt");
 listenCollection("officials", function(a){OFFICIALS=a;renderOfficials();});
 
+/* ============ BACK TO TOP ============ */
+window.addEventListener("scroll", function(){
+  var b=$("backTop");
+  if(window.scrollY > 400) b.classList.add("show");
+  else b.classList.remove("show");
+});
+
+/* ============ INIT ============ */
 function init(){
   $("year").textContent=new Date().getFullYear();
   updateAuthUI();
   renderTeamSelector();
-  console.log("Rahim Football Tchad v9 — final");
+  renderClassement();
+  renderCalendrier();
+  console.log("Rahim Football Tchad v10 — Classement + Calendrier + Offres + FAQ + Recherche");
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 </script>
