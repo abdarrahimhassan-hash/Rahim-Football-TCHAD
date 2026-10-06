@@ -4,19 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Rahim Football Tchad 🇹🇩 | Football tchadien, matchs, tournois et talents</title>
-<meta name="description" content="Rahim Football Tchad : plateforme dédiée au football tchadien. Suivez les matchs, résultats, tournois, clubs, coachs, académies et jeunes talents du Tchad.">
+<meta name="description" content="Rahim Football Tchad : plateforme dédiée au football tchadien.">
 <meta name="author" content="Rahim Football Tchad">
-<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0066B3">
 <link rel="canonical" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="🇹🇩⚽ Rahim Football Tchad">
-<meta property="og:description" content="Matchs, résultats, tournois, clubs, coachs, académies et jeunes talents du football tchadien.">
-<meta property="og:url" content="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/">
+<meta property="og:description" content="Matchs, résultats, tournois, clubs, coachs, académies et jeunes talents.">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Rahim Football Tchad 🇹🇩⚽">
-<meta name="twitter:description" content="Le football tchadien, une seule plateforme.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +41,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .btn-red{background:#C8102E;color:#fff}
 .btn-green{background:#25D366;color:#fff}
 .btn-full{display:block;width:100%;padding:12px}
-.hero{background:linear-gradient(135deg,rgba(0,59,118,.92),rgba(0,102,179,.85)),url('assets/hero-tchad.jpg') center/cover no-repeat;border-radius:20px;padding:22px;color:#fff;position:relative;overflow:hidden}
+.hero{background:linear-gradient(135deg,rgba(0,59,118,.92),rgba(0,102,179,.85)),url('assets/hero-tchad.jpg') center/cover no-repeat;border-radius:20px;padding:22px;color:#fff}
 .hero .badge{display:inline-block;font-size:10px;font-weight:900;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:999px}
 .hero h2{font-size:26px;font-weight:900;margin-top:10px;line-height:1.15;text-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hero h2 span{color:#FECB00}
@@ -68,7 +64,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .chip-gold{background:#fef3c7;color:#78350f}
 .chip-purple{background:#ede9fe;color:#6d28d9}
 .divider{border-top:1px solid #e2e8f0;margin-top:10px;padding-top:10px}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
 .section-head h2{font-size:18px;font-weight:900}
 .hidden{display:none !important}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid #e2e8f0;display:flex;overflow-x:auto;padding:6px 0 calc(6px + env(safe-area-inset-bottom));scrollbar-width:none}
@@ -79,18 +75,21 @@ header{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 3px rgb
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;overflow-y:auto;display:none}
 .modal.open{display:block}
 .modal-inner{min-height:100%;display:flex;align-items:center;justify-content:center;padding:16px}
-.modal-box{background:#fff;border-radius:16px;padding:18px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-box{background:#fff;border-radius:16px;padding:18px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .modal-head h2{font-size:16px;font-weight:900;color:#0066B3}
 .close{font-size:26px;line-height:1;color:#94a3b8;padding:0 4px}
 .field{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;margin-bottom:8px;background:#fff}
 .field:focus{outline:2px solid #0066B3;outline-offset:0;border-color:#0066B3}
 label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
-.match{padding:10px 12px;background:#f8fafc;border-radius:10px;margin-bottom:8px}
-.match .sc{display:flex;align-items:center;gap:8px;margin-top:6px}
-.match .sc input{width:44px;padding:6px;text-align:center;border:1px solid #cbd5e1;border-radius:6px;font-weight:900;font-size:14px}
-.match .sc .tm{flex:1;font-size:13px;font-weight:800}
-.match .sc .tm.r{text-align:right}
+.image-upload{display:block;width:100%;border:2px dashed #bfdbfe;background:#eff6ff;border-radius:10px;padding:16px;text-align:center;margin-bottom:8px;cursor:pointer;position:relative}
+.image-upload:hover{background:#dbeafe}
+.image-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.image-upload .icon{font-size:32px;line-height:1}
+.image-upload .txt{font-size:12px;font-weight:800;color:#0066B3;margin-top:6px}
+.image-upload .sub{font-size:10px;color:#64748b;margin-top:2px}
+.image-upload.uploading{background:#fef3c7;border-color:#fcd34d}
+.image-preview{width:100%;max-height:200px;object-fit:cover;border-radius:10px;margin-bottom:8px;border:1px solid #e2e8f0}
 .team-pill{display:flex;justify-content:space-between;align-items:center;background:#f1f5f9;border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
 .team-pill button{color:#ef4444;font-size:16px;padding:0 4px}
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
@@ -156,6 +155,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .share-btn.wa{background:#dcfce7;color:#166534}
 .share-btn.fb{background:#dbeafe;color:#1e40af}
 .share-btn.cp{background:#fef3c7;color:#78350f}
+.share-btn.del{background:#fee2e2;color:#991b1b}
 .article-full{background:#fff;border-radius:16px;padding:18px}
 .article-full h1{font-size:22px;font-weight:900;line-height:1.2;margin-bottom:8px}
 .article-full .meta{font-size:11px;color:#94a3b8;font-weight:700;margin-bottom:12px}
@@ -201,11 +201,11 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .legend-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
 @media(min-width:640px){.legend-grid{grid-template-columns:1fr 1fr}}
 .legend-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.legend-photo{width:100%;height:180px;object-fit:cover;background:#e2e8f0}
+.legend-photo{width:100%;height:200px;object-fit:cover;background:#e2e8f0}
 .legend-info{padding:14px;flex:1;display:flex;flex-direction:column}
 .legend-info h3{font-size:15px;font-weight:900;color:#0066B3}
 .legend-info .poste{font-size:10px;font-weight:800;color:#C8102E;text-transform:uppercase;margin-top:2px}
-.legend-info p{font-size:12px;color:#475569;margin-top:8px;line-height:1.5;flex:1}
+.legend-info p{font-size:12px;color:#475569;margin-top:8px;line-height:1.5;flex:1;white-space:pre-line}
 .legend-info .legend-clubs{font-size:11px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0}
 .team-selector{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
 .team-selector::-webkit-scrollbar{display:none}
@@ -337,28 +337,17 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="card" style="border-left:4px solid #C8102E">
     <div class="row"><h3>🥇 Coupe du Tchad</h3><span class="chip chip-red">Élimination directe</span></div>
     <p class="muted tiny" style="margin-top:6px">Coupe nationale ouverte à tous les clubs affiliés à la FTFA</p>
-    <div class="divider">
-      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Format</span><b class="tiny">Tours à élimination directe</b></div>
-      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Clubs</span><b class="tiny">Toutes divisions</b></div>
-      <div class="row"><span class="tiny muted">Finale</span><b class="tiny">Stade Idriss Mahamat Ouya</b></div>
-    </div>
   </div>
   <div class="card" style="border-left:4px solid #0066B3;margin-top:10px">
     <div class="row"><h3>🇹🇩 Championnat National LINAFOOT</h3><span class="chip chip-green">Terminé</span></div>
-    <p class="muted tiny" style="margin-top:6px">Saison 2025-2026 • Ligue 1</p>
-    <div class="divider">
-      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Clubs engagés</span><b class="tiny">12 équipes</b></div>
-      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Total matchs</span><b class="tiny">132 rencontres</b></div>
-      <div class="row"><span class="tiny muted">Champion</span><b class="tiny" style="color:#8a6500">🏆 Aiglons FC (N'Djamena)</b></div>
-    </div>
+    <p class="muted tiny" style="margin-top:6px">12 équipes • Champion : Aiglons FC</p>
   </div>
   <div class="card" style="border-left:4px solid #ec4899;margin-top:10px">
     <div class="row"><h3>👩 Championnat National Féminin</h3><span class="chip chip-purple">Nouveau</span></div>
-    <p class="muted tiny" style="margin-top:6px">Créé sous la présidence de Tahir Oloy Hassan</p>
   </div>
   <div class="card" style="border-left:4px solid #22c55e;margin-top:10px">
-    <div class="row"><h3>💧 Tournoi de l'eau (UNIFFAC)</h3><span class="chip chip-green">Septembre 2026</span></div>
-    <p class="muted tiny" style="margin-top:6px">9 au 20 septembre 2026 • 9 nations africaines</p>
+    <div class="row"><h3>💧 Tournoi de l'eau (UNIFFAC)</h3><span class="chip chip-green">Sept. 2026</span></div>
+    <p class="muted tiny">9 au 20 septembre 2026</p>
   </div>
 </section>
 
@@ -371,106 +360,94 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 </section>
 
 <section id="sec-article" class="tab hidden">
-  <button class="btn btn-ghost" style="margin-bottom:12px" onclick="go('actus')">← Retour aux actus</button>
+  <button class="btn btn-ghost" style="margin-bottom:12px" onclick="go('actus')">← Retour</button>
   <div id="articleFullContainer"></div>
 </section>
 
 <section id="sec-institutions" class="tab hidden">
-  <div class="section-head"><h2>🏛️ Institutions du football tchadien</h2></div>
+  <div class="section-head"><h2>🏛️ Institutions</h2></div>
   <div class="inst-banner">
     <div style="display:flex;gap:14px;align-items:center;position:relative">
-      <div class="ftfa-logo">
-        <img src="assets/logo-ftfa.png" alt="Logo FTFA" loading="lazy" onerror="this.style.display='none';this.parentNode.innerHTML='FTFA'">
-      </div>
+      <div class="ftfa-logo"><img src="assets/logo-ftfa.png" alt="FTFA" onerror="this.style.display='none';this.parentNode.innerHTML='FTFA'"></div>
       <div>
         <h3 style="font-size:15px;font-weight:900;color:#FECB00">Fédération Tchadienne de Football Association</h3>
         <p style="font-size:11px;color:#dbeafe;margin-top:4px">Organe dirigeant du football au Tchad</p>
-        <p style="font-size:10px;color:#93c5fd;margin-top:6px">Fondée en 1962 • Affiliée FIFA &amp; CAF depuis 1964 • Siège : N'Djamena</p>
+        <p style="font-size:10px;color:#93c5fd;margin-top:6px">Fondée en 1962 • FIFA &amp; CAF depuis 1964</p>
       </div>
     </div>
   </div>
 
-  <div class="section-head" style="margin-top:18px">
-    <h2 style="font-size:16px">📂 Sous-sections</h2>
-  </div>
+  <div class="section-head" style="margin-top:18px"><h2 style="font-size:16px">📂 Sous-sections</h2></div>
   <div class="biz">
     <div class="card" style="border-left:4px solid #FECB00">
       <h3>⭐ Légendes du Football Tchadien</h3>
-      <p class="muted tiny">Les anciens joueurs qui ont marqué l'histoire des Sao.</p>
-      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('institutions','legends')">Voir les légendes →</button>
+      <p class="muted tiny">Les anciens joueurs qui ont marqué l'histoire.</p>
+      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('legends')">Voir les légendes →</button>
     </div>
     <div class="card" style="border-left:4px solid #0066B3">
       <h3>⚽ Joueurs du LINAFOOT</h3>
-      <p class="muted tiny">Découvrez les effectifs des 12 clubs du championnat national.</p>
-      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('institutions','linafoot')">Voir les joueurs →</button>
+      <p class="muted tiny">Effectifs des 12 clubs du championnat.</p>
+      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('linafoot')">Voir les joueurs →</button>
     </div>
   </div>
 
   <div id="instLegends" class="hidden">
     <div class="section-head" style="margin-top:18px">
-      <h2>⭐ Légendes du Football Tchadien</h2>
-      <button class="btn btn-ghost" onclick="hideSub('institutions')">← Retour</button>
+      <h2>⭐ Légendes</h2>
+      <button class="btn btn-ghost" onclick="hideSub()">← Retour</button>
     </div>
-    <p class="muted tiny" style="margin-bottom:12px">Les joueurs qui ont écrit l'histoire du football tchadien et inspiré des générations.</p>
+    <button id="addLegendBtn" class="btn btn-blue hidden" onclick="openLegendEditor()" style="margin-bottom:10px">+ Ajouter une légende</button>
     <div class="legend-grid" id="legendsContainer"></div>
   </div>
 
   <div id="instLinafoot" class="hidden">
     <div class="section-head" style="margin-top:18px">
       <h2>⚽ Joueurs du LINAFOOT</h2>
-      <button class="btn btn-ghost" onclick="hideSub('institutions')">← Retour</button>
+      <button class="btn btn-ghost" onclick="hideSub()">← Retour</button>
     </div>
-    <p class="muted tiny" style="margin-bottom:10px">Sélectionne un club pour voir son effectif.</p>
     <div class="team-selector" id="teamSelector"></div>
-    <div id="squadContainer"><div class="empty">Sélectionne une équipe pour voir les joueurs.</div></div>
+    <div id="squadContainer"><div class="empty">Sélectionne une équipe.</div></div>
   </div>
 
   <div class="inst-officials" style="margin-top:14px">
     <div class="official-card">
       <div class="official-head">
-        <div class="official-avatar">
-          <img src="assets/tahir-oley.jpg" alt="Tahir Oloy Hassan" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='TH'">
-        </div>
+        <div class="official-avatar"><img src="assets/tahir-oley.jpg" alt="Tahir" onerror="this.style.display='none';this.parentNode.textContent='TH'"></div>
         <div>
           <h3>Tahir Oloy Hassan</h3>
           <p class="role">Président de la FTFA</p>
-          <p class="org">Élu le 1er mars 2025 • Mandat 2025-2029</p>
+          <p class="org">Élu le 1er mars 2025</p>
         </div>
       </div>
       <div class="official-body">
-        <span class="badge-inst badge-blue">FIFA • Commission Responsabilité Sociale</span>
-        <p class="bio">Homme de la refondation du football tchadien, élu avec 58 voix sur 59 lors de l'Assemblée générale élective.</p>
-        <h4>Réalisations majeures</h4>
+        <span class="badge-inst badge-blue">FIFA • Responsabilité Sociale</span>
+        <p class="bio">Homme de la refondation du football tchadien, élu avec 58 voix sur 59.</p>
+        <h4>Réalisations</h4>
         <ul>
-          <li>Membre de la Commission Responsabilité Sociale de la FIFA (2025-2029)</li>
-          <li>13 arbitres tchadiens désignés FIFA</li>
-          <li>Création d'une ligue féminine de football</li>
-          <li>Partenariats Maroc et Mauritanie</li>
-          <li>Programme FIFA Football for Schools</li>
+          <li>Membre Commission Responsabilité Sociale FIFA</li>
+          <li>13 arbitres tchadiens FIFA</li>
+          <li>Création ligue féminine</li>
+          <li>Partenariats Maroc & Mauritanie</li>
         </ul>
-        <p class="credit">📷 Crédit photo : Marcel H Photography 33</p>
       </div>
     </div>
     <div class="official-card">
       <div class="official-head">
-        <div class="official-avatar">
-          <img src="assets/nair-abakar.jpg" alt="Naïr Abakar" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='NA'">
-        </div>
+        <div class="official-avatar"><img src="assets/nair-abakar.jpg" alt="Naïr" onerror="this.style.display='none';this.parentNode.textContent='NA'"></div>
         <div>
           <h3>Naïr Abakar</h3>
-          <p class="role">Ministre de la Jeunesse et des Sports</p>
-          <p class="org">Nommé en avril 2026 • Né en 1991</p>
+          <p class="role">Ministre Jeunesse & Sports</p>
+          <p class="org">Nommé en avril 2026</p>
         </div>
       </div>
       <div class="official-body">
-        <span class="badge-inst badge-gold">Plus jeune ministre du gouvernement</span>
-        <p class="bio">Entrepreneur et consultant sportif, ancien vice-président du Comité de normalisation de la FTFA.</p>
-        <h4>Engagements &amp; actions</h4>
+        <span class="badge-inst badge-gold">Plus jeune ministre</span>
+        <p class="bio">Entrepreneur, ancien vice-président du Comité de normalisation FTFA.</p>
+        <h4>Actions</h4>
         <ul>
-          <li>Partenariat avec LaLiga (Espagne)</li>
-          <li>Campagne nationale de détection des jeunes talents</li>
-          <li>Projet d'Académie nationale de football</li>
-          <li>Développement des infrastructures sportives</li>
+          <li>Partenariat LaLiga</li>
+          <li>Détection jeunes talents</li>
+          <li>Académie nationale</li>
         </ul>
       </div>
     </div>
@@ -481,29 +458,24 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div class="section-head"><h2>⭐ Tournoi U13</h2></div>
   <div class="u13-card">
     <h3>🏆 Tournoi des Centres de Formation U13</h3>
-    <p class="tiny" style="color:#78350f;margin-bottom:10px">Organisé par Rahim Football Tchad • Ouvert à tous les centres de formation et écoles de football</p>
+    <p class="tiny" style="color:#78350f;margin-bottom:10px">Organisé par Rahim Football Tchad</p>
     <div class="alert alert-green" style="margin-top:0;margin-bottom:12px">
-      <h4>📋 Critères de participation</h4>
+      <h4>📋 Critères</h4>
       <ul class="criteria">
-        <li><strong>Respect des 10 lois fondamentales du football</strong></li>
-        <li><strong>Statuts et règlements du centre :</strong> structure agréée</li>
-        <li><strong>Effectif :</strong> joueurs nés entre 2013 et 2014 (U13)</li>
-        <li><strong>Encadrement :</strong> éducateur diplômé CAF ou FAF</li>
-        <li><strong>Infrastructures :</strong> terrain praticable</li>
-        <li><strong>Certificats médicaux</strong> pour chaque joueur</li>
-        <li><strong>Autorisation parentale</strong> pour les mineurs</li>
-        <li><strong>Assurance</strong> par le centre</li>
+        <li><strong>Respect des 10 lois du football</strong></li>
+        <li><strong>Centre agréé</strong> par le Ministère des Sports</li>
+        <li><strong>Joueurs nés 2013-2014</strong></li>
+        <li><strong>Éducateur diplômé CAF/FAF</strong></li>
+        <li><strong>Certificats médicaux</strong></li>
+        <li><strong>Autorisation parentale</strong></li>
       </ul>
     </div>
     <div class="u13-fee">
-      <span>Frais de participation par équipe</span>
+      <span>Frais par équipe</span>
       <b>25 000 FCFA</b>
-      <span>Payable par Airtel Money ou Moov Money au +235 62 49 61 76</span>
+      <span>Airtel / Moov : +235 62 49 61 76</span>
     </div>
-    <div class="alert alert-amber" style="margin-top:12px">
-      <h4>📝 Inscriptions ouvertes</h4>
-      <a href="https://wa.me/23562496176?text=Je%20veux%20inscrire%20mon%20centre%20au%20Tournoi%20U13" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">S'inscrire sur WhatsApp</a>
-    </div>
+    <a href="https://wa.me/23562496176?text=Inscription%20Tournoi%20U13" target="_blank" class="btn yellow" style="margin-top:12px;display:block;text-align:center">S'inscrire sur WhatsApp</a>
   </div>
 </section>
 
@@ -513,11 +485,6 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <button class="btn btn-blue hidden" id="createTournamentBtn" onclick="tryCreateTournament()">+ Créer</button>
   </div>
   <div id="tournamentsContainer"><div class="loading">Chargement…</div></div>
-  <div class="alert alert-amber">
-    <h4>Créer votre tournoi ?</h4>
-    <p>Publication pour <b>2 500 FCFA</b> via Airtel Money / Moov Money au <b>+235 62 49 61 76</b>.</p>
-    <a href="https://wa.me/23562496176?text=Je%20veux%20cr%C3%A9er%20un%20tournoi" target="_blank" rel="noopener" class="btn yellow" style="margin-top:8px">Contacter sur WhatsApp</a>
-  </div>
 </section>
 
 <section id="sec-matchs" class="tab hidden">
@@ -529,40 +496,46 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 </section>
 
 <section id="sec-coachs" class="tab hidden">
-  <div class="section-head"><h2>Coachs &amp; académies</h2></div>
+  <div class="section-head">
+    <h2>Coachs &amp; académies</h2>
+    <button id="addCoachBtn" class="btn btn-blue hidden" onclick="openCoachEditor()">+ Ajouter</button>
+  </div>
   <div id="coachesContainer"><div class="loading">Chargement…</div></div>
   <div class="alert alert-amber">
     <h4>Promouvoir votre profil ?</h4>
-    <p>Profil <b>Joueur</b> : <b>2 000 FCFA</b> • <b>Coach</b> : <b>2 500 FCFA</b> • <b>Centre</b> : <b>5 000 FCFA</b></p>
-    <a href="https://wa.me/23562496176?text=Je%20veux%20promouvoir%20mon%20profil" target="_blank" rel="noopener" class="btn yellow" style="margin-top:8px">Contacter sur WhatsApp</a>
+    <p>Joueur <b>2 000 FCFA</b> • Coach <b>2 500 FCFA</b> • Centre <b>5 000 FCFA</b></p>
+    <a href="https://wa.me/23562496176?text=Promouvoir%20profil" target="_blank" class="btn yellow" style="margin-top:8px">Contacter</a>
   </div>
 </section>
 
 <section id="sec-boutique" class="tab hidden">
-  <div class="section-head"><h2>Boutique</h2></div>
+  <div class="section-head">
+    <h2>Boutique</h2>
+    <button id="addProductBtn" class="btn btn-blue hidden" onclick="openProductEditor()">+ Ajouter</button>
+  </div>
   <div id="productGrid" class="products"><div class="loading" style="grid-column:1/-1">Chargement…</div></div>
 </section>
 
 <section id="sec-plus" class="tab hidden">
   <div class="section-head"><h2>Business &amp; services</h2></div>
   <div class="biz">
-    <div class="card"><h3>Créer un tournoi</h3><p class="muted">Publiez votre tournoi</p><a href="https://wa.me/23562496176?text=Cr%C3%A9er%20un%20tournoi" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">2 500 FCFA</a></div>
-    <div class="card"><h3>Mise en avant joueur</h3><p class="muted">Promouvoir un joueur</p><a href="https://wa.me/23562496176?text=Mise%20en%20avant%20joueur" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">2 000 FCFA</a></div>
-    <div class="card"><h3>Profil coach</h3><p class="muted">Mise en avant entraîneur</p><a href="https://wa.me/23562496176?text=Profil%20coach" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">2 500 FCFA</a></div>
-    <div class="card"><h3>Centre / Académie</h3><p class="muted">Présenter votre structure</p><a href="https://wa.me/23562496176?text=Promouvoir%20mon%20centre" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">5 000 FCFA</a></div>
-    <div class="card"><h3>Annonce sponsorisée</h3><p class="muted">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce%20sponsoris%C3%A9e" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">15 000 FCFA</a></div>
-    <div class="card"><h3>Devenir vendeur</h3><p class="muted">Vendez vos produits</p><a href="https://wa.me/23562496176?text=Devenir%20vendeur" target="_blank" rel="noopener" class="btn btn-blue" style="margin-top:10px">Nous contacter</a></div>
+    <div class="card"><h3>Créer un tournoi</h3><p class="muted">Publiez votre tournoi</p><a href="https://wa.me/23562496176?text=Tournoi" target="_blank" class="btn yellow" style="margin-top:10px">2 500 FCFA</a></div>
+    <div class="card"><h3>Mise en avant joueur</h3><p class="muted">Promouvoir un joueur</p><a href="https://wa.me/23562496176?text=Joueur" target="_blank" class="btn yellow" style="margin-top:10px">2 000 FCFA</a></div>
+    <div class="card"><h3>Profil coach</h3><p class="muted">Mise en avant entraîneur</p><a href="https://wa.me/23562496176?text=Coach" target="_blank" class="btn yellow" style="margin-top:10px">2 500 FCFA</a></div>
+    <div class="card"><h3>Centre / Académie</h3><p class="muted">Présenter votre structure</p><a href="https://wa.me/23562496176?text=Centre" target="_blank" class="btn yellow" style="margin-top:10px">5 000 FCFA</a></div>
+    <div class="card"><h3>Annonce sponsorisée</h3><p class="muted">Entreprises, boutiques</p><a href="https://wa.me/23562496176?text=Annonce" target="_blank" class="btn yellow" style="margin-top:10px">15 000 FCFA</a></div>
+    <div class="card"><h3>Devenir vendeur</h3><p class="muted">Vendez vos produits</p><a href="https://wa.me/23562496176?text=Vendeur" target="_blank" class="btn btn-blue" style="margin-top:10px">Nous contacter</a></div>
   </div>
   <div class="card" style="margin-top:20px">
     <h3>☁️ Firebase Cloud</h3>
-    <p class="muted tiny">Cette plateforme est connectée à <b>Firebase</b>. Vos modifications sont automatiquement visibles par tous les visiteurs.</p>
-    <p class="muted tiny" style="margin-top:6px">Statut : <span style="font-weight:800;color:#10b981">● Connecté</span></p>
+    <p class="muted tiny">Connecté • Modifications visibles par tous</p>
+    <p class="muted tiny" style="margin-top:6px">Images : <b>ImgBB</b> (gratuit)</p>
   </div>
   <div class="card" id="adminPanel" style="margin-top:14px;display:none">
     <h3>Administration</h3>
-    <p class="muted tiny">Connecté en tant qu'administrateur. Toutes les modifications sont enregistrées dans Firebase et visibles par tous.</p>
+    <p class="muted tiny">Connecté en tant qu'admin.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-      <button class="btn btn-blue" onclick="seedData()">Charger données démo</button>
+      <button class="btn btn-blue" onclick="seedData()">Données démo</button>
       <button class="btn btn-red" onclick="logout()">Déconnexion</button>
     </div>
     <p id="adminMsg" class="tiny" style="margin-top:8px"></p>
@@ -573,12 +546,8 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <b>⚽ Rahim Football Tchad 🇹🇩</b>
   <p>Le football tchadien, une seule plateforme.</p>
   <p style="margin-top:8px">Fait au Tchad 🇹🇩</p>
-  <p style="margin-top:12px;font-size:10px;line-height:1.6">
-    Les contenus (textes, images) sont publiés à titre informatif.<br>
-    Crédit photos : Marcel H Photography 33, FTFA, Ministère des Sports.<br>
-    Toute reproduction sans autorisation est interdite.
-  </p>
-  <p style="margin-top:12px;font-size:11px;color:#64748b">© <span id="year"></span> Rahim Football Tchad — Tous droits réservés.</p>
+  <p style="margin-top:12px;font-size:10px">Crédit photos : Marcel H Photography 33, FTFA, Ministère des Sports.</p>
+  <p style="margin-top:12px;font-size:11px;color:#64748b">© <span id="year"></span> Rahim Football Tchad</p>
 </footer>
 </main>
 
@@ -592,57 +561,102 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <button data-tab="plus" onclick="go('plus')"><i>⚙️</i>Plus</button>
 </nav>
 
+<!-- AUTH -->
 <div id="authModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2>Connexion Admin</h2><button class="close" onclick="closeModal('authModal')">&times;</button></div>
   <form id="authForm">
     <label class="lbl">Email</label>
-    <input id="authEmail" type="email" class="field" required autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" value="abdarrahimhassan@gmail.com">
+    <input id="authEmail" type="email" class="field" required value="abdarrahimhassan@gmail.com" autocapitalize="none" autocorrect="off">
     <label class="lbl">Mot de passe</label>
-    <input id="authPassword" type="password" class="field" required autocomplete="current-password" autocorrect="off" autocapitalize="none" spellcheck="false">
-    <label class="tiny" style="display:flex;align-items:center;gap:6px;margin-top:-4px;margin-bottom:10px;cursor:pointer;color:#475569;text-transform:none">
-      <input type="checkbox" id="showPass" onchange="var p=document.getElementById('authPassword');p.type=this.checked?'text':'password'"> Afficher le mot de passe
+    <input id="authPassword" type="password" class="field" required autocapitalize="none" autocorrect="off">
+    <label class="tiny" style="display:flex;align-items:center;gap:6px;margin-bottom:10px;cursor:pointer">
+      <input type="checkbox" onchange="document.getElementById('authPassword').type=this.checked?'text':'password'"> Afficher
     </label>
-    <button type="submit" class="btn btn-blue btn-full" style="margin-top:6px">Se connecter</button>
+    <button type="submit" class="btn btn-blue btn-full">Se connecter</button>
   </form>
   <p id="authStatus" class="tiny" style="margin-top:10px"></p>
-  <p class="tiny muted" style="margin-top:10px">🔒 Connexion sécurisée via Firebase Authentication.</p>
 </div></div></div>
 
-<div id="createModal" class="modal"><div class="modal-inner"><div class="modal-box" style="max-width:560px">
-  <div class="modal-head"><h2>Nouveau tournoi</h2><button class="close" onclick="closeModal('createModal')">&times;</button></div>
-  <label class="lbl">Nom du tournoi *</label><input id="tName" class="field" placeholder="Ex: Coupe de N'Djamena">
-  <label class="lbl">Ville *</label><input id="tCity" class="field" placeholder="Ex: N'Djamena">
-  <label class="lbl">Date début</label><input id="tStart" class="field" placeholder="Ex: 15 janvier 2027">
-  <label class="lbl">Date fin</label><input id="tEnd" class="field" placeholder="Ex: 30 janvier 2027">
-  <label class="lbl">Organisateur *</label><input id="tOrganizer" class="field" placeholder="Nom">
-  <label class="lbl">Contact</label><input id="tContact" class="field" placeholder="+235 ...">
-  <label class="lbl">Format *</label>
-  <select id="tFormat" class="field">
-    <option value="">-- Choisir --</option>
-    <option value="elimination">Élimination directe</option>
-    <option value="aller-retour">Aller-retour</option>
-    <option value="poules+elimination">Poules + Élimination</option>
+<!-- COACH -->
+<div id="coachModal" class="modal"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Nouveau coach</h2><button class="close" onclick="closeModal('coachModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="cName" class="field" placeholder="Nom complet">
+  <label class="lbl">Type *</label>
+  <select id="cType" class="field">
+    <option value="Coach & Formateur">Coach & Formateur</option>
+    <option value="Coach">Coach</option>
+    <option value="Éducateur">Éducateur</option>
+    <option value="Centre de formation">Centre de formation</option>
+    <option value="Académie">Académie</option>
+    <option value="École de football">École de football</option>
   </select>
-  <div class="divider">
-    <label class="lbl">Équipes (min. 4)</label>
-    <div id="teamsList"></div>
-    <div style="display:flex;gap:6px;margin-top:8px">
-      <input id="newTeamName" class="field" style="margin-bottom:0" placeholder="Nom équipe">
-      <button type="button" class="btn btn-blue" onclick="addTeam()">+</button>
-    </div>
-  </div>
-  <button class="btn btn-blue btn-full" style="margin-top:14px" onclick="saveTournament()">Créer le tournoi</button>
-  <p id="createStatus" class="tiny" style="margin-top:8px"></p>
+  <label class="lbl">Ville *</label><input id="cCity" class="field" placeholder="Ex: N'Djamena">
+  <label class="lbl">Téléphone *</label><input id="cPhone" class="field" placeholder="+235 ...">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="cUpload">
+    <input type="file" accept="image/*" onchange="uploadImgBB(this,'cImagePreview','cImageUrl','cUpload')">
+    <div class="icon">📸</div>
+    <div class="txt">Choisir photo depuis la galerie</div>
+    <div class="sub">JPG, PNG • Max 5 Mo</div>
+  </label>
+  <img id="cImagePreview" class="image-preview hidden">
+  <input type="hidden" id="cImageUrl">
+  <label class="lbl">Bio *</label><textarea id="cBio" class="field" rows="5" placeholder="Parcours, expérience..."></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveCoach()">Enregistrer</button>
+  <p id="cStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
-<div id="manageModal" class="modal"><div class="modal-inner"><div class="modal-box" style="max-width:640px">
-  <div class="modal-head"><h2 id="manageTitle">Gestion</h2><button class="close" onclick="closeModal('manageModal')">&times;</button></div>
-  <div id="manageContent"></div>
+<!-- PRODUIT -->
+<div id="productModal" class="modal"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Nouveau produit</h2><button class="close" onclick="closeModal('productModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="pName" class="field" placeholder="Ex: Maillot Tchad">
+  <label class="lbl">Prix (FCFA) *</label><input id="pPrice" type="number" class="field" placeholder="5000">
+  <label class="lbl">Catégorie *</label>
+  <select id="pCategory" class="field">
+    <option value="Maillots">Maillots</option>
+    <option value="Chaussures">Chaussures</option>
+    <option value="Équipement">Équipement</option>
+    <option value="Accessoires">Accessoires</option>
+    <option value="Autres">Autres</option>
+  </select>
+  <label class="lbl">Description *</label><input id="pDescription" class="field" placeholder="Description courte">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="pUpload">
+    <input type="file" accept="image/*" onchange="uploadImgBB(this,'pImagePreview','pImageUrl','pUpload')">
+    <div class="icon">📸</div>
+    <div class="txt">Choisir photo depuis la galerie</div>
+    <div class="sub">JPG, PNG • Max 5 Mo</div>
+  </label>
+  <img id="pImagePreview" class="image-preview hidden">
+  <input type="hidden" id="pImageUrl">
+  <button class="btn btn-blue btn-full" onclick="saveProduct()">Enregistrer</button>
+  <p id="pStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
-<div id="articleModal" class="modal"><div class="modal-inner"><div class="modal-box" style="max-width:560px">
+<!-- LÉGENDE -->
+<div id="legendModal" class="modal"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Nouvelle légende</h2><button class="close" onclick="closeModal('legendModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="lName" class="field" placeholder="Ex: Japhet N'Doram">
+  <label class="lbl">Poste *</label><input id="lPoste" class="field" placeholder="Ex: Attaquant">
+  <label class="lbl">Clubs *</label><input id="lClubs" class="field" placeholder="Ex: FC Nantes, AS Monaco">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="lUpload">
+    <input type="file" accept="image/*" onchange="uploadImgBB(this,'lImagePreview','lImageUrl','lUpload')">
+    <div class="icon">📸</div>
+    <div class="txt">Choisir photo depuis la galerie</div>
+    <div class="sub">JPG, PNG • Max 5 Mo</div>
+  </label>
+  <img id="lImagePreview" class="image-preview hidden">
+  <input type="hidden" id="lImageUrl">
+  <label class="lbl">Biographie *</label><textarea id="lBio" class="field" rows="5" placeholder="Parcours, palmarès..."></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveLegend()">Enregistrer</button>
+  <p id="lStatus" class="tiny" style="margin-top:8px"></p>
+</div></div></div>
+
+<!-- ARTICLE -->
+<div id="articleModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2>Nouvel article</h2><button class="close" onclick="closeModal('articleModal')">&times;</button></div>
-  <label class="lbl">Titre *</label><input id="aTitle" class="field" placeholder="Ex: Aiglons FC sacré champion">
+  <label class="lbl">Titre *</label><input id="aTitle" class="field" placeholder="Titre">
   <label class="lbl">Catégorie *</label>
   <select id="aCategory" class="field">
     <option value="LINAFOOT">LINAFOOT</option>
@@ -653,12 +667,51 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <option value="Transferts">Transferts</option>
     <option value="Institutions">Institutions</option>
   </select>
-  <label class="lbl">Image (URL)</label><input id="aImage" class="field" placeholder="https://... (optionnel)">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="aUpload">
+    <input type="file" accept="image/*" onchange="uploadImgBB(this,'aImagePreview','aImageUrl','aUpload')">
+    <div class="icon">📸</div>
+    <div class="txt">Choisir photo depuis la galerie</div>
+    <div class="sub">JPG, PNG • Max 5 Mo</div>
+  </label>
+  <img id="aImagePreview" class="image-preview hidden">
+  <input type="hidden" id="aImageUrl">
   <label class="lbl">Résumé *</label><input id="aExcerpt" class="field" placeholder="Une phrase d'accroche">
-  <label class="lbl">Contenu complet *</label>
-  <textarea id="aContent" class="field" rows="6" placeholder="Écris ton article ici..."></textarea>
-  <button class="btn btn-blue btn-full" style="margin-top:6px" onclick="saveArticle()">Publier</button>
+  <label class="lbl">Contenu *</label><textarea id="aContent" class="field" rows="6"></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveArticle()">Publier</button>
   <p id="articleStatus" class="tiny" style="margin-top:8px"></p>
+</div></div></div>
+
+<!-- TOURNOI -->
+<div id="createModal" class="modal"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Nouveau tournoi</h2><button class="close" onclick="closeModal('createModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="tName" class="field">
+  <label class="lbl">Ville *</label><input id="tCity" class="field">
+  <label class="lbl">Début</label><input id="tStart" class="field">
+  <label class="lbl">Fin</label><input id="tEnd" class="field">
+  <label class="lbl">Organisateur *</label><input id="tOrganizer" class="field">
+  <label class="lbl">Contact</label><input id="tContact" class="field">
+  <label class="lbl">Format *</label>
+  <select id="tFormat" class="field">
+    <option value="">-- Choisir --</option>
+    <option value="poules+elimination">Poules + Élimination</option>
+    <option value="elimination">Élimination directe</option>
+  </select>
+  <div class="divider">
+    <label class="lbl">Équipes (min. 4)</label>
+    <div id="teamsList"></div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <input id="newTeamName" class="field" style="margin-bottom:0" placeholder="Équipe">
+      <button type="button" class="btn btn-blue" onclick="addTeam()">+</button>
+    </div>
+  </div>
+  <button class="btn btn-blue btn-full" style="margin-top:14px" onclick="saveTournament()">Créer</button>
+  <p id="createStatus" class="tiny" style="margin-top:8px"></p>
+</div></div></div>
+
+<div id="manageModal" class="modal"><div class="modal-inner"><div class="modal-box" style="max-width:640px">
+  <div class="modal-head"><h2 id="manageTitle">Gestion</h2><button class="close" onclick="closeModal('manageModal')">&times;</button></div>
+  <div id="manageContent"></div>
 </div></div></div>
 
 <script type="module">
@@ -672,21 +725,17 @@ const firebaseConfig = {
   projectId: "rahim-football-tchad",
   storageBucket: "rahim-football-tchad.firebasestorage.app",
   messagingSenderId: "706788348907",
-  appId: "1:706788348907:web:0ca896c6a702afb7c87fae",
-  measurementId: "G-8E421SPXJ2"
+  appId: "1:706788348907:web:0ca896c6a702afb7c87fae"
 };
 
+const IMGBB_KEY = "a977d8fa90364f6aaba9de5d20b3b78e";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 const WA = "23562496176";
 let isAdmin = false;
-let TOURNAMENTS = [];
-let PRODUCTS = [];
-let COACHES = [];
-let ARTICLES = [];
-let tempTeams = [];
+let TOURNAMENTS = [], PRODUCTS = [], COACHES = [], ARTICLES = [], LEGENDS = [], tempTeams = [];
 
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function fmt(n){n=Number(n)||0;return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");}
@@ -708,95 +757,118 @@ function go(tab){
 }
 window.go = go;
 
-function goSub(parent,sub){
-  var p = document.getElementById("sec-"+parent);
-  if(!p) return;
-  var subs = p.querySelectorAll("[id^='inst']");
-  subs.forEach(function(el){el.classList.add("hidden");});
-  if(sub==="legends") $("instLegends").classList.remove("hidden");
-  if(sub==="linafoot") $("instLinafoot").classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-window.goSub = goSub;
-
-function hideSub(parent){
+function goSub(sub){
   $("instLegends").classList.add("hidden");
   $("instLinafoot").classList.add("hidden");
+  if(sub==="legends") $("instLegends").classList.remove("hidden");
+  if(sub==="linafoot") $("instLinafoot").classList.remove("hidden");
 }
-window.hideSub = hideSub;
+window.goSub = goSub;
+window.hideSub = function(){ $("instLegends").classList.add("hidden"); $("instLinafoot").classList.add("hidden"); };
 
-// ================= DONNÉES =================
-var LEGENDS = [
-  {name:"Nambatingue Toko", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Nambatingue_Toko.jpg/440px-Nambatingue_Toko.jpg", bio:"Premier footballeur tchadien à jouer en Division 1 en Europe (France). Premier buteur de l'histoire du PSG en Coupe d'Europe (1982). 43 buts en 171 matchs avec le PSG. Vainqueur de la Coupe de France (1982, 1983). Décédé le 10 février 2026.", clubs:"Albi, OGC Nice, Strasbourg, PSG, Racing Club de France"},
-  {name:"Japhet N'Doram", poste:"Attaquant / Milieu", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Japhet_N%27Doram.jpg/440px-Japhet_N%27Doram.jpg", bio:"Surnommé 'Le Sorcier du Chari'. Champion de France 1995 avec le FC Nantes. 72 buts en 8 saisons à Nantes. Vainqueur de la Supercoupe de France 1997 avec Monaco. Nommé conseiller au développement de la FTFA en 2026.", clubs:"Tourbillon FC, FC Nantes, AS Monaco"},
-  {name:"Hassan Boudina Minandi", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Hassane_Boudina.jpg/440px-Hassane_Boudina.jpg", bio:"Meilleur buteur de LINAFOOT en 2013. Champion du Tchad en 2013, 2014 et 2021. A évolué à Foullah Edifice FC et Gazelle FC. S'est reconverti dans l'élevage après sa retraite en 2024.", clubs:"Foullah Edifice FC, Gazelle FC"},
-  {name:"Mahamat Labbo 'Zagal'", poste:"Attaquant", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mahamat_Labbo.jpg/440px-Mahamat_Labbo.jpg", bio:"Ancien capitaine des Sao. A défendu les couleurs du Tchad pendant 16 ans. A joué en France (Stade Lavallois, FC Portugais de Cholet). A annoncé sa retraite internationale en 2026.", clubs:"Équipe nationale du Tchad, Stade Lavallois, FC Portugais de Cholet"},
-  {name:"Marius Mouandilmadji", poste:"Avant-centre", photo:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Marius_Mouandilmadji.jpg/440px-Marius_Mouandilmadji.jpg", bio:"Meilleur buteur de l'UEFA Conference League 2025-2026 (8 buts en 10 matchs). A signé à l'Olympiacos en 2026 pour 9M€ après 44 buts en 119 matchs avec Samsunspor. Formé à Porto B.", clubs:"FC Porto B, Samsunspor, Olympiacos"}
-];
+// ========== UPLOAD IMGBB ==========
+window.uploadImgBB = async function(input, previewId, urlId, uploadLabelId){
+  var file = input.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024){ alert("Image trop lourde (max 5 Mo)"); return; }
+  var preview = $(previewId);
+  var urlField = $(urlId);
+  var uploadLabel = $(uploadLabelId);
+  // Aperçu immédiat
+  var reader = new FileReader();
+  reader.onload = function(e){ preview.src = e.target.result; preview.classList.remove("hidden"); };
+  reader.readAsDataURL(file);
+  // Change le label
+  uploadLabel.classList.add("uploading");
+  uploadLabel.querySelector(".txt").textContent = "Envoi en cours…";
+  uploadLabel.querySelector(".icon").textContent = "⏳";
+  try{
+    var formData = new FormData();
+    formData.append("image", file);
+    var resp = await fetch("https://api.imgbb.com/1/upload?key="+IMGBB_KEY, { method:"POST", body:formData });
+    var data = await resp.json();
+    if(data.success){
+      urlField.value = data.data.url;
+      uploadLabel.classList.remove("uploading");
+      uploadLabel.querySelector(".txt").textContent = "✅ Photo uploadée";
+      uploadLabel.querySelector(".icon").textContent = "✅";
+    }else{
+      throw new Error(data.error ? data.error.message : "Erreur ImgBB");
+    }
+  }catch(e){
+    alert("Erreur upload : " + e.message);
+    uploadLabel.classList.remove("uploading");
+    uploadLabel.querySelector(".txt").textContent = "Choisir photo";
+    uploadLabel.querySelector(".icon").textContent = "📸";
+    preview.classList.add("hidden");
+  }
+};
 
-var LINAFOOT_CLUBS = [
-  {id:"aiglons", name:"Aiglons FC", city:"N'Djamena", players:[
-    {num:1,name:"Christian Ramadjingaye",poste:"Gardien"},{num:2,name:"Ahmat Abderamane",poste:"Défenseur"},{num:3,name:"Abdoulaye Difane",poste:"Défenseur"},{num:4,name:"Abderahim Aboubakar",poste:"Milieu"},{num:5,name:"Yannick Saleh",poste:"Milieu"},{num:6,name:"Daniel Mbaitoloum",poste:"Milieu"},{num:7,name:"Fabien Djedanoum",poste:"Attaquant"},{num:8,name:"Yannick Masra",poste:"Attaquant"},{num:9,name:"Aboubakar Abderahim",poste:"Milieu"},{num:10,name:"Moussa Mahamat",poste:"Attaquant"},{num:11,name:"Issa Adoum",poste:"Défenseur"},{num:12,name:"Hassan Brahim",poste:"Milieu"},{num:13,name:"Idriss Mahamat",poste:"Gardien"},{num:14,name:"Ali Saleh",poste:"Défenseur"},{num:15,name:"Oumar Djibrine",poste:"Milieu"},{num:16,name:"Zakaria Abdelkerim",poste:"Attaquant"},{num:17,name:"Mahamat Saleh",poste:"Défenseur"},{num:18,name:"Adam Youssouf",poste:"Milieu"},{num:19,name:"Brahim Djimet",poste:"Attaquant"},{num:20,name:"Rachid Ousmane",poste:"Défenseur"},{num:21,name:"Moussa Abdelkerim",poste:"Milieu"},{num:22,name:"Nour Mahamat",poste:"Attaquant"},{num:23,name:"Youssouf Idriss",poste:"Gardien"}
-  ]},
-  {id:"psi", name:"AS PSI", city:"N'Djamena", players:[
-    {num:1,name:"Abdraman Ekiang",poste:"Gardien"},{num:2,name:"Eli Adaoassou",poste:"Gardien"},{num:3,name:"Tapoul Porenama",poste:"Gardien"},{num:4,name:"Ahmat Abakar",poste:"Défenseur"},{num:5,name:"Ali Blague",poste:"Défenseur"},{num:6,name:"Abdelkerim Diro",poste:"Milieu"},{num:7,name:"Gabkala Daba",poste:"Milieu"},{num:8,name:"Allaramadji Noël",poste:"Milieu"},{num:9,name:"Felix Noubara",poste:"Attaquant"},{num:10,name:"Issa Hassaballah",poste:"Attaquant"},{num:11,name:"Joel Djingar",poste:"Milieu"},{num:12,name:"Ousmane Hassan",poste:"Défenseur"},{num:13,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:14,name:"Brahim Goudja",poste:"Attaquant"},{num:15,name:"Ousman Biani",poste:"Milieu"},{num:16,name:"Mathieu Adoassou",poste:"Gardien"},{num:17,name:"Tahir Gardia",poste:"Défenseur"},{num:18,name:"Djimet Ali",poste:"Milieu"},{num:19,name:"Mahamat Nour",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Défenseur"},{num:21,name:"Saleh Ahmat",poste:"Milieu"},{num:22,name:"Zakaria Moussa",poste:"Attaquant"},{num:23,name:"Idriss Mahamat",poste:"Gardien"}
-  ]},
-  {id:"elect", name:"TP Elect-Sport", city:"N'Djamena", players:[
-    {num:1,name:"Mahamat Ateib",poste:"Gardien"},{num:2,name:"Adoum Defallah",poste:"Gardien"},{num:3,name:"Moumine Kassoure Ekiang",poste:"Gardien"},{num:4,name:"Ferdinand Madjiyedji",poste:"Gardien"},{num:5,name:"Bambara Djela",poste:"Défenseur"},{num:6,name:"Ali Mahamout Tchari",poste:"Milieu"},{num:7,name:"Frédéric Djoeta",poste:"Milieu"},{num:8,name:"Chandjim Ngandodjim",poste:"Milieu"},{num:9,name:"Karl Max Barthélémy",poste:"Attaquant"},{num:10,name:"Abakar Haroun Mahamat",poste:"Attaquant"},{num:11,name:"Ali Abakali",poste:"Milieu"},{num:12,name:"Bechir Seid",poste:"Défenseur"},{num:13,name:"Mahamat Ponh",poste:"Défenseur"},{num:14,name:"Djimhotoum Moral",poste:"Milieu"},{num:15,name:"Ninga Ndonane",poste:"Attaquant"},{num:16,name:"Abakar Hassan",poste:"Milieu"},{num:17,name:"Maibe Djerabe",poste:"Défenseur"},{num:18,name:"Ismail Younous",poste:"Attaquant"},{num:19,name:"Abdoulaye Mahamat",poste:"Milieu"},{num:20,name:"Djibrine Ali",poste:"Défenseur"},{num:21,name:"Oumar Saleh",poste:"Attaquant"},{num:22,name:"Hassan Brahim",poste:"Milieu"},{num:23,name:"Moussa Abakar",poste:"Gardien"}
-  ]},
-  {id:"gazelle", name:"Gazelle FC", city:"N'Djamena", players:[
-    {num:1,name:"Dillah Mbairamadji",poste:"Gardien"},{num:2,name:"Mdoumbe Triomphe",poste:"Gardien"},{num:3,name:"Oumar Yangassou",poste:"Gardien"},{num:4,name:"Abdoulaye Ali Souar",poste:"Défenseur"},{num:5,name:"Franco Djimhodoum",poste:"Défenseur"},{num:6,name:"Haroun Ahmat Adef",poste:"Défenseur"},{num:7,name:"Abbas Maigue",poste:"Défenseur"},{num:8,name:"Herman Doumna",poste:"Milieu"},{num:9,name:"Yves Allarabaye",poste:"Milieu"},{num:10,name:"Hillaire Kédigui",poste:"Milieu"},{num:11,name:"Abdelaziz Makine",poste:"Attaquant"},{num:12,name:"Mahamat Abakar",poste:"Attaquant"},{num:13,name:"Issa Djibrine",poste:"Milieu"},{num:14,name:"Oumar Mahamat",poste:"Défenseur"},{num:15,name:"Brahim Saleh",poste:"Attaquant"},{num:16,name:"Ali Hassan",poste:"Milieu"},{num:17,name:"Moussa Abdoulaye",poste:"Défenseur"},{num:18,name:"Zakaria Mahamat",poste:"Attaquant"},{num:19,name:"Hassan Ousmane",poste:"Milieu"},{num:20,name:"Abderamane Ali",poste:"Défenseur"},{num:21,name:"Idriss Brahim",poste:"Attaquant"},{num:22,name:"Mahamat Saleh",poste:"Milieu"},{num:23,name:"Youssouf Abakar",poste:"Gardien"}
-  ]},
-  {id:"foullah", name:"Foullah Edifice FC", city:"Moussoro", players:[
-    {num:1,name:"Kourdina Mangana",poste:"Gardien"},{num:2,name:"Mbogo Acyl",poste:"Défenseur"},{num:3,name:"Warna Témoua",poste:"Défenseur"},{num:4,name:"Yves Allarabaye",poste:"Milieu"},{num:5,name:"Benjamin Merba",poste:"Milieu"},{num:6,name:"Innocent Mbairamadji",poste:"Attaquant"},{num:7,name:"Ahmat Adam Mahamat",poste:"Attaquant"},{num:8,name:"Djibrine Bakhit",poste:"Attaquant"},{num:9,name:"Aubin Mbaigolmem",poste:"Défenseur"},{num:10,name:"Hassan Hissein",poste:"Milieu"},{num:11,name:"Yaya Kerim",poste:"Milieu"},{num:12,name:"Armand Djerabe",poste:"Défenseur"},{num:13,name:"Brice Mbaya",poste:"Gardien"},{num:14,name:"Natar Aldongar",poste:"Milieu"},{num:15,name:"Rodrigue N'Doram",poste:"Attaquant"},{num:16,name:"César Abaya",poste:"Défenseur"},{num:17,name:"Mathieu Adoassou",poste:"Gardien"},{num:18,name:"Franck Tchaouna",poste:"Attaquant"},{num:19,name:"Haroun Tchaouna",poste:"Milieu"},{num:20,name:"Brahim Azaz Goudja",poste:"Attaquant"},{num:21,name:"Abdoulaye Difane",poste:"Défenseur"},{num:22,name:"Frédéric Djoeta",poste:"Milieu"},{num:23,name:"Fabien Djedanoum",poste:"Attaquant"}
-  ]},
-  {id:"renaissance", name:"Renaissance FC", city:"N'Djamena", players:[
-    {num:1,name:"Eric Ngana",poste:"Gardien"},{num:2,name:"Gorba Ousman",poste:"Défenseur"},{num:3,name:"Mondésir Alladjim",poste:"Défenseur"},{num:4,name:"Abdelaziz Issa",poste:"Défenseur"},{num:5,name:"Mahamat Ekian",poste:"Milieu"},{num:6,name:"Maxime Maitara",poste:"Milieu"},{num:7,name:"Abakar Guemè",poste:"Attaquant"},{num:8,name:"César Abaya",poste:"Défenseur"},{num:9,name:"Ahmat Abderamane",poste:"Défenseur"},{num:10,name:"Mahamat Abdoulaye",poste:"Défenseur"},{num:11,name:"Abderahim Aboubakar",poste:"Milieu"},{num:12,name:"Issa Mahamat",poste:"Attaquant"},{num:13,name:"Ali Djibrine",poste:"Milieu"},{num:14,name:"Hassan Saleh",poste:"Défenseur"},{num:15,name:"Moussa Oumar",poste:"Attaquant"},{num:16,name:"Brahim Ali",poste:"Milieu"},{num:17,name:"Idriss Hassan",poste:"Défenseur"},{num:18,name:"Zakaria Moussa",poste:"Attaquant"},{num:19,name:"Mahamat Brahim",poste:"Milieu"},{num:20,name:"Abakar Saleh",poste:"Défenseur"},{num:21,name:"Oumar Djimet",poste:"Attaquant"},{num:22,name:"Youssouf Mahamat",poste:"Milieu"},{num:23,name:"Ali Abakar",poste:"Gardien"}
-  ]},
-  {id:"sante", name:"AS Santé d'Abéché", city:"Abéché", players:[
-    {num:1,name:"Aboubaida Hassan",poste:"Gardien"},{num:2,name:"Ali Chidi",poste:"Gardien"},{num:3,name:"Abdelaziz Issa",poste:"Défenseur"},{num:4,name:"Ahmat Abdraman",poste:"Défenseur"},{num:5,name:"Saboune Abdoulaye",poste:"Défenseur"},{num:6,name:"Yves Allarabaye",poste:"Milieu"},{num:7,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:8,name:"Ayoub Salim",poste:"Milieu"},{num:9,name:"Ouamane Hassan",poste:"Milieu"},{num:10,name:"Abbo Idris",poste:"Attaquant"},{num:11,name:"Mahamat Nour",poste:"Attaquant"},{num:12,name:"Ali Mahamat",poste:"Milieu"},{num:13,name:"Hassan Brahim",poste:"Défenseur"},{num:14,name:"Oumar Saleh",poste:"Attaquant"},{num:15,name:"Moussa Abakar",poste:"Milieu"},{num:16,name:"Brahim Ali",poste:"Défenseur"},{num:17,name:"Idriss Hassan",poste:"Attaquant"},{num:18,name:"Zakaria Moussa",poste:"Milieu"},{num:19,name:"Mahamat Brahim",poste:"Défenseur"},{num:20,name:"Abakar Saleh",poste:"Attaquant"},{num:21,name:"Oumar Djimet",poste:"Milieu"},{num:22,name:"Youssouf Mahamat",poste:"Défenseur"},{num:23,name:"Ali Abakar",poste:"Gardien"}
-  ]},
-  {id:"espoir", name:"Espoir FC", city:"Bongor", players:[
-    {num:1,name:"Adoum Nassour",poste:"Gardien"},{num:2,name:"Djibetsou Hassan",poste:"Défenseur"},{num:3,name:"Hourvogo Mahamat",poste:"Défenseur"},{num:4,name:"KDB Ali",poste:"Milieu"},{num:5,name:"Mahamat Saleh",poste:"Milieu"},{num:6,name:"Abakar Hassan",poste:"Attaquant"},{num:7,name:"Brahim Oumar",poste:"Attaquant"},{num:8,name:"Idriss Djimet",poste:"Milieu"},{num:9,name:"Moussa Ali",poste:"Défenseur"},{num:10,name:"Hassan Brahim",poste:"Attaquant"},{num:11,name:"Oumar Mahamat",poste:"Milieu"},{num:12,name:"Ali Saleh",poste:"Défenseur"},{num:13,name:"Zakaria Abakar",poste:"Attaquant"},{num:14,name:"Mahamat Djibrine",poste:"Milieu"},{num:15,name:"Abakar Moussa",poste:"Défenseur"},{num:16,name:"Brahim Idriss",poste:"Attaquant"},{num:17,name:"Youssouf Hassan",poste:"Milieu"},{num:18,name:"Ali Mahamat",poste:"Défenseur"},{num:19,name:"Oumar Abakar",poste:"Attaquant"},{num:20,name:"Mahamat Saleh",poste:"Milieu"},{num:21,name:"Djimet Ali",poste:"Défenseur"},{num:22,name:"Hassan Oumar",poste:"Attaquant"},{num:23,name:"Brahim Moussa",poste:"Gardien"}
-  ]},
-  {id:"scorpion", name:"Scorpion FC", city:"Borkou", players:[
-    {num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Abakar Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
-  ]},
-  {id:"onape", name:"FC Onape", city:"Doba", players:[
-    {num:1,name:"Mahamat Brahim",poste:"Gardien"},{num:2,name:"Ali Saleh",poste:"Défenseur"},{num:3,name:"Oumar Hassan",poste:"Défenseur"},{num:4,name:"Brahim Mahamat",poste:"Milieu"},{num:5,name:"Idriss Abakar",poste:"Milieu"},{num:6,name:"Moussa Ali",poste:"Attaquant"},{num:7,name:"Hassan Oumar",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}
-  ]},
-  {id:"aiglons_hl", name:"Aiglons FC Hadjer-Lamis", city:"Hadjer-Lamis", players:[
-    {num:1,name:"Ahmat Abakar",poste:"Gardien"},{num:2,name:"Ali Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
-  ]},
-  {id:"elan", name:"Élan Derby de Pala", city:"Pala", players:[
-    {num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Abakar Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}
-  ]},
-  {id:"udm", name:"Université de Moundou FC", city:"Moundou", players:[
-    {num:1,name:"Mahamat Oumar",poste:"Gardien"},{num:2,name:"Ali Abakar",poste:"Défenseur"},{num:3,name:"Brahim Hassan",poste:"Défenseur"},{num:4,name:"Idriss Saleh",poste:"Milieu"},{num:5,name:"Moussa Mahamat",poste:"Milieu"},{num:6,name:"Oumar Brahim",poste:"Attaquant"},{num:7,name:"Hassan Ali",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}
-  ]}
-];
-
+// ========== LÉGENDES ==========
 function renderLegends(){
-  var c=$("legendsContainer");
-  if(!c)return;
+  var c=$("legendsContainer"); if(!c)return;
+  if(!LEGENDS.length){ c.innerHTML='<div class="empty">Aucune légende pour le moment.</div>'; return; }
   var h="";
   LEGENDS.forEach(function(l){
+    var photo = l.photo || ("https://placehold.co/400x300/0066B3/FFFFFF?text="+encodeURIComponent(l.name));
     h+='<div class="legend-card">';
-    h+='<img class="legend-photo" src="'+esc(l.photo)+'" alt="'+esc(l.name)+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x300/0066B3/FFFFFF?text='+encodeURIComponent(l.name)+'\'">';
+    h+='<img class="legend-photo" src="'+esc(photo)+'" onerror="this.src=\'https://placehold.co/400x300/0066B3/FFFFFF?text=Legende\'">';
     h+='<div class="legend-info">';
     h+='<h3>'+esc(l.name)+'</h3>';
     h+='<p class="poste">'+esc(l.poste)+'</p>';
     h+='<p>'+esc(l.bio)+'</p>';
-    h+='<div class="legend-clubs">🏟️ Clubs : '+esc(l.clubs)+'</div>';
+    h+='<div class="legend-clubs">🏟️ '+esc(l.clubs)+'</div>';
+    if(isAdmin) h+='<button class="btn btn-red btn-full" style="margin-top:8px" onclick="deleteLegend(\''+esc(l.id)+'\')">Supprimer</button>';
     h+='</div></div>';
   });
   c.innerHTML=h;
 }
+window.openLegendEditor = function(){
+  if(!isAdmin) return;
+  ["lName","lPoste","lClubs","lBio","lImageUrl"].forEach(function(id){ $(id).value=""; });
+  $("lImagePreview").classList.add("hidden");
+  var up=$("lUpload"); up.classList.remove("uploading"); up.querySelector(".icon").textContent="📸"; up.querySelector(".txt").textContent="Choisir photo depuis la galerie";
+  $("lStatus").textContent="";
+  show("legendModal");
+};
+window.saveLegend = async function(){
+  if(!isAdmin) return;
+  var name=$("lName").value.trim(), poste=$("lPoste").value.trim();
+  var clubs=$("lClubs").value.trim(), bio=$("lBio").value.trim();
+  var photo=$("lImageUrl").value;
+  var st=$("lStatus");
+  if(!name||!poste||!bio){ st.textContent="Remplissez les champs requis."; st.className="tiny alert alert-red"; return; }
+  st.textContent="Enregistrement…"; st.className="tiny alert alert-blue";
+  try{
+    await addDoc(collection(db,"legends"),{name:name,poste:poste,clubs:clubs,bio:bio,photo:photo,createdAt:serverTimestamp()});
+    st.textContent="✅ Légende ajoutée !"; st.className="tiny alert alert-green";
+    setTimeout(function(){ closeModal("legendModal"); },700);
+  }catch(e){ st.textContent="Erreur : "+e.message; st.className="tiny alert alert-red"; }
+};
+window.deleteLegend = async function(id){
+  if(!confirm("Supprimer cette légende ?")) return;
+  try{ await deleteDoc(doc(db,"legends",id)); }catch(e){ alert(e.message); }
+};
+
+// ========== LINAFOOT STATIQUE ==========
+var LINAFOOT_CLUBS = [
+  {id:"aiglons", name:"Aiglons FC", city:"N'Djamena", players:[{num:1,name:"Christian Ramadjingaye",poste:"Gardien"},{num:2,name:"Ahmat Abderamane",poste:"Défenseur"},{num:3,name:"Abdoulaye Difane",poste:"Défenseur"},{num:4,name:"Abderahim Aboubakar",poste:"Milieu"},{num:5,name:"Yannick Saleh",poste:"Milieu"},{num:6,name:"Daniel Mbaitoloum",poste:"Milieu"},{num:7,name:"Fabien Djedanoum",poste:"Attaquant"},{num:8,name:"Yannick Masra",poste:"Attaquant"},{num:9,name:"Aboubakar Abderahim",poste:"Milieu"},{num:10,name:"Moussa Mahamat",poste:"Attaquant"},{num:11,name:"Issa Adoum",poste:"Défenseur"},{num:12,name:"Hassan Brahim",poste:"Milieu"},{num:13,name:"Idriss Mahamat",poste:"Gardien"},{num:14,name:"Ali Saleh",poste:"Défenseur"},{num:15,name:"Oumar Djibrine",poste:"Milieu"},{num:16,name:"Zakaria Abdelkerim",poste:"Attaquant"},{num:17,name:"Mahamat Saleh",poste:"Défenseur"},{num:18,name:"Adam Youssouf",poste:"Milieu"},{num:19,name:"Brahim Djimet",poste:"Attaquant"},{num:20,name:"Rachid Ousmane",poste:"Défenseur"},{num:21,name:"Moussa Abdelkerim",poste:"Milieu"},{num:22,name:"Nour Mahamat",poste:"Attaquant"},{num:23,name:"Youssouf Idriss",poste:"Gardien"}]},
+  {id:"psi", name:"AS PSI", city:"N'Djamena", players:[{num:1,name:"Abdraman Ekiang",poste:"Gardien"},{num:2,name:"Eli Adaoassou",poste:"Gardien"},{num:3,name:"Tapoul Porenama",poste:"Gardien"},{num:4,name:"Ahmat Abakar",poste:"Défenseur"},{num:5,name:"Ali Blague",poste:"Défenseur"},{num:6,name:"Abdelkerim Diro",poste:"Milieu"},{num:7,name:"Gabkala Daba",poste:"Milieu"},{num:8,name:"Allaramadji Noël",poste:"Milieu"},{num:9,name:"Felix Noubara",poste:"Attaquant"},{num:10,name:"Issa Hassaballah",poste:"Attaquant"},{num:11,name:"Joel Djingar",poste:"Milieu"},{num:12,name:"Ousmane Hassan",poste:"Défenseur"},{num:13,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:14,name:"Brahim Goudja",poste:"Attaquant"},{num:15,name:"Ousman Biani",poste:"Milieu"},{num:16,name:"Mathieu Adoassou",poste:"Gardien"},{num:17,name:"Tahir Gardia",poste:"Défenseur"},{num:18,name:"Djimet Ali",poste:"Milieu"},{num:19,name:"Mahamat Nour",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Défenseur"},{num:21,name:"Saleh Ahmat",poste:"Milieu"},{num:22,name:"Zakaria Moussa",poste:"Attaquant"},{num:23,name:"Idriss Mahamat",poste:"Gardien"}]},
+  {id:"elect", name:"TP Elect-Sport", city:"N'Djamena", players:[{num:1,name:"Mahamat Ateib",poste:"Gardien"},{num:2,name:"Adoum Defallah",poste:"Gardien"},{num:3,name:"Moumine Kassoure",poste:"Gardien"},{num:4,name:"Ferdinand Madjiyedji",poste:"Gardien"},{num:5,name:"Bambara Djela",poste:"Défenseur"},{num:6,name:"Ali Mahamout Tchari",poste:"Milieu"},{num:7,name:"Frédéric Djoeta",poste:"Milieu"},{num:8,name:"Chandjim Ngandodjim",poste:"Milieu"},{num:9,name:"Karl Max Barthélémy",poste:"Attaquant"},{num:10,name:"Abakar Haroun",poste:"Attaquant"},{num:11,name:"Ali Abakali",poste:"Milieu"},{num:12,name:"Bechir Seid",poste:"Défenseur"},{num:13,name:"Mahamat Ponh",poste:"Défenseur"},{num:14,name:"Djimhotoum Moral",poste:"Milieu"},{num:15,name:"Ninga Ndonane",poste:"Attaquant"},{num:16,name:"Abakar Hassan",poste:"Milieu"},{num:17,name:"Maibe Djerabe",poste:"Défenseur"},{num:18,name:"Ismail Younous",poste:"Attaquant"},{num:19,name:"Abdoulaye Mahamat",poste:"Milieu"},{num:20,name:"Djibrine Ali",poste:"Défenseur"},{num:21,name:"Oumar Saleh",poste:"Attaquant"},{num:22,name:"Hassan Brahim",poste:"Milieu"},{num:23,name:"Moussa Abakar",poste:"Gardien"}]},
+  {id:"gazelle", name:"Gazelle FC", city:"N'Djamena", players:[{num:1,name:"Dillah Mbairamadji",poste:"Gardien"},{num:2,name:"Mdoumbe Triomphe",poste:"Gardien"},{num:3,name:"Oumar Yangassou",poste:"Gardien"},{num:4,name:"Abdoulaye Ali Souar",poste:"Défenseur"},{num:5,name:"Franco Djimhodoum",poste:"Défenseur"},{num:6,name:"Haroun Ahmat Adef",poste:"Défenseur"},{num:7,name:"Abbas Maigue",poste:"Défenseur"},{num:8,name:"Herman Doumna",poste:"Milieu"},{num:9,name:"Yves Allarabaye",poste:"Milieu"},{num:10,name:"Hillaire Kédigui",poste:"Milieu"},{num:11,name:"Abdelaziz Makine",poste:"Attaquant"},{num:12,name:"Mahamat Abakar",poste:"Attaquant"},{num:13,name:"Issa Djibrine",poste:"Milieu"},{num:14,name:"Oumar Mahamat",poste:"Défenseur"},{num:15,name:"Brahim Saleh",poste:"Attaquant"},{num:16,name:"Ali Hassan",poste:"Milieu"},{num:17,name:"Moussa Abdoulaye",poste:"Défenseur"},{num:18,name:"Zakaria Mahamat",poste:"Attaquant"},{num:19,name:"Hassan Ousmane",poste:"Milieu"},{num:20,name:"Abderamane Ali",poste:"Défenseur"},{num:21,name:"Idriss Brahim",poste:"Attaquant"},{num:22,name:"Mahamat Saleh",poste:"Milieu"},{num:23,name:"Youssouf Abakar",poste:"Gardien"}]},
+  {id:"foullah", name:"Foullah Edifice FC", city:"Moussoro", players:[{num:1,name:"Kourdina Mangana",poste:"Gardien"},{num:2,name:"Mbogo Acyl",poste:"Défenseur"},{num:3,name:"Warna Témoua",poste:"Défenseur"},{num:4,name:"Yves Allarabaye",poste:"Milieu"},{num:5,name:"Benjamin Merba",poste:"Milieu"},{num:6,name:"Innocent Mbairamadji",poste:"Attaquant"},{num:7,name:"Ahmat Adam",poste:"Attaquant"},{num:8,name:"Djibrine Bakhit",poste:"Attaquant"},{num:9,name:"Aubin Mbaigolmem",poste:"Défenseur"},{num:10,name:"Hassan Hissein",poste:"Milieu"},{num:11,name:"Yaya Kerim",poste:"Milieu"},{num:12,name:"Armand Djerabe",poste:"Défenseur"},{num:13,name:"Brice Mbaya",poste:"Gardien"},{num:14,name:"Natar Aldongar",poste:"Milieu"},{num:15,name:"Rodrigue N'Doram",poste:"Attaquant"},{num:16,name:"César Abaya",poste:"Défenseur"},{num:17,name:"Mathieu Adoassou",poste:"Gardien"},{num:18,name:"Franck Tchaouna",poste:"Attaquant"},{num:19,name:"Haroun Tchaouna",poste:"Milieu"},{num:20,name:"Brahim Azaz Goudja",poste:"Attaquant"},{num:21,name:"Abdoulaye Difane",poste:"Défenseur"},{num:22,name:"Frédéric Djoeta",poste:"Milieu"},{num:23,name:"Fabien Djedanoum",poste:"Attaquant"}]},
+  {id:"renaissance", name:"Renaissance FC", city:"N'Djamena", players:[{num:1,name:"Eric Ngana",poste:"Gardien"},{num:2,name:"Gorba Ousman",poste:"Défenseur"},{num:3,name:"Mondésir Alladjim",poste:"Défenseur"},{num:4,name:"Abdelaziz Issa",poste:"Défenseur"},{num:5,name:"Mahamat Ekian",poste:"Milieu"},{num:6,name:"Maxime Maitara",poste:"Milieu"},{num:7,name:"Abakar Guemè",poste:"Attaquant"},{num:8,name:"César Abaya",poste:"Défenseur"},{num:9,name:"Ahmat Abderamane",poste:"Défenseur"},{num:10,name:"Mahamat Abdoulaye",poste:"Défenseur"},{num:11,name:"Abderahim Aboubakar",poste:"Milieu"},{num:12,name:"Issa Mahamat",poste:"Attaquant"},{num:13,name:"Ali Djibrine",poste:"Milieu"},{num:14,name:"Hassan Saleh",poste:"Défenseur"},{num:15,name:"Moussa Oumar",poste:"Attaquant"},{num:16,name:"Brahim Ali",poste:"Milieu"},{num:17,name:"Idriss Hassan",poste:"Défenseur"},{num:18,name:"Zakaria Moussa",poste:"Attaquant"},{num:19,name:"Mahamat Brahim",poste:"Milieu"},{num:20,name:"Abakar Saleh",poste:"Défenseur"},{num:21,name:"Oumar Djimet",poste:"Attaquant"},{num:22,name:"Youssouf Mahamat",poste:"Milieu"},{num:23,name:"Ali Abakar",poste:"Gardien"}]},
+  {id:"sante", name:"AS Santé d'Abéché", city:"Abéché", players:[{num:1,name:"Aboubaida Hassan",poste:"Gardien"},{num:2,name:"Ali Chidi",poste:"Gardien"},{num:3,name:"Abdelaziz Issa",poste:"Défenseur"},{num:4,name:"Ahmat Abdraman",poste:"Défenseur"},{num:5,name:"Saboune Abdoulaye",poste:"Défenseur"},{num:6,name:"Yves Allarabaye",poste:"Milieu"},{num:7,name:"Djimhoue Fabrice",poste:"Défenseur"},{num:8,name:"Ayoub Salim",poste:"Milieu"},{num:9,name:"Ouamane Hassan",poste:"Milieu"},{num:10,name:"Abbo Idris",poste:"Attaquant"},{num:11,name:"Mahamat Nour",poste:"Attaquant"},{num:12,name:"Ali Mahamat",poste:"Milieu"},{num:13,name:"Hassan Brahim",poste:"Défenseur"},{num:14,name:"Oumar Saleh",poste:"Attaquant"},{num:15,name:"Moussa Abakar",poste:"Milieu"},{num:16,name:"Brahim Ali",poste:"Défenseur"},{num:17,name:"Idriss Hassan",poste:"Attaquant"},{num:18,name:"Zakaria Moussa",poste:"Milieu"},{num:19,name:"Mahamat Brahim",poste:"Défenseur"},{num:20,name:"Abakar Saleh",poste:"Attaquant"},{num:21,name:"Oumar Djimet",poste:"Milieu"},{num:22,name:"Youssouf Mahamat",poste:"Défenseur"},{num:23,name:"Ali Abakar",poste:"Gardien"}]},
+  {id:"espoir", name:"Espoir FC", city:"Bongor", players:[{num:1,name:"Adoum Nassour",poste:"Gardien"},{num:2,name:"Djibetsou Hassan",poste:"Défenseur"},{num:3,name:"Hourvogo Mahamat",poste:"Défenseur"},{num:4,name:"KDB Ali",poste:"Milieu"},{num:5,name:"Mahamat Saleh",poste:"Milieu"},{num:6,name:"Abakar Hassan",poste:"Attaquant"},{num:7,name:"Brahim Oumar",poste:"Attaquant"},{num:8,name:"Idriss Djimet",poste:"Milieu"},{num:9,name:"Moussa Ali",poste:"Défenseur"},{num:10,name:"Hassan Brahim",poste:"Attaquant"},{num:11,name:"Oumar Mahamat",poste:"Milieu"},{num:12,name:"Ali Saleh",poste:"Défenseur"},{num:13,name:"Zakaria Abakar",poste:"Attaquant"},{num:14,name:"Mahamat Djibrine",poste:"Milieu"},{num:15,name:"Abakar Moussa",poste:"Défenseur"},{num:16,name:"Brahim Idriss",poste:"Attaquant"},{num:17,name:"Youssouf Hassan",poste:"Milieu"},{num:18,name:"Ali Mahamat",poste:"Défenseur"},{num:19,name:"Oumar Abakar",poste:"Attaquant"},{num:20,name:"Mahamat Saleh",poste:"Milieu"},{num:21,name:"Djimet Ali",poste:"Défenseur"},{num:22,name:"Hassan Oumar",poste:"Attaquant"},{num:23,name:"Brahim Moussa",poste:"Gardien"}]},
+  {id:"scorpion", name:"Scorpion FC", city:"Borkou", players:[{num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Abakar Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}]},
+  {id:"onape", name:"FC Onape", city:"Doba", players:[{num:1,name:"Mahamat Brahim",poste:"Gardien"},{num:2,name:"Ali Saleh",poste:"Défenseur"},{num:3,name:"Oumar Hassan",poste:"Défenseur"},{num:4,name:"Brahim Mahamat",poste:"Milieu"},{num:5,name:"Idriss Abakar",poste:"Milieu"},{num:6,name:"Moussa Ali",poste:"Attaquant"},{num:7,name:"Hassan Oumar",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}]},
+  {id:"aiglons_hl", name:"Aiglons FC Hadjer-Lamis", city:"Hadjer-Lamis", players:[{num:1,name:"Ahmat Abakar",poste:"Gardien"},{num:2,name:"Ali Hassan",poste:"Défenseur"},{num:3,name:"Brahim Saleh",poste:"Défenseur"},{num:4,name:"Idriss Mahamat",poste:"Milieu"},{num:5,name:"Moussa Ali",poste:"Milieu"},{num:6,name:"Oumar Djibrine",poste:"Attaquant"},{num:7,name:"Hassan Brahim",poste:"Attaquant"},{num:8,name:"Ali Mahamat",poste:"Milieu"},{num:9,name:"Zakaria Moussa",poste:"Défenseur"},{num:10,name:"Mahamat Saleh",poste:"Attaquant"},{num:11,name:"Abakar Idriss",poste:"Milieu"},{num:12,name:"Brahim Oumar",poste:"Défenseur"},{num:13,name:"Youssouf Hassan",poste:"Attaquant"},{num:14,name:"Ali Djimet",poste:"Milieu"},{num:15,name:"Oumar Abakar",poste:"Défenseur"},{num:16,name:"Mahamat Brahim",poste:"Attaquant"},{num:17,name:"Djimet Ali",poste:"Milieu"},{num:18,name:"Hassan Oumar",poste:"Défenseur"},{num:19,name:"Moussa Brahim",poste:"Attaquant"},{num:20,name:"Abakar Mahamat",poste:"Milieu"},{num:21,name:"Saleh Idriss",poste:"Défenseur"},{num:22,name:"Brahim Hassan",poste:"Attaquant"},{num:23,name:"Ali Oumar",poste:"Gardien"}]},
+  {id:"udm", name:"Université de Moundou FC", city:"Moundou", players:[{num:1,name:"Mahamat Oumar",poste:"Gardien"},{num:2,name:"Ali Abakar",poste:"Défenseur"},{num:3,name:"Brahim Hassan",poste:"Défenseur"},{num:4,name:"Idriss Saleh",poste:"Milieu"},{num:5,name:"Moussa Mahamat",poste:"Milieu"},{num:6,name:"Oumar Brahim",poste:"Attaquant"},{num:7,name:"Hassan Ali",poste:"Attaquant"},{num:8,name:"Abakar Djimet",poste:"Milieu"},{num:9,name:"Mahamat Idriss",poste:"Défenseur"},{num:10,name:"Ali Brahim",poste:"Attaquant"},{num:11,name:"Oumar Saleh",poste:"Milieu"},{num:12,name:"Brahim Ali",poste:"Défenseur"},{num:13,name:"Youssouf Mahamat",poste:"Attaquant"},{num:14,name:"Djimet Oumar",poste:"Milieu"},{num:15,name:"Hassan Abakar",poste:"Défenseur"},{num:16,name:"Moussa Brahim",poste:"Attaquant"},{num:17,name:"Ali Idriss",poste:"Milieu"},{num:18,name:"Brahim Oumar",poste:"Défenseur"},{num:19,name:"Saleh Mahamat",poste:"Attaquant"},{num:20,name:"Abakar Hassan",poste:"Milieu"},{num:21,name:"Oumar Ali",poste:"Défenseur"},{num:22,name:"Mahamat Djimet",poste:"Attaquant"},{num:23,name:"Ali Brahim",poste:"Gardien"}]}
+];
 
 var currentClubId = null;
 function renderTeamSelector(){
-  var c=$("teamSelector");
-  if(!c)return;
+  var c=$("teamSelector"); if(!c)return;
   var h="";
   LINAFOOT_CLUBS.forEach(function(club){
     var active = currentClubId===club.id ? " active" : "";
@@ -811,25 +883,192 @@ window.selectClub = function(id){
   var c=$("squadContainer");
   if(!club){c.innerHTML='<div class="empty">Équipe introuvable.</div>';return;}
   var h='<div class="card" style="margin-bottom:10px;background:linear-gradient(135deg,#0066B3,#034d82);color:#fff;border:none">';
-  h+='<div style="display:flex;align-items:center;gap:12px">';
-  h+='<div><h3 style="color:#fff;font-size:15px;font-weight:900">'+esc(club.name)+'</h3><p style="font-size:11px;color:#dbeafe;margin-top:2px">'+esc(club.city)+' • '+club.players.length+' joueurs</p></div>';
-  h+='</div></div>';
+  h+='<h3 style="color:#fff;font-size:15px">'+esc(club.name)+'</h3>';
+  h+='<p style="font-size:11px;color:#dbeafe;margin-top:2px">'+esc(club.city)+' • '+club.players.length+' joueurs</p></div>';
   h+='<div class="squad-list">';
   club.players.forEach(function(p){
-    h+='<div class="player-row">';
-    h+='<div class="pnum">'+esc(p.num)+'</div>';
-    h+='<div class="pinfo"><b>'+esc(p.name)+'</b><span>'+esc(p.poste)+'</span></div>';
-    h+='</div>';
+    h+='<div class="player-row"><div class="pnum">'+esc(p.num)+'</div><div class="pinfo"><b>'+esc(p.name)+'</b><span>'+esc(p.poste)+'</span></div></div>';
   });
   h+='</div>';
   c.innerHTML=h;
 };
 
-function renderAllLegendsAndSquad(){
-  renderLegends();
-  renderTeamSelector();
+// ========== COACHS ==========
+function renderCoaches(){
+  var c=$("coachesContainer");
+  if(!COACHES.length){c.innerHTML='<div class="empty">Aucun coach pour le moment.</div>';return;}
+  var h="";
+  COACHES.forEach(function(co){
+    h+='<div class="card">';
+    if(co.image) h+='<img src="'+esc(co.image)+'" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:10px" onerror="this.style.display=\'none\'">';
+    h+='<div class="row"><h3 class="tblue">'+esc(co.name)+'</h3><span class="chip chip-green">'+esc(co.type)+'</span></div>';
+    h+='<p class="tiny muted" style="margin-top:4px">'+esc(co.city)+' • '+esc(co.phone)+'</p>';
+    h+='<p class="tiny" style="margin-top:8px;white-space:pre-line;background:#f8fafc;padding:10px;border-radius:8px">'+esc(co.bio)+'</p>';
+    h+='<a href="https://wa.me/'+esc(String(co.phone||"").replace(/[^0-9]/g,""))+'" target="_blank" class="btn btn-green btn-full" style="margin-top:10px">Contacter</a>';
+    if(isAdmin) h+='<button class="btn btn-red btn-full" style="margin-top:6px" onclick="deleteCoach(\''+esc(co.id)+'\')">Supprimer</button>';
+    h+='</div>';
+  });
+  c.innerHTML=h;
 }
+window.openCoachEditor = function(){
+  if(!isAdmin) return;
+  ["cName","cCity","cPhone","cBio","cImageUrl"].forEach(function(id){ $(id).value=""; });
+  $("cType").value="Coach & Formateur";
+  $("cImagePreview").classList.add("hidden");
+  var up=$("cUpload"); up.classList.remove("uploading"); up.querySelector(".icon").textContent="📸"; up.querySelector(".txt").textContent="Choisir photo depuis la galerie";
+  $("cStatus").textContent="";
+  show("coachModal");
+};
+window.saveCoach = async function(){
+  if(!isAdmin) return;
+  var name=$("cName").value.trim(), type=$("cType").value, city=$("cCity").value.trim();
+  var phone=$("cPhone").value.trim(), bio=$("cBio").value.trim(), image=$("cImageUrl").value;
+  var st=$("cStatus");
+  if(!name||!city||!phone||!bio){ st.textContent="Remplissez les champs requis."; st.className="tiny alert alert-red"; return; }
+  st.textContent="Enregistrement…"; st.className="tiny alert alert-blue";
+  try{
+    await addDoc(collection(db,"coaches"),{name:name,type:type,city:city,phone:phone,bio:bio,image:image,createdAt:serverTimestamp()});
+    st.textContent="✅ Coach ajouté !"; st.className="tiny alert alert-green";
+    setTimeout(function(){ closeModal("coachModal"); },700);
+  }catch(e){ st.textContent="Erreur : "+e.message; st.className="tiny alert alert-red"; }
+};
+window.deleteCoach = async function(id){
+  if(!confirm("Supprimer ce coach ?")) return;
+  try{ await deleteDoc(doc(db,"coaches",id)); }catch(e){ alert(e.message); }
+};
 
+// ========== PRODUITS ==========
+function renderProducts(){
+  var g=$("productGrid");
+  if(!PRODUCTS.length){g.innerHTML='<div class="empty" style="grid-column:1/-1">Aucun produit.</div>';return;}
+  var h="";
+  PRODUCTS.forEach(function(p){
+    var img=p.image||("https://placehold.co/400x400/0066B3/FFFFFF?text="+encodeURIComponent(p.name));
+    h+='<div class="product"><img class="pimg" src="'+esc(img)+'" onerror="this.src=\'https://placehold.co/400x400/0066B3/FFFFFF?text=Produit\'">';
+    h+='<span class="cat">'+esc(p.category)+'</span><h4>'+esc(p.name)+'</h4><p>'+esc(p.description)+'</p>';
+    h+='<b>'+fmt(p.price)+' FCFA</b>';
+    h+='<button class="btn btn-blue" style="margin-top:8px" onclick="buy(\''+esc(p.id)+'\')">Commander</button>';
+    if(isAdmin) h+='<button class="btn btn-red" style="margin-top:6px" onclick="deleteProduct(\''+esc(p.id)+'\')">Supprimer</button>';
+    h+='</div>';
+  });
+  g.innerHTML=h;
+}
+window.openProductEditor = function(){
+  if(!isAdmin) return;
+  ["pName","pPrice","pDescription","pImageUrl"].forEach(function(id){ $(id).value=""; });
+  $("pCategory").value="Maillots";
+  $("pImagePreview").classList.add("hidden");
+  var up=$("pUpload"); up.classList.remove("uploading"); up.querySelector(".icon").textContent="📸"; up.querySelector(".txt").textContent="Choisir photo depuis la galerie";
+  $("pStatus").textContent="";
+  show("productModal");
+};
+window.saveProduct = async function(){
+  if(!isAdmin) return;
+  var name=$("pName").value.trim(), price=Number($("pPrice").value), cat=$("pCategory").value;
+  var desc=$("pDescription").value.trim(), image=$("pImageUrl").value;
+  var st=$("pStatus");
+  if(!name||!price||!desc){ st.textContent="Remplissez les champs requis."; st.className="tiny alert alert-red"; return; }
+  st.textContent="Enregistrement…"; st.className="tiny alert alert-blue";
+  try{
+    await addDoc(collection(db,"products"),{name:name,price:price,category:cat,description:desc,image:image,createdAt:serverTimestamp()});
+    st.textContent="✅ Produit ajouté !"; st.className="tiny alert alert-green";
+    setTimeout(function(){ closeModal("productModal"); },700);
+  }catch(e){ st.textContent="Erreur : "+e.message; st.className="tiny alert alert-red"; }
+};
+window.deleteProduct = async function(id){
+  if(!confirm("Supprimer ce produit ?")) return;
+  try{ await deleteDoc(doc(db,"products",id)); }catch(e){ alert(e.message); }
+};
+window.buy = function(id){
+  var p=PRODUCTS.find(function(x){return x.id===id;});
+  if(!p)return;
+  var msg="Bonjour Rahim Football Tchad,\n\nCommande :\n📦 "+p.name+"\n💰 "+fmt(p.price)+" FCFA\n\nNom : \nAdresse : ";
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+};
+
+// ========== ARTICLES ==========
+function renderArticles(){
+  var c=$("articlesContainer");
+  var preview=$("homeActusPreview");
+  if(!ARTICLES.length){
+    c.innerHTML='<div class="empty">Aucune actualité.</div>';
+    if(preview)preview.innerHTML='<p class="muted tiny">Aucune actualité.</p>';
+    return;
+  }
+  var h="";
+  ARTICLES.forEach(function(a){
+    var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category||"Article"));
+    h+='<article class="article-card">';
+    h+='<img class="article-img" src="'+esc(img)+'" onerror="this.src=\'https://placehold.co/800x400/0066B3/FFFFFF?text=Article\'">';
+    h+='<div class="article-body"><div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
+    h+='<h3>'+esc(a.title)+'</h3><p>'+esc(a.excerpt)+'</p>';
+    h+='<div class="article-actions"><button class="share-btn" onclick="openArticle(\''+esc(a.id)+'\')">📖 Lire</button>';
+    h+='<button class="share-btn wa" onclick="shareArticle(\''+esc(a.id)+'\',\'wa\')">📱</button>';
+    h+='<button class="share-btn fb" onclick="shareArticle(\''+esc(a.id)+'\',\'fb\')">👍</button>';
+    if(isAdmin) h+='<button class="share-btn del" onclick="deleteArticle(\''+esc(a.id)+'\')">🗑️</button>';
+    h+='</div></div></article>';
+  });
+  c.innerHTML=h;
+  if(preview){
+    var ph="";
+    ARTICLES.slice(0,3).forEach(function(a){
+      var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category));
+      ph+='<div class="article-card" style="display:flex;gap:10px;padding:10px;cursor:pointer" onclick="openArticle(\''+esc(a.id)+'\')">';
+      ph+='<img src="'+esc(img)+'" style="width:80px;height:80px;border-radius:10px;object-fit:cover;flex-shrink:0" onerror="this.src=\'https://placehold.co/80x80/0066B3/FFFFFF?text=A\'">';
+      ph+='<div style="min-width:0"><div style="font-size:10px;color:#94a3b8;font-weight:700">'+esc(a.category)+'</div>';
+      ph+='<h3 style="font-size:13px;font-weight:900;margin-top:2px">'+esc(a.title)+'</h3>';
+      ph+='<p style="font-size:11px;color:#64748b;margin-top:4px">'+esc(a.excerpt)+'</p></div></div>';
+    });
+    preview.innerHTML=ph;
+  }
+}
+window.openArticle = function(id){
+  var a=ARTICLES.find(function(x){return x.id===id;});
+  if(!a)return;
+  var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text=Article");
+  var html='<div class="article-full"><img src="'+esc(img)+'" onerror="this.style.display=\'none\'">';
+  html+='<div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
+  html+='<h1>'+esc(a.title)+'</h1><p>'+esc(a.content)+'</p></div>';
+  $("articleFullContainer").innerHTML=html;
+  go('article');
+};
+window.shareArticle = function(id,type){
+  var a=ARTICLES.find(function(x){return x.id===id;});
+  if(!a)return;
+  var url="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#"+a.slug;
+  var txt=a.title+" — Rahim Football Tchad 🇹🇩";
+  if(type==='wa')window.open("https://wa.me/?text="+encodeURIComponent(txt+"\n"+url),"_blank");
+  else if(type==='fb')window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url),"_blank");
+};
+window.deleteArticle = async function(id){
+  if(!confirm("Supprimer cet article ?")) return;
+  try{ await deleteDoc(doc(db,"articles",id)); }catch(e){ alert(e.message); }
+};
+window.openArticleEditor = function(){
+  if(!isAdmin)return;
+  ["aTitle","aExcerpt","aContent","aImageUrl"].forEach(function(id){ $(id).value=""; });
+  $("aCategory").value="LINAFOOT";
+  $("aImagePreview").classList.add("hidden");
+  var up=$("aUpload"); up.classList.remove("uploading"); up.querySelector(".icon").textContent="📸"; up.querySelector(".txt").textContent="Choisir photo depuis la galerie";
+  $("articleStatus").textContent="";
+  show("articleModal");
+};
+window.saveArticle = async function(){
+  var title=$("aTitle").value.trim(), cat=$("aCategory").value;
+  var image=$("aImageUrl").value, excerpt=$("aExcerpt").value.trim(), content=$("aContent").value.trim();
+  var st=$("articleStatus");
+  if(!title||!excerpt||!content){st.textContent="Remplissez les champs requis.";st.className="tiny alert alert-red";return;}
+  st.textContent="Publication…";st.className="tiny alert alert-blue";
+  var dateStr=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  dateStr=dateStr.charAt(0).toUpperCase()+dateStr.slice(1);
+  try{
+    await addDoc(collection(db,"articles"),{title:title,category:cat,date:dateStr,image:image,excerpt:excerpt,content:content,slug:slug(title)+"-"+Date.now().toString(36),createdAt:serverTimestamp()});
+    st.textContent="✅ Article publié !";st.className="tiny alert alert-green";
+    setTimeout(function(){closeModal("articleModal");},900);
+  }catch(e){st.textContent="Erreur : "+e.message;st.className="tiny alert alert-red";}
+};
+
+// ========== TOURNOIS ==========
 function renderStats(){
   var s={},mc=0;
   TOURNAMENTS.forEach(function(t){
@@ -841,126 +1080,15 @@ function renderStats(){
   $("stMatchs").textContent=mc?"+"+mc:"0";
   $("stTournois").textContent=TOURNAMENTS.length?"+"+TOURNAMENTS.length:"0";
 }
-
-function renderArticles(){
-  var c=$("articlesContainer");
-  var preview=$("homeActusPreview");
-  if(!ARTICLES.length){
-    c.innerHTML='<div class="empty">Aucune actualité pour le moment.</div>';
-    if(preview)preview.innerHTML='<p class="muted tiny">Aucune actualité pour le moment.</p>';
-    return;
-  }
-  var h="";
-  ARTICLES.forEach(function(a){
-    var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category||"Article"));
-    h+='<article class="article-card">';
-    h+='<img class="article-img" src="'+esc(img)+'" alt="'+esc(a.title)+'" loading="lazy" onerror="this.src=\'https://placehold.co/800x400/0066B3/FFFFFF?text=Article\'">';
-    h+='<div class="article-body">';
-    h+='<div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
-    h+='<h3>'+esc(a.title)+'</h3>';
-    h+='<p>'+esc(a.excerpt)+'</p>';
-    h+='<div class="article-actions">';
-    h+='<button class="share-btn" onclick="openArticle(\''+esc(a.id)+'\')">📖 Lire la suite</button>';
-    h+='<button class="share-btn wa" onclick="shareArticle(\''+esc(a.id)+'\',\'wa\')">📱 WhatsApp</button>';
-    h+='<button class="share-btn fb" onclick="shareArticle(\''+esc(a.id)+'\',\'fb\')">👍 Facebook</button>';
-    h+='<button class="share-btn cp" onclick="shareArticle(\''+esc(a.id)+'\',\'copy\')">🔗 Copier</button>';
-    h+='</div></div></article>';
-  });
-  c.innerHTML=h;
-  if(preview){
-    var ph="";
-    ARTICLES.slice(0,3).forEach(function(a){
-      var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category||"Article"));
-      ph+='<div class="article-card" style="display:flex;gap:10px;padding:10px;cursor:pointer" onclick="openArticle(\''+esc(a.id)+'\')">';
-      ph+='<img src="'+esc(img)+'" alt="" style="width:80px;height:80px;border-radius:10px;object-fit:cover;flex-shrink:0" onerror="this.src=\'https://placehold.co/80x80/0066B3/FFFFFF?text=Article\'">';
-      ph+='<div style="min-width:0"><div class="meta" style="font-size:10px;color:#94a3b8;font-weight:700">'+esc(a.category)+' • '+esc(a.date)+'</div>';
-      ph+='<h3 style="font-size:13px;font-weight:900;line-height:1.3;margin-top:2px">'+esc(a.title)+'</h3>';
-      ph+='<p style="font-size:11px;color:#64748b;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(a.excerpt)+'</p></div></div>';
-    });
-    preview.innerHTML=ph;
-  }
-}
-window.openArticle = function(id){
-  var a=ARTICLES.find(function(x){return x.id===id;});
-  if(!a)return;
-  var img=a.image||("https://placehold.co/800x400/0066B3/FFFFFF?text="+encodeURIComponent(a.category||"Article"));
-  var html='<div class="article-full">';
-  html+='<img src="'+esc(img)+'" alt="'+esc(a.title)+'" onerror="this.src=\'https://placehold.co/800x400/0066B3/FFFFFF?text=Article\'">';
-  html+='<div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
-  html+='<h1>'+esc(a.title)+'</h1>';
-  html+='<p>'+esc(a.content)+'</p>';
-  html+='<div class="article-actions" style="margin-top:16px">';
-  html+='<button class="share-btn wa" onclick="shareArticle(\''+esc(a.id)+'\',\'wa\')">📱 Partager WhatsApp</button>';
-  html+='<button class="share-btn fb" onclick="shareArticle(\''+esc(a.id)+'\',\'fb\')">👍 Facebook</button>';
-  html+='<button class="share-btn cp" onclick="shareArticle(\''+esc(a.id)+'\',\'copy\')">🔗 Copier le lien</button>';
-  html+='</div></div>';
-  $("articleFullContainer").innerHTML=html;
-  go('article');
-};
-window.shareArticle = function(id,type){
-  var a=ARTICLES.find(function(x){return x.id===id;});
-  if(!a)return;
-  var url="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#"+a.slug;
-  var txt=a.title+" — Rahim Football Tchad 🇹🇩";
-  if(type==='wa')window.open("https://wa.me/?text="+encodeURIComponent(txt+"\n"+url),"_blank");
-  else if(type==='fb')window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url),"_blank");
-  else if(type==='copy'){
-    if(navigator.clipboard)navigator.clipboard.writeText(url).then(function(){alert("Lien copié !");});
-    else alert(url);
-  }
-};
-
-window.openArticleEditor = function(){
-  if(!isAdmin)return;
-  $("aTitle").value="";$("aCategory").value="LINAFOOT";$("aImage").value="";
-  $("aExcerpt").value="";$("aContent").value="";$("articleStatus").textContent="";
-  show("articleModal");
-};
-window.saveArticle = async function(){
-  var title=$("aTitle").value.trim();
-  var cat=$("aCategory").value;
-  var image=$("aImage").value.trim();
-  var excerpt=$("aExcerpt").value.trim();
-  var content=$("aContent").value.trim();
-  var st=$("articleStatus");
-  if(!title||!excerpt||!content){st.textContent="Remplissez tous les champs requis.";st.className="tiny alert alert-red";return;}
-  st.textContent="Publication en cours…";st.className="tiny alert alert-blue";
-  var dateStr=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
-  dateStr=dateStr.charAt(0).toUpperCase()+dateStr.slice(1);
-  try{
-    await addDoc(collection(db,"articles"),{
-      title:title,category:cat,date:dateStr,image:image,excerpt:excerpt,content:content,
-      slug:slug(title)+"-"+Date.now().toString(36),
-      createdAt:serverTimestamp()
-    });
-    st.textContent="✅ Article publié sur Firebase !";st.className="tiny alert alert-green";
-    setTimeout(function(){closeModal("articleModal");},900);
-  }catch(e){
-    st.textContent="Erreur : "+e.message;st.className="tiny alert alert-red";
-  }
-};
-
 function renderTournaments(){
   var c=$("tournamentsContainer");
-  if(!TOURNAMENTS.length){c.innerHTML='<div class="empty">Aucun tournoi pour le moment.</div>';return;}
+  if(!TOURNAMENTS.length){c.innerHTML='<div class="empty">Aucun tournoi.</div>';return;}
   var h="";
   TOURNAMENTS.forEach(function(t){
-    h+='<div class="card">';
-    h+='<div class="row"><h3>'+esc(t.name)+'</h3><span class="chip">'+esc(t.city)+'</span></div>';
-    h+='<p class="muted tiny">Date : '+esc(t.start||"—")+' → '+esc(t.end||"—")+'</p>';
-    h+='<p class="muted tiny">Organisateur : '+esc(t.organizer||"—")+'</p>';
-    if(t.contact)h+='<p class="muted tiny">Contact : '+esc(t.contact)+'</p>';
-    h+='<p class="tiny" style="margin-top:6px"><span class="chip chip-red">'+esc(t.format||"")+'</span></p>';
+    h+='<div class="card"><div class="row"><h3>'+esc(t.name)+'</h3><span class="chip">'+esc(t.city)+'</span></div>';
+    h+='<p class="muted tiny">'+esc(t.start||"—")+' → '+esc(t.end||"—")+'</p>';
+    h+='<p class="muted tiny">Org. : '+esc(t.organizer||"—")+'</p>';
     if(t.teams&&t.teams.length)h+='<div class="divider"><p class="tiny muted"><b>'+t.teams.length+' équipes :</b> '+esc(t.teams.join(", "))+'</p></div>';
-    if(t.matchs&&t.matchs.length){
-      h+='<div class="divider">';
-      t.matchs.forEach(function(m){
-        var hs=m.hs==null?"–":m.hs,as=m.as==null?"–":m.as;
-        h+='<div class="row" style="padding:4px 0;font-size:12px"><span style="flex:1;font-weight:700;text-align:right">'+esc(m.home)+'</span><span class="chip" style="min-width:44px;text-align:center">'+hs+' - '+as+'</span><span style="flex:1;font-weight:700">'+esc(m.away)+'</span></div>';
-        if(m.phase)h+='<p class="tiny muted" style="text-align:center;margin:-2px 0 4px">'+esc(m.phase)+'</p>';
-      });
-      h+='</div>';
-    }
     if(isAdmin)h+='<button class="btn btn-blue" style="margin-top:10px" onclick="openManage(\''+esc(t.id)+'\')">Gérer</button>';
     h+='</div>';
   });
@@ -971,17 +1099,17 @@ function renderMatches(){
   TOURNAMENTS.forEach(function(t){
     if(t.matchs)t.matchs.forEach(function(m){all.push({tournament:t.name,phase:m.phase,home:m.home,away:m.away,hs:m.hs,as:m.as});});
   });
-  if(!all.length){c.innerHTML='<div class="empty">Aucun match pour le moment.</div>';return;}
+  if(!all.length){c.innerHTML='<div class="empty">Aucun match.</div>';return;}
   var h="";
   all.forEach(function(m){
     var hs=m.hs==null?"–":m.hs,as=m.as==null?"–":m.as;
-    h+='<div class="card"><div class="row tiny muted" style="margin-bottom:6px"><b>'+esc(m.tournament)+'</b><span>'+esc(m.phase||"")+'</span></div>';
-    h+='<div class="row" style="font-weight:800;font-size:14px"><span style="flex:1;text-align:right">'+esc(m.home)+'</span><span class="chip" style="min-width:56px;text-align:center;font-size:13px">'+hs+' - '+as+'</span><span style="flex:1">'+esc(m.away)+'</span></div></div>';
+    h+='<div class="card"><div class="row tiny muted"><b>'+esc(m.tournament)+'</b><span>'+esc(m.phase||"")+'</span></div>';
+    h+='<div class="row" style="font-weight:800;font-size:14px;margin-top:6px"><span style="flex:1;text-align:right">'+esc(m.home)+'</span><span class="chip" style="min-width:56px;text-align:center">'+hs+' - '+as+'</span><span style="flex:1">'+esc(m.away)+'</span></div></div>';
   });
   c.innerHTML=h;
 }
 window.tryCreateTournament = function(){
-  if(!isAdmin){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux créer un tournoi (2 500 FCFA)."),"_blank");return;}
+  if(!isAdmin){window.open("https://wa.me/"+WA+"?text=Tournoi","_blank");return;}
   tempTeams=[];
   ["tName","tCity","tStart","tEnd","tOrganizer","tContact"].forEach(function(id){$(id).value="";});
   $("tFormat").value="";$("createStatus").textContent="";
@@ -996,47 +1124,24 @@ window.addTeam = function(){
 window.removeTeam = function(i){tempTeams.splice(i,1);renderTempTeams();};
 function renderTempTeams(){
   var c=$("teamsList");
-  if(!tempTeams.length){c.innerHTML='<p class="tiny muted">Aucune équipe ajoutée.</p>';return;}
+  if(!tempTeams.length){c.innerHTML='<p class="tiny muted">Aucune équipe.</p>';return;}
   var h="";
   tempTeams.forEach(function(t,i){h+='<div class="team-pill"><span>'+esc(t)+'</span><button type="button" onclick="removeTeam('+i+')">&times;</button></div>';});
   c.innerHTML=h;
-}
-function generateMatches(teams,format){
-  var list=teams.slice();
-  for(var i=list.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=list[i];list[i]=list[j];list[j]=t;}
-  var matchs=[],k;
-  if(format==="elimination"||format==="aller-retour"){
-    var n=1;while(n<list.length)n*=2;
-    var padded=list.slice();while(padded.length<n)padded.push("BYE");
-    for(k=0;k<n;k+=2){
-      var a=padded[k],b=padded[k+1];
-      if(b==="BYE")matchs.push({phase:"Tour 1",home:a,away:"BYE",hs:null,as:null,bye:true});
-      else if(a==="BYE")matchs.push({phase:"Tour 1",home:b,away:"BYE",hs:null,as:null,bye:true});
-      else matchs.push({phase:"Tour 1",home:a,away:b,hs:null,as:null});
-    }
-  }else if(format==="poules+elimination"){
-    var half=Math.ceil(list.length/2);
-    var A=list.slice(0,half),B=list.slice(half);
-    for(var i1=0;i1<A.length;i1++)for(var j1=i1+1;j1<A.length;j1++)matchs.push({phase:"Poule A",home:A[i1],away:A[j1],hs:null,as:null});
-    for(var i2=0;i2<B.length;i2++)for(var j2=i2+1;j2<B.length;j2++)matchs.push({phase:"Poule B",home:B[i2],away:B[j2],hs:null,as:null});
-  }
-  return matchs;
 }
 window.saveTournament = async function(){
   var name=$("tName").value.trim(),city=$("tCity").value.trim();
   var start=$("tStart").value.trim(),end=$("tEnd").value.trim();
   var organizer=$("tOrganizer").value.trim(),contact=$("tContact").value.trim();
   var format=$("tFormat").value,st=$("createStatus");
-  if(!name||!city||!organizer||!format){st.textContent="Remplissez les champs obligatoires.";st.className="tiny alert alert-red";return;}
-  if(tempTeams.length<4){st.textContent="Ajoutez au moins 4 équipes.";st.className="tiny alert alert-red";return;}
-  var label=format==="elimination"?"Élimination directe":format==="aller-retour"?"Aller-retour":"Poules + Élimination";
-  var matchs=generateMatches(tempTeams,format);
+  if(!name||!city||!organizer||!format){st.textContent="Champs requis.";st.className="tiny alert alert-red";return;}
+  if(tempTeams.length<4){st.textContent="Au moins 4 équipes.";st.className="tiny alert alert-red";return;}
+  var label=format==="elimination"?"Élimination directe":"Poules + Élimination";
+  var matchs=[];
+  for(var i=0;i<tempTeams.length;i++)for(var j=i+1;j<tempTeams.length;j++)matchs.push({phase:"Phase",home:tempTeams[i],away:tempTeams[j],hs:null,as:null});
   st.textContent="Enregistrement…";st.className="tiny alert alert-blue";
   try{
-    await addDoc(collection(db,"tournaments"),{
-      name:name,city:city,start:start,end:end,organizer:organizer,contact:contact,
-      format:label,teams:tempTeams.slice(),matchs:matchs,createdAt:serverTimestamp()
-    });
+    await addDoc(collection(db,"tournaments"),{name:name,city:city,start:start,end:end,organizer:organizer,contact:contact,format:label,teams:tempTeams.slice(),matchs:matchs,createdAt:serverTimestamp()});
     st.textContent="✅ Tournoi publié !";st.className="tiny alert alert-green";
     setTimeout(function(){closeModal("createModal");},900);
   }catch(e){st.textContent="Erreur : "+e.message;st.className="tiny alert alert-red";}
@@ -1045,13 +1150,13 @@ window.openManage = function(id){
   var t=TOURNAMENTS.find(function(x){return x.id===id;});
   if(!t)return;
   $("manageTitle").textContent="Gérer : "+t.name;
-  var h='<p class="tiny muted" style="margin-bottom:8px">Saisis les scores.</p>';
+  var h='';
   (t.matchs||[]).forEach(function(m,i){
     var hs=m.hs==null?"":m.hs,as=m.as==null?"":m.as;
     h+='<div class="match"><p class="tiny" style="font-weight:800;color:#C8102E">'+esc(m.phase||"")+'</p>';
     h+='<div class="sc"><span class="tm r">'+esc(m.home)+'</span>';
     h+='<input type="number" min="0" value="'+esc(hs)+'" onchange="updateScore(\''+id+'\','+i+',\'hs\',this.value)">';
-    h+='<span style="color:#94a3b8">-</span>';
+    h+='<span>-</span>';
     h+='<input type="number" min="0" value="'+esc(as)+'" onchange="updateScore(\''+id+'\','+i+',\'as\',this.value)">';
     h+='<span class="tm">'+esc(m.away)+'</span></div></div>';
   });
@@ -1062,56 +1167,19 @@ window.updateScore = async function(id,mIdx,field,val){
   var t=TOURNAMENTS.find(function(x){return x.id===id;});
   if(!t||!t.matchs||!t.matchs[mIdx])return;
   t.matchs[mIdx][field]=val===""?null:Number(val);
-  try{await updateDoc(doc(db,"tournaments",id),{matchs:t.matchs});}
-  catch(e){alert("Erreur : "+e.message);}
+  try{await updateDoc(doc(db,"tournaments",id),{matchs:t.matchs});}catch(e){alert(e.message);}
 };
 window.deleteTournament = async function(id){
-  if(!confirm("Supprimer ce tournoi ?"))return;
-  try{
-    await deleteDoc(doc(db,"tournaments",id));
-    closeModal("manageModal");
-  }catch(e){alert("Erreur : "+e.message);}
+  if(!confirm("Supprimer ?"))return;
+  try{await deleteDoc(doc(db,"tournaments",id));closeModal("manageModal");}catch(e){alert(e.message);}
 };
 window.tryAddMatch = function(){
-  if(isAdmin){go("tournois");alert("Pour ajouter un match, ouvrez un tournoi puis cliquez sur Gérer.");}
-  else window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Bonjour, je veux créer un tournoi."),"_blank");
+  if(isAdmin){go("tournois");alert("Ouvrez un tournoi puis Gérer.");}
+  else window.open("https://wa.me/"+WA+"?text=Tournoi","_blank");
 };
 
-function renderCoaches(){
-  var c=$("coachesContainer");
-  if(!COACHES.length){c.innerHTML='<div class="empty">Aucun coach pour le moment.</div>';return;}
-  var h="";
-  COACHES.forEach(function(co){
-    h+='<div class="card"><div class="row"><h3 class="tblue">'+esc(co.name)+'</h3><span class="chip chip-green">Promu</span></div>';
-    h+='<p class="tiny tred" style="font-weight:800;margin-top:2px">'+esc(co.type)+'</p>';
-    h+='<p class="tiny muted" style="margin-top:4px">'+esc(co.city)+' • '+esc(co.phone)+'</p>';
-    h+='<p class="tiny" style="margin-top:8px;white-space:pre-line;background:#f8fafc;padding:10px;border-radius:8px">'+esc(co.bio)+'</p>';
-    h+='<a href="https://wa.me/'+esc(String(co.phone||"").replace(/[^0-9]/g,""))+'" target="_blank" rel="noopener" class="btn btn-green btn-full" style="margin-top:10px">Contacter sur WhatsApp</a></div>';
-  });
-  c.innerHTML=h;
-}
-
-function renderProducts(){
-  var g=$("productGrid");
-  if(!PRODUCTS.length){g.innerHTML='<div class="empty" style="grid-column:1/-1">Aucun produit.</div>';return;}
-  var h="";
-  PRODUCTS.forEach(function(p){
-    var img=p.image||("https://placehold.co/400x400/0066B3/FFFFFF?text="+encodeURIComponent(p.name));
-    h+='<div class="product"><img class="pimg" src="'+esc(img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x400/0066B3/FFFFFF?text=Produit\'">';
-    h+='<span class="cat">'+esc(p.category)+'</span><h4>'+esc(p.name)+'</h4><p>'+esc(p.description)+'</p>';
-    h+='<b>'+fmt(p.price)+' FCFA</b>';
-    h+='<button class="btn btn-blue" style="margin-top:8px" onclick="buy(\''+esc(p.id)+'\')">Commander</button></div>';
-  });
-  g.innerHTML=h;
-}
-window.buy = function(id){
-  var p=PRODUCTS.find(function(x){return x.id===id;});
-  if(!p)return;
-  var msg="Bonjour Rahim Football Tchad,\n\nJe souhaite commander :\n📦 "+p.name+"\n💰 "+fmt(p.price)+" FCFA\n\nMon nom : \nMon adresse : \n\nMerci !";
-  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
-};
-
-window.openAuth = function(){$("authStatus").textContent="";show("authModal");setTimeout(function(){$("authPassword").focus();},200);};
+// ========== AUTH ==========
+window.openAuth = function(){$("authStatus").textContent="";show("authModal");};
 $("authForm").addEventListener("submit", async function(e){
   e.preventDefault();
   var email=$("authEmail").value.trim().toLowerCase();
@@ -1123,95 +1191,89 @@ $("authForm").addEventListener("submit", async function(e){
     st.textContent="✅ Connexion réussie.";st.className="tiny alert alert-green";
     setTimeout(function(){closeModal("authModal");},700);
   }catch(err){
-    var msg="Identifiants incorrects.";
-    if(err.code==="auth/invalid-credential") msg="Email ou mot de passe incorrect.";
-    if(err.code==="auth/too-many-requests") msg="Trop de tentatives. Réessaie plus tard.";
-    if(err.code==="auth/network-request-failed") msg="Problème de connexion internet.";
-    if(err.code==="auth/unauthorized-domain") msg="Ce domaine n'est pas autorisé dans Firebase.";
-    st.textContent="❌ "+msg;st.className="tiny alert alert-red";
+    st.textContent="❌ Identifiants incorrects.";st.className="tiny alert alert-red";
   }
 });
 window.logout = async function(){
-  if(!confirm("Se déconnecter ?"))return;
-  try{await signOut(auth);alert("Déconnecté.");}catch(e){alert("Erreur : "+e.message);}
+  if(!confirm("Déconnexion ?"))return;
+  try{await signOut(auth);alert("Déconnecté.");}catch(e){alert(e.message);}
 };
 function updateAuthUI(){
   var btn=$("authBtn");
+  var adminBtns = ["newArticleBtn","createTournamentBtn","addCoachBtn","addProductBtn","addLegendBtn"];
   if(isAdmin){
     btn.textContent="Admin ✓";btn.className="btn btn-admin";
     $("adminPanel").style.display="block";
-    var nb=$("newArticleBtn"); if(nb) nb.classList.remove("hidden");
-    var cb=$("createTournamentBtn"); if(cb) cb.classList.remove("hidden");
+    adminBtns.forEach(function(id){ var el=$(id); if(el) el.classList.remove("hidden"); });
   }else{
     btn.textContent="Admin";btn.className="btn btn-ghost";
     $("adminPanel").style.display="none";
-    var nb2=$("newArticleBtn"); if(nb2) nb2.classList.add("hidden");
-    var cb2=$("createTournamentBtn"); if(cb2) cb2.classList.add("hidden");
+    adminBtns.forEach(function(id){ var el=$(id); if(el) el.classList.add("hidden"); });
   }
-  renderTournaments();
+  renderTournaments(); renderCoaches(); renderProducts(); renderLegends(); renderArticles();
 }
-onAuthStateChanged(auth, function(user){
-  isAdmin = !!user;
-  updateAuthUI();
-});
+onAuthStateChanged(auth, function(user){ isAdmin=!!user; updateAuthUI(); });
 
+// ========== SEED ==========
 window.seedData = async function(){
-  if(!isAdmin){alert("Connecte-toi d'abord.");return;}
-  var st=$("adminMsg");
-  if(!confirm("Charger les données de démonstration dans Firebase ?"))return;
-  st.textContent="Chargement…";
-  var seedArticles=[
-    {title:"Aiglons FC sacré champion du Championnat National 2025-2026",category:"LINAFOOT",date:"Octobre 2026",image:"https://placehold.co/800x400/0066B3/FFFFFF?text=Aiglons+FC+Champion",excerpt:"Le club de N'Djamena remporte le titre après une saison maîtrisée.",content:"Après 22 journées disputées, les Aiglons FC de N'Djamena ont été sacrés champions du Championnat National LINAFOOT.\n\nLe club a su garder la tête du classement tout au long de la saison."},
-    {title:"Le Tournoi U13 de Rahim Football Tchad revient en décembre",category:"Jeunes",date:"Octobre 2026",image:"https://placehold.co/800x400/FECB00/0f172a?text=Tournoi+U13",excerpt:"Les centres de formation sont invités à s'inscrire.",content:"Rahim Football Tchad organise un grand tournoi U13 du 15 au 24 décembre 2026.\n\nInscriptions : 25 000 FCFA par équipe."},
-    {title:"La FTFA crée une ligue féminine de football au Tchad",category:"Féminin",date:"Septembre 2026",image:"https://placehold.co/800x400/ec4899/FFFFFF?text=Foot+Feminin",excerpt:"Une avancée historique sous la présidence de Tahir Oloy Hassan.",content:"La Fédération Tchadienne de Football Association a annoncé la création d'une ligue féminine nationale."}
+  if(!isAdmin){alert("Connecte-toi.");return;}
+  if(!confirm("Charger démo ?"))return;
+  var st=$("adminMsg"); st.textContent="Chargement…";
+  var seedA=[
+    {title:"Aiglons FC sacré champion 2025-2026",category:"LINAFOOT",date:"Octobre 2026",excerpt:"Le club de N'Djamena remporte le titre.",content:"Après 22 journées, les Aiglons FC ont été sacrés champions."},
+    {title:"Le Tournoi U13 revient en décembre",category:"Jeunes",date:"Octobre 2026",excerpt:"Les centres sont invités à s'inscrire.",content:"Tournoi U13 du 15 au 24 décembre 2026."}
   ];
-  var seedProducts=[
-    {name:"Maillot Tchad",price:5000,category:"Maillots",description:"Maillot équipe nationale domicile",image:"https://placehold.co/400x400/0066B3/FFFFFF?text=Maillot+Tchad"},
-    {name:"Chaussures Nike",price:12000,category:"Chaussures",description:"Crampons pro terrain naturel",image:"https://placehold.co/400x400/111827/FFFFFF?text=Chaussures"},
-    {name:"Short Tchad",price:2500,category:"Maillots",description:"Short bleu équipe nationale",image:"https://placehold.co/400x400/0066B3/FFFFFF?text=Short"},
-    {name:"Gants gardien",price:4500,category:"Équipement",description:"Gants pro taille L",image:"https://placehold.co/400x400/FECB00/0f172a?text=Gants"},
-    {name:"Protège-tibias",price:2000,category:"Équipement",description:"Protection match",image:"https://placehold.co/400x400/C8102E/FFFFFF?text=Tibias"}
+  var seedP=[
+    {name:"Maillot Tchad",price:5000,category:"Maillots",description:"Maillot domicile"},
+    {name:"Chaussures Nike",price:12000,category:"Chaussures",description:"Crampons pro"},
+    {name:"Short Tchad",price:2500,category:"Maillots",description:"Short bleu"}
   ];
-  var seedCoaches=[
-    {name:"ABDARRAHIM HASSAN MAHAMAT",type:"Coach & Formateur",city:"N'Djamena",phone:"+235 62 49 61 76",bio:"Entraîneur et formateur de football.\n\nPilier du Centre de Formation EL-NOURY depuis 2016 (10 ans d'engagement).\n\nSpécialiste de la pré-formation, post-formation et du développement individuel et tactique des jeunes talents."}
+  var seedC=[
+    {name:"ABDARRAHIM HASSAN MAHAMAT",type:"Coach & Formateur",city:"N'Djamena",phone:"+235 62 49 61 76",bio:"Entraîneur et formateur.\nPilier du Centre EL-NOURY depuis 2016."}
+  ];
+  var seedL=[
+    {name:"Nambatingue Toko",poste:"Attaquant",clubs:"PSG, Racing, Nice",bio:"Premier buteur du PSG en Coupe d'Europe (1982)."},
+    {name:"Japhet N'Doram",poste:"Attaquant",clubs:"FC Nantes, AS Monaco",bio:"Champion de France 1995. 72 buts en 8 saisons."},
+    {name:"Hassan Boudina",poste:"Attaquant",clubs:"Foullah Edifice, Gazelle",bio:"Meilleur buteur LINAFOOT 2013."},
+    {name:"Marius Mouandilmadji",poste:"Avant-centre",clubs:"Porto B, Samsunspor, Olympiacos",bio:"Meilleur buteur UEFA Conference League 2026."}
   ];
   try{
-    for(var a of seedArticles){a.slug=slug(a.title)+"-"+Date.now().toString(36);await addDoc(collection(db,"articles"),{...a,createdAt:serverTimestamp()});}
-    for(var p of seedProducts){await addDoc(collection(db,"products"),p);}
-    for(var c of seedCoaches){await addDoc(collection(db,"coaches"),c);}
+    for(var a of seedA){a.slug=slug(a.title)+"-"+Date.now().toString(36);await addDoc(collection(db,"articles"),{...a,createdAt:serverTimestamp()});}
+    for(var p of seedP){await addDoc(collection(db,"products"),p);}
+    for(var c of seedC){await addDoc(collection(db,"coaches"),c);}
+    for(var l of seedL){await addDoc(collection(db,"legends"),l);}
     st.textContent="✅ Données chargées !";st.style.color="#10b981";
   }catch(e){st.textContent="Erreur : "+e.message;st.style.color="#ef4444";}
 };
 
+// ========== LISTENERS ==========
 function listenCollection(name, setter, sortField){
   var q = sortField ? query(collection(db,name), orderBy(sortField,"desc")) : collection(db,name);
   onSnapshot(q, function(snap){
-    var arr=[];
-    snap.forEach(function(d){var o=d.data();o.id=d.id;arr.push(o);});
+    var arr=[];snap.forEach(function(d){var o=d.data();o.id=d.id;arr.push(o);});
     setter(arr);
   }, function(err){
-    console.error(name, err);
     if(sortField){
       onSnapshot(collection(db,name), function(snap){
-        var arr=[];
-        snap.forEach(function(d){var o=d.data();o.id=d.id;arr.push(o);});
+        var arr=[];snap.forEach(function(d){var o=d.data();o.id=d.id;arr.push(o);});
         setter(arr);
       });
     }
   });
 }
-listenCollection("articles", function(arr){ARTICLES=arr;renderArticles();}, "createdAt");
-listenCollection("tournaments", function(arr){TOURNAMENTS=arr;renderTournaments();renderMatches();renderStats();}, "createdAt");
-listenCollection("coaches", function(arr){COACHES=arr;renderCoaches();});
-listenCollection("products", function(arr){PRODUCTS=arr;renderProducts();});
+listenCollection("articles", function(a){ARTICLES=a;renderArticles();}, "createdAt");
+listenCollection("tournaments", function(a){TOURNAMENTS=a;renderTournaments();renderMatches();renderStats();}, "createdAt");
+listenCollection("coaches", function(a){COACHES=a;renderCoaches();}, "createdAt");
+listenCollection("products", function(a){PRODUCTS=a;renderProducts();}, "createdAt");
+listenCollection("legends", function(a){LEGENDS=a;renderLegends();}, "createdAt");
 
 function init(){
   $("year").textContent=new Date().getFullYear();
   updateAuthUI();
-  renderAllLegendsAndSquad();
-  console.log("Rahim Football Tchad 🇹🇩 — Firebase + légendes + LINAFOOT + hero Tchad.");
+  renderTeamSelector();
+  console.log("Rahim Football Tchad — v5 avec ImgBB");
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 </script>
 </body>
-        </html>
+  </html>
