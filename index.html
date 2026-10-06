@@ -120,7 +120,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 .badge-blue{background:#dbeafe;color:#1e40af}
 .badge-red{background:#fee2e2;color:#991b1b}
 .badge-gold{background:#fef3c7;color:#78350f}
-.credit{font-size:10px;color:#94a3b8;font-style:italic;text-align:right;margin-top:8px}
 /* --- SECTION U13 --- */
 .u13-card{border:2px solid #FECB00;background:linear-gradient(135deg,#fffbeb,#fff);border-radius:16px;padding:16px;margin-top:14px}
 .u13-card h3{color:#8a6500;font-size:15px;font-weight:900;margin-bottom:8px}
@@ -129,6 +128,9 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 .u13-card .criteria li:last-child{border-bottom:none}
 .u13-card .criteria li::before{content:"✓";position:absolute;left:0;color:#22c55e;font-weight:900}
 .u13-card .criteria li strong{color:#78350f}
+.u13-card .criteria ul{list-style:none;padding-left:8px;margin:6px 0 0 0;border-left:2px solid #fcd34d}
+.u13-card .criteria ul li{font-size:11px;padding:3px 0 3px 12px;border-bottom:none;color:#475569}
+.u13-card .criteria ul li::before{content:"•";color:#FECB00}
 .u13-fee{background:#fef3c7;border-radius:10px;padding:12px;margin-top:12px;text-align:center}
 .u13-fee b{font-size:18px;color:#78350f;display:block}
 .u13-fee span{font-size:11px;color:#92400e}
@@ -181,7 +183,7 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 <section id="sec-competitions" class="tab hidden">
   <div class="section-head"><h2>🏆 Compétitions & Calendrier</h2></div>
 
-  <!-- 1. CHAMPIONNAT NATIONAL LINAFOOT (Le plus important) -->
+  <!-- 1. CHAMPIONNAT NATIONAL LINAFOOT -->
   <div class="card" style="border-left:4px solid #0066B3">
     <div class="row">
       <h3>🇹🇩 Championnat National LINAFOOT</h3>
@@ -279,7 +281,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
     </div>
   </div>
 
-  <!-- PROCHAINS RENDEZ-VOUS -->
   <div class="alert alert-amber" style="margin-top:14px">
     <h4>📅 Prochains rendez-vous</h4>
     <ul style="list-style:none;padding:0;margin:8px 0 0 0">
@@ -332,7 +333,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
           <li>Formation de 4 instructeurs CAF, 23 arbitres d'élite, 200 stadiers</li>
           <li>Relance du Championnat national avec 12 clubs et 66 matchs en 11 journées</li>
         </ul>
-        <p class="credit">📷 Crédit photo : Marcel H Photography 33</p>
       </div>
     </div>
 
@@ -376,19 +376,24 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 
   <div class="u13-card">
     <h3>🏆 Tournoi des Centres de Formation U13</h3>
-    <p class="tiny" style="color:#78350f;margin-bottom:10px">Organisé par Rahim Football Tchad • Ouvert à tous les centres de formation et écoles de football remplissant les critères</p>
+    <p class="tiny" style="color:#78350f;margin-bottom:10px">Organisé par Rahim Football Tchad • Ouvert à tous les centres de formation et écoles de football</p>
 
     <div class="alert alert-green" style="margin-top:0;margin-bottom:12px">
-      <h4>📋 Critères de participation</h4>
+      <h4>📋 Conditions de participation (simples)</h4>
       <ul class="criteria">
-        <li><strong>Respect des 10 lois fondamentales du football :</strong> terrain, ballon, nombre de joueurs, équipement, arbitre, durée du match, coup d'envoi, ballon en jeu/hors-jeu, fautes et incorrections</li>
-        <li><strong>Statuts et règlements du centre :</strong> être une structure agréée par le Ministère des Sports, disposer d'un règlement intérieur et de contrats de formation pour les jeunes</li>
-        <li><strong>Effectif :</strong> disposer d'un effectif suffisant de joueurs nés entre 2013 et 2014 (catégorie U13)</li>
-        <li><strong>Encadrement :</strong> avoir au moins un éducateur diplômé CAF ou FAF</li>
-        <li><strong>Infrastructures minimales :</strong> disposer d'un terrain d'entraînement praticable</li>
-        <li><strong>Certificats médicaux :</strong> chaque joueur doit fournir une aptitude médicale à la pratique du football</li>
-        <li><strong>Autorisation parentale :</strong> pour tous les joueurs mineurs</li>
-        <li><strong>Assurance :</strong> le centre doit couvrir ses joueurs</li>
+        <li><strong>Nom et lieu du centre :</strong> indiquez le nom exact de votre centre et sa ville/localisation</li>
+        <li><strong>Effectif :</strong> 18 à 23 joueurs nés en 2013-2014 (catégorie U13)</li>
+        <li><strong>Tenues :</strong> prévoir <strong>deux jeux de maillots de couleurs différentes</strong> + dossards pour les remplaçants</li>
+        <li><strong>Encadrement :</strong> un responsable du centre présent sur le banc pendant les matchs</li>
+        <li><strong>Respect des 5 lois fondamentales du football :</strong>
+          <ul style="margin-top:6px">
+            <li><strong>Terrain :</strong> dimensions adaptées U13 (30 x 50 m environ)</li>
+            <li><strong>Ballon :</strong> taille 4</li>
+            <li><strong>Nombre de joueurs :</strong> 7 contre 7 ou 8 contre 8</li>
+            <li><strong>Tenue correcte :</strong> maillot + short + chaussettes + protège-tibias</li>
+            <li><strong>Durée du match :</strong> 2 × 25 minutes</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
@@ -399,14 +404,14 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
     </div>
 
     <div class="alert alert-amber" style="margin-top:12px">
-      <h4>📝 Inscriptions ouvertes</h4>
-      <p>Pour inscrire votre centre ou école de football, contactez-nous sur WhatsApp avec :</p>
-      <ul style="list-style:none;padding:0;margin:6px 0 0 0">
-        <li class="tiny" style="padding:3px 0">✓ Nom du centre</li>
-        <li class="tiny" style="padding:3px 0">✓ Nom du responsable</li>
-        <li class="tiny" style="padding:3px 0">✓ Liste des 18 joueurs U13</li>
-        <li class="tiny" style="padding:3px 0">✓ Copie de l'agrément du centre</li>
-      </ul>
+      <h4>📝 Inscription en 3 étapes</h4>
+      <p style="margin-bottom:8px">Pour inscrire votre centre, envoyez simplement sur WhatsApp :</p>
+      <ol style="padding-left:18px;margin:6px 0 0 0;font-size:12px;color:#78350f">
+        <li style="padding:3px 0"><b>Nom du centre + ville</b></li>
+        <li style="padding:3px 0"><b>Effectif</b> (nombre de joueurs U13)</li>
+        <li style="padding:3px 0"><b>Nom du responsable</b> + son numéro de téléphone</li>
+      </ol>
+      <p class="tiny" style="margin-top:8px;font-style:italic">Aucun dossier papier compliqué. Le certificat médical et l'autorisation parentale seront demandés plus tard, seulement si votre équipe est retenue.</p>
       <a href="https://wa.me/23562496176?text=Je%20veux%20inscrire%20mon%20centre%20au%20Tournoi%20U13" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">S'inscrire sur WhatsApp</a>
     </div>
   </div>
@@ -414,7 +419,7 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
   <div class="card" style="margin-top:14px;border-left:4px solid #FECB00">
     <h3>📅 Calendrier prévisionnel du Tournoi U13</h3>
     <div class="divider">
-      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Phase d'inscription</span><b class="tiny">Jusqu'au 30 novembre 2026</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Inscriptions ouvertes</span><b class="tiny">Jusqu'au 30 novembre 2026</b></div>
       <div class="row" style="margin-bottom:6px"><span class="tiny muted">Tirage au sort</span><b class="tiny">5 décembre 2026</b></div>
       <div class="row" style="margin-bottom:6px"><span class="tiny muted">Phase de poules</span><b class="tiny">15-20 décembre 2026</b></div>
       <div class="row" style="margin-bottom:6px"><span class="tiny muted">Demi-finales</span><b class="tiny">22 décembre 2026</b></div>
