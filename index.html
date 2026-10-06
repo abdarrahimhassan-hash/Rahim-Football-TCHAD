@@ -11,26 +11,18 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- ====== PWA ====== -->
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="RFT">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- ====== GOOGLE ANALYTICS 4 ====== -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8E421SPXJ2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', 'G-8E421SPXJ2', {
-    page_title: document.title,
-    page_location: window.location.href
-  });
+  gtag('config', 'G-8E421SPXJ2', { page_title: document.title, page_location: window.location.href });
 </script>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f1f5f9;--card:#fff;--txt:#0f172a;--muted:#64748b;--border:#e2e8f0;--primary:#0066B3;--red:#C8102E;--yellow:#FECB00}
@@ -53,7 +45,6 @@ header{position:sticky;top:0;z-index:40;background:var(--card);box-shadow:0 1px 
 .btn{display:inline-block;padding:8px 12px;border-radius:8px;font-weight:800;font-size:12px;text-align:center;cursor:pointer;border:none}
 .btn-ghost{background:#eff6ff;color:#0066B3;border:1px solid #bfdbfe}
 .btn-admin{background:#10b981;color:#fff}
-.btn-wa{background:#FECB00;color:#0f172a}
 .btn-blue{background:#0066B3;color:#fff}
 .btn-red{background:#C8102E;color:#fff}
 .btn-green{background:#25D366;color:#fff}
@@ -76,9 +67,7 @@ header{position:sticky;top:0;z-index:40;background:var(--card);box-shadow:0 1px 
 .tiny{font-size:11px}
 .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .chip{display:inline-block;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;background:#eff6ff;color:#0066B3}
-.chip-red{background:#fee2e2;color:#C8102E}
 .chip-green{background:#dcfce7;color:#15803d}
-.chip-gold{background:#fef3c7;color:#78350f}
 .divider{border-top:1px solid var(--border);margin-top:10px;padding-top:10px}
 .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
 .section-head h2{font-size:18px;font-weight:900}
@@ -104,11 +93,8 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);margin
 .image-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .image-upload .icon{font-size:32px;line-height:1}
 .image-upload .txt{font-size:12px;font-weight:800;color:#0066B3;margin-top:6px}
-.image-upload .sub{font-size:10px;color:var(--muted);margin-top:2px}
 .image-upload.uploading{background:#fef3c7;border-color:#fcd34d}
 .image-preview{width:100%;max-height:220px;object-fit:cover;border-radius:10px;margin-bottom:8px;border:1px solid var(--border)}
-.team-pill{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
-.team-pill button{color:#ef4444;font-size:16px;padding:0 4px}
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:640px){.products{grid-template-columns:repeat(3,1fr)}}
 .product{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;display:flex;flex-direction:column;position:relative}
@@ -120,8 +106,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);margin
 .biz{display:grid;grid-template-columns:1fr;gap:10px}
 @media(min-width:640px){.biz{grid-template-columns:1fr 1fr}}
 .alert{border-radius:12px;padding:12px;font-size:13px;margin-top:10px}
-.alert-amber{background:#fef3c7;border:1px solid #fcd34d;color:#78350f}
-.alert-blue{background:#dbeafe;border:1px solid #93c5fd;color:#1e3a8a}
 .alert-green{background:#dcfce7;border:1px solid #86efac;color:#166534}
 .alert-red{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}
 .empty{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:24px;text-align:center;color:#94a3b8;font-size:13px}
@@ -132,12 +116,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);margin
 .landing-section p.landing-lead{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.65;max-width:640px}
 .grid-3{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
 @media(min-width:640px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-.mini-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
-.mini-card .ic{font-size:28px;line-height:1}
-.mini-card h3{font-size:15px;font-weight:900;margin-top:8px}
-.mini-card p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-.mini-card .tag{font-size:11px;font-weight:900;color:#0066B3;margin-top:10px}
-.mini-card .tag.red{color:#C8102E}
 .landing-cta{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:10px;background:#0066B3;color:#fff;font-weight:800;font-size:12px;cursor:pointer;border:none}
 .talent-section{background:linear-gradient(135deg,#0066B3,#034d82);border-radius:20px;padding:22px;color:#fff;margin:16px 0}
 .talent-section .kicker{color:#FECB00}
@@ -148,14 +126,12 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);margin
 .glass-card h3{font-size:14px;font-weight:900;color:#fff;margin-top:8px}
 .glass-card p{font-size:11px;color:#dbeafe;margin-top:4px;line-height:1.5}
 .facebook-banner{background:#1877F2;border-radius:20px;padding:22px;color:#fff;margin:16px 0;position:relative;overflow:hidden}
-.facebook-banner::before{content:"";position:absolute;top:-50px;right:-50px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.10)}
 .facebook-banner h2{color:#fff;font-size:20px;font-weight:900;margin-top:8px;position:relative}
 .facebook-banner p{color:#dbeafe;font-size:12px;margin-top:6px;position:relative}
 .facebook-banner .btn-fb{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;background:#fff;color:#1877F2;font-weight:900;font-size:12px;position:relative}
 .contact-section{background:#0f172a;color:#fff;border-radius:20px;padding:22px;margin:16px 0}
 .contact-section .kicker{color:#FECB00}
 .contact-section h2.landing-title{color:#fff;font-size:21px;font-weight:900;margin-top:6px}
-.contact-section p.landing-lead{color:#94a3b8;font-size:13px;margin-top:8px}
 .contact-section .btn-wa2{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:10px;background:#25D366;color:#fff;font-weight:900;font-size:12px}
 .contact-section .btn-fb2{display:inline-block;margin-top:14px;margin-left:8px;padding:10px 14px;border-radius:10px;background:#1877F2;color:#fff;font-weight:900;font-size:12px}
 footer.rf-footer{background:#000;color:#94a3b8;padding:22px 12px;margin-top:20px;text-align:center;font-size:12px}
@@ -171,7 +147,6 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .share-btn.wa{background:#dcfce7;color:#166534}
 .share-btn.fb{background:#dbeafe;color:#1e40af}
 .share-btn.tg{background:#dbeafe;color:#0369a1}
-.share-btn.tw{background:#e5e7eb;color:#0f172a}
 .share-btn.del{background:#fee2e2;color:#991b1b}
 .article-full{background:var(--card);border-radius:16px;padding:18px}
 .article-full h1{font-size:22px;font-weight:900;line-height:1.2;margin-bottom:8px}
@@ -184,32 +159,27 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .comment-item{background:var(--bg);border-radius:10px;padding:10px;margin-bottom:8px}
 .comment-item b{font-size:12px;font-weight:900;color:#0066B3}
 .comment-item p{font-size:12px;color:var(--txt);margin-top:4px}
-.comment-item span{font-size:10px;color:var(--muted)}
 .partners{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 @media(min-width:640px){.partners{grid-template-columns:repeat(4,1fr)}}
 .partner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;font-weight:900;font-size:12px;color:#0066B3}
 .partner .pclub-logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0066B3,#C8102E);margin:0 auto 6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px}
 .inst-banner{background:linear-gradient(135deg,#003d73,#0066B3);border-radius:20px;padding:20px;color:#fff;margin-bottom:14px}
 .inst-banner .ftfa-logo{width:70px;height:70px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0066B3;text-align:center;border:3px solid #FECB00;flex-shrink:0;overflow:hidden}
-.inst-banner .ftfa-logo img{width:100%;height:100%;object-fit:contain;padding:4px}
 .inst-officials{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:640px){.inst-officials{grid-template-columns:1fr 1fr}}
 .official-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative}
 .official-head{padding:16px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--border)}
 .official-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#0066B3,#034d82);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;flex-shrink:0;overflow:hidden;border:2px solid #FECB00}
-.official-avatar img{width:100%;height:100%;object-fit:cover}
 .official-head h3{font-size:14px;font-weight:900;line-height:1.2}
 .official-head .role{font-size:10px;font-weight:800;color:#C8102E;margin-top:2px}
 .official-head .org{font-size:10px;color:var(--muted);margin-top:1px}
 .official-body{padding:14px}
-.official-body h4{font-size:11px;font-weight:900;color:#0066B3;text-transform:uppercase;margin-bottom:6px}
 .official-body ul{list-style:none;padding:0;margin:0}
-.official-body li{font-size:12px;color:var(--txt);padding:5px 0 5px 16px;position:relative;line-height:1.35}
+.official-body li{font-size:12px;padding:5px 0 5px 16px;position:relative}
 .official-body li::before{content:"▸";position:absolute;left:0;color:#FECB00;font-weight:900}
 .official-body .bio{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;white-space:pre-line}
 .badge-inst{display:inline-block;font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:6px}
 .badge-blue{background:#dbeafe;color:#1e40af}
-.badge-gold{background:#fef3c7;color:#78350f}
 .legend-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
 @media(min-width:640px){.legend-grid{grid-template-columns:1fr 1fr}}
 .legend-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative}
@@ -227,21 +197,14 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 @media(min-width:640px){.squad-list{grid-template-columns:1fr 1fr}}
 .player-row{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:10px;padding:10px;border:1px solid var(--border)}
 .player-row .pnum{width:32px;height:32px;border-radius:50%;background:#0066B3;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;flex-shrink:0}
-.player-row .pinfo{flex:1;min-width:0}
 .player-row .pinfo b{font-size:13px;font-weight:800;display:block}
 .player-row .pinfo span{font-size:10px;color:var(--muted);font-weight:700}
-.edit-btn{position:absolute;top:8px;right:8px;background:#10b981;color:#fff;font-size:10px;font-weight:900;padding:5px 10px;border-radius:999px;cursor:pointer;border:none;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.about-hero{background:linear-gradient(135deg,#003d73,#0066B3,#034d82);border-radius:20px;padding:26px 22px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.edit-btn{position:absolute;top:8px;right:8px;background:#10b981;color:#fff;font-size:10px;font-weight:900;padding:5px 10px;border-radius:999px;cursor:pointer;border:none;z-index:5}
+.about-hero{background:linear-gradient(135deg,#003d73,#0066B3,#034d82);border-radius:20px;padding:26px 22px;color:#fff;text-align:center}
 .about-avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#FECB00,#C8102E);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:42px;color:#fff;margin:0 auto 14px;border:4px solid #FECB00}
 .cv-section{background:var(--card);border-radius:16px;padding:18px;margin-top:14px}
 .cv-section h2{font-size:18px;font-weight:900;color:#0066B3;margin-bottom:10px}
-.cv-section h3{font-size:14px;font-weight:900;margin-top:16px;margin-bottom:8px;padding-left:8px;border-left:3px solid #FECB00}
 .cv-section p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px}
-.cv-section ul{list-style:none;padding:0;margin:6px 0}
-.cv-section li{font-size:12px;color:var(--txt);padding:6px 0 6px 20px;position:relative}
-.cv-section li::before{content:"▸";position:absolute;left:0;color:#C8102E;font-weight:900}
-.why-section{background:linear-gradient(135deg,#C8102E,#991b1b);border-radius:16px;padding:22px;color:#fff;margin-top:16px}
-.why-section p{font-size:13px;line-height:1.75;color:#fee2e2;margin-bottom:10px}
 .charte-section{background:#0f172a;border-radius:16px;padding:22px;color:#fff;margin-top:16px}
 .charte-section h2{font-size:20px;font-weight:900;color:#FECB00;margin-bottom:14px}
 .charte-item{background:rgba(255,255,255,.06);border-left:3px solid #25D366;border-radius:10px;padding:14px;margin-bottom:10px}
@@ -317,10 +280,6 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 .pub-banner{background:linear-gradient(135deg,#003d73,#0066B3);border-radius:12px;padding:14px;color:#fff;text-align:center;margin:14px 0;position:relative}
 .pub-banner .plabel{position:absolute;top:6px;left:8px;font-size:8px;color:rgba(255,255,255,.6);font-weight:800}
 .pub-banner a{display:inline-block;margin-top:8px;padding:6px 14px;background:#FECB00;color:#0f172a;border-radius:8px;font-weight:900;font-size:11px}
-.team-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
-@media(min-width:640px){.team-grid{grid-template-columns:1fr 1fr 1fr}}
-.team-member{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
-.team-member .tavatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#0066B3,#034d82);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;margin:0 auto 10px;border:3px solid #FECB00}
 .legal-section{background:var(--card);border-radius:16px;padding:18px;margin-top:14px}
 .legal-section h2{font-size:17px;font-weight:900;color:#0066B3;margin-bottom:10px}
 .legal-section p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px}
@@ -345,7 +304,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
       <div class="logo">R</div>
       <div class="brand">
         <h1>Rahim Football <span class="tred">Tchad</span></h1>
-        <p data-i18n="tagline">La plateforme du football tchadien</p>
+        <p>La plateforme du football tchadien</p>
       </div>
     </div>
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
@@ -356,127 +315,133 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
       </select>
       <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
       <a href="https://wa.me/23562496176" class="wa-number">📱 +235 62 49 61 76</a>
-      <button id="authBtn" class="btn btn-ghost" onclick="openAuth()" data-i18n="admin">Admin</button>
+      <button id="authBtn" class="btn btn-ghost" onclick="openAuth()">Admin</button>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
-<!-- ACCUEIL -->
 <section id="sec-accueil" class="tab">
   <div class="hero">
-    <span class="badge" data-i18n="hero_badge">🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
-    <h2 data-i18n="hero_title">Tout le football tchadien,<br><span>dans ta poche.</span></h2>
-    <p data-i18n="hero_sub">Classements, résultats, tournois, clubs, légendes et talents.</p>
+    <span class="badge">🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD</span>
+    <h2>Tout le football tchadien,<br><span>dans ta poche.</span></h2>
+    <p>Classements, résultats, tournois, clubs, légendes et talents.</p>
     <div class="hero-actions">
-      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('classement')" data-i18n="btn_classement">🏆 Classement</button>
-      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('actus')" data-i18n="btn_actus">📰 Actus</button>
-      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('calendrier')" data-i18n="btn_calendrier">📅 Calendrier</button>
-      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('offres')" data-i18n="btn_offres">💰 Offres</button>
+      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('classement')">🏆 Classement</button>
+      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('actus')">📰 Actus</button>
+      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('calendrier')">📅 Calendrier</button>
+      <button class="btn" style="background:#FECB00;color:#0f172a" onclick="go('offres')">💰 Offres</button>
     </div>
   </div>
 
   <div class="stats">
-    <div class="stat"><b class="tblue" id="stClubs">0</b><span data-i18n="stat_teams">ÉQUIPES</span></div>
-    <div class="stat"><b class="tred" id="stMatchs">0</b><span data-i18n="stat_matches">MATCHS</span></div>
-    <div class="stat"><b style="color:#8a6500" id="stTournois">0</b><span data-i18n="stat_tournaments">TOURNOIS</span></div>
+    <div class="stat"><b class="tblue" id="stClubs">0</b><span>ÉQUIPES</span></div>
+    <div class="stat"><b class="tred" id="stMatchs">0</b><span>MATCHS</span></div>
+    <div class="stat"><b style="color:#8a6500" id="stTournois">0</b><span>TOURNOIS</span></div>
   </div>
 
   <div class="stat-visits" style="margin-top:10px">
     <b id="visitCount">—</b>
-    <span data-i18n="visits_label">👁️ VISITES UNIQUES</span>
+    <span>👁️ VISITES UNIQUES</span>
   </div>
 
   <div class="pub-banner">
-    <span class="plabel" data-i18n="pub_label">ESPACE PUBLICITÉ</span>
-    <h4 data-i18n="pub_title">🚀 Voulez-vous apparaître ici ?</h4>
-    <p data-i18n="pub_desc">Bannière sponsorisée à partir de 15 000 FCFA / mois</p>
-    <a href="https://wa.me/23562496176?text=Publicit%C3%A9" target="_blank" data-i18n="pub_btn">Réserver</a>
+    <span class="plabel">ESPACE PUBLICITÉ</span>
+    <h4>🚀 Voulez-vous apparaître ici ?</h4>
+    <p>Bannière sponsorisée à partir de 15 000 FCFA / mois</p>
+    <a href="https://wa.me/23562496176?text=Publicit%C3%A9" target="_blank">Réserver</a>
   </div>
 
   <div class="newsletter-box">
     <div style="font-size:32px">📲</div>
-    <h2 data-i18n="wa_title">Rejoins la communauté WhatsApp</h2>
-    <p data-i18n="wa_desc">Résultats, classements et actus gratuitement sur ton téléphone.</p>
-    <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" class="btn-join" data-i18n="wa_btn">📱 S'abonner au canal →</a>
+    <h2>Rejoins la communauté WhatsApp</h2>
+    <p>Résultats, classements et actus gratuitement sur ton téléphone.</p>
+    <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" class="btn-join">📱 S'abonner au canal →</a>
   </div>
 
-  <!-- NEWSLETTER EMAIL BREVO -->
+  <!-- NEWSLETTER AUTOMATIQUE — FORMULAIRE BREVO -->
   <div class="newsletter-box" style="background:linear-gradient(135deg,#0066B3,#034d82);margin-top:14px">
     <div style="font-size:32px">📧</div>
     <h2>Reçois l'actu chaque semaine</h2>
     <p>Résultats, classements, transferts — directement par email.</p>
-    <form id="nlForm" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px">
-      <input id="nlEmail" type="email" required placeholder="ton@email.com"
+    <form id="nlForm"
+          action="https://efb07f58.sibforms.com/serve/MUIFANCRcMy2TmNT4kL1EL4ZPuN3fVGrV-baikPJqNUIPf9xeUj_azPFL7Cntp7iJRPS-A7tE7iym8j8FsAx8q4R2t8FAopQf0xvKL8wrJIWkZJnats7j-2lyENaalQoufn7xzg5OR81Wi2Sr2KZkspVzE1VYvK6xc8VgE46YutkFccZLvwVYPXaLlatT8hpCIrzJhx4wtjdEuoy2w=="
+          method="POST"
+          target="brevoFrame"
+          style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+      <input name="EMAIL" type="email" required placeholder="ton@email.com"
              style="flex:1;min-width:200px;padding:12px;border:none;border-radius:10px;font-size:14px;color:#0f172a">
-      <button type="submit" class="btn-join" style="background:#fff;color:#0066B3;font-weight:900;padding:12px 20px;border-radius:10px;border:none;cursor:pointer">
+      <button type="submit" class="btn-join"
+              style="background:#fff;color:#0066B3;font-weight:900;padding:12px 20px;border-radius:10px;border:none;cursor:pointer">
         S'inscrire →
       </button>
+      <input type="hidden" name="email_address_check" value="">
+      <input type="hidden" name="locale" value="fr">
     </form>
-    <p id="nlStatus" class="tiny" style="margin-top:8px;color:#dbeafe"></p>
+    <iframe name="brevoFrame" style="display:none" title="Newsletter"></iframe>
+    <p id="nlStatus" class="tiny" style="margin-top:8px;color:#dbeafe">En cliquant, tu acceptes de recevoir nos emails.</p>
   </div>
 
-  <!-- BOUTON NOTIFICATIONS PUSH -->
   <button id="pushBtn" class="btn btn-gold btn-full" style="margin-top:14px;padding:14px;font-size:14px">
     🔔 Activer les notifications
   </button>
   <p id="pushStatus" class="tiny" style="text-align:center;margin-top:6px;color:var(--muted)"></p>
 
   <div class="landing-section">
-    <span class="kicker" data-i18n="kicker_about">Rahim Football Tchad</span>
-    <h2 class="landing-title" data-i18n="about_title">Le football tchadien, une seule plateforme.</h2>
-    <p class="landing-lead" data-i18n="about_lead">Rahim Football Tchad met en avant les compétitions, les clubs, les joueurs, les coachs, les académies et les initiatives.</p>
-    <button class="landing-cta" onclick="go('apropos')" data-i18n="btn_discover">Découvrir →</button>
+    <span class="kicker">Rahim Football Tchad</span>
+    <h2 class="landing-title">Le football tchadien, une seule plateforme.</h2>
+    <p class="landing-lead">Rahim Football Tchad met en avant les compétitions, les clubs, les joueurs, les coachs, les académies et les initiatives.</p>
+    <button class="landing-cta" onclick="go('apropos')">Découvrir →</button>
   </div>
 
   <div class="landing-section">
-    <span class="kicker" data-i18n="kicker_news">Actualités</span>
-    <h2 class="landing-title" data-i18n="news_title">Les dernières infos</h2>
+    <span class="kicker">Actualités</span>
+    <h2 class="landing-title">Les dernières infos</h2>
     <div id="homeActusPreview"><div class="loading">…</div></div>
-    <button class="landing-cta" onclick="go('actus')" data-i18n="btn_all_news">Voir toutes les actus →</button>
+    <button class="landing-cta" onclick="go('actus')">Voir toutes les actus →</button>
   </div>
 
   <div class="landing-section">
-    <span class="kicker" data-i18n="kicker_ranking">Classement</span>
-    <h2 class="landing-title" data-i18n="ranking_title">Classement LINAFOOT</h2>
+    <span class="kicker">Classement</span>
+    <h2 class="landing-title">Classement LINAFOOT</h2>
     <div id="homeRankingPreview"><div class="loading">…</div></div>
-    <button class="landing-cta" onclick="go('classement')" data-i18n="btn_full_ranking">Classement complet →</button>
+    <button class="landing-cta" onclick="go('classement')">Classement complet →</button>
   </div>
 
   <div class="landing-section">
-    <span class="kicker" data-i18n="kicker_clubs">Clubs phares</span>
-    <h2 class="landing-title" data-i18n="clubs_title">Nos partenaires clubs</h2>
+    <span class="kicker">Clubs phares</span>
+    <h2 class="landing-title">Nos partenaires clubs</h2>
     <div class="partners">
       <div class="partner" onclick="go('clubs')"><div class="pclub-logo">G</div>Gazelle FC</div>
       <div class="partner" onclick="go('clubs')"><div class="pclub-logo">E</div>Elect-Sport</div>
       <div class="partner" onclick="go('clubs')"><div class="pclub-logo">F</div>Foullah Édifice</div>
       <div class="partner" onclick="go('clubs')"><div class="pclub-logo">R</div>Renaissance FC</div>
     </div>
-    <button class="landing-cta" onclick="go('clubs')" data-i18n="btn_all_clubs">Voir tous les clubs →</button>
+    <button class="landing-cta" onclick="go('clubs')">Voir tous les clubs →</button>
   </div>
 
   <div class="talent-section">
-    <span class="kicker" data-i18n="kicker_talents">Talents & formation</span>
-    <h2 class="landing-title" data-i18n="talents_title">Futurs talents du Tchad.</h2>
+    <span class="kicker">Talents & formation</span>
+    <h2 class="landing-title">Futurs talents du Tchad.</h2>
     <div class="grid-3">
-      <div class="glass-card"><div class="ic">👦</div><h3 data-i18n="academies">Académies</h3><p data-i18n="academies_desc">Présentation des académies.</p></div>
-      <div class="glass-card"><div class="ic">🧑‍🏫</div><h3 data-i18n="coaches">Coachs</h3><p data-i18n="coaches_desc">Mise en avant des entraîneurs.</p></div>
-      <div class="glass-card"><div class="ic">⭐</div><h3 data-i18n="players">Joueurs</h3><p data-i18n="players_desc">Visibilité pour les jeunes.</p></div>
+      <div class="glass-card"><div class="ic">👦</div><h3>Académies</h3><p>Présentation des académies.</p></div>
+      <div class="glass-card"><div class="ic">🧑‍🏫</div><h3>Coachs</h3><p>Mise en avant des entraîneurs.</p></div>
+      <div class="glass-card"><div class="ic">⭐</div><h3>Joueurs</h3><p>Visibilité pour les jeunes.</p></div>
     </div>
-    <button class="landing-cta" style="background:#FECB00;color:#0f172a;margin-top:14px" onclick="go('talents')" data-i18n="btn_see_talents">Voir les talents →</button>
+    <button class="landing-cta" style="background:#FECB00;color:#0f172a;margin-top:14px" onclick="go('talents')">Voir les talents →</button>
   </div>
 
   <div class="facebook-banner">
     <div style="font-size:32px">👍</div>
-    <h2 data-i18n="fb_title">Retrouvez-nous sur Facebook</h2>
-    <p data-i18n="fb_desc">Actualités, contenus football, jeunes talents.</p>
-    <a class="btn-fb" href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank" data-i18n="fb_btn">Visiter Facebook</a>
+    <h2>Retrouvez-nous sur Facebook</h2>
+    <p>Actualités, contenus football, jeunes talents.</p>
+    <a class="btn-fb" href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank">Visiter Facebook</a>
   </div>
 
   <div class="contact-section">
-    <span class="kicker" data-i18n="kicker_contact">Contact</span>
-    <h2 class="landing-title" data-i18n="contact_title">Une question ? Un partenariat ?</h2>
+    <span class="kicker">Contact</span>
+    <h2 class="landing-title">Une question ? Un partenariat ?</h2>
     <div>
       <a class="btn-wa2" href="https://wa.me/23562496176" target="_blank">WhatsApp</a>
       <a class="btn-fb2" href="https://www.facebook.com/profile.php?id=61594800076001" target="_blank">Facebook</a>
@@ -484,136 +449,80 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   </div>
 </section>
 
-<!-- CLASSEMENT -->
 <section id="sec-classement" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="ranking_full_title">🏆 Classement LINAFOOT</h2>
-    <button id="editClassementBtn" class="btn btn-blue hidden" onclick="openClassementEditor()" data-i18n="btn_edit">✏️ Modifier</button>
+    <h2>🏆 Classement LINAFOOT</h2>
+    <button id="editClassementBtn" class="btn btn-blue hidden" onclick="openClassementEditor()">✏️ Modifier</button>
   </div>
   <div id="classementContainer"><div class="loading">…</div></div>
-
-  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px" data-i18n="scorers_title">👟 Meilleurs buteurs</h2></div>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">👟 Meilleurs buteurs</h2></div>
   <div id="buteursContainer"></div>
-
-  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px" data-i18n="keepers_title">🧤 Meilleurs gardiens</h2></div>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">🧤 Meilleurs gardiens</h2></div>
   <div id="gardiensContainer"></div>
-
-  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px" data-i18n="passers_title">🎯 Meilleurs passeurs</h2></div>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:16px">🎯 Meilleurs passeurs</h2></div>
   <div id="passeursContainer"></div>
 </section>
 
-<!-- LIGUE 2 -->
-<section id="sec-ligue2" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="ligue2_title">⚽ Ligue 2 — D2</h2></div>
-  <div class="card">
-    <h3 data-i18n="ligue2_ranking">📊 Classement D2</h3>
-    <div class="divider" id="d2Ranking"></div>
-  </div>
-</section>
-
-<!-- CALENDRIER -->
 <section id="sec-calendrier" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="calendar_title">📅 Calendrier</h2>
-    <button id="editCalendrierBtn" class="btn btn-blue hidden" onclick="openCalendrierEditor()" data-i18n="btn_edit">✏️ Modifier</button>
+    <h2>📅 Calendrier</h2>
+    <button id="editCalendrierBtn" class="btn btn-blue hidden" onclick="openCalendrierEditor()">✏️ Modifier</button>
   </div>
-  <div class="section-head" style="margin-top:14px"><h2 style="font-size:15px" data-i18n="next_matches">🔜 Matchs à venir</h2></div>
+  <div class="section-head" style="margin-top:14px"><h2 style="font-size:15px">🔜 Matchs à venir</h2></div>
   <div id="prochainsMatchsContainer"><div class="loading">…</div></div>
-  <div class="section-head" style="margin-top:20px"><h2 style="font-size:15px" data-i18n="last_results">✅ Derniers résultats</h2></div>
+  <div class="section-head" style="margin-top:20px"><h2 style="font-size:15px">✅ Derniers résultats</h2></div>
   <div id="derniersResultatsContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- CLUBS -->
 <section id="sec-clubs" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="clubs_full_title">🏟️ Clubs du Tchad</h2>
-    <button id="addClubBtn" class="btn btn-blue hidden" onclick="openClubEditor()" data-i18n="btn_add">+ Ajouter</button>
+    <h2>🏟️ Clubs du Tchad</h2>
+    <button id="addClubBtn" class="btn btn-blue hidden" onclick="openClubEditor()">+ Ajouter</button>
   </div>
-  <div class="search-bar">
-    <span style="color:#94a3b8">🔍</span>
-    <input type="text" id="clubSearch" placeholder="..." oninput="filterClubs()" data-i18n-ph="search_club">
-  </div>
+  <div class="search-bar"><span style="color:#94a3b8">🔍</span><input type="text" id="clubSearch" placeholder="Rechercher un club..." oninput="filterClubs()"></div>
   <div id="clubsContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- PALMARÈS -->
-<section id="sec-palmares" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="palmares_title">🏅 Palmarès</h2></div>
-  <div class="card">
-    <h3 data-i18n="palmares_linafoot">🏆 LINAFOOT</h3>
-    <div class="divider">
-      <div class="stat-line"><span>2025-2026</span><b>Aiglons FC</b></div>
-      <div class="stat-line"><span>1998</span><b>Renaissance FC</b></div>
-      <div class="stat-line"><span>1988</span><b>Renaissance FC</b></div>
-      <div class="stat-line"><span>1962</span><b>Renaissance FC</b></div>
-    </div>
-  </div>
-  <div class="card">
-    <h3 data-i18n="palmares_coupe">🥇 Coupe du Tchad</h3>
-    <div class="divider">
-      <div class="stat-line"><span>1998</span><b>Renaissance FC</b></div>
-    </div>
-  </div>
-</section>
-
-<!-- ACTUS -->
 <section id="sec-actus" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="news_full_title">📰 Actualités</h2>
-    <button id="newArticleBtn" class="btn btn-blue hidden" onclick="openArticleEditor()" data-i18n="btn_publish">+ Publier</button>
+    <h2>📰 Actualités</h2>
+    <button id="newArticleBtn" class="btn btn-blue hidden" onclick="openArticleEditor()">+ Publier</button>
   </div>
-  <div class="search-bar">
-    <span style="color:#94a3b8">🔍</span>
-    <input type="text" id="articleSearch" placeholder="..." oninput="filterArticles()" data-i18n-ph="search_article">
-  </div>
+  <div class="search-bar"><span style="color:#94a3b8">🔍</span><input type="text" id="articleSearch" placeholder="Rechercher..." oninput="filterArticles()"></div>
   <div id="articlesContainer"><div class="loading">…</div></div>
 </section>
 
 <section id="sec-article" class="tab hidden">
-  <button class="btn btn-ghost" style="margin-bottom:12px" onclick="go('actus')" data-i18n="btn_back">← Retour</button>
+  <button class="btn btn-ghost" style="margin-bottom:12px" onclick="go('actus')">← Retour</button>
   <div id="articleFullContainer"></div>
 </section>
 
-<!-- OFFRES -->
 <section id="sec-offres" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="offers_title">💰 Nos Offres</h2></div>
+  <div class="section-head"><h2>💰 Nos Offres</h2></div>
   <div class="pack-card bronze">
     <span class="pack-badge bronze">🥉 BRONZE</span>
     <div class="pack-price">25 000 FCFA <span style="font-size:12px;color:#94a3b8">/ an</span></div>
-    <ul class="pack-features">
-      <li data-i18n="pack_bronze_1">Page dédiée sur notre site</li>
-      <li data-i18n="pack_bronze_2">Logo affiché sur l'accueil</li>
-      <li data-i18n="pack_bronze_3">Badge "Partenaire Officiel"</li>
-    </ul>
-    <a href="https://wa.me/23562496176?text=Formule%20BRONZE" target="_blank" class="btn btn-blue" style="width:100%" data-i18n="choose_bronze">Choisir Bronze</a>
+    <ul class="pack-features"><li>Page dédiée sur notre site</li><li>Logo affiché sur l'accueil</li><li>Badge "Partenaire Officiel"</li></ul>
+    <a href="https://wa.me/23562496176?text=Formule%20BRONZE" target="_blank" class="btn btn-blue" style="width:100%">Choisir Bronze</a>
   </div>
   <div class="pack-card silver">
     <span class="pack-badge silver">🥈 ARGENT</span>
     <div class="pack-price">50 000 FCFA <span style="font-size:12px;color:#94a3b8">/ an</span></div>
-    <ul class="pack-features">
-      <li data-i18n="pack_silver_1">Tout le Bronze +</li>
-      <li data-i18n="pack_silver_2">12 articles par an</li>
-      <li data-i18n="pack_silver_3">Couverture photo matchs</li>
-    </ul>
-    <a href="https://wa.me/23562496176?text=Formule%20ARGENT" target="_blank" class="btn btn-blue" style="width:100%" data-i18n="choose_silver">Choisir Argent</a>
+    <ul class="pack-features"><li>Tout le Bronze +</li><li>12 articles par an</li><li>Couverture photo matchs</li></ul>
+    <a href="https://wa.me/23562496176?text=Formule%20ARGENT" target="_blank" class="btn btn-blue" style="width:100%">Choisir Argent</a>
   </div>
   <div class="pack-card gold">
     <span class="pack-badge gold">🥇 OR</span>
     <div class="pack-price">100 000 FCFA <span style="font-size:12px;color:#94a3b8">/ an</span></div>
-    <ul class="pack-features">
-      <li data-i18n="pack_gold_1">Tout l'Argent +</li>
-      <li data-i18n="pack_gold_2">24 articles par an</li>
-      <li data-i18n="pack_gold_3">Vidéos TikTok / Reels</li>
-    </ul>
-    <a href="https://wa.me/23562496176?text=Formule%20OR" target="_blank" class="btn btn-gold" style="width:100%" data-i18n="choose_gold">Choisir Or</a>
+    <ul class="pack-features"><li>Tout l'Argent +</li><li>24 articles par an</li><li>Vidéos TikTok / Reels</li></ul>
+    <a href="https://wa.me/23562496176?text=Formule%20OR" target="_blank" class="btn btn-gold" style="width:100%">Choisir Or</a>
   </div>
 </section>
 
-<!-- TALENTS -->
 <section id="sec-talents" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="talents_full_title">⭐ Talents</h2>
-    <button id="addTalentBtn" class="btn btn-blue hidden" onclick="openTalentEditor()" data-i18n="btn_add">+ Ajouter</button>
+    <h2>⭐ Talents</h2>
+    <button id="addTalentBtn" class="btn btn-blue hidden" onclick="openTalentEditor()">+ Ajouter</button>
   </div>
   <div class="section-head" style="margin-top:14px"><h2 style="font-size:15px">🌟 U17</h2></div>
   <div id="talentsU17"><div class="loading">…</div></div>
@@ -621,219 +530,150 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <div id="talentsU20"><div class="loading">…</div></div>
 </section>
 
-<!-- VIDÉOS -->
 <section id="sec-videos" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="videos_title">🎥 Vidéos</h2>
-    <button id="addVideoBtn" class="btn btn-blue hidden" onclick="openVideoEditor()" data-i18n="btn_add">+ Ajouter</button>
+    <h2>🎥 Vidéos</h2>
+    <button id="addVideoBtn" class="btn btn-blue hidden" onclick="openVideoEditor()">+ Ajouter</button>
   </div>
   <div class="video-grid" id="videosContainer"></div>
 </section>
 
-<!-- GALERIE -->
 <section id="sec-galerie" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="gallery_title">📸 Galerie photos</h2>
-    <button id="addPhotoBtn" class="btn btn-blue hidden" onclick="openPhotoEditor()" data-i18n="btn_add">+ Ajouter</button>
+    <h2>📸 Galerie photos</h2>
+    <button id="addPhotoBtn" class="btn btn-blue hidden" onclick="openPhotoEditor()">+ Ajouter</button>
   </div>
   <div class="gallery-grid" id="galleryContainer"></div>
 </section>
 
-<!-- PRONOSTICS -->
 <section id="sec-pronostics" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="pronos_title">🎯 Pronostics</h2></div>
-  <p class="muted tiny" data-i18n="pronos_desc">Vote pour ton club favori.</p>
+  <div class="section-head"><h2>🎯 Pronostics</h2></div>
+  <p class="muted tiny">Vote pour ton club favori.</p>
   <div id="pronosticsContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- FAQ -->
 <section id="sec-faq" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="faq_title">❓ FAQ</h2></div>
-  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q" data-i18n="faq_q1">Comment inscrire mon club ?</div><div class="faq-a" data-i18n="faq_a1">Contactez-nous sur WhatsApp au +235 62 49 61 76.</div></div>
-  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q" data-i18n="faq_q2">Puis-je publier un tournoi ?</div><div class="faq-a" data-i18n="faq_a2">Publication pour 2 500 FCFA via Airtel/Moov.</div></div>
-  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q" data-i18n="faq_q3">Comment devenir sponsor ?</div><div class="faq-a" data-i18n="faq_a3">Contactez-nous sur WhatsApp.</div></div>
+  <div class="section-head"><h2>❓ FAQ</h2></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Comment inscrire mon club ?</div><div class="faq-a">Contactez-nous sur WhatsApp au +235 62 49 61 76.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Puis-je publier un tournoi ?</div><div class="faq-a">Publication pour 2 500 FCFA via Airtel/Moov.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Comment devenir sponsor ?</div><div class="faq-a">Contactez-nous sur WhatsApp.</div></div>
 </section>
 
-<!-- CONTACT -->
 <section id="sec-contact" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="contact_full_title">📧 Nous contacter</h2></div>
+  <div class="section-head"><h2>📧 Nous contacter</h2></div>
   <form id="contactForm" class="card" onsubmit="submitContact(event)">
-    <label class="lbl" data-i18n="form_name">Nom *</label>
-    <input id="ctName" class="field" required>
-    <label class="lbl" data-i18n="form_email">Email / téléphone *</label>
-    <input id="ctEmail" class="field" required>
-    <label class="lbl" data-i18n="form_subject">Sujet *</label>
+    <label class="lbl">Nom *</label><input id="ctName" class="field" required>
+    <label class="lbl">Email / téléphone *</label><input id="ctEmail" class="field" required>
+    <label class="lbl">Sujet *</label>
     <select id="ctSubject" class="field" required>
-      <option value="" data-i18n="form_choose">-- Choisir --</option>
-      <option data-i18n="form_opt1">Partenariat club</option>
-      <option data-i18n="form_opt2">Publicité</option>
-      <option data-i18n="form_opt3">Proposer un article</option>
-      <option data-i18n="form_opt4">Signaler une erreur</option>
-      <option data-i18n="form_opt5">Autre</option>
+      <option value="">-- Choisir --</option>
+      <option>Partenariat club</option><option>Publicité</option><option>Proposer un article</option><option>Signaler une erreur</option><option>Autre</option>
     </select>
-    <label class="lbl" data-i18n="form_message">Message *</label>
-    <textarea id="ctMessage" class="field" rows="5" required></textarea>
-    <button type="submit" class="btn btn-blue btn-full" data-i18n="form_send">📩 Envoyer</button>
+    <label class="lbl">Message *</label><textarea id="ctMessage" class="field" rows="5" required></textarea>
+    <button type="submit" class="btn btn-blue btn-full">📩 Envoyer</button>
     <p id="ctStatus" class="tiny" style="margin-top:8px"></p>
   </form>
 </section>
 
-<!-- ADMIN MESSAGES -->
 <section id="sec-admin-messages" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="msg_title">📬 Messages reçus</h2>
-    <button class="btn btn-ghost" onclick="loadMessages()" data-i18n="msg_refresh">🔄 Actualiser</button>
+    <h2>📬 Messages reçus</h2>
+    <button class="btn btn-ghost" onclick="loadMessages()">🔄 Actualiser</button>
   </div>
   <div id="messagesContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- INSTITUTIONS -->
 <section id="sec-institutions" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="inst_title">🏛️ Institutions</h2></div>
+  <div class="section-head"><h2>🏛️ Institutions</h2></div>
   <div class="inst-banner">
     <div style="display:flex;gap:14px;align-items:center">
-      <div class="ftfa-logo"><img src="assets/logo-ftfa.png" onerror="this.style.display='none';this.parentNode.innerHTML='FTFA'"></div>
-      <div>
-        <h3 style="font-size:15px;font-weight:900;color:#FECB00">Fédération Tchadienne de Football Association</h3>
-        <p style="font-size:11px;color:#dbeafe">1962 • FIFA & CAF depuis 1964</p>
-      </div>
+      <div class="ftfa-logo">FTFA</div>
+      <div><h3 style="font-size:15px;font-weight:900;color:#FECB00">Fédération Tchadienne de Football Association</h3><p style="font-size:11px;color:#dbeafe">1962 • FIFA & CAF depuis 1964</p></div>
     </div>
   </div>
-  <div class="section-head" style="margin-top:18px"><h2 style="font-size:16px" data-i18n="subsections">📂 Sous-sections</h2></div>
+  <div class="section-head" style="margin-top:18px"><h2 style="font-size:16px">📂 Sous-sections</h2></div>
   <div class="biz">
-    <div class="card" style="border-left:4px solid #FECB00">
-      <h3 data-i18n="legends_title">⭐ Légendes</h3>
-      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('legends')" data-i18n="btn_see">Voir →</button>
-    </div>
-    <div class="card" style="border-left:4px solid #0066B3">
-      <h3 data-i18n="linafoot_players">⚽ Joueurs LINAFOOT</h3>
-      <button class="btn btn-blue" style="margin-top:10px" onclick="goSub('linafoot')" data-i18n="btn_see">Voir →</button>
-    </div>
+    <div class="card" style="border-left:4px solid #FECB00"><h3>⭐ Légendes</h3><button class="btn btn-blue" style="margin-top:10px" onclick="goSub('legends')">Voir →</button></div>
+    <div class="card" style="border-left:4px solid #0066B3"><h3>⚽ Joueurs LINAFOOT</h3><button class="btn btn-blue" style="margin-top:10px" onclick="goSub('linafoot')">Voir →</button></div>
   </div>
   <div id="instLegends" class="hidden">
-    <div class="section-head" style="margin-top:18px">
-      <h2 data-i18n="legends_title">⭐ Légendes</h2>
-      <button class="btn btn-ghost" onclick="hideSub()" data-i18n="btn_back">← Retour</button>
-    </div>
-    <button id="addLegendBtn" class="btn btn-blue hidden" onclick="openLegendEditor()" style="margin-bottom:10px" data-i18n="btn_add">+ Ajouter</button>
+    <div class="section-head" style="margin-top:18px"><h2>⭐ Légendes</h2><button class="btn btn-ghost" onclick="hideSub()">← Retour</button></div>
+    <button id="addLegendBtn" class="btn btn-blue hidden" onclick="openLegendEditor()" style="margin-bottom:10px">+ Ajouter</button>
     <div class="legend-grid" id="legendsContainer"></div>
   </div>
   <div id="instLinafoot" class="hidden">
-    <div class="section-head" style="margin-top:18px">
-      <h2 data-i18n="linafoot_players">⚽ Joueurs LINAFOOT</h2>
-      <button class="btn btn-ghost" onclick="hideSub()" data-i18n="btn_back">← Retour</button>
-    </div>
+    <div class="section-head" style="margin-top:18px"><h2>⚽ Joueurs LINAFOOT</h2><button class="btn btn-ghost" onclick="hideSub()">← Retour</button></div>
     <div class="team-selector" id="teamSelector"></div>
     <div id="squadContainer"><div class="empty">…</div></div>
   </div>
   <div class="section-head" style="margin-top:24px">
-    <h2 style="font-size:16px" data-i18n="leaders_title">👤 Dirigeants</h2>
-    <button id="addOfficialBtn" class="btn btn-blue hidden" onclick="openOfficialEditor('new')" data-i18n="btn_add">+ Ajouter</button>
+    <h2 style="font-size:16px">👤 Dirigeants</h2>
+    <button id="addOfficialBtn" class="btn btn-blue hidden" onclick="openOfficialEditor('new')">+ Ajouter</button>
   </div>
   <div class="inst-officials" id="officialsContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- TOURNOIS -->
 <section id="sec-tournois" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="tournaments_title">🏆 Tournois</h2>
-    <button class="btn btn-blue hidden" id="createTournamentBtn" onclick="tryCreateTournament()" data-i18n="btn_create">+ Créer</button>
+    <h2>🏆 Tournois</h2>
+    <button class="btn btn-blue hidden" id="createTournamentBtn" onclick="tryCreateTournament()">+ Créer</button>
   </div>
   <div id="tournamentsContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- MATCHS -->
 <section id="sec-matchs" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="matches_title">Résultats</h2></div>
+  <div class="section-head"><h2>Résultats</h2></div>
   <div id="matchesContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- COACHS -->
 <section id="sec-coachs" class="tab hidden">
   <div class="section-head">
-    <h2 data-i18n="coaches_full">Coachs & académies</h2>
-    <button id="addCoachBtn" class="btn btn-blue hidden" onclick="openCoachEditor()" data-i18n="btn_add">+ Ajouter</button>
+    <h2>Coachs & académies</h2>
+    <button id="addCoachBtn" class="btn btn-blue hidden" onclick="openCoachEditor()">+ Ajouter</button>
   </div>
-  <div class="search-bar">
-    <span style="color:#94a3b8">🔍</span>
-    <input type="text" id="coachSearch" placeholder="..." oninput="filterCoaches()" data-i18n-ph="search_coach">
-  </div>
+  <div class="search-bar"><span style="color:#94a3b8">🔍</span><input type="text" id="coachSearch" placeholder="Rechercher un coach..." oninput="filterCoaches()"></div>
   <div id="coachesContainer"><div class="loading">…</div></div>
 </section>
 
-<!-- BOUTIQUE -->
-<section id="sec-boutique" class="tab hidden">
-  <div class="section-head">
-    <h2 data-i18n="shop_title">Boutique</h2>
-    <button id="addProductBtn" class="btn btn-blue hidden" onclick="openProductEditor()" data-i18n="btn_add">+ Ajouter</button>
-  </div>
-  <div id="productGrid" class="products"><div class="loading">…</div></div>
-</section>
-
-<!-- À PROPOS -->
 <section id="sec-apropos" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="about_full">👤 À propos</h2></div>
+  <div class="section-head"><h2>👤 À propos</h2></div>
   <div class="about-hero">
     <div class="about-avatar">AH</div>
     <h1>Abdarrahim Hassan Mahamat</h1>
-    <p class="subtitle" data-i18n="founder_role">Fondateur • Coach & Formateur</p>
+    <p class="subtitle">Fondateur • Coach & Formateur</p>
     <p class="location">📍 N'Djamena, Tchad 🇹🇩</p>
   </div>
   <div class="cv-section">
-    <h2 data-i18n="cv_title">🎓 CV</h2>
-    <p data-i18n="cv_intro">Abdarrahim Hassan Mahamat, entraîneur et formateur de football, étudiant en Sciences Biomédicales à l'Université Toumaï.</p>
+    <h2>🎓 CV</h2>
+    <p>Abdarrahim Hassan Mahamat, entraîneur et formateur de football, étudiant en Sciences Biomédicales à l'Université Toumaï.</p>
   </div>
   <div class="charte-section">
-    <h2 data-i18n="charte_title">🛡️ Charte de vérification</h2>
-    <div class="charte-item"><b data-i18n="charte_1_title">1. Double source</b><p data-i18n="charte_1_desc">Chaque info confirmée par 2 sources.</p></div>
-    <div class="charte-item"><b data-i18n="charte_2_title">2. Sources officielles</b><p data-i18n="charte_2_desc">FTFA, Ministère, LINAFOOT, CAF.</p></div>
+    <h2>🛡️ Charte de vérification</h2>
+    <div class="charte-item"><b>1. Double source</b><p>Chaque info confirmée par 2 sources.</p></div>
+    <div class="charte-item"><b>2. Sources officielles</b><p>FTFA, Ministère, LINAFOOT, CAF.</p></div>
   </div>
   <div class="contact-box">
-    <h2 data-i18n="contact_box_title">📞 Contact</h2>
+    <h2>📞 Contact</h2>
     <div class="contact-line"><span>📱</span><div><b>WhatsApp</b><br><a href="https://wa.me/23562496176" style="color:#25D366">+235 62 49 61 76</a></div></div>
     <div class="contact-line"><span>👥</span><div><b>Facebook</b><br><a href="https://www.facebook.com/profile.php?id=61594800076001" style="color:#1877F2">Rahim Football Tchad</a></div></div>
     <div class="contact-line"><span>📧</span><div><b>Email</b><br><span style="color:#0066B3">abdarrahimhassan@gmail.com</span></div></div>
   </div>
-  <div class="card" style="margin-top:14px">
-    <h3 data-i18n="location_title">📍 Localisation</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62313.19!2d15.03!3d12.11!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA2JzM2LjAiTiAxNcKwMDInMTUuNiJF!5e0!3m2!1sfr!2std!4v1700000000000" width="100%" height="200" style="border:0;border-radius:10px;margin-top:10px" loading="lazy"></iframe>
-  </div>
-  <div class="card" style="margin-top:14px">
-    <h3 data-i18n="fb_page_title">👍 Page Facebook</h3>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61594800076001&tabs=timeline&width=340&height=400&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false" width="100%" height="400" style="border:none;border-radius:10px;margin-top:10px" scrolling="no" allowfullscreen="true" loading="lazy"></iframe>
-  </div>
 </section>
 
-<!-- LÉGAL -->
-<section id="sec-legal" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="legal_title">⚖️ Mentions légales</h2></div>
-  <div class="legal-section">
-    <h2 data-i18n="legal_publisher">Éditeur</h2>
-    <p>Rahim Football Tchad<br>Abdarrahim Hassan Mahamat<br>N'Djamena, Tchad<br>+235 62 49 61 76</p>
-    <h2 data-i18n="legal_host">Hébergement</h2>
-    <p>GitHub Pages</p>
-    <h2 data-i18n="legal_privacy">Confidentialité</h2>
-    <p data-i18n="legal_privacy_desc">Vos données sont utilisées uniquement pour répondre à vos messages.</p>
-  </div>
-</section>
-
-<!-- PLUS -->
 <section id="sec-plus" class="tab hidden">
-  <div class="section-head"><h2 data-i18n="plus_title">Business & services</h2></div>
+  <div class="section-head"><h2>Business & services</h2></div>
   <div class="biz">
-    <div class="card"><h3 data-i18n="offers_title">💰 Offres</h3><button class="btn btn-gold btn-full" style="margin-top:10px" onclick="go('offres')" data-i18n="btn_see">Voir</button></div>
-    <div class="card"><h3 data-i18n="msg_title">📬 Messages</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('admin-messages')" data-i18n="btn_see">Voir</button></div>
-    <div class="card"><h3 data-i18n="faq_title">❓ FAQ</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('faq')" data-i18n="btn_see">Voir</button></div>
-    <div class="card"><h3 data-i18n="contact_full_title">📧 Contact</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('contact')" data-i18n="btn_see">Voir</button></div>
+    <div class="card"><h3>💰 Offres</h3><button class="btn btn-gold btn-full" style="margin-top:10px" onclick="go('offres')">Voir</button></div>
+    <div class="card"><h3>📬 Messages</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('admin-messages')">Voir</button></div>
+    <div class="card"><h3>❓ FAQ</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('faq')">Voir</button></div>
+    <div class="card"><h3>📧 Contact</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('contact')">Voir</button></div>
   </div>
-
   <div class="card" id="adminPanel" style="margin-top:14px;display:none">
-    <h3 data-i18n="admin_title">Administration</h3>
+    <h3>Administration</h3>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-      <button class="btn btn-blue" onclick="seedData()" data-i18n="btn_seed">Données démo</button>
+      <button class="btn btn-blue" onclick="seedData()">Données démo</button>
       <button class="btn btn-gold" onclick="testPush()">🔔 Test notification</button>
-      <button class="btn btn-green" onclick="exportNewsletter()">📥 Exporter emails</button>
-      <button class="btn btn-red" onclick="logout()" data-i18n="btn_logout">Déconnexion</button>
+      <button class="btn btn-red" onclick="logout()">Déconnexion</button>
     </div>
     <p id="adminMsg" class="tiny" style="margin-top:8px"></p>
   </div>
@@ -841,8 +681,8 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 
 <footer class="rf-footer">
   <b>⚽ Rahim Football Tchad 🇹🇩</b>
-  <p data-i18n="footer_tagline">Le football tchadien, une seule plateforme.</p>
-  <p style="margin-top:8px" data-i18n="footer_made">Fait au Tchad 🇹🇩</p>
+  <p>Le football tchadien, une seule plateforme.</p>
+  <p style="margin-top:8px">Fait au Tchad 🇹🇩</p>
   <p style="margin-top:12px;font-size:10px">Crédits : FTFA • Ministère des Sports</p>
   <p style="margin-top:10px"><a href="https://wa.me/23562496176" style="color:#25D366;font-weight:800">📱 +235 62 49 61 76</a></p>
   <p style="margin-top:12px;font-size:11px;color:#64748b">© <span id="year"></span> Rahim Football Tchad</p>
@@ -852,33 +692,30 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <nav class="nav">
-  <button data-tab="accueil" class="active" onclick="go('accueil')"><i>🏠</i><span data-i18n="nav_home">Accueil</span></button>
-  <button data-tab="classement" onclick="go('classement')"><i>🏆</i><span data-i18n="nav_ranking">Classement</span></button>
-  <button data-tab="calendrier" onclick="go('calendrier')"><i>📅</i><span data-i18n="nav_calendar">Calendrier</span></button>
-  <button data-tab="actus" onclick="go('actus')"><i>📰</i><span data-i18n="nav_news">Actus</span></button>
-  <button data-tab="clubs" onclick="go('clubs')"><i>🏟️</i><span data-i18n="nav_clubs">Clubs</span></button>
-  <button data-tab="offres" onclick="go('offres')"><i>💰</i><span data-i18n="nav_offers">Offres</span></button>
-  <button data-tab="institutions" onclick="go('institutions')"><i>🏛️</i><span data-i18n="nav_inst">Instit.</span></button>
-  <button data-tab="tournois" onclick="go('tournois')"><i>🏆</i><span data-i18n="nav_tournaments">Tournois</span></button>
-  <button data-tab="matchs" onclick="go('matchs')"><i>⚽</i><span data-i18n="nav_matches">Matchs</span></button>
-  <button data-tab="talents" onclick="go('talents')"><i>⭐</i><span data-i18n="nav_talents">Talents</span></button>
-  <button data-tab="videos" onclick="go('videos')"><i>🎥</i><span data-i18n="nav_videos">Vidéos</span></button>
-  <button data-tab="galerie" onclick="go('galerie')"><i>📸</i><span data-i18n="nav_gallery">Galerie</span></button>
-  <button data-tab="pronostics" onclick="go('pronostics')"><i>🎯</i><span data-i18n="nav_pronos">Pronos</span></button>
-  <button data-tab="contact" onclick="go('contact')"><i>📧</i><span data-i18n="nav_contact">Contact</span></button>
-  <button data-tab="apropos" onclick="go('apropos')"><i>👤</i><span data-i18n="nav_about">À propos</span></button>
-  <button data-tab="plus" onclick="go('plus')"><i>⚙️</i><span data-i18n="nav_more">Plus</span></button>
+  <button data-tab="accueil" class="active" onclick="go('accueil')"><i>🏠</i><span>Accueil</span></button>
+  <button data-tab="classement" onclick="go('classement')"><i>🏆</i><span>Classement</span></button>
+  <button data-tab="calendrier" onclick="go('calendrier')"><i>📅</i><span>Calendrier</span></button>
+  <button data-tab="actus" onclick="go('actus')"><i>📰</i><span>Actus</span></button>
+  <button data-tab="clubs" onclick="go('clubs')"><i>🏟️</i><span>Clubs</span></button>
+  <button data-tab="offres" onclick="go('offres')"><i>💰</i><span>Offres</span></button>
+  <button data-tab="institutions" onclick="go('institutions')"><i>🏛️</i><span>Instit.</span></button>
+  <button data-tab="tournois" onclick="go('tournois')"><i>🏆</i><span>Tournois</span></button>
+  <button data-tab="matchs" onclick="go('matchs')"><i>⚽</i><span>Matchs</span></button>
+  <button data-tab="talents" onclick="go('talents')"><i>⭐</i><span>Talents</span></button>
+  <button data-tab="videos" onclick="go('videos')"><i>🎥</i><span>Vidéos</span></button>
+  <button data-tab="galerie" onclick="go('galerie')"><i>📸</i><span>Galerie</span></button>
+  <button data-tab="pronostics" onclick="go('pronostics')"><i>🎯</i><span>Pronos</span></button>
+  <button data-tab="contact" onclick="go('contact')"><i>📧</i><span>Contact</span></button>
+  <button data-tab="apropos" onclick="go('apropos')"><i>👤</i><span>À propos</span></button>
+  <button data-tab="plus" onclick="go('plus')"><i>⚙️</i><span>Plus</span></button>
 </nav>
 
-<!-- MODALS -->
 <div id="authModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="auth_title">Connexion Admin</h2><button class="close" onclick="closeModal('authModal')">&times;</button></div>
+  <div class="modal-head"><h2>Connexion Admin</h2><button class="close" onclick="closeModal('authModal')">&times;</button></div>
   <form id="authForm">
-    <label class="lbl">Email</label>
-    <input id="authEmail" type="email" class="field" required value="abdarrahimhassan@gmail.com">
-    <label class="lbl" data-i18n="auth_password">Mot de passe</label>
-    <input id="authPassword" type="password" class="field" required>
-    <button type="submit" class="btn btn-blue btn-full" data-i18n="auth_btn">Se connecter</button>
+    <label class="lbl">Email</label><input id="authEmail" type="email" class="field" required value="abdarrahimhassan@gmail.com">
+    <label class="lbl">Mot de passe</label><input id="authPassword" type="password" class="field" required>
+    <button type="submit" class="btn btn-blue btn-full">Se connecter</button>
   </form>
   <p id="authStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
@@ -886,172 +723,147 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
 <div id="coachModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="coachModalTitle">Coach</h2><button class="close" onclick="closeModal('coachModal')">&times;</button></div>
   <input type="hidden" id="cId">
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="cName" class="field">
-  <label class="lbl" data-i18n="lbl_type">Type *</label>
-  <select id="cType" class="field">
-    <option>Coach & Formateur</option><option>Coach</option><option>Éducateur</option>
-    <option>Centre de formation</option><option>Académie</option><option>École de football</option>
-  </select>
-  <label class="lbl" data-i18n="lbl_city">Ville *</label><input id="cCity" class="field">
-  <label class="lbl" data-i18n="lbl_phone">Téléphone *</label><input id="cPhone" class="field">
-  <label class="lbl" data-i18n="lbl_photo">Photo</label>
-  <label class="image-upload" id="cUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'cImagePreview','cImageUrl','cUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="cImagePreview" class="image-preview hidden">
-  <input type="hidden" id="cImageUrl">
-  <label class="lbl" data-i18n="lbl_bio">Bio *</label><textarea id="cBio" class="field" rows="5"></textarea>
-  <button class="btn btn-blue btn-full" onclick="saveCoach()" data-i18n="lbl_save">Enregistrer</button>
+  <label class="lbl">Nom *</label><input id="cName" class="field">
+  <label class="lbl">Type *</label><select id="cType" class="field"><option>Coach & Formateur</option><option>Coach</option><option>Éducateur</option><option>Centre de formation</option><option>Académie</option><option>École de football</option></select>
+  <label class="lbl">Ville *</label><input id="cCity" class="field">
+  <label class="lbl">Téléphone *</label><input id="cPhone" class="field">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="cUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'cImagePreview','cImageUrl','cUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="cImagePreview" class="image-preview hidden"><input type="hidden" id="cImageUrl">
+  <label class="lbl">Bio *</label><textarea id="cBio" class="field" rows="5"></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveCoach()">Enregistrer</button>
   <p id="cStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="productModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="productModalTitle">Produit</h2><button class="close" onclick="closeModal('productModal')">&times;</button></div>
   <input type="hidden" id="pId">
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="pName" class="field">
-  <label class="lbl" data-i18n="lbl_price">Prix *</label><input id="pPrice" type="number" class="field">
-  <label class="lbl" data-i18n="lbl_category">Catégorie *</label>
-  <select id="pCategory" class="field">
-    <option>Maillots</option><option>Chaussures</option><option>Équipement</option><option>Accessoires</option><option>Autres</option>
-  </select>
-  <label class="lbl" data-i18n="lbl_desc">Description *</label><input id="pDescription" class="field">
-  <label class="lbl" data-i18n="lbl_photo">Photo</label>
-  <label class="image-upload" id="pUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'pImagePreview','pImageUrl','pUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="pImagePreview" class="image-preview hidden">
-  <input type="hidden" id="pImageUrl">
-  <button class="btn btn-blue btn-full" onclick="saveProduct()" data-i18n="lbl_save">Enregistrer</button>
+  <label class="lbl">Nom *</label><input id="pName" class="field">
+  <label class="lbl">Prix *</label><input id="pPrice" type="number" class="field">
+  <label class="lbl">Catégorie *</label><select id="pCategory" class="field"><option>Maillots</option><option>Chaussures</option><option>Équipement</option><option>Accessoires</option><option>Autres</option></select>
+  <label class="lbl">Description *</label><input id="pDescription" class="field">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="pUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'pImagePreview','pImageUrl','pUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="pImagePreview" class="image-preview hidden"><input type="hidden" id="pImageUrl">
+  <button class="btn btn-blue btn-full" onclick="saveProduct()">Enregistrer</button>
   <p id="pStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="legendModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="legendModalTitle">Légende</h2><button class="close" onclick="closeModal('legendModal')">&times;</button></div>
   <input type="hidden" id="lId">
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="lName" class="field">
-  <label class="lbl" data-i18n="lbl_position">Poste *</label><input id="lPoste" class="field">
-  <label class="lbl" data-i18n="lbl_clubs">Clubs *</label><input id="lClubs" class="field">
-  <label class="lbl" data-i18n="lbl_photo">Photo</label>
-  <label class="image-upload" id="lUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'lImagePreview','lImageUrl','lUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="lImagePreview" class="image-preview hidden">
-  <input type="hidden" id="lImageUrl">
-  <label class="lbl" data-i18n="lbl_bio">Bio *</label><textarea id="lBio" class="field" rows="5"></textarea>
-  <button class="btn btn-blue btn-full" onclick="saveLegend()" data-i18n="lbl_save">Enregistrer</button>
+  <label class="lbl">Nom *</label><input id="lName" class="field">
+  <label class="lbl">Poste *</label><input id="lPoste" class="field">
+  <label class="lbl">Clubs *</label><input id="lClubs" class="field">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="lUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'lImagePreview','lImageUrl','lUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="lImagePreview" class="image-preview hidden"><input type="hidden" id="lImageUrl">
+  <label class="lbl">Bio *</label><textarea id="lBio" class="field" rows="5"></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveLegend()">Enregistrer</button>
   <p id="lStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="articleModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="articleModalTitle">Article</h2><button class="close" onclick="closeModal('articleModal')">&times;</button></div>
   <input type="hidden" id="aId">
-  <label class="lbl" data-i18n="lbl_title">Titre *</label><input id="aTitle" class="field">
-  <label class="lbl" data-i18n="lbl_category">Catégorie *</label>
-  <select id="aCategory" class="field">
-    <option>LINAFOOT</option><option>Coupe du Tchad</option><option>Sélection</option>
-    <option>Jeunes</option><option>Féminin</option><option>Transferts</option><option>Institutions</option><option>Annonce</option>
-  </select>
-  <label class="lbl" data-i18n="lbl_photo">Photo</label>
-  <label class="image-upload" id="aUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'aImagePreview','aImageUrl','aUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="aImagePreview" class="image-preview hidden">
-  <input type="hidden" id="aImageUrl">
-  <label class="lbl" data-i18n="lbl_excerpt">Résumé *</label><input id="aExcerpt" class="field">
-  <label class="lbl" data-i18n="lbl_content">Contenu *</label><textarea id="aContent" class="field" rows="6"></textarea>
-  <label class="lbl" data-i18n="lbl_source">Source</label><input id="aSource" class="field">
-  <button class="btn btn-blue btn-full" onclick="saveArticle()" data-i18n="lbl_publish">Publier</button>
+  <label class="lbl">Titre *</label><input id="aTitle" class="field">
+  <label class="lbl">Catégorie *</label><select id="aCategory" class="field"><option>LINAFOOT</option><option>Coupe du Tchad</option><option>Sélection</option><option>Jeunes</option><option>Féminin</option><option>Transferts</option><option>Institutions</option><option>Annonce</option></select>
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="aUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'aImagePreview','aImageUrl','aUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="aImagePreview" class="image-preview hidden"><input type="hidden" id="aImageUrl">
+  <label class="lbl">Résumé *</label><input id="aExcerpt" class="field">
+  <label class="lbl">Contenu *</label><textarea id="aContent" class="field" rows="6"></textarea>
+  <label class="lbl">Source</label><input id="aSource" class="field">
+  <button class="btn btn-blue btn-full" onclick="saveArticle()">Publier</button>
   <p id="articleStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="officialModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="officialModalTitle">Dirigeant</h2><button class="close" onclick="closeModal('officialModal')">&times;</button></div>
   <input type="hidden" id="oId">
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="oName" class="field">
-  <label class="lbl" data-i18n="lbl_function">Fonction *</label><input id="oRole" class="field">
-  <label class="lbl" data-i18n="lbl_mandate">Mandat</label><input id="oOrg" class="field">
-  <label class="lbl" data-i18n="lbl_badge">Badge</label><input id="oBadge" class="field">
-  <label class="lbl" data-i18n="lbl_photo">Photo</label>
-  <label class="image-upload" id="oUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'oImagePreview','oImageUrl','oUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="oImagePreview" class="image-preview hidden">
-  <input type="hidden" id="oImageUrl">
-  <label class="lbl" data-i18n="lbl_bio">Bio *</label><textarea id="oBio" class="field" rows="4"></textarea>
-  <label class="lbl" data-i18n="lbl_achievements">Réalisations</label>
-  <textarea id="oRealisations" class="field" rows="5"></textarea>
-  <button class="btn btn-blue btn-full" onclick="saveOfficial()" data-i18n="lbl_save">Enregistrer</button>
+  <label class="lbl">Nom *</label><input id="oName" class="field">
+  <label class="lbl">Fonction *</label><input id="oRole" class="field">
+  <label class="lbl">Mandat</label><input id="oOrg" class="field">
+  <label class="lbl">Badge</label><input id="oBadge" class="field">
+  <label class="lbl">Photo</label>
+  <label class="image-upload" id="oUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'oImagePreview','oImageUrl','oUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="oImagePreview" class="image-preview hidden"><input type="hidden" id="oImageUrl">
+  <label class="lbl">Bio *</label><textarea id="oBio" class="field" rows="4"></textarea>
+  <label class="lbl">Réalisations</label><textarea id="oRealisations" class="field" rows="5"></textarea>
+  <button class="btn btn-blue btn-full" onclick="saveOfficial()">Enregistrer</button>
   <p id="oStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="photoModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_photo">Ajouter une photo</h2><button class="close" onclick="closeModal('photoModal')">&times;</button></div>
-  <label class="lbl" data-i18n="lbl_title">Titre</label><input id="phTitle" class="field">
-  <label class="lbl" data-i18n="lbl_photo">Photo *</label>
-  <label class="image-upload" id="phUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'phImagePreview','phImageUrl','phUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir photo</div></label>
-  <img id="phImagePreview" class="image-preview hidden">
-  <input type="hidden" id="phImageUrl">
-  <button class="btn btn-blue btn-full" onclick="savePhoto()" data-i18n="lbl_add">Ajouter</button>
+  <div class="modal-head"><h2>Ajouter une photo</h2><button class="close" onclick="closeModal('photoModal')">&times;</button></div>
+  <label class="lbl">Titre</label><input id="phTitle" class="field">
+  <label class="lbl">Photo *</label>
+  <label class="image-upload" id="phUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'phImagePreview','phImageUrl','phUpload')"><div class="icon">📸</div><div class="txt">Choisir photo</div></label>
+  <img id="phImagePreview" class="image-preview hidden"><input type="hidden" id="phImageUrl">
+  <button class="btn btn-blue btn-full" onclick="savePhoto()">Ajouter</button>
   <p id="phStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="videoModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_video">Ajouter une vidéo</h2><button class="close" onclick="closeModal('videoModal')">&times;</button></div>
-  <label class="lbl" data-i18n="lbl_title">Titre *</label><input id="vTitle" class="field">
-  <label class="lbl" data-i18n="lbl_youtube">URL YouTube *</label><input id="vUrl" class="field" placeholder="https://www.youtube.com/embed/...">
-  <button class="btn btn-blue btn-full" onclick="saveVideo()" data-i18n="lbl_add">Ajouter</button>
+  <div class="modal-head"><h2>Ajouter une vidéo</h2><button class="close" onclick="closeModal('videoModal')">&times;</button></div>
+  <label class="lbl">Titre *</label><input id="vTitle" class="field">
+  <label class="lbl">URL YouTube *</label><input id="vUrl" class="field" placeholder="https://www.youtube.com/embed/...">
+  <button class="btn btn-blue btn-full" onclick="saveVideo()">Ajouter</button>
   <p id="vStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="talentModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_talent">Ajouter un talent</h2><button class="close" onclick="closeModal('talentModal')">&times;</button></div>
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="tName2" class="field">
-  <label class="lbl" data-i18n="lbl_club">Club *</label><input id="tClub" class="field">
-  <label class="lbl" data-i18n="lbl_age">Âge *</label><input id="tAge" type="number" class="field">
-  <label class="lbl" data-i18n="lbl_position">Poste *</label><input id="tPoste" class="field">
-  <label class="lbl" data-i18n="lbl_category_short">Catégorie *</label>
-  <select id="tCat" class="field"><option>U17</option><option>U20</option></select>
-  <button class="btn btn-blue btn-full" onclick="saveTalent()" data-i18n="lbl_save">Enregistrer</button>
+  <div class="modal-head"><h2>Ajouter un talent</h2><button class="close" onclick="closeModal('talentModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="tName2" class="field">
+  <label class="lbl">Club *</label><input id="tClub" class="field">
+  <label class="lbl">Âge *</label><input id="tAge" type="number" class="field">
+  <label class="lbl">Poste *</label><input id="tPoste" class="field">
+  <label class="lbl">Catégorie *</label><select id="tCat" class="field"><option>U17</option><option>U20</option></select>
+  <button class="btn btn-blue btn-full" onclick="saveTalent()">Enregistrer</button>
   <p id="tStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="clubModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="clubModalTitle">Club</h2><button class="close" onclick="closeModal('clubModal')">&times;</button></div>
   <input type="hidden" id="clId">
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="clName" class="field">
-  <label class="lbl" data-i18n="lbl_city">Ville *</label><input id="clCity" class="field">
-  <label class="lbl" data-i18n="lbl_founded">Fondé en</label><input id="clFunded" class="field">
-  <label class="lbl" data-i18n="lbl_stadium">Stade</label><input id="clStadium" class="field">
-  <label class="lbl" data-i18n="lbl_president">Président</label><input id="clPresident" class="field">
-  <label class="lbl" data-i18n="lbl_titles">Palmarès</label><textarea id="clTitles" class="field" rows="3"></textarea>
-  <label class="lbl" data-i18n="lbl_logo">Logo</label>
-  <label class="image-upload" id="clUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'clImagePreview','clImageUrl','clUpload')"><div class="icon">📸</div><div class="txt" data-i18n="lbl_choose_photo">Choisir logo</div></label>
-  <img id="clImagePreview" class="image-preview hidden">
-  <input type="hidden" id="clImageUrl">
-  <button class="btn btn-blue btn-full" onclick="saveClub()" data-i18n="lbl_save">Enregistrer</button>
+  <label class="lbl">Nom *</label><input id="clName" class="field">
+  <label class="lbl">Ville *</label><input id="clCity" class="field">
+  <label class="lbl">Fondé en</label><input id="clFunded" class="field">
+  <label class="lbl">Stade</label><input id="clStadium" class="field">
+  <label class="lbl">Président</label><input id="clPresident" class="field">
+  <label class="lbl">Palmarès</label><textarea id="clTitles" class="field" rows="3"></textarea>
+  <label class="lbl">Logo</label>
+  <label class="image-upload" id="clUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'clImagePreview','clImageUrl','clUpload')"><div class="icon">📸</div><div class="txt">Choisir logo</div></label>
+  <img id="clImagePreview" class="image-preview hidden"><input type="hidden" id="clImageUrl">
+  <button class="btn btn-blue btn-full" onclick="saveClub()">Enregistrer</button>
   <p id="clStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="classementModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_ranking">Modifier le classement</h2><button class="close" onclick="closeModal('classementModal')">&times;</button></div>
+  <div class="modal-head"><h2>Modifier le classement</h2><button class="close" onclick="closeModal('classementModal')">&times;</button></div>
   <p class="muted tiny">Position|Club|Ville|Pts|J|G|N|P|BP|BC</p>
   <textarea id="classementInput" class="field" rows="15" style="font-family:monospace;font-size:11px"></textarea>
-  <button class="btn btn-blue btn-full" onclick="saveClassement()" data-i18n="lbl_save">Enregistrer</button>
+  <button class="btn btn-blue btn-full" onclick="saveClassement()">Enregistrer</button>
   <p id="classementStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="calendrierModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_calendar">Modifier le calendrier</h2><button class="close" onclick="closeModal('calendrierModal')">&times;</button></div>
+  <div class="modal-head"><h2>Modifier le calendrier</h2><button class="close" onclick="closeModal('calendrierModal')">&times;</button></div>
   <p class="muted tiny">Date|Mois|Home|Away|Heure|Lieu</p>
   <textarea id="prochainsInput" class="field" rows="6" style="font-family:monospace;font-size:11px"></textarea>
   <p class="muted tiny">Date|Mois|Home|Away|Score</p>
   <textarea id="derniersInput" class="field" rows="6" style="font-family:monospace;font-size:11px"></textarea>
-  <button class="btn btn-blue btn-full" onclick="saveCalendrier()" data-i18n="lbl_save">Enregistrer</button>
+  <button class="btn btn-blue btn-full" onclick="saveCalendrier()">Enregistrer</button>
   <p id="calendrierStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
 <div id="createModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 data-i18n="modal_tournament">Nouveau tournoi</h2><button class="close" onclick="closeModal('createModal')">&times;</button></div>
-  <label class="lbl" data-i18n="lbl_name">Nom *</label><input id="tName" class="field">
-  <label class="lbl" data-i18n="lbl_city">Ville *</label><input id="tCity" class="field">
-  <label class="lbl" data-i18n="lbl_organizer">Organisateur *</label><input id="tOrganizer" class="field">
-  <label class="lbl" data-i18n="lbl_format">Format *</label>
-  <select id="tFormat" class="field">
-    <option value="">--</option>
-    <option value="poules+elimination">Poules + Élimination</option>
-    <option value="elimination">Élimination directe</option>
-  </select>
-  <button class="btn btn-blue btn-full" onclick="saveTournament()" data-i18n="lbl_save">Enregistrer</button>
+  <div class="modal-head"><h2>Nouveau tournoi</h2><button class="close" onclick="closeModal('createModal')">&times;</button></div>
+  <label class="lbl">Nom *</label><input id="tName" class="field">
+  <label class="lbl">Ville *</label><input id="tCity" class="field">
+  <label class="lbl">Organisateur *</label><input id="tOrganizer" class="field">
+  <label class="lbl">Format *</label><select id="tFormat" class="field"><option value="">--</option><option value="poules+elimination">Poules + Élimination</option><option value="elimination">Élimination directe</option></select>
+  <button class="btn btn-blue btn-full" onclick="saveTournament()">Enregistrer</button>
   <p id="createStatus" class="tiny" style="margin-top:8px"></p>
 </div></div></div>
 
@@ -1075,19 +887,12 @@ const firebaseConfig = {
 };
 const IMGBB_KEY = "a977d8fa90364f6aaba9de5d20b3b78e";
 
-// ====== CLÉS API EXTERNES ======
 // ⚠️ REMPLACE CETTE VALEUR PAR TA CLÉ PUBLIQUE VAPID (générée sur vapid.html)
 const VAPID_PUBLIC_KEY = "BElREMPLACE_PAR_TA_CLE_PUBLIQUE_ICI";
-
-// Newsletter : clés Brevo retirées pour sécurité (voir code newsletter plus bas)
-const BREVO_API_KEY = null;
-const BREVO_LIST_ID = null;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-window.__fb = { db, collection, addDoc, serverTimestamp, getDocs, query, orderBy };
 
 const WA = "23562496176";
 let isAdmin = false;
@@ -1099,244 +904,15 @@ let currentArticleId = null;
 let FAVORITES = JSON.parse(localStorage.getItem("rf_favorites")||"[]");
 let currentLang = localStorage.getItem("rf_lang") || "fr";
 
-/* ==================== I18N ==================== */
-const I18N = {
-  fr: {
-    tagline:"La plateforme du football tchadien",
-    admin:"Admin",
-    hero_badge:"🇹🇩 ÉCOSYSTÈME FOOTBALL DU TCHAD",
-    hero_title:"Tout le football tchadien,<br><span>dans ta poche.</span>",
-    hero_sub:"Classements, résultats, tournois, clubs, légendes et talents.",
-    btn_classement:"🏆 Classement",
-    btn_actus:"📰 Actus",
-    btn_calendrier:"📅 Calendrier",
-    btn_offres:"💰 Offres",
-    stat_teams:"ÉQUIPES", stat_matches:"MATCHS", stat_tournaments:"TOURNOIS",
-    visits_label:"👁️ VISITES UNIQUES",
-    pub_label:"ESPACE PUBLICITÉ", pub_title:"🚀 Voulez-vous apparaître ici ?", pub_desc:"Bannière sponsorisée à partir de 15 000 FCFA / mois", pub_btn:"Réserver",
-    wa_title:"Rejoins la communauté WhatsApp", wa_desc:"Résultats, classements et actus gratuitement.", wa_btn:"📱 S'abonner au canal →",
-    kicker_about:"Rahim Football Tchad", about_title:"Le football tchadien, une seule plateforme.", about_lead:"Rahim Football Tchad met en avant les compétitions, les clubs, les joueurs, les coachs, les académies.", btn_discover:"Découvrir →",
-    kicker_news:"Actualités", news_title:"Les dernières infos", btn_all_news:"Voir toutes les actus →",
-    kicker_ranking:"Classement", ranking_title:"Classement LINAFOOT", btn_full_ranking:"Classement complet →",
-    kicker_clubs:"Clubs phares", clubs_title:"Nos partenaires clubs", btn_all_clubs:"Voir tous les clubs →",
-    kicker_talents:"Talents & formation", talents_title:"Futurs talents du Tchad.", academies:"Académies", academies_desc:"Présentation des académies.", coaches:"Coachs", coaches_desc:"Mise en avant des entraîneurs.", players:"Joueurs", players_desc:"Visibilité pour les jeunes.", btn_see_talents:"Voir les talents →",
-    fb_title:"Retrouvez-nous sur Facebook", fb_desc:"Actualités, contenus football, jeunes talents.", fb_btn:"Visiter Facebook",
-    kicker_contact:"Contact", contact_title:"Une question ? Un partenariat ?",
-    ranking_full_title:"🏆 Classement LINAFOOT", btn_edit:"✏️ Modifier",
-    scorers_title:"👟 Meilleurs buteurs", keepers_title:"🧤 Meilleurs gardiens", passers_title:"🎯 Meilleurs passeurs",
-    ligue2_title:"⚽ Ligue 2 — D2", ligue2_ranking:"📊 Classement D2",
-    calendar_title:"📅 Calendrier", next_matches:"🔜 Matchs à venir", last_results:"✅ Derniers résultats",
-    clubs_full_title:"🏟️ Clubs du Tchad",
-    palmares_title:"🏅 Palmarès", palmares_linafoot:"🏆 LINAFOOT", palmares_coupe:"🥇 Coupe du Tchad",
-    news_full_title:"📰 Actualités", btn_publish:"+ Publier",
-    btn_back:"← Retour",
-    offers_title:"💰 Nos Offres",
-    pack_bronze_1:"Page dédiée sur notre site", pack_bronze_2:"Logo affiché sur l'accueil", pack_bronze_3:'Badge "Partenaire Officiel"', choose_bronze:"Choisir Bronze",
-    pack_silver_1:"Tout le Bronze +", pack_silver_2:"12 articles par an", pack_silver_3:"Couverture photo matchs", choose_silver:"Choisir Argent",
-    pack_gold_1:"Tout l'Argent +", pack_gold_2:"24 articles par an", pack_gold_3:"Vidéos TikTok / Reels", choose_gold:"Choisir Or",
-    talents_full_title:"⭐ Talents",
-    videos_title:"🎥 Vidéos", gallery_title:"📸 Galerie photos",
-    pronos_title:"🎯 Pronostics", pronos_desc:"Vote pour ton club favori.",
-    faq_title:"❓ FAQ",
-    faq_q1:"Comment inscrire mon club ?", faq_a1:"Contactez-nous sur WhatsApp au +235 62 49 61 76.",
-    faq_q2:"Puis-je publier un tournoi ?", faq_a2:"Publication pour 2 500 FCFA via Airtel/Moov.",
-    faq_q3:"Comment devenir sponsor ?", faq_a3:"Contactez-nous sur WhatsApp.",
-    contact_full_title:"📧 Nous contacter",
-    form_name:"Nom *", form_email:"Email / téléphone *", form_subject:"Sujet *", form_choose:"-- Choisir --",
-    form_opt1:"Partenariat club", form_opt2:"Publicité", form_opt3:"Proposer un article", form_opt4:"Signaler une erreur", form_opt5:"Autre",
-    form_message:"Message *", form_send:"📩 Envoyer",
-    msg_title:"📬 Messages reçus", msg_refresh:"🔄 Actualiser",
-    inst_title:"🏛️ Institutions", subsections:"📂 Sous-sections", legends_title:"⭐ Légendes", linafoot_players:"⚽ Joueurs LINAFOOT", leaders_title:"👤 Dirigeants", btn_see:"Voir →",
-    tournaments_title:"🏆 Tournois", btn_create:"+ Créer",
-    matches_title:"Résultats",
-    coaches_full:"Coachs & académies",
-    shop_title:"Boutique",
-    about_full:"👤 À propos", founder_role:"Fondateur • Coach & Formateur",
-    cv_title:"🎓 CV", cv_intro:"Abdarrahim Hassan Mahamat, entraîneur et formateur de football, étudiant en Sciences Biomédicales à l'Université Toumaï.",
-    charte_title:"🛡️ Charte de vérification", charte_1_title:"1. Double source", charte_1_desc:"Chaque info confirmée par 2 sources.", charte_2_title:"2. Sources officielles", charte_2_desc:"FTFA, Ministère, LINAFOOT, CAF.",
-    contact_box_title:"📞 Contact", location_title:"📍 Localisation", fb_page_title:"👍 Page Facebook",
-    legal_title:"⚖️ Mentions légales", legal_publisher:"Éditeur", legal_host:"Hébergement", legal_privacy:"Confidentialité", legal_privacy_desc:"Vos données sont utilisées uniquement pour répondre à vos messages.",
-    plus_title:"Business & services",
-    admin_title:"Administration", btn_seed:"Données démo", btn_logout:"Déconnexion",
-    footer_tagline:"Le football tchadien, une seule plateforme.", footer_made:"Fait au Tchad 🇹🇩",
-    nav_home:"Accueil", nav_ranking:"Classement", nav_calendar:"Calendrier", nav_news:"Actus", nav_clubs:"Clubs", nav_offers:"Offres",
-    nav_inst:"Instit.", nav_tournaments:"Tournois", nav_matches:"Matchs", nav_talents:"Talents", nav_videos:"Vidéos",
-    nav_gallery:"Galerie", nav_pronos:"Pronos", nav_contact:"Contact", nav_about:"À propos", nav_more:"Plus",
-    auth_title:"Connexion Admin", auth_password:"Mot de passe", auth_btn:"Se connecter",
-    search_club:"Rechercher un club...", search_article:"Rechercher...", search_coach:"Rechercher un coach...",
-    lbl_name:"Nom *", lbl_type:"Type *", lbl_city:"Ville *", lbl_phone:"Téléphone *", lbl_photo:"Photo", lbl_choose_photo:"Choisir photo", lbl_bio:"Bio *", lbl_save:"Enregistrer",
-    lbl_price:"Prix *", lbl_category:"Catégorie *", lbl_desc:"Description *", lbl_position:"Poste *", lbl_clubs:"Clubs *",
-    lbl_title:"Titre *", lbl_excerpt:"Résumé *", lbl_content:"Contenu *", lbl_source:"Source", lbl_publish:"Publier",
-    lbl_function:"Fonction *", lbl_mandate:"Mandat", lbl_badge:"Badge", lbl_achievements:"Réalisations",
-    lbl_club:"Club *", lbl_age:"Âge *", lbl_category_short:"Catégorie *", lbl_founded:"Fondé en", lbl_stadium:"Stade", lbl_president:"Président", lbl_titles:"Palmarès", lbl_logo:"Logo", lbl_youtube:"URL YouTube *", lbl_organizer:"Organisateur *", lbl_format:"Format *",
-    modal_photo:"Ajouter une photo", modal_video:"Ajouter une vidéo", modal_talent:"Ajouter un talent", modal_ranking:"Modifier le classement", modal_calendar:"Modifier le calendrier", modal_tournament:"Nouveau tournoi",
-    btn_add:"+ Ajouter"
-  },
-  en: {
-    tagline:"The Chadian football platform",
-    admin:"Admin",
-    hero_badge:"🇹🇩 CHADIAN FOOTBALL ECOSYSTEM",
-    hero_title:"All Chadian football,<br><span>in your pocket.</span>",
-    hero_sub:"Standings, results, tournaments, clubs, legends and talents.",
-    btn_classement:"🏆 Standings",
-    btn_actus:"📰 News",
-    btn_calendrier:"📅 Calendar",
-    btn_offres:"💰 Offers",
-    stat_teams:"TEAMS", stat_matches:"MATCHES", stat_tournaments:"TOURNAMENTS",
-    visits_label:"👁️ UNIQUE VISITS",
-    pub_label:"ADVERTISING SPACE", pub_title:"🚀 Want to appear here?", pub_desc:"Sponsored banner from 15,000 FCFA / month", pub_btn:"Book",
-    wa_title:"Join the WhatsApp community", wa_desc:"Results, standings and news for free.", wa_btn:"📱 Subscribe to channel →",
-    kicker_about:"Rahim Football Tchad", about_title:"Chadian football, one platform.", about_lead:"Rahim Football Tchad highlights competitions, clubs, players, coaches and academies.", btn_discover:"Discover →",
-    kicker_news:"News", news_title:"Latest info", btn_all_news:"See all news →",
-    kicker_ranking:"Standings", ranking_title:"LINAFOOT Standings", btn_full_ranking:"Full standings →",
-    kicker_clubs:"Featured clubs", clubs_title:"Our club partners", btn_all_clubs:"See all clubs →",
-    kicker_talents:"Talents & training", talents_title:"Future talents of Chad.", academies:"Academies", academies_desc:"Academies presentation.", coaches:"Coaches", coaches_desc:"Highlighting coaches.", players:"Players", players_desc:"Visibility for youth.", btn_see_talents:"See talents →",
-    fb_title:"Find us on Facebook", fb_desc:"News, football content, young talents.", fb_btn:"Visit Facebook",
-    kicker_contact:"Contact", contact_title:"A question? A partnership?",
-    ranking_full_title:"🏆 LINAFOOT Standings", btn_edit:"✏️ Edit",
-    scorers_title:"👟 Top scorers", keepers_title:"🧤 Top goalkeepers", passers_title:"🎯 Top assisters",
-    ligue2_title:"⚽ League 2 — D2", ligue2_ranking:"📊 D2 Standings",
-    calendar_title:"📅 Calendar", next_matches:"🔜 Upcoming matches", last_results:"✅ Latest results",
-    clubs_full_title:"🏟️ Clubs of Chad",
-    palmares_title:"🏅 Honours", palmares_linafoot:"🏆 LINAFOOT", palmares_coupe:"🥇 Chad Cup",
-    news_full_title:"📰 News", btn_publish:"+ Publish",
-    btn_back:"← Back",
-    offers_title:"💰 Our Offers",
-    pack_bronze_1:"Dedicated page on our site", pack_bronze_2:"Logo on homepage", pack_bronze_3:'"Official Partner" badge', choose_bronze:"Choose Bronze",
-    pack_silver_1:"Everything in Bronze +", pack_silver_2:"12 articles per year", pack_silver_3:"Match photo coverage", choose_silver:"Choose Silver",
-    pack_gold_1:"Everything in Silver +", pack_gold_2:"24 articles per year", pack_gold_3:"TikTok / Reels videos", choose_gold:"Choose Gold",
-    talents_full_title:"⭐ Talents",
-    videos_title:"🎥 Videos", gallery_title:"📸 Photo gallery",
-    pronos_title:"🎯 Predictions", pronos_desc:"Vote for your favorite club.",
-    faq_title:"❓ FAQ",
-    faq_q1:"How to register my club?", faq_a1:"Contact us on WhatsApp at +235 62 49 61 76.",
-    faq_q2:"Can I publish a tournament?", faq_a2:"Publishing for 2,500 FCFA via Airtel/Moov.",
-    faq_q3:"How to become a sponsor?", faq_a3:"Contact us on WhatsApp.",
-    contact_full_title:"📧 Contact us",
-    form_name:"Name *", form_email:"Email / phone *", form_subject:"Subject *", form_choose:"-- Choose --",
-    form_opt1:"Club partnership", form_opt2:"Advertising", form_opt3:"Submit an article", form_opt4:"Report an error", form_opt5:"Other",
-    form_message:"Message *", form_send:"📩 Send",
-    msg_title:"📬 Received messages", msg_refresh:"🔄 Refresh",
-    inst_title:"🏛️ Institutions", subsections:"📂 Subsections", legends_title:"⭐ Legends", linafoot_players:"⚽ LINAFOOT Players", leaders_title:"👤 Leaders", btn_see:"See →",
-    tournaments_title:"🏆 Tournaments", btn_create:"+ Create",
-    matches_title:"Results",
-    coaches_full:"Coaches & academies",
-    shop_title:"Shop",
-    about_full:"👤 About", founder_role:"Founder • Coach & Trainer",
-    cv_title:"🎓 CV", cv_intro:"Abdarrahim Hassan Mahamat, football coach and trainer, student in Biomedical Sciences at Toumaï University.",
-    charte_title:"🛡️ Verification Charter", charte_1_title:"1. Double source", charte_1_desc:"Every info confirmed by 2 sources.", charte_2_title:"2. Official sources", charte_2_desc:"FTFA, Ministry, LINAFOOT, CAF.",
-    contact_box_title:"📞 Contact", location_title:"📍 Location", fb_page_title:"👍 Facebook Page",
-    legal_title:"⚖️ Legal notices", legal_publisher:"Publisher", legal_host:"Hosting", legal_privacy:"Privacy", legal_privacy_desc:"Your data is used only to reply to your messages.",
-    plus_title:"Business & services",
-    admin_title:"Administration", btn_seed:"Demo data", btn_logout:"Logout",
-    footer_tagline:"Chadian football, one platform.", footer_made:"Made in Chad 🇹🇩",
-    nav_home:"Home", nav_ranking:"Standings", nav_calendar:"Calendar", nav_news:"News", nav_clubs:"Clubs", nav_offers:"Offers",
-    nav_inst:"Inst.", nav_tournaments:"Tournaments", nav_matches:"Matches", nav_talents:"Talents", nav_videos:"Videos",
-    nav_gallery:"Gallery", nav_pronos:"Predictions", nav_contact:"Contact", nav_about:"About", nav_more:"More",
-    auth_title:"Admin login", auth_password:"Password", auth_btn:"Log in",
-    search_club:"Search a club...", search_article:"Search...", search_coach:"Search a coach...",
-    lbl_name:"Name *", lbl_type:"Type *", lbl_city:"City *", lbl_phone:"Phone *", lbl_photo:"Photo", lbl_choose_photo:"Choose photo", lbl_bio:"Bio *", lbl_save:"Save",
-    lbl_price:"Price *", lbl_category:"Category *", lbl_desc:"Description *", lbl_position:"Position *", lbl_clubs:"Clubs *",
-    lbl_title:"Title *", lbl_excerpt:"Summary *", lbl_content:"Content *", lbl_source:"Source", lbl_publish:"Publish",
-    lbl_function:"Position *", lbl_mandate:"Mandate", lbl_badge:"Badge", lbl_achievements:"Achievements",
-    lbl_club:"Club *", lbl_age:"Age *", lbl_category_short:"Category *", lbl_founded:"Founded", lbl_stadium:"Stadium", lbl_president:"President", lbl_titles:"Honours", lbl_logo:"Logo", lbl_youtube:"YouTube URL *", lbl_organizer:"Organizer *", lbl_format:"Format *",
-    modal_photo:"Add a photo", modal_video:"Add a video", modal_talent:"Add a talent", modal_ranking:"Edit standings", modal_calendar:"Edit calendar", modal_tournament:"New tournament",
-    btn_add:"+ Add"
-  },
-  ar: {
-    tagline:"منصة كرة القدم التشادية",
-    admin:"المشرف",
-    hero_badge:"🇹🇩 منظومة كرة القدم التشادية",
-    hero_title:"كل كرة القدم التشادية،<br><span>في جيبك.</span>",
-    hero_sub:"الترتيب، النتائج، البطولات، الأندية، الأساطير والمواهب.",
-    btn_classement:"🏆 الترتيب",
-    btn_actus:"📰 الأخبار",
-    btn_calendrier:"📅 التقويم",
-    btn_offres:"💰 العروض",
-    stat_teams:"الفرق", stat_matches:"المباريات", stat_tournaments:"البطولات",
-    visits_label:"👁️ زيارات فريدة",
-    pub_label:"مساحة إعلانية", pub_title:"🚀 هل تريد الظهور هنا؟", pub_desc:"لافتة برعاية تبدأ من 15,000 فرنك شهرياً", pub_btn:"احجز",
-    wa_title:"انضم لمجتمع واتساب", wa_desc:"النتائج والترتيب والأخبار مجاناً.", wa_btn:"📱 اشترك في القناة →",
-    kicker_about:"رحيم كرة القدم تشاد", about_title:"كرة القدم التشادية، منصة واحدة.", about_lead:"منصة رحيم كرة القدم تشاد تسلط الضوء على المسابقات والأندية واللاعبين والمدربين والأكاديميات.", btn_discover:"اكتشف →",
-    kicker_news:"الأخبار", news_title:"آخر المعلومات", btn_all_news:"شاهد كل الأخبار →",
-    kicker_ranking:"الترتيب", ranking_title:"ترتيب LINAFOOT", btn_full_ranking:"الترتيب الكامل →",
-    kicker_clubs:"أندية بارزة", clubs_title:"أنديتنا الشريكة", btn_all_clubs:"شاهد كل الأندية →",
-    kicker_talents:"المواهب والتكوين", talents_title:"مواهب تشاد المستقبلية.", academies:"الأكاديميات", academies_desc:"عرض الأكاديميات.", coaches:"المدربون", coaches_desc:"إبراز المدربين.", players:"اللاعبون", players_desc:"ظهور للشباب.", btn_see_talents:"شاهد المواهب →",
-    fb_title:"تابعنا على فيسبوك", fb_desc:"أخبار ومحتوى كرة القدم والمواهب الشابة.", fb_btn:"زيارة فيسبوك",
-    kicker_contact:"اتصل بنا", contact_title:"سؤال؟ شراكة؟",
-    ranking_full_title:"🏆 ترتيب LINAFOOT", btn_edit:"✏️ تعديل",
-    scorers_title:"👟 أفضل الهدافين", keepers_title:"🧤 أفضل الحراس", passers_title:"🎯 أفضل الممررين",
-    ligue2_title:"⚽ الدوري الثاني — D2", ligue2_ranking:"📊 ترتيب D2",
-    calendar_title:"📅 التقويم", next_matches:"🔜 المباريات القادمة", last_results:"✅ آخر النتائج",
-    clubs_full_title:"🏟️ أندية تشاد",
-    palmares_title:"🏅 السجل الذهبي", palmares_linafoot:"🏆 LINAFOOT", palmares_coupe:"🥇 كأس تشاد",
-    news_full_title:"📰 الأخبار", btn_publish:"+ نشر",
-    btn_back:"← رجوع",
-    offers_title:"💰 عروضنا",
-    pack_bronze_1:"صفحة مخصصة على موقعنا", pack_bronze_2:"الشعار على الصفحة الرئيسية", pack_bronze_3:'شارة "الشريك الرسمي"', choose_bronze:"اختر البرونزي",
-    pack_silver_1:"كل ما في البرونزي +", pack_silver_2:"12 مقالاً سنوياً", pack_silver_3:"تغطية صور المباريات", choose_silver:"اختر الفضي",
-    pack_gold_1:"كل ما في الفضي +", pack_gold_2:"24 مقالاً سنوياً", pack_gold_3:"فيديوهات تيك توك / ريلز", choose_gold:"اختر الذهبي",
-    talents_full_title:"⭐ المواهب",
-    videos_title:"🎥 الفيديوهات", gallery_title:"📸 معرض الصور",
-    pronos_title:"🎯 التوقعات", pronos_desc:"صوّت لناديك المفضل.",
-    faq_title:"❓ الأسئلة الشائعة",
-    faq_q1:"كيف أسجل ناديي؟", faq_a1:"اتصل بنا على واتساب ‎+235 62 49 61 76.",
-    faq_q2:"هل يمكنني نشر بطولة؟", faq_a2:"النشر مقابل 2,500 فرنك عبر Airtel/Moov.",
-    faq_q3:"كيف أصبح راعياً؟", faq_a3:"اتصل بنا على واتساب.",
-    contact_full_title:"📧 اتصل بنا",
-    form_name:"الاسم *", form_email:"البريد / الهاتف *", form_subject:"الموضوع *", form_choose:"-- اختر --",
-    form_opt1:"شراكة نادٍ", form_opt2:"إعلان", form_opt3:"تقديم مقال", form_opt4:"الإبلاغ عن خطأ", form_opt5:"أخرى",
-    form_message:"الرسالة *", form_send:"📩 إرسال",
-    msg_title:"📬 الرسائل الواردة", msg_refresh:"🔄 تحديث",
-    inst_title:"🏛️ المؤسسات", subsections:"📂 أقسام فرعية", legends_title:"⭐ الأساطير", linafoot_players:"⚽ لاعبو LINAFOOT", leaders_title:"👤 القادة", btn_see:"شاهد →",
-    tournaments_title:"🏆 البطولات", btn_create:"+ إنشاء",
-    matches_title:"النتائج",
-    coaches_full:"المدربون والأكاديميات",
-    shop_title:"المتجر",
-    about_full:"👤 من نحن", founder_role:"المؤسس • مدرب ومكوّن",
-    cv_title:"🎓 السيرة الذاتية", cv_intro:"عبد الرحيم حسن محمد، مدرب ومكوّن كرة قدم، طالب في العلوم الطبية الحيوية بجامعة توماي.",
-    charte_title:"🛡️ ميثاق التحقق", charte_1_title:"1. مصدران", charte_1_desc:"كل معلومة مؤكدة من مصدرين.", charte_2_title:"2. المصادر الرسمية", charte_2_desc:"الاتحاد، الوزارة، LINAFOOT، CAF.",
-    contact_box_title:"📞 اتصل", location_title:"📍 الموقع", fb_page_title:"👍 صفحة فيسبوك",
-    legal_title:"⚖️ الإشعارات القانونية", legal_publisher:"الناشر", legal_host:"الاستضافة", legal_privacy:"الخصوصية", legal_privacy_desc:"تُستخدم بياناتك فقط للرد على رسائلك.",
-    plus_title:"الأعمال والخدمات",
-    admin_title:"الإدارة", btn_seed:"بيانات تجريبية", btn_logout:"خروج",
-    footer_tagline:"كرة القدم التشادية، منصة واحدة.", footer_made:"صنع في تشاد 🇹🇩",
-    nav_home:"الرئيسية", nav_ranking:"الترتيب", nav_calendar:"التقويم", nav_news:"الأخبار", nav_clubs:"الأندية", nav_offers:"العروض",
-    nav_inst:"المؤسسات", nav_tournaments:"البطولات", nav_matches:"المباريات", nav_talents:"المواهب", nav_videos:"الفيديوهات",
-    nav_gallery:"المعرض", nav_pronos:"التوقعات", nav_contact:"اتصل", nav_about:"من نحن", nav_more:"المزيد",
-    auth_title:"دخول المشرف", auth_password:"كلمة المرور", auth_btn:"دخول",
-    search_club:"ابحث عن نادٍ...", search_article:"ابحث...", search_coach:"ابحث عن مدرب...",
-    lbl_name:"الاسم *", lbl_type:"النوع *", lbl_city:"المدينة *", lbl_phone:"الهاتف *", lbl_photo:"الصورة", lbl_choose_photo:"اختر صورة", lbl_bio:"نبذة *", lbl_save:"حفظ",
-    lbl_price:"السعر *", lbl_category:"الفئة *", lbl_desc:"الوصف *", lbl_position:"المركز *", lbl_clubs:"الأندية *",
-    lbl_title:"العنوان *", lbl_excerpt:"الملخص *", lbl_content:"المحتوى *", lbl_source:"المصدر", lbl_publish:"نشر",
-    lbl_function:"الوظيفة *", lbl_mandate:"المهمة", lbl_badge:"الشارة", lbl_achievements:"الإنجازات",
-    lbl_club:"النادي *", lbl_age:"العمر *", lbl_category_short:"الفئة *", lbl_founded:"تأسس", lbl_stadium:"الملعب", lbl_president:"الرئيس", lbl_titles:"السجل الذهبي", lbl_logo:"الشعار", lbl_youtube:"رابط يوتيوب *", lbl_organizer:"المنظم *", lbl_format:"الصيغة *",
-    modal_photo:"إضافة صورة", modal_video:"إضافة فيديو", modal_talent:"إضافة موهبة", modal_ranking:"تعديل الترتيب", modal_calendar:"تعديل التقويم", modal_tournament:"بطولة جديدة",
-    btn_add:"+ إضافة"
-  }
-};
-
 function changeLang(lang){
   currentLang = lang;
   localStorage.setItem("rf_lang", lang);
-  var t = I18N[lang] || I18N.fr;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var key = el.getAttribute("data-i18n");
-    if(t[key]) el.innerHTML = t[key];
-  });
-  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
-    var key = el.getAttribute("data-i18n-ph");
-    if(t[key]) el.placeholder = t[key];
-  });
   document.documentElement.lang = lang;
   document.documentElement.dir = lang==="ar" ? "rtl" : "ltr";
   document.body.dir = lang==="ar" ? "rtl" : "ltr";
-  var sel = document.getElementById("langSelect");
-  if(sel) sel.value = lang;
 }
 window.changeLang = changeLang;
 
-/* ====== UTILS ====== */
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function fmt(n){n=Number(n)||0;return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");}
 function $(id){return document.getElementById(id);}
@@ -1346,7 +922,6 @@ function slug(str){return String(str).toLowerCase().replace(/[^a-z0-9]+/g,"-").r
 function toggleTheme(){document.body.classList.toggle("dark");localStorage.setItem("rf_theme",document.body.classList.contains("dark")?"dark":"light");}
 window.toggleTheme = toggleTheme;
 
-/* ====== NAV ====== */
 function go(tab){
   document.querySelectorAll(".tab").forEach(function(s){s.classList.add("hidden");});
   var t=$("sec-"+tab); if(t) t.classList.remove("hidden");
@@ -1367,7 +942,6 @@ function goSub(sub){
 window.goSub = goSub;
 window.hideSub = function(){ $("instLegends").classList.add("hidden"); $("instLinafoot").classList.add("hidden"); };
 
-/* ====== VISITS ====== */
 async function trackVisit(){
   var today = new Date().toISOString().split("T")[0];
   try{
@@ -1387,7 +961,6 @@ async function trackVisit(){
   }catch(e){ $("visitCount").textContent = "—"; }
 }
 
-/* ====== CLASSEMENT ====== */
 const DEFAULT_CLASSEMENT = [
   {pos:1,club:"Aiglons FC",ville:"N'Djamena",pts:52,j:22,g:16,n:4,p:2,bp:48,bc:15},
   {pos:2,club:"AS PSI",ville:"N'Djamena",pts:45,j:22,g:14,n:3,p:5,bp:41,bc:22},
@@ -1407,10 +980,8 @@ const GARDIENS = [{pos:1,nom:"Christian Ramadjingaye",club:"Aiglons FC",clean:14
 const PASSEURS = [{pos:1,nom:"Herman Doumna",club:"Gazelle FC",passes:10},{pos:2,nom:"Aboubakar Abderahim",club:"Aiglons FC",passes:9},{pos:3,nom:"Ali Mahamout Tchari",club:"TP Elect-Sport",passes:8},{pos:4,nom:"Yves Allarabaye",club:"Foullah Edifice",passes:7},{pos:5,nom:"Mahamat Ekian",club:"Renaissance FC",passes:6}];
 
 async function loadClassement(){
-  try{
-    var snap = await getDoc(doc(db,"config","classement"));
-    CLASSEMENT_DATA = snap.exists() ? snap.data().list : DEFAULT_CLASSEMENT;
-  }catch(e){ CLASSEMENT_DATA = DEFAULT_CLASSEMENT; }
+  try{ var snap = await getDoc(doc(db,"config","classement")); CLASSEMENT_DATA = snap.exists() ? snap.data().list : DEFAULT_CLASSEMENT; }
+  catch(e){ CLASSEMENT_DATA = DEFAULT_CLASSEMENT; }
   renderClassement();
 }
 function renderClassement(){
@@ -1422,8 +993,7 @@ function renderClassement(){
       var diff = (t.bp||0)-(t.bc||0);
       h+='<tr><td><span class="rank-pos '+cls+'">'+t.pos+'</span></td><td><div class="rank-club">'+esc(t.club)+'</div><div style="font-size:10px;color:var(--muted)">'+esc(t.ville||"")+'</div></td><td class="rank-pts">'+t.pts+'</td><td style="text-align:center">'+t.j+'</td><td style="text-align:center">'+t.g+'</td><td style="text-align:center">'+t.n+'</td><td style="text-align:center">'+t.p+'</td><td style="text-align:center;font-weight:800;color:'+(diff>0?"#15803d":diff<0?"#C8102E":"#64748b")+'">'+(diff>0?"+":"")+diff+'</td></tr>';
     });
-    h+='</tbody></table>';
-    c.innerHTML=h;
+    h+='</tbody></table>'; c.innerHTML=h;
   }
   var prev=$("homeRankingPreview");
   if(prev){
@@ -1432,8 +1002,7 @@ function renderClassement(){
       var cls = t.pos===1?"gold":t.pos===2?"silver":t.pos===3?"bronze":"";
       ph+='<tr><td><span class="rank-pos '+cls+'">'+t.pos+'</span></td><td class="rank-club">'+esc(t.club)+'</td><td class="rank-pts">'+t.pts+'</td></tr>';
     });
-    ph+='</tbody></table>';
-    prev.innerHTML=ph;
+    ph+='</tbody></table>'; prev.innerHTML=ph;
   }
   var b=$("buteursContainer"); if(b){var hb='<div class="card">';BUTEURS.forEach(function(p){hb+='<div class="stat-line"><span><b>'+p.pos+'.</b> '+esc(p.nom)+' <span style="color:var(--muted);font-size:11px">('+esc(p.club)+')</span></span><b>'+p.buts+'</b></div>';});hb+='</div>';b.innerHTML=hb;}
   var g=$("gardiensContainer"); if(g){var hg='<div class="card">';GARDIENS.forEach(function(p){hg+='<div class="stat-line"><span><b>'+p.pos+'.</b> '+esc(p.nom)+' <span style="color:var(--muted);font-size:11px">('+esc(p.club)+')</span></span><b>'+p.clean+'</b></div>';});hg+='</div>';g.innerHTML=hg;}
@@ -1443,8 +1012,7 @@ window.openClassementEditor = function(){
   if(!isAdmin) return;
   var list = CLASSEMENT_DATA || DEFAULT_CLASSEMENT;
   $("classementInput").value = list.map(function(t){return [t.pos,t.club,t.ville,t.pts,t.j,t.g,t.n,t.p,t.bp,t.bc].join("|");}).join("\n");
-  $("classementStatus").textContent = "";
-  show("classementModal");
+  $("classementStatus").textContent = ""; show("classementModal");
 };
 window.saveClassement = async function(){
   var lines = $("classementInput").value.split("\n").filter(function(l){return l.trim();});
@@ -1455,39 +1023,30 @@ window.saveClassement = async function(){
       if(p.length >= 10){ list.push({pos:Number(p[0]),club:p[1].trim(),ville:p[2].trim(),pts:Number(p[3]),j:Number(p[4]),g:Number(p[5]),n:Number(p[6]),p:Number(p[7]),bp:Number(p[8]),bc:Number(p[9])}); }
     });
     await setDoc(doc(db,"config","classement"), {list:list, updatedAt:serverTimestamp()});
-    CLASSEMENT_DATA = list;
-    renderClassement();
-    $("classementStatus").textContent = "✅";
-    $("classementStatus").className = "tiny alert alert-green";
+    CLASSEMENT_DATA = list; renderClassement();
+    $("classementStatus").textContent = "✅"; $("classementStatus").className = "tiny alert alert-green";
     setTimeout(function(){ closeModal("classementModal"); }, 700);
   }catch(e){ $("classementStatus").textContent = "Erreur : "+e.message; $("classementStatus").className = "tiny alert alert-red"; }
 };
 
-/* ====== CALENDRIER ====== */
 const DEFAULT_PROCHAINS = [{date:"15",mois:"Nov",home:"Aiglons FC",away:"Gazelle FC",heure:"16h00",lieu:"Stade Idriss Mahamat Ouya"},{date:"16",mois:"Nov",home:"TP Elect-Sport",away:"AS PSI",heure:"15h30",lieu:"Stade Idriss Mahamat Ouya"},{date:"17",mois:"Nov",home:"Foullah Edifice",away:"Renaissance FC",heure:"16h00",lieu:"Stade de Moussoro"}];
 const DEFAULT_RESULTATS = [{date:"08",mois:"Nov",home:"Aiglons FC",away:"Renaissance FC",score:"3 - 1"},{date:"08",mois:"Nov",home:"AS PSI",away:"Foullah Edifice",score:"2 - 0"},{date:"09",mois:"Nov",home:"TP Elect-Sport",away:"Gazelle FC",score:"1 - 1"}];
 
 async function loadCalendrier(){
-  try{
-    var snap = await getDoc(doc(db,"config","calendrier"));
-    CALENDRIER_DATA = snap.exists() ? snap.data() : {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS};
-  }catch(e){ CALENDRIER_DATA = {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS}; }
+  try{ var snap = await getDoc(doc(db,"config","calendrier")); CALENDRIER_DATA = snap.exists() ? snap.data() : {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS}; }
+  catch(e){ CALENDRIER_DATA = {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS}; }
   renderCalendrier();
 }
 function renderCalendrier(){
   var data = CALENDRIER_DATA || {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS};
   var pc=$("prochainsMatchsContainer"); if(pc){
     var h="";
-    (data.prochains||[]).forEach(function(m){
-      h+='<div class="calendar-item"><div class="date"><b>'+esc(m.date)+'</b><span>'+esc(m.mois)+'</span></div><div class="match-info"><b>'+esc(m.home)+' vs '+esc(m.away)+'</b><span>⏰ '+esc(m.heure||"")+' • 📍 '+esc(m.lieu||"")+'</span></div></div>';
-    });
+    (data.prochains||[]).forEach(function(m){ h+='<div class="calendar-item"><div class="date"><b>'+esc(m.date)+'</b><span>'+esc(m.mois)+'</span></div><div class="match-info"><b>'+esc(m.home)+' vs '+esc(m.away)+'</b><span>⏰ '+esc(m.heure||"")+' • 📍 '+esc(m.lieu||"")+'</span></div></div>'; });
     pc.innerHTML=h || '<div class="empty">—</div>';
   }
   var dc=$("derniersResultatsContainer"); if(dc){
     var h2="";
-    (data.resultats||[]).forEach(function(m){
-      h2+='<div class="calendar-item"><div class="date"><b>'+esc(m.date)+'</b><span>'+esc(m.mois)+'</span></div><div class="match-info"><b>'+esc(m.home)+' <span style="color:#0066B3">'+esc(m.score)+'</span> '+esc(m.away)+'</b><span>✅</span></div></div>';
-    });
+    (data.resultats||[]).forEach(function(m){ h2+='<div class="calendar-item"><div class="date"><b>'+esc(m.date)+'</b><span>'+esc(m.mois)+'</span></div><div class="match-info"><b>'+esc(m.home)+' <span style="color:#0066B3">'+esc(m.score)+'</span> '+esc(m.away)+'</b><span>✅</span></div></div>'; });
     dc.innerHTML=h2 || '<div class="empty">—</div>';
   }
 }
@@ -1496,92 +1055,24 @@ window.openCalendrierEditor = function(){
   var data = CALENDRIER_DATA || {prochains: DEFAULT_PROCHAINS, resultats: DEFAULT_RESULTATS};
   $("prochainsInput").value = (data.prochains||[]).map(function(m){return [m.date,m.mois,m.home,m.away,m.heure,m.lieu].join("|");}).join("\n");
   $("derniersInput").value = (data.resultats||[]).map(function(m){return [m.date,m.mois,m.home,m.away,m.score].join("|");}).join("\n");
-  $("calendrierStatus").textContent = "";
-  show("calendrierModal");
+  $("calendrierStatus").textContent = ""; show("calendrierModal");
 };
 window.saveCalendrier = async function(){
   try{
     var prochains = $("prochainsInput").value.split("\n").filter(function(l){return l.trim();}).map(function(l){var p=l.split("|");return {date:p[0]||"",mois:p[1]||"",home:p[2]||"",away:p[3]||"",heure:p[4]||"",lieu:p[5]||""};});
     var resultats = $("derniersInput").value.split("\n").filter(function(l){return l.trim();}).map(function(l){var p=l.split("|");return {date:p[0]||"",mois:p[1]||"",home:p[2]||"",away:p[3]||"",score:p[4]||""};});
     await setDoc(doc(db,"config","calendrier"), {prochains:prochains, resultats:resultats, updatedAt:serverTimestamp()});
-    CALENDRIER_DATA = {prochains:prochains, resultats:resultats};
-    renderCalendrier();
-    $("calendrierStatus").textContent = "✅";
-    $("calendrierStatus").className = "tiny alert alert-green";
+    CALENDRIER_DATA = {prochains:prochains, resultats:resultats}; renderCalendrier();
+    $("calendrierStatus").textContent = "✅"; $("calendrierStatus").className = "tiny alert alert-green";
     setTimeout(function(){ closeModal("calendrierModal"); }, 700);
   }catch(e){ $("calendrierStatus").textContent = "Erreur : "+e.message; $("calendrierStatus").className = "tiny alert alert-red"; }
 };
 
-/* ====== PRONOSTICS ====== */
-async function loadPronostics(){
-  try{
-    var snap = await getDoc(doc(db,"config","pronostics"));
-    var data = snap.exists() ? snap.data() : {};
-    renderPronostics(data);
-  }catch(e){ renderPronostics({}); }
-}
-function renderPronostics(data){
-  var list = (CALENDRIER_DATA && CALENDRIER_DATA.prochains) ? CALENDRIER_DATA.prochains : DEFAULT_PROCHAINS;
-  var c=$("pronosticsContainer"); if(!c)return;
-  var ph=$("pronosticHome");
-  if(!list.length){ c.innerHTML='<div class="empty">—</div>'; return; }
-  var h="";
-  list.slice(0,5).forEach(function(m,i){
-    var key = "m"+i;
-    var v = data[key] || {home:0,draw:0,away:0};
-    var total = v.home+v.draw+v.away || 1;
-    var userVote = localStorage.getItem("rf_prono_"+key) || "";
-    h+='<div class="prediction"><b style="font-size:14px">'+esc(m.home)+' vs '+esc(m.away)+'</b>';
-    h+='<p class="tiny muted">📅 '+esc(m.date)+' '+esc(m.mois)+' • '+esc(m.heure)+'</p>';
-    h+='<div class="pbtns">';
-    h+='<button onclick="voteProno(\''+key+'\',\'home\')" class="'+(userVote==="home"?"voted":"")+'">'+esc(m.home)+'</button>';
-    h+='<button onclick="voteProno(\''+key+'\',\'draw\')" class="'+(userVote==="draw"?"voted":"")+'">X</button>';
-    h+='<button onclick="voteProno(\''+key+'\',\'away\')" class="'+(userVote==="away"?"voted":"")+'">'+esc(m.away)+'</button>';
-    h+='</div>';
-    h+='<div class="presults">📊 '+Math.round(v.home/total*100)+'% • '+Math.round(v.draw/total*100)+'% • '+Math.round(v.away/total*100)+'%</div></div>';
-  });
-  c.innerHTML=h;
-  if(ph){
-    var hph="";
-    list.slice(0,2).forEach(function(m,i){
-      var key = "m"+i;
-      var v = data[key] || {home:0,draw:0,away:0};
-      var total = v.home+v.draw+v.away || 1;
-      var userVote = localStorage.getItem("rf_prono_"+key) || "";
-      hph+='<div class="prediction"><b style="font-size:13px">'+esc(m.home)+' vs '+esc(m.away)+'</b>';
-      hph+='<div class="pbtns">';
-      hph+='<button onclick="voteProno(\''+key+'\',\'home\')" class="'+(userVote==="home"?"voted":"")+'">1</button>';
-      hph+='<button onclick="voteProno(\''+key+'\',\'draw\')" class="'+(userVote==="draw"?"voted":"")+'">X</button>';
-      hph+='<button onclick="voteProno(\''+key+'\',\'away\')" class="'+(userVote==="away"?"voted":"")+'">2</button>';
-      hph+='</div><div class="presults">'+Math.round(v.home/total*100)+'% • '+Math.round(v.draw/total*100)+'% • '+Math.round(v.away/total*100)+'%</div></div>';
-    });
-    ph.innerHTML=hph;
-  }
-}
-window.voteProno = async function(key, choice){
-  var prevVote = localStorage.getItem("rf_prono_"+key);
-  if(prevVote === choice) return;
-  try{
-    var docRef = doc(db,"config","pronostics");
-    var snap = await getDoc(docRef);
-    var data = snap.exists() ? snap.data() : {};
-    if(prevVote && data[key] && data[key][prevVote] > 0){ data[key][prevVote]--; }
-    if(!data[key]) data[key] = {home:0, draw:0, away:0};
-    data[key][choice] = (data[key][choice] || 0) + 1;
-    data.updatedAt = serverTimestamp();
-    await setDoc(docRef, data);
-    localStorage.setItem("rf_prono_"+key, choice);
-    renderPronostics(data);
-  }catch(e){ alert("Erreur : "+e.message); }
-};
-
-/* ====== COLLECTIONS & RENDERS ====== */
 function renderTalents(){
-  var list = TALENTS;
   var u17=$("talentsU17"), u20=$("talentsU20");
   if(!u17 || !u20) return;
   var h17="", h20="";
-  list.forEach(function(t){
+  TALENTS.forEach(function(t){
     var card = '<div class="talent-card"><div class="tnum">'+esc(t.age||"")+'</div><div class="tinfo"><b>'+esc(t.name)+'</b><span>'+esc(t.age)+' • '+esc(t.poste)+'</span><div class="tclub">🏟️ '+esc(t.club)+'</div>'+(isAdmin?'<button class="btn btn-red" style="margin-top:6px;font-size:10px;padding:4px 8px" onclick="deleteTalent(\''+esc(t.id)+'\')">×</button>':'')+'</div></div>';
     if(t.cat==="U20") h20+=card; else h17+=card;
   });
@@ -1607,8 +1098,7 @@ function renderVideos(){
 }
 window.openVideoEditor = function(){ if(!isAdmin)return; $("vTitle").value=""; $("vUrl").value=""; $("vStatus").textContent=""; show("videoModal"); };
 window.saveVideo = async function(){
-  var title=$("vTitle").value.trim(), url=$("vUrl").value.trim();
-  var st=$("vStatus");
+  var title=$("vTitle").value.trim(), url=$("vUrl").value.trim(); var st=$("vStatus");
   if(!title || !url){ st.textContent="!"; st.className="tiny alert alert-red"; return; }
   if(!url.includes("/embed/")){ st.textContent="Format : youtube.com/embed/ID"; st.className="tiny alert alert-red"; return; }
   st.textContent="…"; st.className="tiny alert alert-blue";
@@ -1625,8 +1115,7 @@ function renderGalerie(){
 }
 window.openPhotoEditor = function(){ if(!isAdmin)return; $("phTitle").value=""; $("phImageUrl").value=""; $("phImagePreview").classList.add("hidden"); resetUpload("phUpload"); $("phStatus").textContent=""; show("photoModal"); };
 window.savePhoto = async function(){
-  var title=$("phTitle").value.trim(), url=$("phImageUrl").value;
-  var st=$("phStatus");
+  var title=$("phTitle").value.trim(), url=$("phImageUrl").value; var st=$("phStatus");
   if(!url){ st.textContent="!"; st.className="tiny alert alert-red"; return; }
   st.textContent="…"; st.className="tiny alert alert-blue";
   try{ await addDoc(collection(db,"photos"), {title:title||"Photo", url:url, createdAt:serverTimestamp()}); st.textContent="✅"; st.className="tiny alert alert-green"; setTimeout(function(){closeModal("photoModal");},700); }catch(e){st.textContent="Erreur";st.className="tiny alert alert-red";}
@@ -1643,7 +1132,7 @@ function renderClubs(){
     h+='<div class="card" style="position:relative">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openClubEditor(\''+esc(cl.id)+'\')">✏️</button>';
     h+='<div class="row" style="align-items:center">';
-    h+='<div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#0066B3,#C8102E);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:24px;flex-shrink:0;overflow:hidden">'+(logo?'<img src="'+esc(logo)+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentNode.textContent=\''+esc(cl.name[0])+'\'">':esc(cl.name[0]))+'</div>';
+    h+='<div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#0066B3,#C8102E);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:24px;flex-shrink:0;overflow:hidden">'+(logo?'<img src="'+esc(logo)+'" style="width:100%;height:100%;object-fit:cover">':esc(cl.name[0]))+'</div>';
     h+='<div style="flex:1;min-width:0"><h3 style="margin:0">'+esc(cl.name)+'</h3><p class="tiny muted">📍 '+esc(cl.city||"")+'</p></div></div>';
     if(cl.funded) h+='<p class="tiny" style="margin-top:8px">📅 '+esc(cl.funded)+'</p>';
     if(cl.stadium) h+='<p class="tiny">🏟️ '+esc(cl.stadium)+'</p>';
@@ -1663,8 +1152,7 @@ window.openClubEditor = function(id){
   $("clImageUrl").value="";
   if(cl.logo){ $("clImagePreview").src=cl.logo; $("clImagePreview").classList.remove("hidden"); } else $("clImagePreview").classList.add("hidden");
   resetUpload("clUpload"); $("clStatus").textContent="";
-  $("clubModalTitle").textContent = id ? "Modifier" : "Nouveau club";
-  show("clubModal");
+  $("clubModalTitle").textContent = id ? "Modifier" : "Nouveau club"; show("clubModal");
 };
 window.saveClub = async function(){
   var id=$("clId").value;
@@ -1681,7 +1169,6 @@ window.saveClub = async function(){
   }catch(e){ st.textContent="Erreur"; st.className="tiny alert alert-red"; }
 };
 
-/* ====== IMGBB UPLOAD WITH COMPRESSION ====== */
 async function compressImage(file, maxWidth){
   return new Promise(function(resolve){
     if(!file.type.startsWith("image/")) return resolve(file);
@@ -1727,13 +1214,12 @@ function resetUpload(labelId){
   var up=$(labelId); if(!up) return;
   up.classList.remove("uploading");
   up.querySelector(".icon").textContent="📸";
-  up.querySelector(".txt").textContent = I18N[currentLang]?.lbl_choose_photo || "Choisir photo";
+  up.querySelector(".txt").textContent = "Choisir photo";
 }
 
-/* ====== OFFICIALS ====== */
 const FALLBACK_OFFICIALS = [
-  {id:"tahir_default",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu le 1er mars 2025",badge:"FIFA • Commission",photo:"assets/tahir-oley.jpg",bio:"Homme de la refondation du football tchadien.",realisations:["Membre Commission FIFA","13 arbitres FIFA","Création ligue féminine"]},
-  {id:"nair_default",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en avril 2026",badge:"Plus jeune ministre",photo:"assets/nair-abakar.jpg",bio:"Entrepreneur et consultant sportif.",realisations:["Partenariat LaLiga","Détection jeunes talents","Académie nationale"]}
+  {id:"tahir_default",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu le 1er mars 2025",badge:"FIFA • Commission",bio:"Homme de la refondation du football tchadien.",realisations:["Membre Commission FIFA","13 arbitres FIFA","Création ligue féminine"]},
+  {id:"nair_default",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en avril 2026",badge:"Plus jeune ministre",bio:"Entrepreneur et consultant sportif.",realisations:["Partenariat LaLiga","Détection jeunes talents","Académie nationale"]}
 ];
 function renderOfficials(){
   var c=$("officialsContainer"); if(!c)return;
@@ -1741,17 +1227,16 @@ function renderOfficials(){
   if(!list.length){ c.innerHTML='<div class="empty">—</div>'; return; }
   var h="";
   list.forEach(function(o){
-    var photo = o.photo || ("assets/"+o.id+".jpg");
     var initiales = (o.name||"?").split(" ").map(function(x){return x[0];}).join("").substring(0,2).toUpperCase();
     var real = (o.realisations||[]).map(function(r){return '<li>'+esc(r)+'</li>';}).join('');
     h+='<div class="official-card">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openOfficialEditor(\''+esc(o.id)+'\')">✏️</button>';
-    h+='<div class="official-head"><div class="official-avatar"><img src="'+esc(photo)+'" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.textContent=\''+esc(initiales)+'\'"></div>';
+    h+='<div class="official-head"><div class="official-avatar">'+esc(initiales)+'</div>';
     h+='<div><h3>'+esc(o.name)+'</h3><p class="role">'+esc(o.role)+'</p><p class="org">'+esc(o.org||"")+'</p></div></div>';
     h+='<div class="official-body">';
     if(o.badge) h+='<span class="badge-inst badge-blue">'+esc(o.badge)+'</span>';
     h+='<p class="bio">'+esc(o.bio)+'</p>';
-    if(real) h+='<h4>★</h4><ul>'+real+'</ul>';
+    if(real) h+='<ul>'+real+'</ul>';
     h+='</div></div>';
   });
   c.innerHTML=h;
@@ -1783,7 +1268,6 @@ window.saveOfficial = async function(){
   }catch(e){ st.textContent = "Erreur"; st.className="tiny alert alert-red"; }
 };
 
-/* ====== LÉGENDES ====== */
 function renderLegends(){
   var c=$("legendsContainer"); if(!c)return;
   if(!LEGENDS.length){ c.innerHTML='<div class="empty">—</div>'; return; }
@@ -1792,7 +1276,7 @@ function renderLegends(){
     var photo = l.photo || ("https://placehold.co/400x300/0066B3/FFFFFF?text="+encodeURIComponent(l.name));
     h+='<div class="legend-card">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openLegendEditor(\''+esc(l.id)+'\')">✏️</button>';
-    h+='<img class="legend-photo" src="'+esc(photo)+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x300/0066B3/FFFFFF?text=L\'">';
+    h+='<img class="legend-photo" src="'+esc(photo)+'" loading="lazy">';
     h+='<div class="legend-info"><h3>'+esc(l.name)+'</h3><p class="poste">'+esc(l.poste)+'</p><p>'+esc(l.bio)+'</p><div class="legend-clubs">🏟️ '+esc(l.clubs)+'</div>';
     if(isAdmin) h+='<button class="btn btn-red btn-full" style="margin-top:8px" onclick="deleteLegend(\''+esc(l.id)+'\')">×</button>';
     h+='</div></div>';
@@ -1826,20 +1310,12 @@ window.saveLegend = async function(){
 };
 window.deleteLegend = async function(id){ if(!confirm("?")) return; try{ await deleteDoc(doc(db,"legends",id)); }catch(e){ alert(e.message); } };
 
-/* ====== LINAFOOT SQUADS ====== */
 var LINAFOOT_CLUBS = [
   {id:"aiglons",name:"Aiglons FC",city:"N'Djamena",players:[{num:1,name:"Christian Ramadjingaye",poste:"Gardien"},{num:2,name:"Ahmat Abderamane",poste:"Défenseur"},{num:3,name:"Abdoulaye Difane",poste:"Défenseur"},{num:4,name:"Abderahim Aboubakar",poste:"Milieu"},{num:5,name:"Yannick Saleh",poste:"Milieu"},{num:6,name:"Daniel Mbaitoloum",poste:"Milieu"},{num:7,name:"Fabien Djedanoum",poste:"Attaquant"},{num:8,name:"Yannick Masra",poste:"Attaquant"}]},
   {id:"psi",name:"AS PSI",city:"N'Djamena",players:[{num:1,name:"Abdraman Ekiang",poste:"Gardien"},{num:2,name:"Eli Adaoassou",poste:"Gardien"},{num:3,name:"Ahmat Abakar",poste:"Défenseur"},{num:4,name:"Ali Blague",poste:"Défenseur"}]},
   {id:"elect",name:"TP Elect-Sport",city:"N'Djamena",players:[{num:1,name:"Mahamat Ateib",poste:"Gardien"},{num:2,name:"Ali Mahamout Tchari",poste:"Milieu"},{num:3,name:"Karl Max Barthélémy",poste:"Attaquant"}]},
   {id:"gazelle",name:"Gazelle FC",city:"N'Djamena",players:[{num:1,name:"Dillah Mbairamadji",poste:"Gardien"},{num:2,name:"Herman Doumna",poste:"Milieu"},{num:3,name:"Yves Allarabaye",poste:"Milieu"},{num:4,name:"Abdelaziz Makine",poste:"Attaquant"}]},
-  {id:"foullah",name:"Foullah Edifice FC",city:"Moussoro",players:[{num:1,name:"Kourdina Mangana",poste:"Gardien"},{num:2,name:"Yves Allarabaye",poste:"Milieu"},{num:3,name:"Innocent Mbairamadji",poste:"Attaquant"}]},
-  {id:"renaissance",name:"Renaissance FC",city:"N'Djamena",players:[{num:1,name:"Eric Ngana",poste:"Gardien"},{num:2,name:"Mondésir Alladjim",poste:"Défenseur"},{num:3,name:"Mahamat Ekian",poste:"Milieu"}]},
-  {id:"sante",name:"AS Santé d'Abéché",city:"Abéché",players:[{num:1,name:"Aboubaida Hassan",poste:"Gardien"},{num:2,name:"Ali Chidi",poste:"Gardien"},{num:3,name:"Saboune Abdoulaye",poste:"Défenseur"}]},
-  {id:"espoir",name:"Espoir FC",city:"Bongor",players:[{num:1,name:"Adoum Nassour",poste:"Gardien"},{num:2,name:"KDB Ali",poste:"Milieu"},{num:3,name:"Brahim Oumar",poste:"Attaquant"}]},
-  {id:"scorpion",name:"Scorpion FC",city:"Borkou",players:[{num:1,name:"Mahamat Ali",poste:"Gardien"},{num:2,name:"Brahim Saleh",poste:"Défenseur"},{num:3,name:"Oumar Djibrine",poste:"Attaquant"}]},
-  {id:"onape",name:"FC Onape",city:"Doba",players:[{num:1,name:"Mahamat Brahim",poste:"Gardien"},{num:2,name:"Ali Saleh",poste:"Défenseur"},{num:3,name:"Moussa Ali",poste:"Attaquant"}]},
-  {id:"aiglons_hl",name:"Aiglons FC HL",city:"Hadjer-Lamis",players:[{num:1,name:"Ahmat Abakar",poste:"Gardien"},{num:2,name:"Ali Hassan",poste:"Défenseur"}]},
-  {id:"udm",name:"Univ. Moundou FC",city:"Moundou",players:[{num:1,name:"Mahamat Oumar",poste:"Gardien"},{num:2,name:"Brahim Hassan",poste:"Défenseur"}]}
+  {id:"renaissance",name:"Renaissance FC",city:"N'Djamena",players:[{num:1,name:"Eric Ngana",poste:"Gardien"},{num:2,name:"Mondésir Alladjim",poste:"Défenseur"},{num:3,name:"Mahamat Ekian",poste:"Milieu"}]}
 ];
 var currentClubId = null;
 function renderTeamSelector(){
@@ -1855,21 +1331,19 @@ window.selectClub = function(id){
   if(!club){c.innerHTML='<div class="empty">—</div>';return;}
   var h='<div class="card" style="margin-bottom:10px;background:linear-gradient(135deg,#0066B3,#034d82);color:#fff;border:none"><h3 style="color:#fff;font-size:15px">'+esc(club.name)+'</h3><p style="font-size:11px;color:#dbeafe;margin-top:2px">'+esc(club.city)+' • '+club.players.length+'</p></div><div class="squad-list">';
   club.players.forEach(function(p){ h+='<div class="player-row"><div class="pnum">'+esc(p.num)+'</div><div class="pinfo"><b>'+esc(p.name)+'</b><span>'+esc(p.poste)+'</span></div></div>'; });
-  h+='</div>';
-  c.innerHTML=h;
+  h+='</div>'; c.innerHTML=h;
 };
 
-/* ====== COACHS ====== */
 function renderCoaches(){
   var c=$("coachesContainer"); if(!c) return;
   var list = COACHES;
-  if(currentCoachFilter){ var q=currentCoachFilter.toLowerCase(); list=list.filter(function(x){return (x.name||"").toLowerCase().includes(q)||(x.city||"").toLowerCase().includes(q)||(x.type||"").toLowerCase().includes(q);}); }
+  if(currentCoachFilter){ var q=currentCoachFilter.toLowerCase(); list=list.filter(function(x){return (x.name||"").toLowerCase().includes(q)||(x.city||"").toLowerCase().includes(q);}); }
   if(!list.length){c.innerHTML='<div class="empty">—</div>';return;}
   var h="";
   list.forEach(function(co){
     h+='<div class="card" style="position:relative">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openCoachEditor(\''+esc(co.id)+'\')">✏️</button>';
-    if(co.image) h+='<img src="'+esc(co.image)+'" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:10px" loading="lazy" onerror="this.style.display=\'none\'">';
+    if(co.image) h+='<img src="'+esc(co.image)+'" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:10px" loading="lazy">';
     h+='<div class="row"><h3 class="tblue">'+esc(co.name)+'</h3><span class="chip chip-green">'+esc(co.type)+'</span></div>';
     h+='<p class="tiny muted" style="margin-top:4px">'+esc(co.city)+' • '+esc(co.phone)+'</p>';
     h+='<p class="tiny" style="margin-top:8px;white-space:pre-line;background:var(--bg);padding:10px;border-radius:8px">'+esc(co.bio)+'</p>';
@@ -1907,7 +1381,6 @@ window.saveCoach = async function(){
 };
 window.deleteCoach = async function(id){ if(!confirm("?")) return; try{ await deleteDoc(doc(db,"coaches",id)); }catch(e){ alert(e.message); } };
 
-/* ====== PRODUITS ====== */
 function renderProducts(){
   var g=$("productGrid"); if(!g) return;
   if(!PRODUCTS.length){g.innerHTML='<div class="empty" style="grid-column:1/-1">—</div>';return;}
@@ -1916,7 +1389,7 @@ function renderProducts(){
     var img=p.image||("https://placehold.co/400x400/0066B3/FFFFFF?text="+encodeURIComponent(p.name));
     h+='<div class="product">';
     if(isAdmin) h+='<button class="edit-btn" onclick="openProductEditor(\''+esc(p.id)+'\')">✏️</button>';
-    h+='<img class="pimg" src="'+esc(img)+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x400/0066B3/FFFFFF?text=P\'">';
+    h+='<img class="pimg" src="'+esc(img)+'" loading="lazy">';
     h+='<span class="cat">'+esc(p.category)+'</span><h4>'+esc(p.name)+'</h4><p>'+esc(p.description)+'</p><b>'+fmt(p.price)+' FCFA</b>';
     h+='<button class="btn btn-blue" style="margin-top:8px" onclick="buy(\''+esc(p.id)+'\')">Commander</button>';
     if(isAdmin) h+='<button class="btn btn-red" style="margin-top:6px" onclick="deleteProduct(\''+esc(p.id)+'\')">×</button>';
@@ -1950,18 +1423,14 @@ window.saveProduct = async function(){
   }catch(e){ st.textContent="Erreur"; st.className="tiny alert alert-red"; }
 };
 window.deleteProduct = async function(id){ if(!confirm("?")) return; try{ await deleteDoc(doc(db,"products",id)); }catch(e){ alert(e.message); } };
-window.buy = function(id){
-  var p=PRODUCTS.find(function(x){return x.id===id;}); if(!p) return;
-  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(p.name+" — "+fmt(p.price)+" FCFA"),"_blank");
-};
+window.buy = function(id){ var p=PRODUCTS.find(function(x){return x.id===id;}); if(!p) return; window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(p.name+" — "+fmt(p.price)+" FCFA"),"_blank"); };
 
-/* ====== ARTICLES ====== */
 function isFav(id){ return FAVORITES.indexOf(id) >= 0; }
-window.toggleFav = function(id, ev){ if(ev) ev.stopPropagation(); var i=FAVORITES.indexOf(id); if(i>=0)FAVORITES.splice(i,1);else FAVORITES.push(id); save("rf_favorites", FAVORITES); renderArticles(); };
+window.toggleFav = function(id, ev){ if(ev) ev.stopPropagation(); var i=FAVORITES.indexOf(id); if(i>=0)FAVORITES.splice(i,1);else FAVORITES.push(id); localStorage.setItem("rf_favorites", JSON.stringify(FAVORITES)); renderArticles(); };
 function renderArticles(){
   var c=$("articlesContainer"), preview=$("homeActusPreview"); if(!c) return;
   var list = ARTICLES;
-  if(currentArticleFilter){ var q=currentArticleFilter.toLowerCase(); list=list.filter(function(a){return (a.title||"").toLowerCase().includes(q)||(a.excerpt||"").toLowerCase().includes(q)||(a.category||"").toLowerCase().includes(q)||(a.content||"").toLowerCase().includes(q);}); }
+  if(currentArticleFilter){ var q=currentArticleFilter.toLowerCase(); list=list.filter(function(a){return (a.title||"").toLowerCase().includes(q)||(a.excerpt||"").toLowerCase().includes(q)||(a.category||"").toLowerCase().includes(q);}); }
   if(!list.length){ c.innerHTML='<div class="empty">—</div>'; if(preview && !ARTICLES.length) preview.innerHTML='<p class="muted tiny">—</p>'; return; }
   var h="";
   list.forEach(function(a){
@@ -1969,10 +1438,9 @@ function renderArticles(){
     h+='<article class="article-card">';
     h+='<button class="fav-star '+(isFav(a.id)?"":"off")+'" onclick="toggleFav(\''+esc(a.id)+'\',event)">'+(isFav(a.id)?"★":"☆")+'</button>';
     if(isAdmin) h+='<button class="edit-btn" onclick="openArticleEditor(\''+esc(a.id)+'\')">✏️</button>';
-    h+='<img class="article-img" src="'+esc(img)+'" loading="lazy" onerror="this.src=\'https://placehold.co/800x400/0066B3/FFFFFF?text=A\'">';
+    h+='<img class="article-img" src="'+esc(img)+'" loading="lazy">';
     h+='<div class="article-body"><div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
     h+='<h3>'+esc(a.title)+'</h3><p>'+esc(a.excerpt)+'</p>';
-    if(a.source) h+='<div class="article-source">📌 '+esc(a.source)+'</div>';
     h+='<div class="article-actions"><button class="share-btn" onclick="openArticle(\''+esc(a.id)+'\')">📖</button>';
     h+='<button class="share-btn wa" onclick="shareArticle(\''+esc(a.id)+'\',\'wa\')">📱</button>';
     h+='<button class="share-btn fb" onclick="shareArticle(\''+esc(a.id)+'\',\'fb\')">👍</button>';
@@ -1997,16 +1465,13 @@ window.openArticle = function(id){
   var html='<div class="article-full"><img src="'+esc(img)+'" loading="lazy">';
   html+='<div class="meta">'+esc(a.category)+' • '+esc(a.date)+'</div>';
   html+='<h1>'+esc(a.title)+'</h1><p>'+esc(a.content)+'</p>';
-  if(a.source) html+='<div class="article-source">📌 '+esc(a.source)+'</div>';
   html+='<div class="article-actions" style="margin-top:16px"><button class="share-btn wa" onclick="shareArticle(\''+esc(a.id)+'\',\'wa\')">📱 WhatsApp</button><button class="share-btn fb" onclick="shareArticle(\''+esc(a.id)+'\',\'fb\')">👍 Facebook</button><button class="share-btn tg" onclick="shareArticle(\''+esc(a.id)+'\',\'tg\')">✈️ Telegram</button></div>';
   html+='<div style="margin-top:20px;padding:14px;background:var(--bg);border-radius:12px"><h3 style="font-size:14px;font-weight:900;margin-bottom:8px">⭐</h3><div class="rating-stars" id="ratingStars">';
   for(var i=1;i<=5;i++) html+='<button onclick="rateArticle(\''+esc(a.id)+'\','+i+')" id="star-'+i+'">☆</button>';
   html+='</div><p id="ratingInfo" class="tiny muted" style="margin-top:8px"></p></div>';
   html+='<div style="margin-top:20px"><h3 style="font-size:15px;font-weight:900;margin-bottom:10px">💬</h3><div id="commentsList"></div><div style="margin-top:12px"><input id="commentName" class="field" placeholder="Nom"><textarea id="commentText" class="field" rows="3" placeholder="Commentaire..."></textarea><button class="btn btn-blue btn-full" onclick="postComment(\''+esc(a.id)+'\')">Publier</button><p id="commentStatus" class="tiny" style="margin-top:8px"></p></div></div></div>';
   $("articleFullContainer").innerHTML=html;
-  go('article');
-  loadRating(id);
-  loadComments(id);
+  go('article'); loadRating(id); loadComments(id);
 };
 window.shareArticle = function(id,type){
   var a=ARTICLES.find(function(x){return x.id===id;}); if(!a)return;
@@ -2044,7 +1509,6 @@ window.saveArticle = async function(){
   }catch(e){st.textContent="Erreur";st.className="tiny alert alert-red";}
 };
 
-/* ====== RATINGS & COMMENTS ====== */
 async function loadRating(articleId){
   try{
     var snap = await getDoc(doc(db,"ratings",articleId));
@@ -2063,8 +1527,7 @@ window.rateArticle = async function(articleId, note){
     data.total = (data.total||0) + note;
     data.count = (data.count||0) + 1;
     data.updatedAt = serverTimestamp();
-    await setDoc(docRef, data);
-    loadRating(articleId);
+    await setDoc(docRef, data); loadRating(articleId);
   }catch(e){ alert("Erreur"); }
 };
 async function loadComments(articleId){
@@ -2084,12 +1547,10 @@ window.postComment = async function(articleId){
   try{
     await addDoc(collection(db,"comments"), {articleId:articleId, name:name, text:text, createdAt:serverTimestamp()});
     $("commentName").value=""; $("commentText").value="";
-    st.textContent="✅"; st.className="tiny alert alert-green";
-    loadComments(articleId);
+    st.textContent="✅"; st.className="tiny alert alert-green"; loadComments(articleId);
   }catch(e){ st.textContent="Erreur"; st.className="tiny alert alert-red"; }
 };
 
-/* ====== TOURNOIS ====== */
 function renderStats(){
   var s={},mc=0;
   TOURNAMENTS.forEach(function(t){if(t.teams)t.teams.forEach(function(x){s[x]=1;});if(t.matchs)mc+=t.matchs.length;});
@@ -2114,7 +1575,7 @@ function renderTournaments(){
 function renderMatches(){
   var c=$("matchesContainer"); if(!c) return;
   var all=[];
-  TOURNAMENTS.forEach(function(t){if(t.matchs)t.matchs.forEach(function(m){all.push({tournament:t.name,phase:m.phase,home:m.home,away:m.away,hs:m.hs,as:m.as});});});
+  TOURNAMENTS.forEach(function(t){if(t.matchs)t.matchs.forEach(function(m){all.push({tournament:t.name,home:m.home,away:m.away,hs:m.hs,as:m.as});});});
   if(!all.length){c.innerHTML='<div class="empty">—</div>';return;}
   var h="";
   all.forEach(function(m){
@@ -2128,8 +1589,7 @@ window.tryCreateTournament = function(){
   if(!isAdmin){window.open("https://wa.me/"+WA+"?text=Tournoi","_blank");return;}
   tempTeams=[];
   ["tName","tCity","tOrganizer"].forEach(function(id){$(id).value="";});
-  $("tFormat").value="";$("createStatus").textContent="";
-  show("createModal");
+  $("tFormat").value="";$("createStatus").textContent=""; show("createModal");
 };
 window.saveTournament = async function(){
   var name=$("tName").value.trim(),city=$("tCity").value.trim(),organizer=$("tOrganizer").value.trim();
@@ -2151,19 +1611,16 @@ window.openManage = function(id){
 };
 window.deleteTournament = async function(id){ if(!confirm("?"))return; try{await deleteDoc(doc(db,"tournaments",id));closeModal("manageModal");}catch(e){alert(e.message);} };
 
-/* ====== CONTACT ====== */
 window.submitContact = async function(e){
   e.preventDefault();
   var st=$("ctStatus");
   st.textContent="…"; st.className="tiny alert alert-blue";
   try{
     await addDoc(collection(db,"messages"), {name:$("ctName").value.trim(), email:$("ctEmail").value.trim(), subject:$("ctSubject").value, message:$("ctMessage").value.trim(), date:serverTimestamp()});
-    st.textContent = "✅"; st.className = "tiny alert alert-green";
-    $("contactForm").reset();
+    st.textContent = "✅"; st.className = "tiny alert alert-green"; $("contactForm").reset();
   }catch(err){ st.textContent = "❌"; st.className = "tiny alert alert-red"; }
 };
 
-/* ====== MESSAGES ADMIN ====== */
 window.loadMessages = async function(){
   var c = $("messagesContainer"); if(!c) return;
   if(!isAdmin){ c.innerHTML='<div class="alert alert-red">Admin only</div>'; return; }
@@ -2182,7 +1639,6 @@ window.loadMessages = async function(){
 };
 window.deleteMessage = async function(id){ if(!confirm("?")) return; try{ await deleteDoc(doc(db,"messages",id)); loadMessages(); }catch(e){ alert(e.message); } };
 
-/* ====== AUTH ====== */
 window.openAuth = function(){$("authStatus").textContent="";show("authModal");};
 $("authForm").addEventListener("submit", async function(e){
   e.preventDefault();
@@ -2194,18 +1650,16 @@ $("authForm").addEventListener("submit", async function(e){
     setTimeout(function(){closeModal("authModal");},700);
   }catch(err){ st.textContent="❌";st.className="tiny alert alert-red"; }
 });
-window.logout = async function(){ if(!confirm("?"))return; try{await signOut(auth);alert("OK");}catch(e){alert(e.message);} };
+window.logout = async function(){ if(!confirm("?"))return; try{await signOut(auth);}catch(e){alert(e.message);} };
 function updateAuthUI(){
   var btn=$("authBtn");
   var adminBtns = ["newArticleBtn","createTournamentBtn","addCoachBtn","addProductBtn","addLegendBtn","addOfficialBtn","addPhotoBtn","editClassementBtn","editCalendrierBtn","addVideoBtn","addTalentBtn","addClubBtn"];
   if(isAdmin){
-    btn.textContent = (currentLang==="ar" ? "✓ المشرف" : currentLang==="en" ? "Admin ✓" : "Admin ✓");
-    btn.className="btn btn-admin";
+    btn.textContent = "Admin ✓"; btn.className="btn btn-admin";
     $("adminPanel").style.display="block";
     adminBtns.forEach(function(id){ var el=$(id); if(el) el.classList.remove("hidden"); });
   }else{
-    btn.textContent = I18N[currentLang]?.admin || "Admin";
-    btn.className="btn btn-ghost";
+    btn.textContent = "Admin"; btn.className="btn btn-ghost";
     $("adminPanel").style.display="none";
     adminBtns.forEach(function(id){ var el=$(id); if(el) el.classList.add("hidden"); });
   }
@@ -2213,7 +1667,6 @@ function updateAuthUI(){
 }
 onAuthStateChanged(auth, function(user){ isAdmin=!!user; updateAuthUI(); });
 
-/* ====== SEED ====== */
 window.seedData = async function(){
   if(!isAdmin){alert("!");return;}
   if(!confirm("?"))return;
@@ -2224,19 +1677,16 @@ window.seedData = async function(){
   ];
   var seedP=[{name:"Maillot Tchad",price:5000,category:"Maillots",description:"Maillot équipe nationale"},{name:"Ballon officiel",price:8000,category:"Équipement",description:"Ballon taille 5"}];
   var seedC=[{name:"ABDARRAHIM HASSAN MAHAMAT",type:"Coach & Formateur",city:"N'Djamena",phone:"+235 62 49 61 76",bio:"Entraîneur et formateur."}];
-  var seedL=[{name:"Nambatingue Toko",poste:"Attaquant",clubs:"PSG, Racing",bio:"Premier buteur du PSG en Coupe d'Europe."},{name:"Japhet N'Doram",poste:"Attaquant",clubs:"FC Nantes, Monaco",bio:"Champion de France 1995."}];
   try{
     for(var a of seedA){a.date="Bientôt";a.slug=slug(a.title)+"-"+Date.now().toString(36)+Math.random().toString(36).substring(2,5);await addDoc(collection(db,"articles"),{...a,createdAt:serverTimestamp()});}
     for(var p of seedP){await addDoc(collection(db,"products"),p);}
     for(var c of seedC){await addDoc(collection(db,"coaches"),c);}
-    for(var l of seedL){await addDoc(collection(db,"legends"),l);}
     await setDoc(doc(db,"config","classement"), {list:DEFAULT_CLASSEMENT, updatedAt:serverTimestamp()});
     await setDoc(doc(db,"config","calendrier"), {prochains:DEFAULT_PROCHAINS, resultats:DEFAULT_RESULTATS, updatedAt:serverTimestamp()});
     st.textContent="✅";st.style.color="#10b981";
   }catch(e){st.textContent="Erreur";st.style.color="#ef4444";}
 };
 
-/* ====== LISTENERS ====== */
 function listenCollection(name, setter, sortField){
   var q = sortField ? query(collection(db,name), orderBy(sortField,"desc")) : collection(db,name);
   onSnapshot(q, function(snap){ var arr=[];snap.forEach(function(d){var o=d.data();o.id=d.id;arr.push(o);}); setter(arr); }, function(err){
@@ -2256,207 +1706,73 @@ listenCollection("clubs", function(a){CLUBS=a;renderClubs();});
 
 window.addEventListener("scroll", function(){ var b=$("backTop"); if(!b) return; if(window.scrollY > 400) b.classList.add("show"); else b.classList.remove("show"); });
 
-function renderD2(){
-  var c = $("d2Ranking"); if(!c) return;
-  var d2 = [{pos:1,club:"AS DGSSIE",pts:38},{pos:2,club:"Tourbillon FC",pts:35},{pos:3,club:"AS Colombe",pts:32},{pos:4,club:"EMAT",pts:28},{pos:5,club:"Galactik FC",pts:26}];
-  var h="";
-  d2.forEach(function(t){ h+='<div class="stat-line"><span><b>'+t.pos+'.</b> '+esc(t.club)+'</span><b>'+t.pts+'</b></div>'; });
-  c.innerHTML = h;
-}
-
-/* ============================================================
-   NEWSLETTER BREVO
-   ============================================================ */
-document.getElementById("nlForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("nlEmail").value.trim();
+/* NEWSLETTER — Formulaire Brevo automatique */
+document.getElementById("nlForm")?.addEventListener("submit", () => {
   const st = document.getElementById("nlStatus");
-  if (!email) return;
-  st.textContent = "⏳ Inscription en cours...";
-  st.style.color = "#dbeafe";
-
-  try {
-    const res = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "api-key": BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [BREVO_LIST_ID],
-        updateEnabled: true
-      })
-    });
-
-    try {
-      await addDoc(collection(db, "newsletter"), {
-        email: email,
-        date: serverTimestamp(),
-        source: "site"
-      });
-    } catch (fbErr) { console.warn("Firestore backup:", fbErr); }
-
-    if (res.ok || res.status === 204) {
-      st.textContent = "✅ Inscription confirmée ! Vérifie ta boîte mail.";
-      st.style.color = "#dcfce7";
-      document.getElementById("nlForm").reset();
-      if (typeof gtag === "function") gtag("event", "newsletter_signup");
-    } else if (res.status === 400) {
-      st.textContent = "⚠️ Cet email est peut-être déjà inscrit.";
-      st.style.color = "#fef3c7";
-    } else {
-      const d = await res.json().catch(() => ({}));
-      st.textContent = "⚠️ " + (d.message || "Erreur Brevo");
-      st.style.color = "#fecaca";
-    }
-  } catch (err) {
-    st.textContent = "❌ Erreur réseau. Réessaie.";
-    st.style.color = "#fecaca";
-    console.error(err);
-  }
+  st.textContent = "✅ Inscription envoyée ! Vérifie ta boîte mail.";
+  st.style.color = "#dcfce7";
+  if (typeof gtag === "function") gtag("event", "newsletter_signup");
+  setTimeout(() => {
+    document.getElementById("nlForm").reset();
+    st.textContent = "En cliquant, tu acceptes de recevoir nos emails.";
+  }, 5000);
 });
 
-/* ============================================================
-   NOTIFICATIONS PUSH
-   ============================================================ */
+/* NOTIFICATIONS PUSH */
 function urlBase64ToUint8Array(base64) {
   const padding = "=".repeat((4 - base64.length % 4) % 4);
   const b64 = (base64 + padding).replace(/-/g, "+").replace(/_/g, "/");
   const raw = atob(b64);
   return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
 }
-
 async function initPush() {
   const btn = document.getElementById("pushBtn");
   const st = document.getElementById("pushStatus");
   if (!btn || !st) return;
-
   if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-    st.textContent = "❌ Notifications non supportées par ton navigateur";
-    btn.disabled = true;
-    return;
+    st.textContent = "❌ Notifications non supportées"; btn.disabled = true; return;
   }
-
   let reg;
-  try {
-    reg = await navigator.serviceWorker.register("./sw.js");
-    console.log("[Push] SW enregistré :", reg.scope);
-  } catch (err) {
-    st.textContent = "❌ Erreur SW";
-    console.error(err);
-    return;
-  }
-
+  try { reg = await navigator.serviceWorker.register("./sw.js"); } catch (err) { st.textContent = "❌ Erreur SW"; return; }
   const existing = await reg.pushManager.getSubscription();
   if (existing || localStorage.getItem("rf_push") === "1") {
-    st.textContent = "✅ Notifications déjà activées";
-    btn.textContent = "🔔 Notifications actives";
-    btn.style.opacity = "0.7";
+    st.textContent = "✅ Notifications déjà activées"; btn.textContent = "🔔 Notifications actives"; btn.style.opacity = "0.7";
   }
-
   btn.addEventListener("click", async () => {
     st.textContent = "⏳ Demande de permission...";
     const perm = await Notification.requestPermission();
-    if (perm !== "granted") {
-      st.textContent = "❌ Permission refusée";
-      return;
-    }
-
+    if (perm !== "granted") { st.textContent = "❌ Permission refusée"; return; }
     try {
-      const sub = await reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-      });
-
-      await addDoc(collection(db, "push_subscriptions"), {
-        subscription: JSON.parse(JSON.stringify(sub)),
-        userAgent: navigator.userAgent.substring(0, 200),
-        date: serverTimestamp()
-      });
-
-      st.textContent = "✅ Notifications activées !";
-      btn.textContent = "🔔 Notifications actives";
-      btn.style.opacity = "0.7";
+      const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) });
+      await addDoc(collection(db, "push_subscriptions"), { subscription: JSON.parse(JSON.stringify(sub)), userAgent: navigator.userAgent.substring(0, 200), date: serverTimestamp() });
+      st.textContent = "✅ Notifications activées !"; btn.textContent = "🔔 Notifications actives"; btn.style.opacity = "0.7";
       localStorage.setItem("rf_push", "1");
-
-      new Notification("Rahim Football Tchad ⚽", {
-        body: "Merci ! Tu recevras les actus en temps réel.",
-        icon: "./assets/icon-192.png"
-      });
-    } catch (err) {
-      st.textContent = "❌ " + err.message;
-      console.error("[Push]", err);
-    }
+      new Notification("Rahim Football Tchad ⚽", { body: "Merci ! Tu recevras les actus en temps réel." });
+    } catch (err) { st.textContent = "❌ " + err.message; }
   });
 }
-
 window.testPush = async function () {
   if (!isAdmin) return;
-  try {
-    const subs = await getDocs(collection(db, "push_subscriptions"));
-    alert("📊 " + subs.size + " abonné(s) aux notifications.");
-  } catch (e) {
-    alert("Erreur : " + e.message);
-  }
-};
-
-window.exportNewsletter = async function () {
-  if (!isAdmin) return;
-  try {
-    const q = query(collection(db, "newsletter"), orderBy("date", "desc"));
-    const snap = await getDocs(q);
-    if (snap.empty) { alert("Aucun email inscrit."); return; }
-    let csv = "Email,Date\n";
-    snap.forEach((d) => {
-      const m = d.data();
-      const dt = m.date?.toDate?.().toLocaleString() || "—";
-      csv += `"${m.email}","${dt}"\n`;
-    });
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "newsletter_rft_" + new Date().toISOString().split("T")[0] + ".csv";
-    a.click();
-    URL.revokeObjectURL(url);
-  } catch (e) { alert("Erreur : " + e.message); }
+  try { const subs = await getDocs(collection(db, "push_subscriptions")); alert("📊 " + subs.size + " abonné(s)."); } catch (e) { alert("Erreur : " + e.message); }
 };
 
 document.addEventListener("click", (e) => {
   const el = e.target.closest("a,button");
   if (!el || typeof gtag !== "function") return;
   const label = (el.textContent || "").trim().substring(0, 40) || el.href || "inconnu";
-  gtag("event", "click", {
-    event_category: el.href ? "lien" : "bouton",
-    event_label: label
-  });
+  gtag("event", "click", { event_category: el.href ? "lien" : "bouton", event_label: label });
 });
 
-let deferredPrompt;
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-/* ====== INIT ====== */
 function init(){
   $("year").textContent=new Date().getFullYear();
   if(localStorage.getItem("rf_theme")==="dark") document.body.classList.add("dark");
   changeLang(currentLang);
-  trackVisit();
-  updateAuthUI();
-  renderTeamSelector();
-  loadClassement();
-  loadCalendrier().then(function(){ loadPronostics(); });
-  renderTalents();
-  renderVideos();
-  renderClubs();
-  renderD2();
+  trackVisit(); updateAuthUI(); renderTeamSelector();
+  loadClassement(); loadCalendrier();
+  renderTalents(); renderVideos(); renderClubs();
   initPush();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 </script>
 </body>
-    </html>
+      </html>
