@@ -11,6 +11,26 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ====== PWA ====== -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RFT">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- ====== GOOGLE ANALYTICS 4 ====== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8E421SPXJ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-8E421SPXJ2', {
+    page_title: document.title,
+    page_location: window.location.href
+  });
+</script>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f1f5f9;--card:#fff;--txt:#0f172a;--muted:#64748b;--border:#e2e8f0;--primary:#0066B3;--red:#C8102E;--yellow:#FECB00}
@@ -381,6 +401,27 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <p data-i18n="wa_desc">Résultats, classements et actus gratuitement sur ton téléphone.</p>
     <a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" target="_blank" class="btn-join" data-i18n="wa_btn">📱 S'abonner au canal →</a>
   </div>
+
+  <!-- NEWSLETTER EMAIL BREVO -->
+  <div class="newsletter-box" style="background:linear-gradient(135deg,#0066B3,#034d82);margin-top:14px">
+    <div style="font-size:32px">📧</div>
+    <h2>Reçois l'actu chaque semaine</h2>
+    <p>Résultats, classements, transferts — directement par email.</p>
+    <form id="nlForm" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+      <input id="nlEmail" type="email" required placeholder="ton@email.com"
+             style="flex:1;min-width:200px;padding:12px;border:none;border-radius:10px;font-size:14px;color:#0f172a">
+      <button type="submit" class="btn-join" style="background:#fff;color:#0066B3;font-weight:900;padding:12px 20px;border-radius:10px;border:none;cursor:pointer">
+        S'inscrire →
+      </button>
+    </form>
+    <p id="nlStatus" class="tiny" style="margin-top:8px;color:#dbeafe"></p>
+  </div>
+
+  <!-- BOUTON NOTIFICATIONS PUSH -->
+  <button id="pushBtn" class="btn btn-gold btn-full" style="margin-top:14px;padding:14px;font-size:14px">
+    🔔 Activer les notifications
+  </button>
+  <p id="pushStatus" class="tiny" style="text-align:center;margin-top:6px;color:var(--muted)"></p>
 
   <div class="landing-section">
     <span class="kicker" data-i18n="kicker_about">Rahim Football Tchad</span>
@@ -785,10 +826,13 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
     <div class="card"><h3 data-i18n="faq_title">❓ FAQ</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('faq')" data-i18n="btn_see">Voir</button></div>
     <div class="card"><h3 data-i18n="contact_full_title">📧 Contact</h3><button class="btn btn-blue btn-full" style="margin-top:10px" onclick="go('contact')" data-i18n="btn_see">Voir</button></div>
   </div>
+
   <div class="card" id="adminPanel" style="margin-top:14px;display:none">
     <h3 data-i18n="admin_title">Administration</h3>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
       <button class="btn btn-blue" onclick="seedData()" data-i18n="btn_seed">Données démo</button>
+      <button class="btn btn-gold" onclick="testPush()">🔔 Test notification</button>
+      <button class="btn btn-green" onclick="exportNewsletter()">📥 Exporter emails</button>
       <button class="btn btn-red" onclick="logout()" data-i18n="btn_logout">Déconnexion</button>
     </div>
     <p id="adminMsg" class="tiny" style="margin-top:8px"></p>
@@ -826,7 +870,7 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <button data-tab="plus" onclick="go('plus')"><i>⚙️</i><span data-i18n="nav_more">Plus</span></button>
 </nav>
 
-<!-- MODALS (identiques à v12 - garde ceux qui existent) -->
+<!-- MODALS -->
 <div id="authModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 data-i18n="auth_title">Connexion Admin</h2><button class="close" onclick="closeModal('authModal')">&times;</button></div>
   <form id="authForm">
@@ -839,7 +883,6 @@ footer.rf-footer b{color:#fff;display:block;font-size:14px;margin-bottom:4px}
   <p id="authStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<!-- Les autres modals restent identiques à v12 - je les abrège ici pour la place mais tu les gardes tels quels dans ton fichier existant -->
 <div id="coachModal" class="modal"><div class="modal-inner"><div class="modal-box">
   <div class="modal-head"><h2 id="coachModalTitle">Coach</h2><button class="close" onclick="closeModal('coachModal')">&times;</button></div>
   <input type="hidden" id="cId">
@@ -1031,9 +1074,20 @@ const firebaseConfig = {
   appId: "1:706788348907:web:0ca896c6a702afb7c87fae"
 };
 const IMGBB_KEY = "a977d8fa90364f6aaba9de5d20b3b78e";
+
+// ====== CLÉS API EXTERNES ======
+// ⚠️ REMPLACE CETTE VALEUR PAR TA CLÉ PUBLIQUE VAPID (générée sur vapid.html)
+const VAPID_PUBLIC_KEY = "BElREMPLACE_PAR_TA_CLE_PUBLIQUE_ICI";
+
+// Newsletter : clés Brevo retirées pour sécurité (voir code newsletter plus bas)
+const BREVO_API_KEY = null;
+const BREVO_LIST_ID = null;
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+window.__fb = { db, collection, addDoc, serverTimestamp, getDocs, query, orderBy };
 
 const WA = "23562496176";
 let isAdmin = false;
@@ -2145,7 +2199,6 @@ function updateAuthUI(){
   var btn=$("authBtn");
   var adminBtns = ["newArticleBtn","createTournamentBtn","addCoachBtn","addProductBtn","addLegendBtn","addOfficialBtn","addPhotoBtn","editClassementBtn","editCalendrierBtn","addVideoBtn","addTalentBtn","addClubBtn"];
   if(isAdmin){
-    var t = I18N[currentLang] || I18N.fr;
     btn.textContent = (currentLang==="ar" ? "✓ المشرف" : currentLang==="en" ? "Admin ✓" : "Admin ✓");
     btn.className="btn btn-admin";
     $("adminPanel").style.display="block";
@@ -2211,6 +2264,183 @@ function renderD2(){
   c.innerHTML = h;
 }
 
+/* ============================================================
+   NEWSLETTER BREVO
+   ============================================================ */
+document.getElementById("nlForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("nlEmail").value.trim();
+  const st = document.getElementById("nlStatus");
+  if (!email) return;
+  st.textContent = "⏳ Inscription en cours...";
+  st.style.color = "#dbeafe";
+
+  try {
+    const res = await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "api-key": BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true
+      })
+    });
+
+    try {
+      await addDoc(collection(db, "newsletter"), {
+        email: email,
+        date: serverTimestamp(),
+        source: "site"
+      });
+    } catch (fbErr) { console.warn("Firestore backup:", fbErr); }
+
+    if (res.ok || res.status === 204) {
+      st.textContent = "✅ Inscription confirmée ! Vérifie ta boîte mail.";
+      st.style.color = "#dcfce7";
+      document.getElementById("nlForm").reset();
+      if (typeof gtag === "function") gtag("event", "newsletter_signup");
+    } else if (res.status === 400) {
+      st.textContent = "⚠️ Cet email est peut-être déjà inscrit.";
+      st.style.color = "#fef3c7";
+    } else {
+      const d = await res.json().catch(() => ({}));
+      st.textContent = "⚠️ " + (d.message || "Erreur Brevo");
+      st.style.color = "#fecaca";
+    }
+  } catch (err) {
+    st.textContent = "❌ Erreur réseau. Réessaie.";
+    st.style.color = "#fecaca";
+    console.error(err);
+  }
+});
+
+/* ============================================================
+   NOTIFICATIONS PUSH
+   ============================================================ */
+function urlBase64ToUint8Array(base64) {
+  const padding = "=".repeat((4 - base64.length % 4) % 4);
+  const b64 = (base64 + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const raw = atob(b64);
+  return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+}
+
+async function initPush() {
+  const btn = document.getElementById("pushBtn");
+  const st = document.getElementById("pushStatus");
+  if (!btn || !st) return;
+
+  if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+    st.textContent = "❌ Notifications non supportées par ton navigateur";
+    btn.disabled = true;
+    return;
+  }
+
+  let reg;
+  try {
+    reg = await navigator.serviceWorker.register("./sw.js");
+    console.log("[Push] SW enregistré :", reg.scope);
+  } catch (err) {
+    st.textContent = "❌ Erreur SW";
+    console.error(err);
+    return;
+  }
+
+  const existing = await reg.pushManager.getSubscription();
+  if (existing || localStorage.getItem("rf_push") === "1") {
+    st.textContent = "✅ Notifications déjà activées";
+    btn.textContent = "🔔 Notifications actives";
+    btn.style.opacity = "0.7";
+  }
+
+  btn.addEventListener("click", async () => {
+    st.textContent = "⏳ Demande de permission...";
+    const perm = await Notification.requestPermission();
+    if (perm !== "granted") {
+      st.textContent = "❌ Permission refusée";
+      return;
+    }
+
+    try {
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+      });
+
+      await addDoc(collection(db, "push_subscriptions"), {
+        subscription: JSON.parse(JSON.stringify(sub)),
+        userAgent: navigator.userAgent.substring(0, 200),
+        date: serverTimestamp()
+      });
+
+      st.textContent = "✅ Notifications activées !";
+      btn.textContent = "🔔 Notifications actives";
+      btn.style.opacity = "0.7";
+      localStorage.setItem("rf_push", "1");
+
+      new Notification("Rahim Football Tchad ⚽", {
+        body: "Merci ! Tu recevras les actus en temps réel.",
+        icon: "./assets/icon-192.png"
+      });
+    } catch (err) {
+      st.textContent = "❌ " + err.message;
+      console.error("[Push]", err);
+    }
+  });
+}
+
+window.testPush = async function () {
+  if (!isAdmin) return;
+  try {
+    const subs = await getDocs(collection(db, "push_subscriptions"));
+    alert("📊 " + subs.size + " abonné(s) aux notifications.");
+  } catch (e) {
+    alert("Erreur : " + e.message);
+  }
+};
+
+window.exportNewsletter = async function () {
+  if (!isAdmin) return;
+  try {
+    const q = query(collection(db, "newsletter"), orderBy("date", "desc"));
+    const snap = await getDocs(q);
+    if (snap.empty) { alert("Aucun email inscrit."); return; }
+    let csv = "Email,Date\n";
+    snap.forEach((d) => {
+      const m = d.data();
+      const dt = m.date?.toDate?.().toLocaleString() || "—";
+      csv += `"${m.email}","${dt}"\n`;
+    });
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "newsletter_rft_" + new Date().toISOString().split("T")[0] + ".csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch (e) { alert("Erreur : " + e.message); }
+};
+
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("a,button");
+  if (!el || typeof gtag !== "function") return;
+  const label = (el.textContent || "").trim().substring(0, 40) || el.href || "inconnu";
+  gtag("event", "click", {
+    event_category: el.href ? "lien" : "bouton",
+    event_label: label
+  });
+});
+
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+/* ====== INIT ====== */
 function init(){
   $("year").textContent=new Date().getFullYear();
   if(localStorage.getItem("rf_theme")==="dark") document.body.classList.add("dark");
@@ -2224,8 +2454,9 @@ function init(){
   renderVideos();
   renderClubs();
   renderD2();
+  initPush();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 </script>
 </body>
-  </html>
+    </html>
