@@ -121,6 +121,17 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 .badge-red{background:#fee2e2;color:#991b1b}
 .badge-gold{background:#fef3c7;color:#78350f}
 .credit{font-size:10px;color:#94a3b8;font-style:italic;text-align:right;margin-top:8px}
+/* --- SECTION U13 --- */
+.u13-card{border:2px solid #FECB00;background:linear-gradient(135deg,#fffbeb,#fff);border-radius:16px;padding:16px;margin-top:14px}
+.u13-card h3{color:#8a6500;font-size:15px;font-weight:900;margin-bottom:8px}
+.u13-card .criteria{list-style:none;padding:0;margin:0}
+.u13-card .criteria li{font-size:12px;color:#334155;padding:6px 0 6px 20px;position:relative;border-bottom:1px dashed #fcd34d}
+.u13-card .criteria li:last-child{border-bottom:none}
+.u13-card .criteria li::before{content:"✓";position:absolute;left:0;color:#22c55e;font-weight:900}
+.u13-card .criteria li strong{color:#78350f}
+.u13-fee{background:#fef3c7;border-radius:10px;padding:12px;margin-top:12px;text-align:center}
+.u13-fee b{font-size:18px;color:#78350f;display:block}
+.u13-fee span{font-size:11px;color:#92400e}
 </style>
 </head>
 <body>
@@ -150,8 +161,8 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
     <h2>Tout le football tchadien,<br><span>dans ta poche.</span></h2>
     <p>Tournois, résultats, coachs, académies et boutique.</p>
     <div class="hero-actions">
-      <button class="btn yellow" onclick="go('tournois')">Voir les tournois</button>
-      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('matchs')">Résultats</button>
+      <button class="btn yellow" onclick="go('competitions')">🏆 Compétitions</button>
+      <button class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="go('matchs')">⚽ Résultats</button>
     </div>
   </div>
   <div class="stats">
@@ -166,11 +177,123 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
   </div>
 </section>
 
+<!-- ============ COMPÉTITIONS ============ -->
+<section id="sec-competitions" class="tab hidden">
+  <div class="section-head"><h2>🏆 Compétitions & Calendrier</h2></div>
+
+  <!-- 1. CHAMPIONNAT NATIONAL LINAFOOT (Le plus important) -->
+  <div class="card" style="border-left:4px solid #0066B3">
+    <div class="row">
+      <h3>🇹🇩 Championnat National LINAFOOT</h3>
+      <span class="chip chip-green">Terminé</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Saison 2025-2026 • Ligue 1</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Clubs engagés</span><b class="tiny">12 équipes</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Total matchs</span><b class="tiny">132 rencontres</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Journées</span><b class="tiny">22 par équipe</b></div>
+      <div class="row"><span class="tiny muted">Champion</span><b class="tiny" style="color:#8a6500">🏆 Aiglons FC (N'Djamena)</b></div>
+    </div>
+    <div class="divider">
+      <p class="tiny" style="font-weight:800;color:#0066B3;margin-bottom:6px">Derniers résultats</p>
+      <div class="row" style="padding:3px 0;font-size:12px"><span style="flex:1;text-align:right;font-weight:700">AS Santé d'Abéché</span><span class="chip" style="min-width:44px;text-align:center">2 - 0</span><span style="flex:1;font-weight:700">TP Elect Sport FC</span></div>
+      <div class="row" style="padding:3px 0;font-size:12px"><span style="flex:1;text-align:right;font-weight:700">TP Elect Sport FC</span><span class="chip" style="min-width:44px;text-align:center">1 - 1</span><span style="flex:1;font-weight:700">Université de Moundou</span></div>
+      <div class="row" style="padding:3px 0;font-size:12px"><span style="flex:1;text-align:right;font-weight:700">Foullah de Moussoro</span><span class="chip" style="min-width:44px;text-align:center">1 - 2</span><span style="flex:1;font-weight:700">AS PSI</span></div>
+      <div class="row" style="padding:3px 0;font-size:12px"><span style="flex:1;text-align:right;font-weight:700">TP Elect Sport FC</span><span class="chip" style="min-width:44px;text-align:center">3 - 1</span><span style="flex:1;font-weight:700">FC Onape</span></div>
+    </div>
+  </div>
+
+  <!-- 2. COMPÉTITIONS CAF -->
+  <div class="card" style="border-left:4px solid #C8102E;margin-top:10px">
+    <div class="row">
+      <h3>🌍 Compétitions Interclubs CAF</h3>
+      <span class="chip chip-red">Terminé</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Saison 2026-2027 • Tour préliminaire</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Ligue des Champions</span><b class="tiny">Aiglons FC vs Sidama Bunna (Éthiopie)</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Aller (N'Djamena)</span><b class="tiny">0 - 0</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Retour (Éthiopie)</span><b class="tiny">0 - 3 (Éliminé)</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Coupe Confédération</span><b class="tiny">AS PSI vs CO Korhogo (Côte d'Ivoire)</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Aller (N'Djamena)</span><b class="tiny">2 - 2</b></div>
+      <div class="row"><span class="tiny muted">Retour (Côte d'Ivoire)</span><b class="tiny">0 - 2 (Éliminé)</b></div>
+    </div>
+    <p class="tiny muted" style="margin-top:8px">Les deux clubs tchadiens ont été éliminés au premier tour préliminaire.</p>
+  </div>
+
+  <!-- 3. PLAY-OFFS PROVINCIAUX -->
+  <div class="card" style="border-left:4px solid #FECB00;margin-top:10px">
+    <div class="row">
+      <h3>📋 Play-offs Provinciaux</h3>
+      <span class="chip">Août - Septembre 2026</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Qualification pour la saison 2026-2027</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Format</span><b class="tiny">23 matchs</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Clubs qualifiés</span><b class="tiny">Vainqueurs des 23 provinces</b></div>
+      <div class="row"><span class="tiny muted">Période</span><b class="tiny">Août à septembre 2026</b></div>
+    </div>
+    <p class="tiny muted" style="margin-top:8px">Les champions provinciaux s'affrontent pour décrocher leur place dans le championnat national intégral.</p>
+  </div>
+
+  <!-- 4. TOURNOI DE L'EAU -->
+  <div class="card" style="border-left:4px solid #22c55e;margin-top:10px">
+    <div class="row">
+      <h3>💧 Tournoi de l'eau (UNIFFAC)</h3>
+      <span class="chip chip-green">Septembre 2026</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Compétition internationale • Organisée au Tchad</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Dates</span><b class="tiny">9 au 20 septembre 2026</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Pays participants</span><b class="tiny">9 nations africaines</b></div>
+      <div class="row"><span class="tiny muted">Slogan</span><b class="tiny">« Uni par le football, engagé par l'eau »</b></div>
+    </div>
+    <p class="tiny muted" style="margin-top:8px">Le Tchad accueille ce tournoi international U15 placé sous le signe de la sensibilisation aux enjeux de l'accès à l'eau.</p>
+  </div>
+
+  <!-- 5. TOURNOI DE DÉTECTION -->
+  <div class="card" style="border-left:4px solid #8b5cf6;margin-top:10px">
+    <div class="row">
+      <h3>👶 Tournoi de Détection des Jeunes Talents</h3>
+      <span class="chip">Juillet - Août 2026</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Organisé par la FTFA • N'Djamena</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Lieu</span><b class="tiny">Académie de Farcha</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Période</span><b class="tiny">23 juillet au 1er août 2026</b></div>
+      <div class="row"><span class="tiny muted">Objectif</span><b class="tiny">Détection de jeunes talents</b></div>
+    </div>
+    <p class="tiny muted" style="margin-top:8px">Les meilleurs talents détectés participeront à une compétition internationale en Azerbaïdjan.</p>
+  </div>
+
+  <!-- 6. CHAMPIONNAT SCOLAIRE -->
+  <div class="card" style="border-left:4px solid #f97316;margin-top:10px">
+    <div class="row">
+      <h3>🏫 Championnat Scolaire National</h3>
+      <span class="chip">Septembre 2026</span>
+    </div>
+    <p class="muted tiny" style="margin-top:6px">Un tournant historique pour la jeunesse tchadienne</p>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Lancement</span><b class="tiny">9 septembre 2026</b></div>
+      <div class="row"><span class="tiny muted">Lieu</span><b class="tiny">Stade Idriss Mahamat Ouya</b></div>
+    </div>
+  </div>
+
+  <!-- PROCHAINS RENDEZ-VOUS -->
+  <div class="alert alert-amber" style="margin-top:14px">
+    <h4>📅 Prochains rendez-vous</h4>
+    <ul style="list-style:none;padding:0;margin:8px 0 0 0">
+      <li class="tiny" style="padding:4px 0">▸ <b>Sept. 2026 :</b> Tournoi de l'eau (UNIFFAC, 9 pays)</li>
+      <li class="tiny" style="padding:4px 0">▸ <b>Oct. 2026 :</b> Assises LINAFOOT (bilan saison)</li>
+      <li class="tiny" style="padding:4px 0">▸ <b>Déc. 2026 :</b> Lancement saison 2026-2027</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ INSTITUTIONS ============ -->
 <section id="sec-institutions" class="tab hidden">
   <div class="section-head"><h2>🏛️ Institutions du football tchadien</h2></div>
 
-  <!-- Bannière FTFA -->
   <div class="inst-banner">
     <div style="display:flex;gap:14px;align-items:center;position:relative">
       <div class="ftfa-logo">
@@ -185,8 +308,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
   </div>
 
   <div class="inst-officials">
-
-    <!-- FICHE PRÉSIDENT FTFA -->
     <div class="official-card">
       <div class="official-head">
         <div class="official-avatar" id="avatarTahir">
@@ -215,7 +336,6 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
       </div>
     </div>
 
-    <!-- FICHE MINISTRE -->
     <div class="official-card">
       <div class="official-head">
         <div class="official-avatar" id="avatarNair">
@@ -242,12 +362,65 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
         </ul>
       </div>
     </div>
-
   </div>
 
   <div class="alert alert-blue" style="margin-top:14px">
     <h4>🤝 Ensemble pour le football tchadien</h4>
     <p>La FTFA et le Ministère de la Jeunesse et des Sports unissent leurs efforts pour structurer, professionnaliser et promouvoir le football et la jeunesse du Tchad.</p>
+  </div>
+</section>
+
+<!-- ============ TOURNOI U13 ============ -->
+<section id="sec-u13" class="tab hidden">
+  <div class="section-head"><h2>⭐ Tournoi U13 — Centres & Écoles de Foot</h2></div>
+
+  <div class="u13-card">
+    <h3>🏆 Tournoi des Centres de Formation U13</h3>
+    <p class="tiny" style="color:#78350f;margin-bottom:10px">Organisé par Rahim Football Tchad • Ouvert à tous les centres de formation et écoles de football remplissant les critères</p>
+
+    <div class="alert alert-green" style="margin-top:0;margin-bottom:12px">
+      <h4>📋 Critères de participation</h4>
+      <ul class="criteria">
+        <li><strong>Respect des 10 lois fondamentales du football :</strong> terrain, ballon, nombre de joueurs, équipement, arbitre, durée du match, coup d'envoi, ballon en jeu/hors-jeu, fautes et incorrections</li>
+        <li><strong>Statuts et règlements du centre :</strong> être une structure agréée par le Ministère des Sports, disposer d'un règlement intérieur et de contrats de formation pour les jeunes</li>
+        <li><strong>Effectif :</strong> disposer d'un effectif suffisant de joueurs nés entre 2013 et 2014 (catégorie U13)</li>
+        <li><strong>Encadrement :</strong> avoir au moins un éducateur diplômé CAF ou FAF</li>
+        <li><strong>Infrastructures minimales :</strong> disposer d'un terrain d'entraînement praticable</li>
+        <li><strong>Certificats médicaux :</strong> chaque joueur doit fournir une aptitude médicale à la pratique du football</li>
+        <li><strong>Autorisation parentale :</strong> pour tous les joueurs mineurs</li>
+        <li><strong>Assurance :</strong> le centre doit couvrir ses joueurs</li>
+      </ul>
+    </div>
+
+    <div class="u13-fee">
+      <span>Frais de participation par équipe</span>
+      <b>25 000 FCFA</b>
+      <span>Payable par Airtel Money ou Moov Money au +235 62 49 61 76</span>
+    </div>
+
+    <div class="alert alert-amber" style="margin-top:12px">
+      <h4>📝 Inscriptions ouvertes</h4>
+      <p>Pour inscrire votre centre ou école de football, contactez-nous sur WhatsApp avec :</p>
+      <ul style="list-style:none;padding:0;margin:6px 0 0 0">
+        <li class="tiny" style="padding:3px 0">✓ Nom du centre</li>
+        <li class="tiny" style="padding:3px 0">✓ Nom du responsable</li>
+        <li class="tiny" style="padding:3px 0">✓ Liste des 18 joueurs U13</li>
+        <li class="tiny" style="padding:3px 0">✓ Copie de l'agrément du centre</li>
+      </ul>
+      <a href="https://wa.me/23562496176?text=Je%20veux%20inscrire%20mon%20centre%20au%20Tournoi%20U13" target="_blank" rel="noopener" class="btn yellow" style="margin-top:10px">S'inscrire sur WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px;border-left:4px solid #FECB00">
+    <h3>📅 Calendrier prévisionnel du Tournoi U13</h3>
+    <div class="divider">
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Phase d'inscription</span><b class="tiny">Jusqu'au 30 novembre 2026</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Tirage au sort</span><b class="tiny">5 décembre 2026</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Phase de poules</span><b class="tiny">15-20 décembre 2026</b></div>
+      <div class="row" style="margin-bottom:6px"><span class="tiny muted">Demi-finales</span><b class="tiny">22 décembre 2026</b></div>
+      <div class="row"><span class="tiny muted">Finale</span><b class="tiny">24 décembre 2026</b></div>
+    </div>
+    <p class="tiny muted" style="margin-top:8px">Format : Poules + Élimination directe • 8 équipes minimum</p>
   </div>
 </section>
 
@@ -312,10 +485,10 @@ label.lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bott
 
 <nav class="nav">
   <button data-tab="accueil" class="active" onclick="go('accueil')"><i>🏠</i>Accueil</button>
+  <button data-tab="competitions" onclick="go('competitions')"><i>🏆</i>Compétitions</button>
   <button data-tab="institutions" onclick="go('institutions')"><i>🏛️</i>Institutions</button>
-  <button data-tab="tournois" onclick="go('tournois')"><i>🏆</i>Tournois</button>
+  <button data-tab="u13" onclick="go('u13')"><i>⭐</i>U13</button>
   <button data-tab="matchs" onclick="go('matchs')"><i>⚽</i>Matchs</button>
-  <button data-tab="coachs" onclick="go('coachs')"><i>👤</i>Coachs</button>
   <button data-tab="plus" onclick="go('plus')"><i>⚙️</i>Plus</button>
 </nav>
 
@@ -699,4 +872,4 @@ if (document.readyState === "loading") document.addEventListener("DOMContentLoad
 })();
 </script>
 </body>
-            </html>
+</html>
