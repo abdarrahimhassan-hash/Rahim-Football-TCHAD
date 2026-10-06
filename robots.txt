@@ -1,0 +1,50 @@
+# ==========================================================
+# robots.txt — Rahim Football Tchad
+# https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/
+# ==========================================================
+
+# Règles générales pour tous les robots
+User-agent: *
+Allow: /
+
+# Ne pas indexer l'admin ni les dossiers sensibles
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /sw.js
+Disallow: /manifest.json
+
+# Autoriser explicitement les crawlers des moteurs de recherche
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Bloquer les aspirateurs de contenu (scrapers agressifs)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/sitemap.xml
+
+# Directives de crawl
+Crawl-delay: 1
+Host: https://abdarrahimhassan-hash.github.io
