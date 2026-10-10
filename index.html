@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8E421SPXJ2"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8E421SPXJ2');</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f8fafc;--bg2:#eef2f7;--card:#fff;--txt:#0f172a;--txt2:#1e293b;--muted:#64748b;--border:#e2e8f0;--blue:#0066B3;--blue-dark:#003d73;--yellow:#FECB00;--red:#C8102E;--green:#16a34a;--grad-flag:linear-gradient(90deg,#0066B3 0 33.33%,#FECB00 33.33% 66.66%,#C8102E 66.66% 100%);--grad-blue:linear-gradient(135deg,#0066B3,#003d73);--grad-gold:linear-gradient(135deg,#FECB00,#FFA500);--grad-tchad:linear-gradient(135deg,#003d73 0%,#0066B3 50%,#C8102E 100%);--sh-sm:0 1px 3px rgba(7,26,43,.06);--sh-md:0 8px 24px rgba(7,26,43,.08);--sh-lg:0 20px 40px rgba(7,26,43,.12);--radius:14px;--radius-lg:22px;--safe:env(safe-area-inset-bottom,0px)}
@@ -563,18 +563,18 @@ body.dark .fact-box p{color:#fde68a}
 
 <div class="toast-container" id="toastContainer"></div>
 
-<div id="authModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2>Connexion Admin</h2><button class="close" onclick="closeModal('authModal')">&times;</button></div>
+<div id="authModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Connexion Admin</h2><button class="close" onclick="closeModal('authModal')" aria-label="Fermer">&times;</button></div>
   <form id="authForm">
-    <label class="lbl">Email</label><input id="authEmail" type="email" class="field" required value="abdarrahimhassan@gmail.com">
-    <label class="lbl">Mot de passe</label><input id="authPassword" type="password" class="field" required>
+    <label class="lbl">Email</label><input id="authEmail" type="email" class="field" required autocomplete="username">
+    <label class="lbl">Mot de passe</label><input id="authPassword" type="password" class="field" required autocomplete="current-password">
     <button type="submit" class="btn btn-blue btn-full">Se connecter</button>
   </form>
   <p id="authStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<div id="articleModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 id="articleModalTitle">Article</h2><button class="close" onclick="closeModal('articleModal')">&times;</button></div>
+<div id="articleModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2 id="articleModalTitle">Article</h2><button class="close" onclick="closeModal('articleModal')" aria-label="Fermer">&times;</button></div>
   <input type="hidden" id="aId">
   <label class="lbl">Titre *</label><input id="aTitle" class="field">
   <label class="lbl">Catégorie *</label>
@@ -591,7 +591,7 @@ body.dark .fact-box p{color:#fde68a}
   </select>
   <label class="lbl">Photo (optionnel — tu peux publier sans)</label>
   <label class="image-upload" id="aUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'aImagePreview','aImageUrl','aUpload')"><div class="icon">📸</div><div class="txt">Choisir une photo (ou passer)</div></label>
-  <img id="aImagePreview" class="image-preview hidden">
+  <img id="aImagePreview" class="image-preview hidden" alt="">
   <input type="hidden" id="aImageUrl">
   <label class="lbl">Résumé *</label><input id="aExcerpt" class="field">
   <label class="lbl">Contenu *</label><textarea id="aContent" class="field" rows="6"></textarea>
@@ -600,8 +600,8 @@ body.dark .fact-box p{color:#fde68a}
   <p id="articleStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<div id="clubModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 id="clubModalTitle">Club</h2><button class="close" onclick="closeModal('clubModal')">&times;</button></div>
+<div id="clubModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2 id="clubModalTitle">Club</h2><button class="close" onclick="closeModal('clubModal')" aria-label="Fermer">&times;</button></div>
   <input type="hidden" id="clId">
   <label class="lbl">Nom *</label><input id="clName" class="field">
   <label class="lbl">Ville *</label><input id="clCity" class="field">
@@ -611,29 +611,29 @@ body.dark .fact-box p{color:#fde68a}
   <label class="lbl">Palmarès</label><textarea id="clTitles" class="field" rows="3"></textarea>
   <label class="lbl">Logo (optionnel)</label>
   <label class="image-upload" id="clUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'clImagePreview','clImageUrl','clUpload')"><div class="icon">📸</div><div class="txt">Choisir un logo</div></label>
-  <img id="clImagePreview" class="image-preview hidden">
+  <img id="clImagePreview" class="image-preview hidden" alt="">
   <input type="hidden" id="clImageUrl">
   <button class="btn btn-blue btn-full" onclick="saveClub()">Enregistrer</button>
   <p id="clStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<div id="legendModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 id="legendModalTitle">Légende</h2><button class="close" onclick="closeModal('legendModal')">&times;</button></div>
+<div id="legendModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2 id="legendModalTitle">Légende</h2><button class="close" onclick="closeModal('legendModal')" aria-label="Fermer">&times;</button></div>
   <input type="hidden" id="lId">
   <label class="lbl">Nom *</label><input id="lName" class="field">
   <label class="lbl">Poste *</label><input id="lPoste" class="field">
   <label class="lbl">Clubs *</label><input id="lClubs" class="field">
   <label class="lbl">Photo (optionnel)</label>
   <label class="image-upload" id="lUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'lImagePreview','lImageUrl','lUpload')"><div class="icon">📸</div><div class="txt">Choisir une photo</div></label>
-  <img id="lImagePreview" class="image-preview hidden">
+  <img id="lImagePreview" class="image-preview hidden" alt="">
   <input type="hidden" id="lImageUrl">
   <label class="lbl">Bio *</label><textarea id="lBio" class="field" rows="5"></textarea>
   <button class="btn btn-blue btn-full" onclick="saveLegend()">Enregistrer</button>
   <p id="lStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<div id="officialModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2 id="officialModalTitle">Dirigeant</h2><button class="close" onclick="closeModal('officialModal')">&times;</button></div>
+<div id="officialModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2 id="officialModalTitle">Dirigeant</h2><button class="close" onclick="closeModal('officialModal')" aria-label="Fermer">&times;</button></div>
   <input type="hidden" id="oId">
   <label class="lbl">Nom *</label><input id="oName" class="field">
   <label class="lbl">Fonction *</label><input id="oRole" class="field">
@@ -645,15 +645,15 @@ body.dark .fact-box p{color:#fde68a}
   <p id="oStatus" class="tiny" style="margin-top:10px"></p>
 </div></div></div>
 
-<div id="classementModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2>Modifier le classement</h2><button class="close" onclick="closeModal('classementModal')">&times;</button></div>
+<div id="classementModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Modifier le classement</h2><button class="close" onclick="closeModal('classementModal')" aria-label="Fermer">&times;</button></div>
   <p class="muted tiny">Format : Pos|Club|Ville|Pts|J|G|N|P|BP|BC</p>
   <textarea id="classementInput" class="field" rows="14" style="font-family:monospace;font-size:11px"></textarea>
   <button class="btn btn-blue btn-full" onclick="saveClassement()">Enregistrer</button>
 </div></div></div>
 
-<div id="calendrierModal" class="modal"><div class="modal-inner"><div class="modal-box">
-  <div class="modal-head"><h2>Modifier le calendrier</h2><button class="close" onclick="closeModal('calendrierModal')">&times;</button></div>
+<div id="calendrierModal" class="modal" role="dialog" aria-modal="true"><div class="modal-inner"><div class="modal-box">
+  <div class="modal-head"><h2>Modifier le calendrier</h2><button class="close" onclick="closeModal('calendrierModal')" aria-label="Fermer">&times;</button></div>
   <p class="muted tiny">Prochains — Date|Mois|Home|Away|Heure|Lieu</p>
   <textarea id="prochainsInput" class="field" rows="5" style="font-family:monospace;font-size:11px"></textarea>
   <p class="muted tiny">Résultats — Date|Mois|Home|Away|Score</p>
@@ -686,10 +686,21 @@ let CLASSEMENT = null, CALENDRIER = null;
 let curArticleFilter = "", curArticleCategory = "Tous", curClubFilter = "";
 let FAVORITES = JSON.parse(localStorage.getItem("rf_fav") || "[]");
 let currentArticleId = null;
-let debounceTimer;
+let debounceArticles, debounceClubs;
+let pendingSlug = null;
 
 const $ = id => document.getElementById(id);
+
+/* FIX #6 : générateur d'images SVG locales, sans backticks ni esc */
+function makePlaceholder(text, w = 800, h = 400) {
+  const safe = String(text || "RFT").replace(/[<>&"']/g, "").substring(0, 24);
+  const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + w + "' height='" + h + "'><rect width='100%' height='100%' fill='#0066B3'/><text x='50%' y='52%' font-size='34' fill='#fff' text-anchor='middle' font-family='Arial' font-weight='bold'>" + safe + "</text></svg>";
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
+let lastFocused = null;
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const escAttr = s => String(s ?? "").replace(/"/g, "&quot;");
 const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").substring(0,60);
 
 function toast(msg, type){
@@ -702,8 +713,17 @@ function toast(msg, type){
   setTimeout(()=>{ t.classList.remove("show"); setTimeout(()=>t.remove(), 400); }, 3200);
 }
 
-function show(id){ $(id)?.classList.add("open"); }
-function closeModal(id){ $(id)?.classList.remove("open"); }
+function show(id){
+  const m = $(id); if(!m) return;
+  lastFocused = document.activeElement;
+  m.classList.add("open");
+  setTimeout(() => { const f = m.querySelector("input,select,textarea,button.btn"); if(f) f.focus(); }, 60);
+}
+function closeModal(id){
+  const m = $(id); if(!m) return;
+  m.classList.remove("open");
+  if(lastFocused && document.contains(lastFocused)) lastFocused.focus();
+}
 window.closeModal = closeModal;
 
 function toggleTheme(){
@@ -714,7 +734,7 @@ function toggleTheme(){
 }
 window.toggleTheme = toggleTheme;
 
-function go(tab){
+function go(tab, push = true){
   document.querySelectorAll(".tab").forEach(s => s.classList.add("hidden"));
   const t = $("sec-" + tab); if(t) t.classList.remove("hidden");
   document.querySelectorAll(".nav button").forEach(b => {
@@ -724,10 +744,9 @@ function go(tab){
   if(tab === "favoris") renderFavorites();
   if(tab === "article") { /* garde le titre article */ }
   else { document.title = "Rahim Football Tchad — La mémoire du football tchadien"; }
-  // Reset progress bar si on quitte un article
   if(tab !== "article"){ currentArticleId = null; const rp = $("readingProgress"); if(rp) rp.style.width = "0%"; }
   window.scrollTo({top:0, behavior:"smooth"});
-  history.pushState({tab}, "", "?" + tab);
+  if(push) history.pushState({tab}, "", "?" + tab);
   if(typeof gtag === "function") gtag("event","page_view",{page_title:tab});
 }
 window.go = go;
@@ -812,24 +831,24 @@ function renderClassement(){
     list.forEach(t => {
       const cls = t.pos===1?"gold":t.pos===2?"silver":t.pos===3?"bronze":t.pos>=11?"red":"";
       const diff = (t.bp||0)-(t.bc||0);
-      h += `<tr><td><span class="rank-pos ${cls}">${t.pos}</span></td><td><div class="rank-club">${esc(t.club)}</div><div style="font-size:10px;color:var(--muted)">${esc(t.ville||"")}</div></td><td class="rank-pts">${t.pts}</td><td style="text-align:center">${t.j}</td><td style="text-align:center">${t.g}</td><td style="text-align:center">${t.n}</td><td style="text-align:center">${t.p}</td><td style="text-align:center;font-weight:800;color:${diff>0?"#16a34a":diff<0?"#C8102E":"#64748b"}">${diff>0?"+":""}${diff}</td></tr>`;
+      h += '<tr><td><span class="rank-pos ' + cls + '">' + t.pos + '</span></td><td><div class="rank-club">' + esc(t.club) + '</div><div style="font-size:10px;color:var(--muted)">' + esc(t.ville||"") + '</div></td><td class="rank-pts">' + t.pts + '</td><td style="text-align:center">' + t.j + '</td><td style="text-align:center">' + t.g + '</td><td style="text-align:center">' + t.n + '</td><td style="text-align:center">' + t.p + '</td><td style="text-align:center;font-weight:800;color:' + (diff>0?"#16a34a":diff<0?"#C8102E":"#64748b") + '">' + (diff>0?"+":"") + diff + '</td></tr>';
     });
     c.innerHTML = h + '</tbody></table>';
   }
   const prev = $("homeRanking");
   if(prev){
-    let ph = '<div class="card" style="padding:0;overflow:hidden"><table class="rank-table"><thead><tr><th>#</th><th>Club</th><th style="text-align:center">Pts</th></tr></thead><tbody>';
+    let rankHtml = '<div class="card" style="padding:0;overflow:hidden"><table class="rank-table"><thead><tr><th>#</th><th>Club</th><th style="text-align:center">Pts</th></tr></thead><tbody>';
     list.slice(0,5).forEach(t => {
       const cls = t.pos===1?"gold":t.pos===2?"silver":t.pos===3?"bronze":"";
-      ph += `<tr><td><span class="rank-pos ${cls}">${t.pos}</span></td><td class="rank-club">${esc(t.club)}</td><td class="rank-pts">${t.pts}</td></tr>`;
+      rankHtml += '<tr><td><span class="rank-pos ' + cls + '">' + t.pos + '</span></td><td class="rank-club">' + esc(t.club) + '</td><td class="rank-pts">' + t.pts + '</td></tr>';
     });
-    prev.innerHTML = ph + '</tbody></table></div>';
+    prev.innerHTML = rankHtml + '</tbody></table></div>';
   }
   const b = $("buteursBox");
   if(b){
     let hb = '<div class="card">';
     BUTEURS.forEach((p,i) => {
-      hb += `<div class="stat-line"><span><b>${i+1}.</b> ${esc(p.nom)} <span style="color:var(--muted);font-size:11px">(${esc(p.club)})</span></span><b>${p.buts}</b></div>`;
+      hb += '<div class="stat-line"><span><b>' + (i+1) + '.</b> ' + esc(p.nom) + ' <span style="color:var(--muted);font-size:11px">(' + esc(p.club) + ')</span></span><b>' + p.buts + '</b></div>';
     });
     b.innerHTML = hb + '</div>';
   }
@@ -873,7 +892,7 @@ function renderCalendrier(){
   if(p){
     let h = "";
     (d.prochains||[]).forEach(m => {
-      h += `<div class="calendar-item"><div class="date"><b>${esc(m.date)}</b><span>${esc(m.mois)}</span></div><div class="match-info"><b>${esc(m.home)} — ${esc(m.away)}</b><span>${esc(m.heure||"")} · ${esc(m.lieu||"")}</span></div></div>`;
+      h += '<div class="calendar-item"><div class="date"><b>' + esc(m.date) + '</b><span>' + esc(m.mois) + '</span></div><div class="match-info"><b>' + esc(m.home) + ' — ' + esc(m.away) + '</b><span>' + esc(m.heure||"") + ' · ' + esc(m.lieu||"") + '</span></div></div>';
     });
     p.innerHTML = h || '<div class="empty"><span class="icon">📅</span>Aucun match à venir</div>';
   }
@@ -881,7 +900,7 @@ function renderCalendrier(){
   if(r){
     let h = "";
     (d.resultats||[]).forEach(m => {
-      h += `<div class="calendar-item"><div class="date"><b>${esc(m.date)}</b><span>${esc(m.mois)}</span></div><div class="match-info"><b>${esc(m.home)} <span style="color:#0066B3">${esc(m.score)}</span> ${esc(m.away)}</b></div></div>`;
+      h += '<div class="calendar-item"><div class="date"><b>' + esc(m.date) + '</b><span>' + esc(m.mois) + '</span></div><div class="match-info"><b>' + esc(m.home) + ' <span style="color:#0066B3">' + esc(m.score) + '</span> ' + esc(m.away) + '</b></div></div>';
     });
     r.innerHTML = h || '<div class="empty"><span class="icon">⚽</span>Aucun résultat</div>';
   }
@@ -915,7 +934,14 @@ window.toggleFav = function(id, ev){
   const i = FAVORITES.indexOf(id);
   if(i >= 0) FAVORITES.splice(i,1); else FAVORITES.push(id);
   localStorage.setItem("rf_fav", JSON.stringify(FAVORITES));
-  renderArticles();
+  document.querySelectorAll(".fav-star").forEach(btn => {
+    const onclickAttr = btn.getAttribute("onclick") || "";
+    const match = onclickAttr.match(/'([^']+)'/);
+    if(match && match[1] === id){
+      btn.classList.toggle("off", !isFav(id));
+      btn.textContent = isFav(id) ? "★" : "☆";
+    }
+  });
   renderFavorites();
   toast(isFav(id) ? "Ajouté aux favoris" : "Retiré des favoris", "success");
 };
@@ -934,7 +960,7 @@ function readingTime(c){ return Math.max(1, Math.round((c||"").split(/\s+/).leng
 function renderArticleCategories(){
   const c = $("articleCategories"); if(!c) return;
   const cats = ["Tous", "LINAFOOT", "Coupe du Tchad", "Sélection", "Légendes", "Jeunes", "Féminin", "Transferts", "Institutions", "Annonce"];
-  c.innerHTML = cats.map(cat => `<button class="${curArticleCategory===cat?"active":""}" onclick="setArticleCategory('${esc(cat)}')">${esc(cat)}</button>`).join("");
+  c.innerHTML = cats.map(cat => '<button class="' + (curArticleCategory===cat?"active":"") + '" onclick="setArticleCategory(\'' + esc(cat) + '\')">' + esc(cat) + '</button>').join("");
 }
 
 window.setArticleCategory = function(cat){
@@ -954,36 +980,36 @@ function renderArticles(){
   }
   if(!list.length){
     c.innerHTML = '<div class="empty"><span class="icon">📰</span>Aucun article pour le moment.</div>';
-    if(prev && !ARTICLES.length) prev.innerHTML = '<div class="empty"><span class="icon">📰</span>Les premiers articles arrivent bientôt.</div>';
+    if(prev && ARTICLES.length === 0) prev.innerHTML = '<div class="empty"><span class="icon">📰</span>Les premiers articles arrivent bientôt.</div>';
     $("stArticles").textContent = ARTICLES.length;
     return;
   }
-  let h = "";
+  let html = "";
   list.forEach(a => {
-    const img = a.image || `https://placehold.co/800x400/0066B3/FFFFFF?text=${encodeURIComponent((a.category||"Article").substring(0,20))}`;
+    const img = a.image || makePlaceholder(a.category || "Article");
     const rt = readingTime(a.content);
-    h += `<article class="article-card">`;
-    h += `<button class="fav-star ${isFav(a.id)?"":"off"}" onclick="toggleFav('${esc(a.id)}',event)">${isFav(a.id)?"★":"☆"}</button>`;
-    h += `<img class="article-img" src="${esc(img)}" loading="lazy" alt="${esc(a.title)}" onclick="openArticle('${esc(a.id)}')">`;
-    h += `<div class="article-body" onclick="openArticle('${esc(a.id)}')">`;
-    h += `<div class="article-meta">${esc(a.category||"")} · ${esc(a.date||"")} · ${rt} min</div>`;
-    h += `<h3>${esc(a.title)}</h3><p>${esc(a.excerpt||"")}</p>`;
-    h += `<div class="article-actions" onclick="event.stopPropagation()">`;
-    h += `<button class="share-btn" onclick="openArticle('${esc(a.id)}')">Lire</button>`;
-    h += `<button class="share-btn wa" onclick="shareArticle('${esc(a.id)}','wa')">WhatsApp</button>`;
-    h += `<button class="share-btn fb" onclick="shareArticle('${esc(a.id)}','fb')">Facebook</button>`;
-    if(isAdmin) h += `<button class="share-btn edit" onclick="openArticleEditor('${esc(a.id)}')">Modifier</button>`;
-    if(isAdmin) h += `<button class="share-btn del" onclick="deleteArticle('${esc(a.id)}')">Supprimer</button>`;
-    h += `</div></div></article>`;
+    html += '<article class="article-card">';
+    html += '<button class="fav-star ' + (isFav(a.id)?"":"off") + '" onclick="toggleFav(\'' + esc(a.id) + '\',event)" aria-label="Favori">' + (isFav(a.id)?"★":"☆") + '</button>';
+    html += '<img class="article-img" src="' + escAttr(img) + '" loading="lazy" alt="' + escAttr(a.title) + '" onclick="openArticle(\'' + esc(a.id) + '\')">';
+    html += '<div class="article-body" onclick="openArticle(\'' + esc(a.id) + '\')">';
+    html += '<div class="article-meta">' + esc(a.category||"") + ' · ' + esc(a.date||"") + ' · ' + rt + ' min</div>';
+    html += '<h3>' + esc(a.title) + '</h3><p>' + esc(a.excerpt||"") + '</p>';
+    html += '<div class="article-actions" onclick="event.stopPropagation()">';
+    html += '<button class="share-btn" onclick="openArticle(\'' + esc(a.id) + '\')">Lire</button>';
+    html += '<button class="share-btn wa" onclick="shareArticle(\'' + esc(a.id) + '\',\'wa\')">WhatsApp</button>';
+    html += '<button class="share-btn fb" onclick="shareArticle(\'' + esc(a.id) + '\',\'fb\')">Facebook</button>';
+    if(isAdmin) html += '<button class="share-btn edit" onclick="openArticleEditor(\'' + esc(a.id) + '\')">Modifier</button>';
+    if(isAdmin) html += '<button class="share-btn del" onclick="deleteArticle(\'' + esc(a.id) + '\')">Supprimer</button>';
+    html += '</div></div></article>';
   });
-  c.innerHTML = h;
+  c.innerHTML = html;
   if(prev && !curArticleFilter && curArticleCategory === "Tous"){
-    let ph = "";
+    let previewHtml = "";
     ARTICLES.slice(0,3).forEach(a => {
-      const img = a.image || `https://placehold.co/800x400/0066B3/FFFFFF?text=${encodeURIComponent((a.category||"A").substring(0,15))}`;
-      ph += `<div class="article-card" onclick="openArticle('${esc(a.id)}')"><img class="article-img" src="${esc(img)}" loading="lazy" alt=""><div class="article-body"><div class="article-meta">${esc(a.category||"")} · ${esc(a.date||"")}</div><h3 style="font-size:15px">${esc(a.title)}</h3></div></div>`;
+      const img = a.image || makePlaceholder(a.category || "Actu", 800, 400);
+      previewHtml += '<div class="article-card" onclick="openArticle(\'' + esc(a.id) + '\')"><img class="article-img" src="' + escAttr(img) + '" loading="lazy" alt=""><div class="article-body"><div class="article-meta">' + esc(a.category||"") + ' · ' + esc(a.date||"") + '</div><h3 style="font-size:15px">' + esc(a.title) + '</h3></div></div>';
     });
-    prev.innerHTML = ph;
+    prev.innerHTML = previewHtml;
   }
   $("stArticles").textContent = ARTICLES.length;
   renderArticleCategories();
@@ -993,37 +1019,36 @@ function renderFavorites(){
   const c = $("favoritesBox"); if(!c) return;
   const list = ARTICLES.filter(a => isFav(a.id));
   if(!list.length){ c.innerHTML = '<div class="empty"><span class="icon">❤️</span>Aucun favori. Clique sur l\'étoile d\'un article pour l\'ajouter.</div>'; return; }
-  let h = "";
+  let html = "";
   list.forEach(a => {
-    const img = a.image || `https://placehold.co/800x400/0066B3/FFFFFF?text=${encodeURIComponent((a.category||"A").substring(0,20))}`;
-    h += `<div class="article-card" onclick="openArticle('${esc(a.id)}')"><img class="article-img" src="${esc(img)}" loading="lazy" alt=""><div class="article-body"><div class="article-meta">${esc(a.category)} · ${esc(a.date||"")}</div><h3>${esc(a.title)}</h3><p>${esc(a.excerpt||"")}</p><div class="article-actions"><button class="share-btn del" onclick="event.stopPropagation();toggleFav('${esc(a.id)}')">Retirer</button></div></div></div>`;
+    const img = a.image || makePlaceholder(a.category || "Actu");
+    html += '<div class="article-card" onclick="openArticle(\'' + esc(a.id) + '\')"><img class="article-img" src="' + escAttr(img) + '" loading="lazy" alt=""><div class="article-body"><div class="article-meta">' + esc(a.category||"") + ' · ' + esc(a.date||"") + '</div><h3>' + esc(a.title) + '</h3><p>' + esc(a.excerpt||"") + '</p><div class="article-actions"><button class="share-btn del" onclick="event.stopPropagation();toggleFav(\'' + esc(a.id) + '\')">Retirer</button></div></div></div>';
   });
-  c.innerHTML = h;
+  c.innerHTML = html;
 }
 
 window.filterArticles = function(){
   curArticleFilter = $("articleSearch").value.trim();
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(renderArticles, 300);
+  clearTimeout(debounceArticles);
+  debounceArticles = setTimeout(renderArticles, 300);
 };
 
 window.openArticle = function(id){
   currentArticleId = id;
   const a = ARTICLES.find(x => x.id === id); if(!a) return;
-  const img = a.image || `https://placehold.co/800x400/0066B3/FFFFFF?text=Article`;
+  const img = a.image || makePlaceholder("Article");
   const rt = readingTime(a.content);
-  let h = `<div class="article-full"><img src="${esc(img)}" loading="lazy" alt="">`;
-  h += `<div class="meta">${esc(a.category||"")} · ${esc(a.date||"")} · ${rt} min de lecture</div>`;
-  h += `<h1>${esc(a.title)}</h1><p>${esc(a.content||"")}</p>`;
-  if(a.source) h += `<div style="background:var(--bg2);padding:12px;border-radius:10px;font-size:12px;color:var(--blue);font-weight:700;margin:14px 0">Source : ${esc(a.source)}</div>`;
-  h += `<div class="article-actions" style="margin-top:18px">`;
-  h += `<button class="share-btn wa" onclick="shareArticle('${esc(a.id)}','wa')">WhatsApp</button>`;
-  h += `<button class="share-btn fb" onclick="shareArticle('${esc(a.id)}','fb')">Facebook</button>`;
-  h += `<button class="share-btn" onclick="shareNative('${esc(a.id)}')">Partager</button>`;
-  if(isAdmin) h += `<button class="share-btn edit" onclick="openArticleEditor('${esc(a.id)}')">Modifier</button>`;
-  h += `</div>`;
-  h += `</div>`;
-  $("articleFull").innerHTML = h;
+  let html = '<div class="article-full"><img src="' + escAttr(img) + '" loading="lazy" alt="">';
+  html += '<div class="meta">' + esc(a.category||"") + ' · ' + esc(a.date||"") + ' · ' + rt + ' min de lecture</div>';
+  html += '<h1>' + esc(a.title) + '</h1><p>' + esc(a.content||"") + '</p>';
+  if(a.source) html += '<div style="background:var(--bg2);padding:12px;border-radius:10px;font-size:12px;color:var(--blue);font-weight:700;margin:14px 0">Source : ' + esc(a.source) + '</div>';
+  html += '<div class="article-actions" style="margin-top:18px">';
+  html += '<button class="share-btn wa" onclick="shareArticle(\'' + esc(a.id) + '\',\'wa\')">WhatsApp</button>';
+  html += '<button class="share-btn fb" onclick="shareArticle(\'' + esc(a.id) + '\',\'fb\')">Facebook</button>';
+  html += '<button class="share-btn" onclick="shareNative(\'' + esc(a.id) + '\')">Partager</button>';
+  if(isAdmin) html += '<button class="share-btn edit" onclick="openArticleEditor(\'' + esc(a.id) + '\')">Modifier</button>';
+  html += '</div></div>';
+  $("articleFull").innerHTML = html;
   go("article");
   document.title = a.title + " — Rahim Football Tchad";
 };
@@ -1045,8 +1070,11 @@ window.shareNative = async function(id){
 
 window.deleteArticle = async function(id){
   if(!confirm("Supprimer cet article ?")) return;
-  try{ await deleteDoc(doc(db,"articles",id)); toast("Supprimé", "success"); }
-  catch(e){ toast("Erreur : " + e.message, "error"); }
+  try{
+    await deleteDoc(doc(db,"articles",id));
+    if(currentArticleId === id){ currentArticleId = null; go("actus"); }
+    toast("Supprimé", "success");
+  } catch(e){ toast("Erreur : " + e.message, "error"); }
 };
 
 window.openArticleEditor = function(id){
@@ -1063,7 +1091,6 @@ window.openArticleEditor = function(id){
   if(a.image){ $("aImagePreview").src = a.image; $("aImagePreview").classList.remove("hidden"); } else $("aImagePreview").classList.add("hidden");
   $("articleModalTitle").textContent = id ? "Modifier l'article" : "Nouvel article";
   $("articleStatus").textContent = "";
-  // Reset upload label
   const up = $("aUpload");
   up.classList.remove("warning");
   up.querySelector(".txt").textContent = "Choisir une photo (ou passer)";
@@ -1098,7 +1125,7 @@ window.saveArticle = async function(){
   } catch(e){ st.textContent = "Erreur : " + e.message; st.style.color = "#C8102E"; }
 };
 
-/* IMAGE UPLOAD — FIXÉ */
+/* IMAGE UPLOAD */
 async function compressImage(file, maxW){
   return new Promise(resolve => {
     if(!file.type.startsWith("image/")) return resolve(file);
@@ -1142,7 +1169,6 @@ window.uploadImgBB = async function(input, previewId, urlId, labelId){
       toast("Image chargée", "success");
     } else throw new Error("Erreur ImgBB");
   } catch(e){
-    // FIX : ne bloque plus la publication
     urlField.value = "";
     label.classList.add("warning");
     label.querySelector(".txt").textContent = "⚠️ Image non chargée — Publie SANS image";
@@ -1164,24 +1190,24 @@ function renderClubs(){
     $("stClubs").textContent = CLUBS.length;
     return;
   }
-  let h = "";
+  let html = "";
   list.forEach(cl => {
     const logo = cl.logo || "";
-    h += `<div class="club-card">`;
-    if(isAdmin) h += `<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px" onclick="openClubEditor('${esc(cl.id)}')">Modifier</button>`;
-    h += `<div class="club-logo">${logo ? `<img src="${esc(logo)}" alt="">` : esc((cl.name||"?")[0])}</div>`;
-    h += `<div class="club-info"><h3>${esc(cl.name)}</h3><p>${esc(cl.city||"")}${cl.funded ? " · Fondé en " + esc(cl.funded) : ""}</p>`;
-    if(cl.titles) h += `<p style="color:var(--blue);font-weight:800;margin-top:6px">${esc(cl.titles)}</p>`;
-    h += `</div></div>`;
+    html += '<div class="club-card">';
+    if(isAdmin) html += '<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px" onclick="openClubEditor(\'' + esc(cl.id) + '\')">Modifier</button>';
+    html += '<div class="club-logo">' + (logo ? '<img src="' + escAttr(logo) + '" alt="' + escAttr(cl.name) + '">' : esc((cl.name||"?")[0])) + '</div>';
+    html += '<div class="club-info"><h3>' + esc(cl.name) + '</h3><p>' + esc(cl.city||"") + (cl.funded ? " · Fondé en " + esc(cl.funded) : "") + '</p>';
+    if(cl.titles) html += '<p style="color:var(--blue);font-weight:800;margin-top:6px">' + esc(cl.titles) + '</p>';
+    html += '</div></div>';
   });
-  c.innerHTML = h;
+  c.innerHTML = html;
   $("stClubs").textContent = CLUBS.length;
 }
 
 window.filterClubs = function(){
   curClubFilter = $("clubSearch").value.trim();
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(renderClubs, 300);
+  clearTimeout(debounceClubs);
+  debounceClubs = setTimeout(renderClubs, 300);
 };
 
 window.openClubEditor = function(id){
@@ -1221,17 +1247,17 @@ function renderLegends(){
     $("stLegendes").textContent = 0;
     return;
   }
-  let h = "";
+  let html = "";
   LEGENDS.forEach(l => {
-    const photo = l.photo || `https://placehold.co/400x300/0066B3/FFFFFF?text=${encodeURIComponent((l.name||"L").substring(0,20))}`;
-    h += `<div class="legend-card">`;
-    if(isAdmin) h += `<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px;z-index:5" onclick="openLegendEditor('${esc(l.id)}')">Modifier</button>`;
-    h += `<img class="legend-photo" src="${esc(photo)}" loading="lazy" alt="${esc(l.name)}">`;
-    h += `<div class="legend-info"><h3>${esc(l.name)}</h3><p class="poste">${esc(l.poste||"")}</p><p>${esc(l.bio||"")}</p><p style="color:var(--blue);font-weight:700;margin-top:10px;font-size:11px">${esc(l.clubs||"")}</p>`;
-    if(isAdmin) h += `<button class="share-btn del" style="margin-top:10px;width:100%;justify-content:center" onclick="deleteLegend('${esc(l.id)}')">Supprimer</button>`;
-    h += `</div></div>`;
+    const photo = l.photo || makePlaceholder(l.name || "Légende", 400, 300);
+    html += '<div class="legend-card">';
+    if(isAdmin) html += '<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px;z-index:5" onclick="openLegendEditor(\'' + esc(l.id) + '\')">Modifier</button>';
+    html += '<img class="legend-photo" src="' + escAttr(photo) + '" loading="lazy" alt="' + escAttr(l.name) + '">';
+    html += '<div class="legend-info"><h3>' + esc(l.name) + '</h3><p class="poste">' + esc(l.poste||"") + '</p><p>' + esc(l.bio||"") + '</p><p style="color:var(--blue);font-weight:700;margin-top:10px;font-size:11px">' + esc(l.clubs||"") + '</p>';
+    if(isAdmin) html += '<button class="share-btn del" style="margin-top:10px;width:100%;justify-content:center" onclick="deleteLegend(\'' + esc(l.id) + '\')">Supprimer</button>';
+    html += '</div></div>';
   });
-  c.innerHTML = h;
+  c.innerHTML = html;
   $("stLegendes").textContent = LEGENDS.length;
 }
 
@@ -1272,18 +1298,18 @@ window.deleteLegend = async function(id){
 function renderOfficials(){
   const c = $("officialsBox"); if(!c) return;
   const list = OFFICIALS.length ? OFFICIALS : FALLBACK_OFFICIALS;
-  let h = "";
+  let html = "";
   list.forEach(o => {
     const initials = (o.name||"?").split(" ").map(x => x[0]).join("").substring(0,2).toUpperCase();
-    const real = (o.realisations || []).map(r => `<li>${esc(r)}</li>`).join("");
-    h += `<div class="official">`;
-    if(isAdmin && OFFICIALS.length) h += `<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px" onclick="openOfficialEditor('${esc(o.id)}')">Modifier</button>`;
-    h += `<div class="official-head"><div class="official-avatar">${esc(initials)}</div>`;
-    h += `<div><h3>${esc(o.name)}</h3><p class="role">${esc(o.role||"")}</p><p class="org">${esc(o.org||"")}</p></div></div>`;
-    h += `<div class="official-body">${o.badge ? `<span class="chip chip-gold">${esc(o.badge)}</span>` : ""}<p style="margin-top:8px">${esc(o.bio||"")}</p>${real ? `<ul>${real}</ul>` : ""}</div>`;
-    h += `</div>`;
+    const real = (o.realisations || []).map(r => '<li>' + esc(r) + '</li>').join("");
+    html += '<div class="official">';
+    if(isAdmin && OFFICIALS.length) html += '<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px" onclick="openOfficialEditor(\'' + esc(o.id) + '\')">Modifier</button>';
+    html += '<div class="official-head"><div class="official-avatar">' + esc(initials) + '</div>';
+    html += '<div><h3>' + esc(o.name) + '</h3><p class="role">' + esc(o.role||"") + '</p><p class="org">' + esc(o.org||"") + '</p></div></div>';
+    html += '<div class="official-body">' + (o.badge ? '<span class="chip chip-gold">' + esc(o.badge) + '</span>' : "") + '<p style="margin-top:8px">' + esc(o.bio||"") + '</p>' + (real ? '<ul>' + real + '</ul>' : "") + '</div>';
+    html += '</div>';
   });
-  c.innerHTML = h;
+  c.innerHTML = html;
 }
 
 window.openOfficialEditor = function(id){
@@ -1305,8 +1331,9 @@ window.saveOfficial = async function(){
   if(!d.name || !d.role || !d.bio){ st.textContent = "Champs requis"; return; }
   st.textContent = "Enregistrement…";
   try{
-    if(id && !id.endsWith("_default")) await updateDoc(doc(db,"officials",id), d);
-    else { const nid = (id && !id.endsWith("_default")) ? id : ("off_" + Date.now().toString(36)); await setDoc(doc(db,"officials",nid), d); }
+    let nid = id;
+    if(!nid || nid.endsWith("_default") || nid === "tahir" || nid === "nair") nid = "off_" + Date.now().toString(36);
+    await setDoc(doc(db,"officials",nid), d);
     toast("Enregistré", "success");
     setTimeout(() => closeModal("officialModal"), 600);
   } catch(e){ st.textContent = "Erreur : " + e.message; }
@@ -1317,17 +1344,17 @@ window.submitContact = async function(e){
   e.preventDefault();
   const st = $("ctStatus");
   const email = $("ctEmail").value.trim();
-  if(!email.includes("@") && !/^\+?[0-9\s]{8,}$/.test(email)){ st.textContent = "Email ou téléphone invalide"; return; }
-  st.textContent = "Envoi…";
+  if(!email.includes("@") && !/^\+?[0-9\s]{8,}$/.test(email)){ st.textContent = "Email ou téléphone invalide"; st.style.color = "#C8102E"; return; }
+  st.textContent = "Envoi…"; st.style.color = "#0066B3";
   try{
     await addDoc(collection(db,"messages"), {
       name:$("ctName").value.trim(), email, subject:$("ctSubject").value,
       message:$("ctMessage").value.trim(), date:serverTimestamp()
     });
-    st.textContent = "Message envoyé. Réponse sous 24h.";
+    st.textContent = "Message envoyé. Réponse sous 24h."; st.style.color = "#16a34a";
     $("contactForm").reset();
     toast("Message envoyé", "success");
-  } catch(err){ st.textContent = "Erreur : " + err.message; }
+  } catch(err){ st.textContent = "Erreur : " + err.message; st.style.color = "#C8102E"; }
 };
 
 window.loadMessages = async function(){
@@ -1337,13 +1364,13 @@ window.loadMessages = async function(){
   try{
     const q = query(collection(db,"messages"), orderBy("date","desc"));
     const snap = await getDocs(q);
-    let h = "";
+    let html = "";
     snap.forEach(d => {
       const m = d.data();
       const dateStr = m.date && m.date.toDate ? m.date.toDate().toLocaleDateString('fr-FR') : "—";
-      h += `<div class="card"><div class="row"><b style="font-size:13px;color:var(--blue)">${esc(m.name||"")}</b><span class="tiny muted">${dateStr}</span></div><p class="tiny muted" style="margin-top:4px">${esc(m.email||"")} · ${esc(m.subject||"")}</p><p style="font-size:13px;margin-top:10px;line-height:1.6">${esc(m.message||"")}</p><button class="btn btn-red btn-full" style="margin-top:10px;font-size:11px;padding:8px" onclick="deleteMessage('${esc(d.id)}')">Supprimer</button></div>`;
+      html += '<div class="card"><div class="row"><b style="font-size:13px;color:var(--blue)">' + esc(m.name||"") + '</b><span class="tiny muted">' + dateStr + '</span></div><p class="tiny muted" style="margin-top:4px">' + esc(m.email||"") + ' · ' + esc(m.subject||"") + '</p><p style="font-size:13px;margin-top:10px;line-height:1.6">' + esc(m.message||"") + '</p><button class="btn btn-red btn-full" style="margin-top:10px;font-size:11px;padding:8px" onclick="deleteMessage(\'' + esc(d.id) + '\')">Supprimer</button></div>';
     });
-    c.innerHTML = h || '<div class="empty"><span class="icon">📬</span>Aucun message.</div>';
+    c.innerHTML = html || '<div class="empty"><span class="icon">📬</span>Aucun message.</div>';
   } catch(e){ c.innerHTML = '<div class="empty"><span class="icon">⚠️</span>Erreur : ' + esc(e.message) + '</div>'; }
 };
 
@@ -1359,13 +1386,13 @@ window.openAuth = function(){ $("authStatus").textContent = ""; show("authModal"
 document.getElementById("authForm").addEventListener("submit", async e => {
   e.preventDefault();
   const email = $("authEmail").value.trim().toLowerCase(), pass = $("authPassword").value, st = $("authStatus");
-  st.textContent = "Connexion…";
+  st.textContent = "Connexion…"; st.style.color = "#0066B3";
   try{
     await signInWithEmailAndPassword(auth, email, pass);
-    st.textContent = "Connecté";
+    st.textContent = "Connecté"; st.style.color = "#16a34a";
     toast("Bienvenue Admin", "success");
     setTimeout(() => closeModal("authModal"), 600);
-  } catch(err){ st.textContent = "Identifiants incorrects"; }
+  } catch(err){ st.textContent = "Identifiants incorrects"; st.style.color = "#C8102E"; }
 });
 
 window.logout = async function(){
@@ -1431,10 +1458,24 @@ function listen(name, setter, sort){
   onSnapshot(q, snap => {
     const arr = []; snap.forEach(d => { const o = d.data(); o.id = d.id; arr.push(o); });
     setter(arr);
-  }, err => console.warn("Firestore error on " + name + ":", err.message));
+  }, err => {
+    console.warn("Firestore error on " + name + ":", err.message);
+    const boxes = {articles:"articlesBox",clubs:"clubsBox",legends:"legendsBox",officials:"officialsBox"};
+    const el = $(boxes[name]);
+    if(el && !el.dataset.loaded) el.innerHTML = '<div class="empty"><span class="icon">⚠️</span>Connexion impossible. Vérifiez votre réseau.</div>';
+  });
 }
 
-listen("articles", a => { ARTICLES = a; renderArticles(); renderFavorites(); }, "createdAt");
+listen("articles", a => {
+  ARTICLES = a;
+  renderArticles();
+  renderFavorites();
+  // FIX #7 : deep-link slug géré après chargement
+  if(pendingSlug){
+    const art = ARTICLES.find(x => x.slug === pendingSlug || x.id === pendingSlug);
+    if(art){ pendingSlug = null; openArticle(art.id); }
+  }
+}, "createdAt");
 listen("clubs", a => { CLUBS = a; renderClubs(); });
 listen("legends", a => { LEGENDS = a; renderLegends(); }, "createdAt");
 listen("officials", a => { OFFICIALS = a; renderOfficials(); });
@@ -1456,12 +1497,11 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open"));
 });
 
-window.addEventListener("popstate", e => { if(e.state?.tab) go(e.state.tab); });
+window.addEventListener("popstate", e => { if(e.state?.tab) go(e.state.tab, false); });
 
 /* INIT */
 function init(){
   $("year").textContent = new Date().getFullYear();
-  // Mode sombre auto si pas de préférence sauvegardée
   if(localStorage.getItem("rf_theme") === "dark" || (!localStorage.getItem("rf_theme") && window.matchMedia('(prefers-color-scheme: dark)').matches)){
     document.body.classList.add("dark"); $("themeBtn").textContent = "☀️";
   }
@@ -1472,12 +1512,13 @@ function init(){
   renderArticleCategories();
   const params = new URLSearchParams(location.search);
   const first = params.keys().next().value;
-  if(first && document.getElementById("sec-" + first)) go(first);
-  if(typeof gtag === "function") gtag("config","G-8E421SPXJ2",{page_title:document.title});
+  if(first && document.getElementById("sec-" + first)) go(first, false);
+  else if(first) pendingSlug = first; // FIX #7 : attendre le chargement des articles
+  if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
   console.log("%cRahim Football Tchad","color:#0066B3;font-size:20px;font-weight:900");
 }
 
 if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 </script>
 </body>
-      </html>
+</html>
