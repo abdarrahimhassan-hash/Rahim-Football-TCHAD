@@ -1,24 +1,82 @@
 {
+  "id": "/Rahim-Football-TCHAD/",
   "name": "Rahim Football Tchad",
-  "short_name": "RFT ⚽",
-  "description": "La plateforme du football tchadien",
-  "start_url": "./index.html",
+  "short_name": "Rahim FT",
+  "description": "La mémoire vivante du football tchadien. Clubs, résultats, légendes et histoire du football au Tchad. Fait à N'Djamena par un Tchadien.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait-primary",
   "background_color": "#0066B3",
   "theme_color": "#0066B3",
-  "lang": "fr",
+  "categories": ["news", "sports", "football"],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "./assets/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "./assets/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Actualités",
+      "short_name": "Actus",
+      "description": "Dernières actualités du football tchadien",
+      "url": "./?actus",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Classement LINAFOOT",
+      "short_name": "Classement",
+      "description": "Classement du championnat national",
+      "url": "./?classement",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Clubs",
+      "short_name": "Clubs",
+      "description": "Clubs d'élite du Tchad",
+      "url": "./?clubs",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Légendes",
+      "short_name": "Légendes",
+      "description": "Les légendes du football tchadien",
+      "url": "./?legendes",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Accueil Rahim Football Tchad"
     }
   ]
 }
