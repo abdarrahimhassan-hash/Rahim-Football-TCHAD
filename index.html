@@ -274,7 +274,7 @@ body.dark .fact-box p{color:#fde68a}
     <div class="head-actions">
       <a href="https://wa.me/23562496176" class="icon-btn" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
       <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Thème">🌙</button>
-      <button id="authBtn" class="btn btn-ghost" onclick="openAuth()">Admin</button>
+      <button id="authBtn" class="btn btn-ghost" onclick="handleAuthBtn()">Admin</button>
     </div>
   </div>
 </header>
@@ -688,17 +688,16 @@ let FAVORITES = JSON.parse(localStorage.getItem("rf_fav") || "[]");
 let currentArticleId = null;
 let debounceArticles, debounceClubs;
 let pendingSlug = null;
+let lastFocused = null;
 
 const $ = id => document.getElementById(id);
 
-/* FIX #6 : générateur d'images SVG locales, sans backticks ni esc */
 function makePlaceholder(text, w = 800, h = 400) {
   const safe = String(text || "RFT").replace(/[<>&"']/g, "").substring(0, 24);
   const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + w + "' height='" + h + "'><rect width='100%' height='100%' fill='#0066B3'/><text x='50%' y='52%' font-size='34' fill='#fff' text-anchor='middle' font-family='Arial' font-weight='bold'>" + safe + "</text></svg>";
   return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
-let lastFocused = null;
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const escAttr = s => String(s ?? "").replace(/"/g, "&quot;");
 const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").substring(0,60);
@@ -742,16 +741,24 @@ function go(tab, push = true){
   });
   if(tab === "admin") loadMessages();
   if(tab === "favoris") renderFavorites();
-  if(tab === "article") { /* garde le titre article */ }
-  else { document.title = "Rahim Football Tchad — La mémoire du football tchadien"; }
-  if(tab !== "article"){ currentArticleId = null; const rp = $("readingProgress"); if(rp) rp.style.width = "0%"; }
+  if(tab !== "article"){ currentArticleId = null; const rp = $("readingProgress"); if(rp) rp.style.width = "0%"; document.title = "Rahim Football Tchad — La mémoire du football tchadien"; }
   window.scrollTo({top:0, behavior:"smooth"});
   if(push) history.pushState({tab}, "", "?" + tab);
   if(typeof gtag === "function") gtag("event","page_view",{page_title:tab});
 }
 window.go = go;
 
-/* DONNÉES PAR DÉFAUT */
+/* FIX CRITIQUE : bouton Admin qui devient Déconnexion quand connecté */
+window.handleAuthBtn = function(){
+  if(isAdmin){
+    if(confirm("Tu es connecté comme Admin.\n\nSe déconnecter ?")){
+      logout();
+    }
+  } else {
+    openAuth();
+  }
+};
+
 const DEFAULT_CLASSEMENT = [
   {pos:1,club:"Aiglons FC",ville:"N'Djamena",pts:52,j:22,g:16,n:4,p:2,bp:48,bc:15},
   {pos:2,club:"AS PSI",ville:"N'Djamena",pts:45,j:22,g:14,n:3,p:5,bp:41,bc:22},
@@ -786,7 +793,6 @@ const FALLBACK_OFFICIALS = [
   {id:"nair",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en 2024",badge:"Gouvernement",bio:"Porte une vision nouvelle du sport tchadien.",realisations:["Partenariats internationaux","Détection jeunes talents","Académie nationale"]}
 ];
 
-/* VISITES */
 async function trackVisit(){
   const today = new Date().toISOString().split("T")[0];
   try{
@@ -806,7 +812,6 @@ async function trackVisit(){
   }catch(e){ $("visitCount").textContent = "—"; }
 }
 
-/* CLASSEMENT */
 async function loadClassement(){
   try{
     const snap = await getDoc(doc(db,"config","classement"));
@@ -877,7 +882,6 @@ window.saveClassement = async function(){
   } catch(e){ toast("Erreur : " + e.message, "error"); }
 };
 
-/* CALENDRIER */
 async function loadCalendrier(){
   try{
     const snap = await getDoc(doc(db,"config","calendrier"));
@@ -926,7 +930,6 @@ window.saveCalendrier = async function(){
   } catch(e){ toast("Erreur : " + e.message, "error"); }
 };
 
-/* ARTICLES */
 function isFav(id){ return FAVORITES.includes(id); }
 
 window.toggleFav = function(id, ev){
@@ -1125,7 +1128,6 @@ window.saveArticle = async function(){
   } catch(e){ st.textContent = "Erreur : " + e.message; st.style.color = "#C8102E"; }
 };
 
-/* IMAGE UPLOAD */
 async function compressImage(file, maxW){
   return new Promise(resolve => {
     if(!file.type.startsWith("image/")) return resolve(file);
@@ -1177,7 +1179,6 @@ window.uploadImgBB = async function(input, previewId, urlId, labelId){
   }
 };
 
-/* CLUBS */
 function renderClubs(){
   const c = $("clubsBox"); if(!c) return;
   let list = CLUBS;
@@ -1239,7 +1240,6 @@ window.saveClub = async function(){
   } catch(e){ st.textContent = "Erreur : " + e.message; }
 };
 
-/* LÉGENDES */
 function renderLegends(){
   const c = $("legendsBox"); if(!c) return;
   if(!LEGENDS.length){
@@ -1294,7 +1294,6 @@ window.deleteLegend = async function(id){
   catch(e){ toast("Erreur", "error"); }
 };
 
-/* DIRIGEANTS */
 function renderOfficials(){
   const c = $("officialsBox"); if(!c) return;
   const list = OFFICIALS.length ? OFFICIALS : FALLBACK_OFFICIALS;
@@ -1339,7 +1338,6 @@ window.saveOfficial = async function(){
   } catch(e){ st.textContent = "Erreur : " + e.message; }
 };
 
-/* MESSAGES */
 window.submitContact = async function(e){
   e.preventDefault();
   const st = $("ctStatus");
@@ -1380,7 +1378,6 @@ window.deleteMessage = async function(id){
   catch(e){ toast("Erreur", "error"); }
 };
 
-/* AUTH */
 window.openAuth = function(){ $("authStatus").textContent = ""; show("authModal"); };
 
 document.getElementById("authForm").addEventListener("submit", async e => {
@@ -1396,16 +1393,17 @@ document.getElementById("authForm").addEventListener("submit", async e => {
 });
 
 window.logout = async function(){
-  if(!confirm("Se déconnecter ?")) return;
-  try{ await signOut(auth); toast("Déconnecté", "success"); }
-  catch(e){ toast("Erreur", "error"); }
+  try{
+    await signOut(auth);
+    toast("Déconnecté", "success");
+  } catch(e){ toast("Erreur", "error"); }
 };
 
 function updateAuthUI(){
   const btn = $("authBtn");
   const adminBtns = ["newArticleBtn","addClubBtn","addLegendBtn","addOfficialBtn","editClassementBtn","editCalendrierBtn"];
   if(isAdmin){
-    btn.textContent = "Admin ✓"; btn.className = "btn btn-admin";
+    btn.textContent = "Déconnexion"; btn.className = "btn btn-red";
     adminBtns.forEach(id => { const el = $(id); if(el) el.classList.remove("hidden"); });
   } else {
     btn.textContent = "Admin"; btn.className = "btn btn-ghost";
@@ -1416,7 +1414,6 @@ function updateAuthUI(){
 
 onAuthStateChanged(auth, user => { isAdmin = !!user; updateAuthUI(); });
 
-/* SEED */
 window.seedRichData = async function(){
   if(!isAdmin){ toast("Admin requis", "error"); return; }
   if(!confirm("Charger les données de démonstration ?")) return;
@@ -1452,7 +1449,6 @@ window.seedRichData = async function(){
   } catch(e){ st.textContent = "Erreur : " + e.message; toast("Erreur", "error"); }
 };
 
-/* LISTENERS */
 function listen(name, setter, sort){
   const q = sort ? query(collection(db,name), orderBy(sort,"desc")) : collection(db,name);
   onSnapshot(q, snap => {
@@ -1470,7 +1466,6 @@ listen("articles", a => {
   ARTICLES = a;
   renderArticles();
   renderFavorites();
-  // FIX #7 : deep-link slug géré après chargement
   if(pendingSlug){
     const art = ARTICLES.find(x => x.slug === pendingSlug || x.id === pendingSlug);
     if(art){ pendingSlug = null; openArticle(art.id); }
@@ -1480,7 +1475,6 @@ listen("clubs", a => { CLUBS = a; renderClubs(); });
 listen("legends", a => { LEGENDS = a; renderLegends(); }, "createdAt");
 listen("officials", a => { OFFICIALS = a; renderOfficials(); });
 
-/* SCROLL */
 window.addEventListener("scroll", () => {
   const b = $("backTop"); if(!b) return;
   if(window.scrollY > 400) b.classList.add("show"); else b.classList.remove("show");
@@ -1499,7 +1493,6 @@ document.addEventListener("keydown", e => {
 
 window.addEventListener("popstate", e => { if(e.state?.tab) go(e.state.tab, false); });
 
-/* INIT */
 function init(){
   $("year").textContent = new Date().getFullYear();
   if(localStorage.getItem("rf_theme") === "dark" || (!localStorage.getItem("rf_theme") && window.matchMedia('(prefers-color-scheme: dark)').matches)){
@@ -1513,7 +1506,7 @@ function init(){
   const params = new URLSearchParams(location.search);
   const first = params.keys().next().value;
   if(first && document.getElementById("sec-" + first)) go(first, false);
-  else if(first) pendingSlug = first; // FIX #7 : attendre le chargement des articles
+  else if(first) pendingSlug = first;
   if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
   console.log("%cRahim Football Tchad","color:#0066B3;font-size:20px;font-weight:900");
 }
@@ -1521,4 +1514,4 @@ function init(){
 if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 </script>
 </body>
-</html>
+  </html>
