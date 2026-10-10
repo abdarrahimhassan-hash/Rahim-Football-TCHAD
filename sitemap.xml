@@ -1,157 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Page principale (SPA) -->
+  <!-- ============================================================
+       PAGE PRINCIPALE
+       ============================================================ -->
   <url>
     <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?lang=ar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/"/>
-  </url>
-
-  <!-- Pages virtuelles (routing par hash — voir note ci-dessous) -->
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#accueil</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- ============================================================
+       SECTIONS PRINCIPALES (query params ?xxx)
+       ============================================================ -->
+
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#classement</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?accueil</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?actus</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#calendrier</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?classement</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?calendrier</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#actus</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#clubs</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?clubs</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#sao</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?legendes</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#boutique</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#palmares</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?institutions</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
+  <!-- ============================================================
+       PAGES SECONDAIRES
+       ============================================================ -->
+
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#records</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?appropos</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#institutions</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#coachs</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#talents</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#tournois</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#videos</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#galerie</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.65</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#faq</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#contact</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#apropos</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#offres</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?offres</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/#legal</loc>
-    <lastmod>2026-10-06</lastmod>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?faq</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?contact</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/?legal</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
