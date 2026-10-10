@@ -10,8 +10,10 @@
 <meta property="og:title" content="Rahim Football Tchad">
 <meta property="og:description" content="La mémoire vivante du football tchadien.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/">
+<link rel="canonical" href="https://abdarrahimhassan-hash.github.io/Rahim-Football-TCHAD/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230066B3'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23FECB00' font-family='Arial' font-weight='bold'>R</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='42' fill='%230066B3'/><text x='96' y='138' font-size='120' text-anchor='middle' fill='%23FECB00' font-family='Arial' font-weight='bold'>R</text></svg>">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -231,14 +233,6 @@ body.dark .fact-box p{color:#fde68a}
 .wa-float{position:fixed;bottom:88px;left:14px;background:linear-gradient(135deg,#25D366,#1aa850);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:35;border:none;text-decoration:none}
 .back-top{position:fixed;bottom:88px;right:14px;background:var(--grad-blue);color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 20px rgba(0,102,179,.4);z-index:35;opacity:0;visibility:hidden;transition:all .3s;border:none}
 .back-top.show{opacity:1;visibility:visible}
-.team-selector{display:flex;gap:8px;overflow-x:auto;padding:6px 0 12px;scrollbar-width:none}
-.team-selector::-webkit-scrollbar{display:none}
-.team-selector button{flex:0 0 auto;padding:9px 16px;border-radius:999px;background:var(--card);color:var(--txt);font-weight:800;font-size:12px;border:1px solid var(--border);min-height:40px}
-.team-selector button.active{background:var(--grad-blue);color:#fff;border-color:var(--blue)}
-.player-row{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:11px;padding:11px;border:1px solid var(--border);margin-bottom:8px}
-.player-row .pnum{width:36px;height:36px;border-radius:50%;background:var(--grad-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;font-family:"Outfit",sans-serif}
-.player-row .pinfo b{font-size:13px;font-weight:800;display:block}
-.player-row .pinfo span{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase}
 .legend-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
 @media(min-width:640px){.legend-grid{grid-template-columns:1fr 1fr}.hero h2{font-size:42px}}
 .legend-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--sh-sm);position:relative}
@@ -255,6 +249,10 @@ body.dark .fact-box p{color:#fde68a}
 .legal-section h2{font-size:18px;color:var(--blue);margin-bottom:12px;padding-left:14px;position:relative}
 .legal-section h2::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:20px;background:var(--grad-flag);border-radius:2px}
 .legal-section p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:10px}
+.newsletter-box{background:linear-gradient(135deg,#25D366,#16a34a);border-radius:var(--radius-lg);padding:28px 22px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.newsletter-box h2{font-size:22px;font-weight:900;margin-bottom:8px;color:#fff}
+.newsletter-box p{font-size:13px;color:#dcfce7;margin-bottom:16px;max-width:500px;margin-left:auto;margin-right:auto}
+.newsletter-box .btn-join{background:#fff;color:#16a34a;font-weight:900;font-size:14px;padding:14px 24px;border-radius:12px;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;min-height:48px}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-thumb{background:var(--grad-blue);border-radius:3px}
 </style>
@@ -396,16 +394,23 @@ body.dark .fact-box p{color:#fde68a}
 </section>
 
 <section id="sec-institutions" class="tab hidden">
-  <div class="section-head"><h2>Institutions</h2></div>
+  <div class="section-head"><h2>🏛️ Institutions du football tchadien</h2></div>
+
   <div class="inst-banner">
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
       <div class="logo-box">FTFA</div>
       <div style="flex:1;min-width:180px">
-        <h3>Fédération Tchadienne de Football</h3>
+        <h3>Fédération Tchadienne de Football Association</h3>
         <p>Fondée en 1962 · FIFA & CAF depuis 1964</p>
       </div>
     </div>
   </div>
+
+  <div class="fact-box">
+    <b>📌 Siège & compétitions</b>
+    <p>Siège : N'Djamena · Organise : Championnat National, Coupe du Tchad, Supercoupe, Ligue féminine, U20, U15.</p>
+  </div>
+
   <div class="card">
     <h3>Informations clés</h3>
     <div class="divider">
@@ -413,13 +418,45 @@ body.dark .fact-box p{color:#fde68a}
       <div class="stat-line"><span>Président FTFA</span><b>Tahir Oloy Hassan</b></div>
       <div class="stat-line"><span>Sélection nationale</span><b>Les Sao 🇹🇩</b></div>
       <div class="stat-line"><span>Championnat</span><b>LINAFOOT</b></div>
+      <div class="stat-line"><span>Membre FIFA</span><b>Depuis 1964</b></div>
+      <div class="stat-line"><span>Membre CAF</span><b>Depuis 1964</b></div>
     </div>
   </div>
-  <div class="section-head" style="margin-top:22px">
-    <h2 style="font-size:16px">Dirigeants</h2>
-    <button id="addOfficialBtn" class="btn btn-blue hidden" onclick="openOfficialEditor('new')">Ajouter</button>
+
+  <div class="section-head" style="margin-top:26px">
+    <h2 style="font-size:17px">👥 Les personnalités du football tchadien</h2>
+    <button id="addOfficialBtn" class="btn btn-blue hidden" onclick="openOfficialEditor('new')">+ Ajouter</button>
   </div>
+  <p class="muted tiny" style="margin-bottom:14px">Les dirigeants et acteurs qui font vivre notre football au quotidien.</p>
   <div id="officialsBox"><div class="loading">Chargement…</div></div>
+
+  <div class="section-head" style="margin-top:26px">
+    <h2 style="font-size:17px">🏛️ Autres institutions</h2>
+  </div>
+  <div class="card">
+    <div class="divider">
+      <div class="stat-line"><span>LINAFOOT</span><b>Ligue Nationale de Football</b></div>
+      <div class="stat-line"><span>Ministère des Sports</span><b>Jeunesse et Sports</b></div>
+      <div class="stat-line"><span>CAF</span><b>Confédération Africaine</b></div>
+      <div class="stat-line"><span>FIFA</span><b>Fédération Internationale</b></div>
+      <div class="stat-line"><span>Sélection nationale</span><b>Les Sao 🇹🇩</b></div>
+      <div class="stat-line"><span>Arbitres FIFA</span><b>13 arbitres</b></div>
+    </div>
+  </div>
+
+  <div class="section-head" style="margin-top:26px">
+    <h2 style="font-size:17px">🏆 Compétitions nationales</h2>
+  </div>
+  <div class="card">
+    <div class="divider">
+      <div class="stat-line"><span>LINAFOOT</span><b>Championnat d'élite</b></div>
+      <div class="stat-line"><span>Coupe du Tchad</span><b>Compétition nationale</b></div>
+      <div class="stat-line"><span>Supercoupe</span><b>Vainqueur Coupe vs Champion</b></div>
+      <div class="stat-line"><span>Ligue féminine</span><b>Championnat féminin</b></div>
+      <div class="stat-line"><span>U20</span><b>Équipe nationale jeunes</b></div>
+      <div class="stat-line"><span>U15</span><b>École de football</b></div>
+    </div>
+  </div>
 </section>
 
 <section id="sec-favoris" class="tab hidden">
@@ -437,26 +474,99 @@ body.dark .fact-box p{color:#fde68a}
     <h1>Abdarrahim Hassan Mahamat</h1>
     <p class="subtitle">Fondateur · Coach & Formateur</p>
     <p class="location">📍 N'Djamena, Tchad 🇹🇩</p>
+    <p style="font-size:13px;color:#dbeafe;margin-top:14px;line-height:1.65;max-width:520px;margin-left:auto;margin-right:auto">Un Tchadien qui a grandi en jouant au ballon dans les rues de N'Djamena, et qui a décidé que notre football méritait enfin sa propre mémoire.</p>
   </div>
+
   <div class="cv">
-    <h2>Qui suis-je ?</h2>
-    <p>Coach et formateur de football à N'Djamena, étudiant en Sciences Biomédicales à l'Université Toumaï. J'ai grandi en jouant au ballon dans les rues de N'Djamena, et j'ai décidé que notre football méritait enfin sa propre mémoire.</p>
-    <p>Rahim Football Tchad est né d'un constat simple : <b>le football tchadien existe, mais il manque de mémoire</b>.</p>
+    <h2>🌟 Qui suis-je ?</h2>
+    <p>Je m'appelle <b>Abdarrahim Hassan Mahamat</b>. Je suis <b>coach et formateur de football</b> à N'Djamena, et étudiant en <b>Sciences Biomédicales à l'Université Toumaï</b>.</p>
+    <p>Mon histoire est simple. J'ai grandi avec un ballon aux pieds. J'ai appris à jouer dans les rues poussiéreuses de N'Djamena, entre deux prières et trois leçons mal apprises. J'ai écouté les récits de Nambatingue Toko et Japhet N'Doram comme d'autres écoutent des contes. J'ai vibré aux exploits de nos Sao, même quand tout semblait perdu.</p>
+    <p>Et un jour, j'ai compris quelque chose d'important : <b>le football tchadien existe, mais il manque cruellement de mémoire.</b></p>
+    <p>Des résultats se perdent. Des talents restent dans l'ombre. Des clubs n'ont aucune trace numérique. Des légendes s'effacent. <b>Personne ne documente. Personne n'archive. Personne ne raconte.</b></p>
+    <p>Alors j'ai décidé de le faire moi-même. Pas par hasard. Pas par opportunisme. Parce que c'est <b>nécessaire</b>.</p>
   </div>
+
   <div class="cv">
-    <h2>Ma mission</h2>
+    <h2>⚽ Mon parcours</h2>
+    <p>Je viens du terrain. Pas des salles climatisées, pas des bureaux de direction. <b>Du terrain</b>. Là où on apprend ce qu'est vraiment le football tchadien.</p>
     <ul>
-      <li><b>Documenter</b> — Rassembler tout ce qui concerne le football tchadien.</li>
-      <li><b>Valoriser</b> — Donner de la visibilité aux talents et initiatives locales.</li>
-      <li><b>Informer</b> — Fournir une information fiable et accessible gratuitement.</li>
-      <li><b>Connecter</b> — Créer un pont entre le football tchadien et le monde.</li>
+      <li><b>Coach et formateur</b> — j'entraîne et je forme des jeunes à N'Djamena.</li>
+      <li><b>Étudiant en Sciences Biomédicales</b> — à l'Université Toumaï, pour comprendre le corps humain et mieux accompagner les sportifs.</li>
+      <li><b>Passionné d'histoire du football</b> — je passe mes soirées à chercher des résultats d'archives, à retrouver des noms oubliés, à vérifier des faits.</li>
+      <li><b>Autodidacte du web</b> — j'ai appris à coder seul, entre deux entraînements, pour construire ce site. Personne ne m'a formé. J'ai juste essayé, encore et encore, jusqu'à ce que ça marche.</li>
+    </ul>
+    <p>Chaque article que je publie, chaque photo que je prends, chaque interview que je fais : c'est du travail bénévole, fait avec le cœur, <b>sur mon temps libre et avec mes propres moyens</b>.</p>
+  </div>
+
+  <div class="cv">
+    <h2>🎯 Ma mission en 4 mots</h2>
+    <ul>
+      <li><b>📖 Documenter</b> — Rassembler en un seul endroit tout ce qui concerne le football tchadien : clubs, joueurs, coachs, résultats, histoire, archives.</li>
+      <li><b>🌟 Valoriser</b> — Donner de la visibilité aux talents méconnus, aux initiatives locales, aux clubs de province, aux académies qui forment les champions de demain.</li>
+      <li><b>📢 Informer</b> — Offrir une information fiable, vérifiée, gratuite et accessible à tous les Tchadiens, partout dans le monde.</li>
+      <li><b>🌍 Connecter</b> — Créer un pont entre le football tchadien et le monde. Faire connaître nos clubs, nos légendes, notre potentiel.</li>
     </ul>
   </div>
+
   <div class="cv">
-    <h2>Contact</h2>
-    <div class="stat-line"><span>WhatsApp</span><b><a href="https://wa.me/23562496176" style="color:#25D366">+235 62 49 61 76</a></b></div>
-    <div class="stat-line"><span>Facebook</span><b><a href="https://www.facebook.com/profile.php?id=61594800076001" style="color:#1877F2">Rahim Football Tchad</a></b></div>
-    <div class="stat-line"><span>Localisation</span><b>N'Djamena 🇹🇩</b></div>
+    <h2>💎 Ce que j'offre aux visiteurs</h2>
+    <p>Quand tu ouvres Rahim Football Tchad, tu ne trouves pas une page Facebook de plus. Tu trouves <b>une vraie bibliothèque numérique</b>, construite avec sérieux et passion.</p>
+    <ul>
+      <li><b>📰 Des actualités vérifiées</b> — pas de rumeurs, pas de sensationnalisme. Des faits, avec sources.</li>
+      <li><b>🏆 Le classement LINAFOOT</b> — mis à jour régulièrement, accessible à tous.</li>
+      <li><b>⚽ Une base de données des clubs</b> — histoire, palmarès, présidents, stades.</li>
+      <li><b>⭐ Des portraits de légendes</b> — de Nambatingue Toko à Casimir Ninga, en passant par Japhet N'Doram.</li>
+      <li><b>📚 Une mémoire vivante</b> — tout ce que les autres oublient, nous le gardons.</li>
+      <li><b>📲 Un canal WhatsApp gratuit</b> — les résultats directement sur ton téléphone, sans spam.</li>
+      <li><b>🔍 Une approche locale</b> — je vais au stade, je prends des photos, je parle aux acteurs du foot tchadien.</li>
+      <li><b>🆓 Et surtout : tout est GRATUIT.</b> Pas d'abonnement. Pas de paywall. Pas de publicité envahissante.</li>
+    </ul>
+  </div>
+
+  <div class="cv">
+    <h2>🇹🇩 Pourquoi la mémoire du football tchadien est importante</h2>
+    <p>Un pays sans mémoire est un pays sans avenir. C'est vrai en politique. C'est vrai en économie. C'est vrai aussi <b>en football</b>.</p>
+    <p>Quand un jeune Tchadien cherche l'histoire de son club, il ne trouve rien. Quand un journaliste veut un chiffre sur la LINAFOOT, il doit improviser. Quand un club veut célébrer son palmarès, il n'a aucune archive.</p>
+    <p><b>C'est ce vide que je comble.</b></p>
+    <p>Chaque article que j'écris, c'est un morceau de notre histoire qui ne sera plus jamais perdu. Chaque photo que je publie, c'est un souvenir qui restera pour les générations futures. Chaque interview que je fais, c'est une voix tchadienne qui sera entendue bien après nous.</p>
+    <p>Les Sao n'ont jamais participé à la CAN. Mais un jour, ils y seront. Et ce jour-là, il y aura quelqu'un qui aura documenté tout le chemin. Ce quelqu'un, c'est moi. <b>C'est nous.</b></p>
+  </div>
+
+  <div class="cv">
+    <h2>🚀 Ma vision à long terme</h2>
+    <p>Rahim Football Tchad n'est pas un projet passager. C'est <b>un projet de vie</b>. Voici où je veux l'emmener :</p>
+    <ul>
+      <li><b>2026</b> — Publier 365 articles, atteindre 5 000 abonnés, signer 5 partenariats avec des clubs.</li>
+      <li><b>2027</b> — Devenir LA référence du football tchadien. Couvrir la CAN si le Tchad se qualifie.</li>
+      <li><b>2028</b> — Lancer une académie de journalisme sportif à N'Djamena.</li>
+      <li><b>2030</b> — Publier le premier livre d'histoire du football tchadien.</li>
+      <li><b>2035</b> — Que chaque jeune Tchadien qui cherche une info sur notre football tombe sur nous.</li>
+    </ul>
+  </div>
+
+  <div class="cv">
+    <h2>💬 Un dernier mot</h2>
+    <p>Si tu es arrivé jusqu'ici, c'est que tu aimes le football tchadien toi aussi. Alors je te dis une chose :</p>
+    <p><b>Ce projet est le tien autant que le mien.</b></p>
+    <p>Si tu connais un club qui n'est pas dans notre base, dis-le-moi. Si tu as une photo d'archive, partage-la. Si tu connais un joueur oublié, parle-moi de lui. Si tu as une info vérifiée, envoie-la.</p>
+    <p>Ensemble, on peut écrire la mémoire du football tchadien. Un article à la fois. Une photo à la fois. <b>Une histoire à la fois.</b></p>
+    <p style="text-align:center;font-size:15px;font-weight:800;color:var(--blue);margin-top:20px">🇹🇩 Un Tchadien. Un ordinateur. Un ballon. Rien d'autre. 🇹🇩</p>
+  </div>
+
+  <div class="cv">
+    <h2>📞 Me contacter</h2>
+    <p>Une question ? Un partenariat ? Une info à partager ? Une erreur à signaler ? <b>Écris-moi directement.</b></p>
+    <div class="stat-line"><span>💬 WhatsApp (le plus rapide)</span><b><a href="https://wa.me/23562496176" style="color:#25D366">+235 62 49 61 76</a></b></div>
+    <div class="stat-line"><span>👍 Facebook</span><b><a href="https://www.facebook.com/profile.php?id=61594800076001" style="color:#1877F2">Rahim Football Tchad</a></b></div>
+    <div class="stat-line"><span>📲 Canal WhatsApp</span><b><a href="https://whatsapp.com/channel/0029Vb8y2ceFi8xlFJnXDo0j" style="color:#25D366">Rejoindre</a></b></div>
+    <div class="stat-line"><span>📍 Localisation</span><b>N'Djamena, Tchad 🇹🇩</b></div>
+  </div>
+
+  <div class="newsletter-box" style="margin-top:18px">
+    <div style="font-size:38px">🤝</div>
+    <h2>Rejoins l'aventure</h2>
+    <p>Que tu sois club, coach, joueur, sponsor ou simple supporter — il y a une place pour toi dans ce projet.</p>
+    <a href="https://wa.me/23562496176?text=Bonjour%20Abdarrahim%2C%20je%20souhaite%20rejoindre%20Rahim%20Football%20Tchad" target="_blank" rel="noopener" class="btn-join">💬 Me contacter sur WhatsApp →</a>
   </div>
 </section>
 
@@ -495,7 +605,7 @@ body.dark .fact-box p{color:#fde68a}
   <div class="section-head"><h2>Nous contacter</h2></div>
   <form id="contactForm" class="card" onsubmit="submitContact(event)">
     <label class="lbl">Nom *</label><input id="ctName" class="field" required>
-    <label class="lbl">Email ou téléphone *</label><input id="ctEmail" class="field" required>
+    <label class="lbl">Email ou téléphone *</label><input id="ctEmail" type="text" inputmode="email" autocomplete="email" class="field" required>
     <label class="lbl">Sujet *</label>
     <select id="ctSubject" class="field" required>
       <option value="">Choisir</option>
@@ -579,15 +689,9 @@ body.dark .fact-box p{color:#fde68a}
   <label class="lbl">Titre *</label><input id="aTitle" class="field">
   <label class="lbl">Catégorie *</label>
   <select id="aCategory" class="field">
-    <option>LINAFOOT</option>
-    <option>Coupe du Tchad</option>
-    <option>Sélection</option>
-    <option>Légendes</option>
-    <option>Jeunes</option>
-    <option>Féminin</option>
-    <option>Transferts</option>
-    <option>Institutions</option>
-    <option>Annonce</option>
+    <option>LINAFOOT</option><option>Coupe du Tchad</option><option>Sélection</option>
+    <option>Légendes</option><option>Jeunes</option><option>Féminin</option>
+    <option>Transferts</option><option>Institutions</option><option>Annonce</option>
   </select>
   <label class="lbl">Photo (optionnel — tu peux publier sans)</label>
   <label class="image-upload" id="aUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'aImagePreview','aImageUrl','aUpload')"><div class="icon">📸</div><div class="txt">Choisir une photo (ou passer)</div></label>
@@ -639,6 +743,10 @@ body.dark .fact-box p{color:#fde68a}
   <label class="lbl">Fonction *</label><input id="oRole" class="field">
   <label class="lbl">Mandat</label><input id="oOrg" class="field">
   <label class="lbl">Badge</label><input id="oBadge" class="field">
+  <label class="lbl">Photo (📸 recommandé)</label>
+  <label class="image-upload" id="oUpload"><input type="file" accept="image/*" onchange="uploadImgBB(this,'oImagePreview','oImageUrl','oUpload')"><div class="icon">📸</div><div class="txt">Choisir une photo</div></label>
+  <img id="oImagePreview" class="image-preview hidden" alt="">
+  <input type="hidden" id="oImageUrl">
   <label class="lbl">Bio *</label><textarea id="oBio" class="field" rows="4"></textarea>
   <label class="lbl">Réalisations (une par ligne)</label><textarea id="oRealisations" class="field" rows="5"></textarea>
   <button class="btn btn-blue btn-full" onclick="saveOfficial()">Enregistrer</button>
@@ -748,7 +856,6 @@ function go(tab, push = true){
 }
 window.go = go;
 
-/* FIX CRITIQUE : bouton Admin qui devient Déconnexion quand connecté */
 window.handleAuthBtn = function(){
   if(isAdmin){
     if(confirm("Tu es connecté comme Admin.\n\nSe déconnecter ?")){
@@ -789,8 +896,14 @@ const DEFAULT_RESULTATS = [
   {date:"22",mois:"Juin",home:"TP Elect-Sport",away:"Gazelle FC",score:"3 - 0"}
 ];
 const FALLBACK_OFFICIALS = [
-  {id:"tahir",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu en mars 2025",badge:"FIFA",bio:"Homme de la refondation du football tchadien.",realisations:["Membre Commission FIFA","Formation des arbitres FIFA","Création de la ligue féminine"]},
-  {id:"nair",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en 2024",badge:"Gouvernement",bio:"Porte une vision nouvelle du sport tchadien.",realisations:["Partenariats internationaux","Détection jeunes talents","Académie nationale"]}
+  {id:"tahir",name:"Tahir Oloy Hassan",role:"Président de la FTFA",org:"Élu le 1er mars 2025 · Mandat 2025-2029",badge:"FIFA · Commission Responsabilité Sociale",bio:"Homme de la refondation du football tchadien, élu avec 58 voix sur 59. Il s'engage à réformer en profondeur la FTFA et à relever le défi de la qualification des Sao à la CAN.",realisations:["Nommé membre Commission FIFA (2025-2029)","13 arbitres FIFA formés","Création de la ligue féminine","Partenariats Maroc et Mauritanie","Programme FIFA Football for Schools"]},
+  {id:"nair",name:"Naïr Abakar",role:"Ministre de la Jeunesse et des Sports",org:"Nommé en 2024",badge:"Gouvernement du Tchad",bio:"Entrepreneur et consultant sportif, il porte une vision nouvelle du sport tchadien tournée vers la détection des jeunes talents, les partenariats internationaux et la rénovation des infrastructures.",realisations:["Partenariat avec la LALIGA espagnole","Détection nationale des jeunes talents","Projet d'académie nationale","Rénovation des stades provinciaux"]},
+  {id:"hunwanou",name:"Abakar Hunwanou",role:"Président de la LINAFOOT",org:"Ligue Nationale de Football",badge:"Organisation du championnat",bio:"À la tête de la LINAFOOT, il pilote l'organisation du championnat national d'élite et œuvre pour la professionnalisation du football tchadien.",realisations:["Organisation du championnat d'élite","Développement des clubs provinciaux","Partenariats avec les clubs"]},
+  {id:"sg-ftfa",name:"Secrétaire Général FTFA",role:"Secrétaire Général",org:"Fédération Tchadienne de Football Association",badge:"Administration",bio:"Garant de la gestion administrative de la fédération, il coordonne les activités quotidiennes de la FTFA et le lien avec les clubs affiliés.",realisations:["Coordination administrative","Relations avec les clubs affiliés","Gestion des licences"]},
+  {id:"dtn",name:"Directeur Technique National",role:"Directeur Technique National",org:"Formation et développement",badge:"Formation technique",bio:"Responsable de la formation des entraîneurs et du développement technique du football tchadien, il supervise les académies et les centres de formation.",realisations:["Formation des coachs nationaux","Développement des académies","Détection des jeunes talents"]},
+  {id:"president-ligue-fem",name:"Présidente Ligue Féminine",role:"Responsable Football Féminin",org:"Ligue Féminine du Tchad",badge:"Football féminin",bio:"Pionnière du développement du football féminin au Tchad, elle œuvre pour donner aux joueuses tchadiennes les mêmes opportunités qu'aux hommes.",realisations:["Création de la première ligue féminine","8 clubs engagés","Formation des joueuses U17 et U20"]},
+  {id:"president-arbitres",name:"Président Commission des Arbitres",role:"Responsable Arbitrage",org:"Commission Centrale des Arbitres",badge:"Arbitrage",bio:"Garant de l'équité et de la qualité de l'arbitrage au Tchad, il forme et supervise les arbitres nationaux et FIFA.",realisations:["13 arbitres FIFA formés","Formation continue des arbitres","Supervision des matchs officiels"]},
+  {id:"president-medical",name:"Président Commission Médicale",role:"Responsable Médical",org:"Commission Médicale FTFA",badge:"Santé des joueurs",bio:"Responsable du suivi médical des joueurs, de la prévention des blessures et du contrôle antidopage au sein du football tchadien.",realisations:["Suivi médical des sélections","Prévention des blessures","Programmes de santé des joueurs"]}
 ];
 
 async function trackVisit(){
@@ -1294,19 +1407,48 @@ window.deleteLegend = async function(id){
   catch(e){ toast("Erreur", "error"); }
 };
 
+/* ============================================================
+   MERGE OFFICIALS — FIX CRITIQUE
+   Les fallbacks (8) + Firestore sont fusionnés par ID.
+   Cela évite : la disparition des 8 personnalités et les doublons.
+   ============================================================ */
+function getMergedOfficials(){
+  const merged = FALLBACK_OFFICIALS.map(f => {
+    const override = OFFICIALS.find(o => o.id === f.id);
+    return override ? Object.assign({}, f, override) : f;
+  });
+  OFFICIALS.forEach(o => {
+    if(!merged.find(m => m.id === o.id)) merged.push(o);
+  });
+  return merged;
+}
+
 function renderOfficials(){
   const c = $("officialsBox"); if(!c) return;
-  const list = OFFICIALS.length ? OFFICIALS : FALLBACK_OFFICIALS;
+  const list = getMergedOfficials();
+  if(!list.length){
+    c.innerHTML = '<div class="empty"><span class="icon">👤</span>Aucun dirigeant enregistré.</div>';
+    return;
+  }
   let html = "";
   list.forEach(o => {
-    const initials = (o.name||"?").split(" ").map(x => x[0]).join("").substring(0,2).toUpperCase();
+    const initials = (o.name||"?").split(" ").filter(Boolean).map(x => x[0]).join("").substring(0,2).toUpperCase();
     const real = (o.realisations || []).map(r => '<li>' + esc(r) + '</li>').join("");
+    const photoBlock = o.photo
+      ? '<img src="' + escAttr(o.photo) + '" alt="' + escAttr(o.name) + '" style="width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid var(--yellow);flex-shrink:0">'
+      : '<div class="official-avatar">' + esc(initials) + '</div>';
+
     html += '<div class="official">';
-    if(isAdmin && OFFICIALS.length) html += '<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px" onclick="openOfficialEditor(\'' + esc(o.id) + '\')">Modifier</button>';
-    html += '<div class="official-head"><div class="official-avatar">' + esc(initials) + '</div>';
+    if(isAdmin){
+      html += '<button class="share-btn edit" style="position:absolute;top:10px;right:10px;font-size:10px;padding:5px 9px;z-index:5" onclick="openOfficialEditor(\'' + esc(o.id) + '\')">Modifier</button>';
+    }
+    html += '<div class="official-head">' + photoBlock;
     html += '<div><h3>' + esc(o.name) + '</h3><p class="role">' + esc(o.role||"") + '</p><p class="org">' + esc(o.org||"") + '</p></div></div>';
-    html += '<div class="official-body">' + (o.badge ? '<span class="chip chip-gold">' + esc(o.badge) + '</span>' : "") + '<p style="margin-top:8px">' + esc(o.bio||"") + '</p>' + (real ? '<ul>' + real + '</ul>' : "") + '</div>';
-    html += '</div>';
+    html += '<div class="official-body">';
+    if(o.badge) html += '<span class="chip chip-gold">' + esc(o.badge) + '</span>';
+    html += '<p style="margin-top:8px">' + esc(o.bio||"") + '</p>';
+    if(real) html += '<ul>' + real + '</ul>';
+    html += '</div></div>';
   });
   c.innerHTML = html;
 }
@@ -1314,24 +1456,44 @@ function renderOfficials(){
 window.openOfficialEditor = function(id){
   if(!isAdmin) return;
   let o;
-  if(id === "new"){ o = {id:"",name:"",role:"",org:"",badge:"",bio:"",realisations:[]}; $("officialModalTitle").textContent = "Nouveau dirigeant"; }
-  else { const list = OFFICIALS.length ? OFFICIALS : FALLBACK_OFFICIALS; o = list.find(x => x.id === id); if(!o) return; $("officialModalTitle").textContent = "Modifier"; }
+  if(id === "new"){
+    o = {id:"",name:"",role:"",org:"",badge:"",bio:"",realisations:[],photo:""};
+    $("officialModalTitle").textContent = "Nouveau dirigeant";
+  } else {
+    const list = getMergedOfficials();
+    o = list.find(x => x.id === id);
+    if(!o) return;
+    $("officialModalTitle").textContent = "Modifier";
+  }
   $("oId").value = o.id || ""; $("oName").value = o.name || ""; $("oRole").value = o.role || "";
   $("oOrg").value = o.org || ""; $("oBadge").value = o.badge || ""; $("oBio").value = o.bio || "";
   $("oRealisations").value = (o.realisations||[]).join("\n");
+  $("oImageUrl").value = "";
+  if(o.photo){ $("oImagePreview").src = o.photo; $("oImagePreview").classList.remove("hidden"); } else $("oImagePreview").classList.add("hidden");
   $("oStatus").textContent = "";
+  const up = $("oUpload");
+  if(up){ up.classList.remove("warning"); up.querySelector(".txt").textContent = "Choisir une photo"; up.querySelector(".icon").textContent = "📸"; }
   show("officialModal");
 };
 
 window.saveOfficial = async function(){
   const id = $("oId").value;
-  const d = {name:$("oName").value.trim(), role:$("oRole").value.trim(), org:$("oOrg").value.trim(), badge:$("oBadge").value.trim(), bio:$("oBio").value.trim(), realisations:$("oRealisations").value.split("\n").map(x => x.trim()).filter(Boolean)};
+  const d = {
+    name:$("oName").value.trim(),
+    role:$("oRole").value.trim(),
+    org:$("oOrg").value.trim(),
+    badge:$("oBadge").value.trim(),
+    bio:$("oBio").value.trim(),
+    realisations:$("oRealisations").value.split("\n").map(x => x.trim()).filter(Boolean)
+  };
+  const photo = $("oImageUrl").value; if(photo) d.photo = photo;
   const st = $("oStatus");
   if(!d.name || !d.role || !d.bio){ st.textContent = "Champs requis"; return; }
   st.textContent = "Enregistrement…";
   try{
-    let nid = id;
-    if(!nid || nid.endsWith("_default") || nid === "tahir" || nid === "nair") nid = "off_" + Date.now().toString(36);
+    // FIX CRITIQUE : l'ID reste stable (tahir, nair, hunwanou...)
+    // Évite les doublons et préserve le merge.
+    const nid = id || ("off_" + Date.now().toString(36));
     await setDoc(doc(db,"officials",nid), d);
     toast("Enregistré", "success");
     setTimeout(() => closeModal("officialModal"), 600);
@@ -1416,7 +1578,11 @@ onAuthStateChanged(auth, user => { isAdmin = !!user; updateAuthUI(); });
 
 window.seedRichData = async function(){
   if(!isAdmin){ toast("Admin requis", "error"); return; }
-  if(!confirm("Charger les données de démonstration ?")) return;
+  if(ARTICLES.length > 0 || CLUBS.length > 0 || LEGENDS.length > 0){
+    if(!confirm("⚠️ Des données existent déjà. Cela va créer des doublons.\n\nContinuer quand même ?")) return;
+  } else {
+    if(!confirm("Charger les données de démonstration ?")) return;
+  }
   const st = $("adminMsg"); st.textContent = "Chargement…";
   const clubs = [
     {name:"Aiglons FC",city:"N'Djamena",funded:"1974",stadium:"Stade Idriss Mahamat Ouya",titles:"Champion LINAFOOT 2025-2026"},
