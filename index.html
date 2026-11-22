@@ -2,989 +2,363 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
-<title>Bureau d'analyse football 3D</title>
-<meta name="description" content="Bureau 3D interactif : 11 employés en 3 salles pour analyser les matchs. Données vérifiées, pronostics honnêtes, zéro invention.">
-<meta name="theme-color" content="#0a0e14">
-<meta property="og:title" content="Bureau d'analyse football 3D">
-<meta property="og:description" content="Bureau 3D interactif pour analyser les matchs de football. 11 employés, 3 salles, données vérifiées.">
-<meta property="og:type" content="website">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0e14'/><circle cx='16' cy='16' r='6' fill='%23fb923c'/></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bureau d’analyse football 3D</title>
 <style>
-:root{--bg:#0a0e14;--card:#141a23;--ink:#eef1f5;--mut:#8b95a3;--line:#2a3340;--acc:#fb923c;color-scheme:dark}
+:root{--bg:#10141a;--card:#1b222c;--ink:#eceae4;--mut:#9aa0a8;--line:#323945;--acc:#fb923c;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
 canvas{display:block;width:100%;height:100%;touch-action:none}
-#bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#0a0e14cc,#0a0e1400);z-index:10;scrollbar-width:none}
+#bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#10141acc,#10141a00);z-index:10;scrollbar-width:none}
 #bar::-webkit-scrollbar{display:none}
 button{font:inherit;color:inherit;cursor:pointer}
-#bar button{flex:none;background:#141a23ee;border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap;transition:.2s;backdrop-filter:blur(6px)}
-#bar button:hover{border-color:var(--acc);color:var(--acc)}
-#bar button.h{background:var(--acc);color:#0a0e14;border-color:var(--acc);font-weight:700}
-#hint{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:#ffffffb0;font-size:12px;text-shadow:0 1px 4px #000;pointer-events:none;z-index:5}
-#sh{position:fixed;left:0;right:0;bottom:0;max-height:52vh;overflow:auto;background:linear-gradient(#141a23,#0e1219);border-top:3px solid var(--acc);border-radius:16px 16px 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:none;max-width:760px;margin-inline:auto;box-shadow:0 -20px 60px #000a;z-index:20}
+#bar button{flex:none;background:#1b222cdd;border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap}
+#bar button.h{background:var(--acc);color:#111;border-color:var(--acc);font-weight:700}
+#hint{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:#fffc;font-size:12px;text-shadow:0 1px 3px #000;pointer-events:none}
+#sh{position:fixed;left:0;right:0;bottom:0;max-height:52vh;overflow:auto;background:var(--card);border-top:3px solid var(--acc);border-radius:16px 16px 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:none;max-width:760px;margin-inline:auto;z-index:20}
 @media (orientation:landscape) and (max-height:560px){#sh{max-height:82vh}}
-#sh.on{display:block;animation:up .25s ease}
-@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+#sh.on{display:block}
 .hd{display:flex;gap:10px;align-items:center}
 .hd input{font:inherit;font-weight:700;width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
 .x{margin-left:auto;background:none;border:0;font-size:22px;color:var(--mut)}
 .k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:10px 0 2px}
 #sh ul{margin:0;padding-left:18px}
 .m{padding:7px 10px;border-radius:10px;max-width:92%;white-space:pre-wrap;margin-top:6px;font-size:13.5px;line-height:1.5}
-.me{margin-left:auto;background:var(--acc);color:#0a0e14}
+.me{margin-left:auto;background:var(--acc);color:#111}
 .ai{background:var(--bg);border:1px solid var(--line)}
 .row{display:flex;gap:8px;margin-top:8px}
 textarea{flex:1;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px;resize:none;width:100%}
 input[type=text]{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px;width:100%}
-.go{background:var(--acc);color:#0a0e14;border:0;border-radius:10px;padding:8px 14px;font-weight:700}
-#load{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;z-index:100;transition:opacity .5s;color:var(--mut);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
-#load.hide{opacity:0;pointer-events:none}
-.spin{width:38px;height:38px;border:3px solid var(--line);border-top-color:var(--acc);border-radius:50%;animation:sp 1s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
+.go{background:var(--acc);color:#111;border:0;border-radius:10px;padding:8px 14px;font-weight:700}
 </style>
 </head>
 <body>
 <div id="bar"></div>
-<div id="hint">Glisse pour tourner · pince pour zoomer · touche un employé</div>
+<div id="hint">Glisse pour tourner · pince pour zoomer · touche un employé pour le suivre</div>
 <aside id="sh"></aside>
-<div id="load"><div class="spin"></div><div>Chargement du studio</div></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-
 <script>
 (()=>{
-"use strict";
-if(!window.THREE){document.getElementById("load").innerHTML="Three.js n’a pas pu charger — vérifie la connexion.";return}
-
-/* ============ DATA ============ */
-const TAU = Math.PI*2;
-const R = ["Direction & contrôle","Veille Web","Laboratoire de tests"];
-const RX = [-9.3, 0, 9.3];
-const ACCENT = [0xff7a3d, 0x38c4ff, 0xb066ff];
-const TS = ["Teste les matchs à venir de ","Donne le résultat le plus probable avec un pourcentage estimé","Indique le scénario qui ferait échouer le pronostic"];
+if(!window.THREE){document.body.textContent="Le moteur 3D n’a pas pu se charger.";return}
+const $=s=>document.querySelector(s),TAU=Math.PI*2;
+const R=["Direction et contrôle","Veille Web (sources publiques)","Laboratoire de tests"],RX=[-9.3,0,9.3];
+const TS=["Teste les matchs à venir de ","Donne le résultat le plus probable avec un pourcentage estimé","Indique le scénario qui ferait échouer le pronostic"];
 const ts=(t,x)=>({r:2,t,m:[TS[0]+x,TS[1],TS[2]],g:"Un résultat probable honnête, pas une certitude."});
-const A = [
- {r:0,t:"Directeur — chef d’équipe",f:"Docteur en analyse, économie, gestion et finance",m:["Répartit le travail entre les trois salles","Croise les avis et écarte les pronostics fragiles","Rend la décision finale, avec ses raisons"],g:"Décider avec rigueur : savoir refuser un pari fait partie du métier."},
- {r:0,t:"Parieur",f:"Comparaison cote / probabilité",m:["Transforme les analyses en choix de marché","Compare la cote affichée à la probabilité estimée","Tient le bilan réel : 0 pari enregistré"],g:"Chercher un avantage positif sur la durée."},
- {r:0,t:"Contrôleur du code promo",f:"Lecture des conditions",m:["Lit les conditions (mise minimale, délais, marchés exclus)","Signale les pièges avant utilisation","Rappelle qu’un bonus ne justifie jamais un pari"],g:"Que le code serve la personne, jamais l’inverse."},
- {r:1,t:"Traqueur : blessures et compositions",f:"Sites des clubs, ligues, UEFA, médias reconnus",m:["Relève blessés, suspendus, compositions probables","Vérifie chaque info sur deux sources","Date et source pour chaque information"],g:"Rien d’inventé, rien de non vérifié."},
- {r:1,t:"Traqueur : forme et statistiques",f:"Sites statistiques spécialisés",m:["Cinq derniers matchs, domicile / extérieur, xG","Classements, enjeu, fatigue, calendrier","Signale les données manquantes"],g:"Des chiffres fiables et datés."},
- {r:1,t:"Traqueur : cotes et marchés",f:"Site Pariez Cash, actualités publiques",m:["Relève les cotes et l’heure de vérification","Suit les mouvements de cotes","Écarte les rumeurs anonymes"],g:"Des cotes réelles, jamais devinées."},
- ts("Testeur Liga","la Liga"),ts("Testeur Premier League","la Premier League"),ts("Testeur Ligue des champions","la Ligue des champions"),
- {r:2,t:"Testeur modèle de buts",f:"Modèle de Poisson",m:["Estime les buts attendus de chaque équipe","Calcule scores probables et plus/moins 2,5","Précise quand les données sont insuffisantes"],g:"Des chiffres prudents, jamais gonflés."},
- {r:2,t:"Testeur scénarios",f:"Favorable / neutre / défavorable",m:["Rejoue chaque match dans trois scénarios","Mesure l’effet d’une absence ou de la fatigue","Dit quand le pronostic ne tient plus"],g:"Voir les failles avant le match."}
-];
+const A=[
+{r:0,t:"Directeur — chef d’équipe et superviseur",f:"Docteur en analyse, économie, gestion et finance",m:["Répartit le travail entre les trois salles","Croise les avis et écarte les pronostics fragiles","Rend la décision finale, avec ses raisons"],g:"Décider avec rigueur : savoir refuser un pari fait partie du métier."},
+{r:0,t:"Parieur",f:"Comparaison cote / probabilité",m:["Transforme les analyses en choix de marché","Compare la cote affichée à la probabilité estimée","Tient le bilan réel : 0 pari enregistré"],g:"Chercher un avantage positif sur la durée, mesuré sur les résultats réels."},
+{r:0,t:"Contrôleur du code promo",f:"Lecture des conditions du code",m:["Lit les conditions (mise minimale, délais, marchés exclus)","Signale les pièges avant utilisation","Rappelle qu’un bonus ne justifie jamais un pari"],g:"Que le code serve la personne, jamais l’inverse."},
+{r:1,t:"Traqueur : blessures et compositions",f:"Sites des clubs, ligues, UEFA, médias reconnus",m:["Relève blessés, suspendus, compositions probables","Vérifie chaque info sur deux sources","Date et source pour chaque information"],g:"Rien d’inventé, rien de non vérifié."},
+{r:1,t:"Traqueur : forme et statistiques",f:"Sites statistiques spécialisés",m:["Cinq derniers matchs, domicile / extérieur, xG","Classements, enjeu, fatigue, calendrier","Signale les données manquantes"],g:"Des chiffres fiables et datés."},
+{r:1,t:"Traqueur : cotes et marchés",f:"Site Pariez Cash, actualités publiques",m:["Relève les cotes et l’heure de vérification","Suit les mouvements de cotes","Écarte les rumeurs anonymes et les « tuyaux »"],g:"Des cotes réelles, jamais devinées."},
+ts("Testeur Liga","la Liga"),ts("Testeur Premier League","la Premier League"),ts("Testeur Ligue des champions","la Ligue des champions"),
+{r:2,t:"Testeur modèle de buts",f:"Modèle de Poisson, totaux de buts",m:["Estime les buts attendus de chaque équipe","Calcule scores probables et plus/moins 2,5 buts","Précise quand les données sont insuffisantes"],g:"Des chiffres prudents, jamais gonflés."},
+{r:2,t:"Testeur scénarios",f:"Scénarios favorable, neutre, défavorable",m:["Rejoue chaque match dans trois scénarios","Mesure l’effet d’une absence ou de la fatigue","Dit quand le pronostic ne tient plus"],g:"Voir les failles avant le match."}];
 
-/* ============ STATE (persisted) ============ */
-let N = ["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","",""];
-let REP = null;
-const H = {};
-
-function loadState(){
-  try{const s = JSON.parse(localStorage.getItem("bn3")||"null"); if(s&&Array.isArray(s)&&s.length===11) N=s;}catch(e){}
-  try{const s = JSON.parse(localStorage.getItem("bn3_infos")||"null"); if(s&&typeof s==="object") REP=s;}catch(e){}
-  try{const s = JSON.parse(localStorage.getItem("bn3_chat")||"null"); if(s&&typeof s==="object") Object.assign(H,s);}catch(e){}
-}
+/* ============ STATE + PERSISTANCE ============ */
+let N=["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","",""];
+let REP=null;
+const H={};
+try{const s=JSON.parse(localStorage.getItem("bn3")||"null");if(Array.isArray(s)&&s.length===11)N=s;}catch(e){}
+try{const r=JSON.parse(localStorage.getItem("bn3_infos")||"null");if(r&&typeof r==="object")REP=r;}catch(e){}
+try{const c=JSON.parse(localStorage.getItem("bn3_chat")||"null");if(c&&typeof c==="object")Object.assign(H,c);}catch(e){}
+const nm=i=>N[i]||"À nommer";
 function saveNames(){try{localStorage.setItem("bn3",JSON.stringify(N));}catch(e){}}
 function saveInfos(){try{localStorage.setItem("bn3_infos",JSON.stringify(REP));}catch(e){}}
-function saveChat(){try{
-  const trimmed={}; Object.keys(H).forEach(k=>{trimmed[k]=H[k].slice(-20);});
-  localStorage.setItem("bn3_chat",JSON.stringify(trimmed));
-}catch(e){}}
-loadState();
+function saveChat(){try{const t={};Object.keys(H).forEach(k=>{t[k]=H[k].slice(-20);});localStorage.setItem("bn3_chat",JSON.stringify(t));}catch(e){}}
 
-const nm = i => N[i] || "À nommer";
+/* ---------- scène ---------- */
+const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));ren.shadowMap.enabled=true;ren.shadowMap.type=THREE.PCFSoftShadowMap;
+document.body.prepend(ren.domElement);const cv=ren.domElement;
+const sc=new THREE.Scene(),SKY=0xa9cbe8;sc.background=new THREE.Color(SKY);sc.fog=new THREE.Fog(SKY,50,110);
+const cam=new THREE.PerspectiveCamera(48,1,.1,200);
+sc.add(new THREE.HemisphereLight(0xffffff,0x8a7a68,.8));
+const sun=new THREE.DirectionalLight(0xfff0d8,.9);sun.position.set(8,20,14);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-22,right:22,top:14,bottom:-14,near:1,far:60});sc.add(sun);
+const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.7,metalness:.05},o||{}));
+function bx(w,h,d,c,x,y,z,o,p){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c,o));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;(p||sc).add(m);return m}
+function cyl(r,h,c,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,20),M(c));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;sc.add(m);return m}
+function ball(r,c,x,y,z,p){const m=new THREE.Mesh(new THREE.SphereGeometry(r,16,12),M(c));m.position.set(x,y,z);m.castShadow=true;(p||sc).add(m);return m}
+function wood(){const c=document.createElement("canvas");c.width=c.height=512;const g=c.getContext("2d");for(let i=0;i<16;i++){g.fillStyle=`hsl(28,${35+Math.random()*10}%,${40+Math.random()*12}%)`;g.fillRect(0,i*32,512,31)}for(let i=0;i<500;i++){g.fillStyle="rgba(60,30,10,.09)";g.fillRect(Math.random()*512,Math.random()*512,40+Math.random()*70,1)}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(7,3);t.anisotropy=4;return t}
+const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11),M(0xffffff,{map:wood(),roughness:.55}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),M(0x6f8f6a));ground.rotation.x=-Math.PI/2;ground.position.y=-.05;ground.receiveShadow=true;sc.add(ground);
+const RC=[0xc2410c,0x0e7490,0x7c3aed];
+RX.forEach((x,i)=>{const r=new THREE.Mesh(new THREE.PlaneGeometry(6.5,4.2),M(RC[i],{roughness:.95}));r.rotation.x=-Math.PI/2;r.position.set(x,.01,i==0?2.5:i==1?2.2:2.6);r.receiveShadow=true;sc.add(r)});
+bx(29,4.6,.3,0xe9e1d1,0,2.3,-5.3);bx(.3,4.6,10.8,0xe9e1d1,-14.6,2.3,0);bx(.3,4.6,10.8,0xe9e1d1,14.6,2.3,0);bx(29,.15,.35,0x4b3a2a,0,.07,-5.2);
+[-4.6,4.6].forEach(x=>{bx(.08,3.2,10.5,0x9fd0ff,x,1.6,0,{transparent:true,opacity:.2,roughness:.1});bx(.12,3.4,.12,0x333b47,x,1.7,-5);bx(.12,3.4,.12,0x333b47,x,1.7,5)});
+[0,9.3].forEach(c=>[-2.6,2.6].forEach(o=>{bx(2.8,2.1,.1,0xf5f5f5,c+o,2.5,-5.1);const w=new THREE.Mesh(new THREE.PlaneGeometry(2.5,1.8),new THREE.MeshBasicMaterial({color:0xcfe8ff}));w.position.set(c+o,2.5,-5.03);sc.add(w)}));
+function plate(t,x,c){const k=document.createElement("canvas");k.width=512;k.height=96;const g=k.getContext("2d");g.fillStyle="#1b222c";g.fillRect(0,0,512,96);g.fillStyle=c;g.fillRect(0,86,512,10);g.fillStyle="#fff";g.font="bold 34px system-ui";g.textAlign="center";g.fillText(t,256,58);const m=new THREE.Mesh(new THREE.PlaneGeometry(4.6,.86),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(k)}));m.position.set(x,4.0,-5.1);sc.add(m)}
+plate(R[0],RX[0],"#c2410c");plate("Veille Web",RX[1],"#0e7490");plate(R[2],RX[2],"#7c3aed");
 
-/* ============ RENDERER ============ */
-const ren = new THREE.WebGLRenderer({antialias:true, powerPreference:"high-performance"});
-ren.setPixelRatio(Math.min(devicePixelRatio,2));
-ren.setSize(innerWidth,innerHeight);
-ren.shadowMap.enabled = true;
-ren.shadowMap.type = THREE.PCFSoftShadowMap;
-ren.outputEncoding = THREE.sRGBEncoding;
-ren.toneMapping = THREE.ACESFilmicToneMapping;
-ren.toneMappingExposure = 1.15;
-document.body.prepend(ren.domElement);
-const cv = ren.domElement;
+/* écran INFOS DU JOUR */
+const sk=document.createElement("canvas");sk.width=1024;sk.height=420;const sg=sk.getContext("2d"),stex=new THREE.CanvasTexture(sk);
+const scr=new THREE.Mesh(new THREE.PlaneGeometry(6.6,2.7),new THREE.MeshBasicMaterial({map:stex}));scr.position.set(RX[0],2.4,-5.12);sc.add(scr);bx(6.8,2.9,.08,0x111111,RX[0],2.4,-5.18);
+function drawScr(){
+  sg.fillStyle="#0b1626";sg.fillRect(0,0,1024,420);
+  sg.fillStyle="#fb923c";sg.font="bold 44px system-ui";sg.fillText("INFOS DU JOUR",36,60);
+  sg.fillStyle="#9fb3c8";sg.font="26px system-ui";
+  sg.fillText(REP&&REP.date?REP.date+" · heure du Tchad":"En attente du rapport…",36,98);
+  sg.fillStyle="#fff";sg.font="28px system-ui";
+  const lines=(REP&&REP.lines&&REP.lines.length)?REP.lines:["Ouvre « 📋 INFOS DU JOUR »","pour saisir le programme du jour."];
+  lines.slice(0,7).forEach((l,i)=>sg.fillText(String(l).slice(0,58),36,150+i*38));
+  stex.needsUpdate=true;
+}
+drawScr();
 
-const sc = new THREE.Scene();
-sc.fog = new THREE.Fog(0xa9cbe8, 40, 120);
-const cam = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, .1, 300);
+/* mobilier */
+const scrs=[];
+function desk(x,z){bx(1.8,.08,.9,0x8b5e3c,x,.76,z);bx(.06,.72,.8,0x6b4a30,x-.82,.38,z);bx(.06,.72,.8,0x6b4a30,x+.82,.38,z);bx(.1,.2,.1,0x222222,x,.9,z-.22);bx(.82,.5,.05,0x0d0d0d,x,1.2,z-.24);const s=new THREE.Mesh(new THREE.PlaneGeometry(.74,.42),new THREE.MeshBasicMaterial({color:0x5cc8ff}));s.position.set(x,1.2,z-.21);sc.add(s);scrs.push(s);bx(.5,.03,.18,0x222222,x,.82,z+.12);
+bx(.55,.07,.55,0x2b2f38,x,.45,z+.9);bx(.55,.6,.07,0x2b2f38,x,.82,z+1.17);bx(.08,.4,.08,0x555,x,.22,z+.9)}
+function plant(x,z){cyl(.28,.5,0x9a5b3a,x,.25,z);ball(.4,0x2f7d3b,x,.85,z);ball(.3,0x3a9448,x+.12,1.15,z)}
+function board(x,z){bx(2.6,1.5,.06,0xffffff,x,1.5,z);bx(.06,1.4,.06,0x555,x-1.1,.7,z+.05);bx(.06,1.4,.06,0x555,x+1.1,.7,z+.05);bx(2.0,.04,.01,0x2563eb,x,1.7,z+.04);bx(1.5,.04,.01,0xdc2626,x,1.4,z+.04)}
+function coffee(x,z){bx(.9,.9,.6,0x333b47,x,.45,z);bx(.5,.5,.4,0x1d4ed8,x,1.15,z)}
+const D=[[-11.8,-2.6],[-9.3,-2.6],[-6.8,-2.6],[-2.5,-2.6],[0,-2.6],[2.5,-2.6],[6.8,-2.6],[9.3,-2.6],[11.8,-2.6],[8.05,.9],[10.55,.9]];
+D.forEach(d=>desk(d[0],d[1]));
+cyl(1.25,.08,0xcbb48a,RX[0],.76,2.7);cyl(.12,.7,0x444444,RX[0],.38,2.7);
+plant(-13.6,-4.2);plant(-4.9,3.9);plant(4.9,-4.2);plant(13.6,3.9);board(-3.4,-4.6);board(13.2,-4.6);coffee(3.6,-4.5);
+const SP=[[[-11,2.7],[-7.6,2.7],[-9.3,4.1]],[[-3.4,-3.6],[3.4,-3.6],[0,2.5]],[[13.2,-3.6],[6,3.5],[11,3.4]]];
 
-/* ============ LIGHTS ============ */
-sc.add(new THREE.HemisphereLight(0xbcd7ff, 0x6b5a44, .9));
-const sun = new THREE.DirectionalLight(0xfff2dc, 2.2);
-sun.position.set(14, 24, 16);
-sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
-Object.assign(sun.shadow.camera, {left:-24, right:24, top:16, bottom:-16, near:1, far:70});
-sun.shadow.bias = -0.0004;
-sun.shadow.normalBias = 0.02;
-sc.add(sun);
-RX.forEach((x,i)=>{
-  const l = new THREE.PointLight(ACCENT[i], 1.8, 12, 2);
-  l.position.set(x, 4.2, 0);
-  sc.add(l);
+/* personnages */
+const SKN=[0x3b2416,0x5a3825,0x7a4a2e,0x9b6a45,0xc58f66],SHI=[0x2f6f8f,0xb4533a,0x4a7c59,0x8a6fb0,0xcfa13a,0x5b6b7a,0x3d5a98,0xa3405a];
+function limb(w,h,d,c,x,y,p){const g=new THREE.Group();g.position.set(x,y,0);const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c));m.position.y=-h/2;m.castShadow=true;g.add(m);p.add(g);return g}
+function person(i){
+  const g=new THREE.Group(),sk=SKN[(i*2+1)%5],boss=i==0,sh=boss?0x1c2742:SHI[i%8];
+  const L=limb(.18,.8,.2,boss?0x15151d:0x2c3445,-.12,.8,g),Rr=limb(.18,.8,.2,boss?0x15151d:0x2c3445,.12,.8,g);
+  bx(.5,.62,.28,sh,0,1.11,0,null,g);const AL=limb(.14,.56,.14,sh,-.33,1.4,g),AR=limb(.14,.56,.14,sh,.33,1.4,g);
+  bx(.13,.1,.13,sk,0,-.6,0,null,AL);bx(.13,.1,.13,sk,0,-.6,0,null,AR);
+  bx(.1,.12,.1,sk,0,1.46,0,null,g);ball(.19,sk,0,1.66,0,g);
+  const h=new THREE.Mesh(new THREE.SphereGeometry(.205,16,10,0,TAU,0,Math.PI*.55),M(0x121212));h.position.set(0,1.69,-.01);g.add(h);
+  ball(.025,0x111111,-.07,1.68,.18,g);ball(.025,0x111111,.07,1.68,.18,g);
+  if(boss||i%3==1)bx(.2,.1,.06,0x181818,0,1.44,.15,null,g);
+  if(boss)bx(.07,.3,.03,0xb91c1c,0,1.15,.15,null,g);
+  g.traverse(o=>{o.userData.i=i});return{g,L,R:Rr,AL,AR};
+}
+const AG=A.map((a,i)=>{
+  const p=person(i),d=D[i];
+  p.g.position.set(d[0],-.33,d[1]+.85);p.g.rotation.y=Math.PI;sc.add(p.g);
+  const k=document.createElement("canvas");k.width=256;k.height=64;
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k),depthTest:false,transparent:true}));
+  sp.scale.set(1.7,.42,1);sp.position.y=2.15;sp.renderOrder=9;p.g.add(sp);
+  Object.assign(p,{i,d,k,sp,st:"sit",t:6+Math.random()*10,q:[],ph:Math.random()*6,baseY:Math.PI});
+  label(p);return p;
 });
-
-/* ============ SKY ============ */
-const skyMat = new THREE.ShaderMaterial({
-  uniforms:{topColor:{value:new THREE.Color(0x2a5fa8)},midColor:{value:new THREE.Color(0x8fc4f0)},botColor:{value:new THREE.Color(0xffd8a8)}},
-  vertexShader:`varying vec3 vP; void main(){vP=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-  fragmentShader:`varying vec3 vP; uniform vec3 topColor,midColor,botColor;
-    void main(){float h=normalize(vP).y;vec3 c=h>0.0?mix(midColor,topColor,pow(h,0.7)):mix(midColor,botColor,pow(-h,0.6));gl_FragColor=vec4(c,1.);}`,
-  side: THREE.BackSide, depthWrite:false
-});
-sc.add(new THREE.Mesh(new THREE.SphereGeometry(120,32,16), skyMat));
-
-/* ============ TEXTURES ============ */
-function procTex(fn,rep=1){
-  const c=document.createElement("canvas");c.width=c.height=512;fn(c.getContext("2d"));
-  const t=new THREE.CanvasTexture(c);
-  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rep,rep);t.anisotropy=4;t.encoding=THREE.sRGBEncoding;
-  return t;
-}
-const woodTex = procTex(g=>{
-  for(let i=0;i<20;i++){g.fillStyle=`hsl(28,${30+Math.random()*15}%,${32+Math.random()*14}%)`;g.fillRect(0,i*26,512,25);}
-  for(let i=0;i<900;i++){g.fillStyle="rgba(40,20,5,.12)";g.fillRect(Math.random()*512,Math.random()*512,30+Math.random()*80,1);}
-},6);
-const wallTex = procTex(g=>{
-  g.fillStyle="#e8dfd0";g.fillRect(0,0,512,512);
-  for(let i=0;i<3000;i++){g.fillStyle=`rgba(0,0,0,${Math.random()*0.03})`;g.fillRect(Math.random()*512,Math.random()*512,2,2);}
-},4);
-
-const M = (c,o) => new THREE.MeshStandardMaterial(Object.assign({color:c, roughness:.72, metalness:.05}, o||{}));
-const floorMat = new THREE.MeshStandardMaterial({map:woodTex, roughness:.35, metalness:.15, envMapIntensity:1.1});
-const wallMat = new THREE.MeshStandardMaterial({map:wallTex, roughness:.9, metalness:0});
-const deskMat = new THREE.MeshStandardMaterial({map:woodTex, roughness:.5, metalness:.1, envMapIntensity:.7});
-const metalMat = M(0x2a2f38, {roughness:.4, metalness:.6});
-
-/* ============ ROOM ============ */
-const grass = new THREE.Mesh(new THREE.PlaneGeometry(400,400), M(0x557a4f,{roughness:1}));
-grass.rotation.x = -Math.PI/2; grass.position.y = -0.06; grass.receiveShadow = true;
-sc.add(grass);
-
-const floor = new THREE.Mesh(new THREE.PlaneGeometry(30,12), floorMat);
-floor.rotation.x = -Math.PI/2; floor.receiveShadow = true;
-sc.add(floor);
-
-RX.forEach((x,i)=>{
-  const rug = new THREE.Mesh(new THREE.PlaneGeometry(7,5), M(ACCENT[i], {roughness:.95, metalness:0}));
-  rug.rotation.x = -Math.PI/2; rug.position.set(x, .015, 2.4); rug.receiveShadow = true;
-  sc.add(rug);
-});
-
-function wall(w,h,d,x,y,z,mat){
-  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat||wallMat);
-  m.position.set(x,y,z); m.castShadow = true; m.receiveShadow = true; sc.add(m); return m;
-}
-wall(30,5,.3,0,2.5,-5.3);
-wall(.3,5,12,-15,2.5,0);
-wall(.3,5,12,15,2.5,0);
-wall(30,.2,.35,0,.1,-5.15, M(0x3a2a1e));
-
-const ceil = new THREE.Mesh(new THREE.PlaneGeometry(30,12), M(0x1a1f28, {roughness:.95}));
-ceil.rotation.x = Math.PI/2; ceil.position.y = 5; ceil.receiveShadow = true;
-sc.add(ceil);
-
-RX.forEach(x=>{
-  for(let i=-1;i<=1;i++){
-    const strip = new THREE.Mesh(new THREE.BoxGeometry(3,.06,.25),
-      new THREE.MeshStandardMaterial({color:0xffffff, emissive:0xffffff, emissiveIntensity:1.6, roughness:.3}));
-    strip.position.set(x + i*2.2, 4.94, -2); sc.add(strip);
-    const strip2 = strip.clone(); strip2.position.z = 2; sc.add(strip2);
-  }
-});
-
-[-4.8, 4.8, -14.1, 14.1].forEach(x=>{
-  const w = new THREE.Mesh(new THREE.PlaneGeometry(4,3),
-    new THREE.MeshBasicMaterial({color:0xcfe8ff, transparent:true, opacity:.35}));
-  w.position.set(x, 2.6, -5.14); w.rotation.y = Math.PI;
-  sc.add(w);
-});
-
-[[-9.3,0x38c4ff],[0,0xff7a3d],[9.3,0xb066ff]].forEach(([x,c])=>{
-  const shaft = new THREE.Mesh(new THREE.PlaneGeometry(6,5),
-    new THREE.MeshBasicMaterial({color:c, transparent:true, opacity:.05, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide}));
-  shaft.position.set(x, 2.4, -4.6); sc.add(shaft);
-});
-
-RX.forEach((x,i)=>{
-  const halo = new THREE.Mesh(new THREE.CircleGeometry(1.4,32),
-    new THREE.MeshBasicMaterial({color:ACCENT[i], transparent:true, opacity:.15, blending:THREE.AdditiveBlending, depthWrite:false}));
-  halo.rotation.x = -Math.PI/2; halo.position.set(x, 4.9, 0);
-  sc.add(halo);
-});
-
-/* ============ FURNITURE ============ */
-function desk(x,z){
-  const g = new THREE.Group();
-  const top = new THREE.Mesh(new THREE.BoxGeometry(1.9,.07,.9), deskMat);
-  top.position.y = .78; top.castShadow = top.receiveShadow = true; g.add(top);
-  [[-0.86,-0.4],[0.86,-0.4],[-0.86,0.4],[0.86,0.4]].forEach(([dx,dz])=>{
-    const leg = new THREE.Mesh(new THREE.BoxGeometry(.06,.72,.06), metalMat);
-    leg.position.set(dx,.36,dz); leg.castShadow = true; g.add(leg);
-  });
-  const monBase = new THREE.Mesh(new THREE.BoxGeometry(.3,.03,.2), metalMat);
-  monBase.position.set(0,.82,-0.2); g.add(monBase);
-  const monStand = new THREE.Mesh(new THREE.BoxGeometry(.05,.2,.05), metalMat);
-  monStand.position.set(0,.92,-0.22); g.add(monStand);
-  const monBezel = new THREE.Mesh(new THREE.BoxGeometry(.86,.52,.04), M(0x0a0a0a,{roughness:.4}));
-  monBezel.position.set(0,1.2,-0.22); monBezel.castShadow = true; g.add(monBezel);
-  const sk = document.createElement("canvas"); sk.width = 512; sk.height = 320;
-  drawDash(sk.getContext("2d"), 512, 320);
-  const tex = new THREE.CanvasTexture(sk); tex.encoding = THREE.sRGBEncoding;
-  const screen = new THREE.Mesh(new THREE.PlaneGeometry(.78,.44),
-    new THREE.MeshStandardMaterial({map:tex, emissive:0xffffff, emissiveMap:tex, emissiveIntensity:.9, roughness:.2}));
-  screen.position.set(0,1.2,-0.199); g.add(screen);
-  const kb = new THREE.Mesh(new THREE.BoxGeometry(.5,.02,.18), M(0x1a1a1a,{roughness:.6}));
-  kb.position.set(0,.82,.15); g.add(kb);
-  const mouse = new THREE.Mesh(new THREE.SphereGeometry(.04,10,8), M(0x1a1a1a,{roughness:.5}));
-  mouse.scale.set(1,.5,1.4); mouse.position.set(.36,.82,.15); g.add(mouse);
-  const seat = new THREE.Mesh(new THREE.BoxGeometry(.55,.06,.55), M(0x1e242e,{roughness:.85}));
-  seat.position.set(0,.44,.85); seat.castShadow = true; g.add(seat);
-  const back = new THREE.Mesh(new THREE.BoxGeometry(.55,.65,.06), M(0x1e242e,{roughness:.85}));
-  back.position.set(0,.76,1.13); back.castShadow = true; g.add(back);
-  const post = new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.36,10), metalMat);
-  post.position.set(0,.25,.85); g.add(post);
-  const star = new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,.05,5), metalMat);
-  star.position.set(0,.07,.85); g.add(star);
-  g.position.set(x, 0, z);
-  sc.add(g);
-}
-
-function drawDash(g, W, H){
-  g.fillStyle = "#0a1622"; g.fillRect(0,0,W,H);
-  g.fillStyle = "#fb923c"; g.fillRect(0,0,W,28);
-  g.fillStyle = "#0a1622"; g.font = "bold 14px system-ui";
-  g.fillText("LIVE · ANALYSE", 12, 19);
-  const colors = ["#fb923c","#38c4ff","#b066ff","#4ade80","#f87171"];
-  for(let i=0;i<7;i++){
-    const h = 40 + Math.random()*90;
-    g.fillStyle = colors[i%5];
-    g.fillRect(20 + i*45, 200 - h, 30, h);
-  }
-  g.strokeStyle = "#38c4ff"; g.lineWidth = 2; g.beginPath();
-  for(let i=0;i<10;i++){
-    const x = 20 + i*45, y = 260 + Math.sin(i*.7)*20 + (Math.random()-.5)*15;
-    if(i===0) g.moveTo(x,y); else g.lineTo(x,y);
-  }
-  g.stroke();
-  g.fillStyle = "#fff"; g.font = "bold 12px system-ui";
-  g.fillText("xG 1.82", 20, 300);
-  g.fillStyle = "#9aa0a8"; g.font = "11px system-ui";
-  g.fillText("PROB 62%", 200, 300);
-  g.fillText("BTTS OUI", 360, 300);
-  const grd = g.createRadialGradient(W-40, 40, 0, W-40, 40, 120);
-  grd.addColorStop(0, "rgba(56,196,255,.35)");
-  grd.addColorStop(1, "rgba(56,196,255,0)");
-  g.fillStyle = grd; g.fillRect(0,0,W,H);
-}
-
-function plant(x,z){
-  const pot = new THREE.Mesh(new THREE.CylinderGeometry(.26,.3,.5,20), M(0x7a3d1f,{roughness:.85}));
-  pot.position.set(x,.25,z); pot.castShadow = true; sc.add(pot);
-  for(let i=0;i<6;i++){
-    const leaf = new THREE.Mesh(new THREE.SphereGeometry(.32,10,8), M(i%2?0x2f7d3b:0x3a9448,{roughness:.85}));
-    leaf.position.set(x + Math.cos(i)*.15, .75 + i*.15, z + Math.sin(i)*.15);
-    leaf.castShadow = true; sc.add(leaf);
-  }
-}
-function board(x,z){
-  const back = new THREE.Mesh(new THREE.BoxGeometry(2.8,1.6,.05), M(0xfafafa,{roughness:.4}));
-  back.position.set(x,1.6,z); back.castShadow = true; sc.add(back);
-  const frame = new THREE.Mesh(new THREE.BoxGeometry(2.9,1.7,.04), metalMat);
-  frame.position.set(x,1.6,z-.01); sc.add(frame);
-  for(let i=0;i<4;i++){
-    const line = new THREE.Mesh(new THREE.BoxGeometry(1.4+Math.random()*.6,.02,.001), M(i%2?0x2563eb:0xdc2626,{roughness:.5}));
-    line.position.set(x + (Math.random()-.5)*.4, 1.9 - i*.3, z+.03);
-    sc.add(line);
-  }
-  const pole = new THREE.Mesh(new THREE.BoxGeometry(.06,1.4,.06), metalMat);
-  pole.position.set(x,.6,z); sc.add(pole);
-}
-function coffee(x,z){
-  const body = new THREE.Mesh(new THREE.BoxGeometry(1,.9,.6), M(0x1a1f28,{roughness:.5, metalness:.3}));
-  body.position.set(x,.45,z); body.castShadow = true; sc.add(body);
-  const top = new THREE.Mesh(new THREE.BoxGeometry(1.02,.08,.62), M(0x333b47,{roughness:.4, metalness:.5}));
-  top.position.set(x,.94,z); sc.add(top);
-  const noz = new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.15,10), metalMat);
-  noz.position.set(x+.25,.86,z+.3); sc.add(noz);
-  const glow = new THREE.Mesh(new THREE.BoxGeometry(.9,.05,.02),
-    new THREE.MeshStandardMaterial({color:0x38c4ff, emissive:0x38c4ff, emissiveIntensity:2}));
-  glow.position.set(x,.55,z+.31); sc.add(glow);
-}
-function roundTable(x,z){
-  const t = new THREE.Mesh(new THREE.CylinderGeometry(1.2,1.2,.1,32), deskMat);
-  t.position.set(x,.76,z); t.castShadow = t.receiveShadow = true; sc.add(t);
-  const base = new THREE.Mesh(new THREE.CylinderGeometry(.1,.15,.7,16), metalMat);
-  base.position.set(x,.35,z); sc.add(base);
-  const base2 = new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.06,16), metalMat);
-  base2.position.set(x,.03,z); sc.add(base2);
-  const lap = new THREE.Mesh(new THREE.BoxGeometry(.4,.03,.3), M(0x1a1a1a));
-  lap.position.set(x-.4,.84,z); sc.add(lap);
-  const lapTop = new THREE.Mesh(new THREE.BoxGeometry(.4,.28,.02), M(0x1a1a1a));
-  lapTop.position.set(x-.4,.99,z-.14); lapTop.rotation.x = -.3; sc.add(lapTop);
-}
-function trophy(x,z){
-  const shelf = new THREE.Mesh(new THREE.BoxGeometry(2.2,.05,.4), deskMat);
-  shelf.position.set(x,2.8,z); shelf.castShadow = true; sc.add(shelf);
-  for(let i=0;i<3;i++){
-    const cup = new THREE.Mesh(new THREE.CylinderGeometry(.14,.08,.28,16),
-      new THREE.MeshStandardMaterial({color:0xffd54a, metalness:1, roughness:.15, envMapIntensity:1.5}));
-    cup.position.set(x - .7 + i*.7, 3.05, z); cup.castShadow = true; sc.add(cup);
-    const base = new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.05,12),
-      new THREE.MeshStandardMaterial({color:0x111, metalness:.6, roughness:.3}));
-    base.position.set(x - .7 + i*.7, 2.88, z); sc.add(base);
-  }
-}
-
-const D = [[-11.8,-2.6],[-9.3,-2.6],[-6.8,-2.6],[-2.5,-2.6],[0,-2.6],[2.5,-2.6],[6.8,-2.6],[9.3,-2.6],[11.8,-2.6],[8.05,.9],[10.55,.9]];
-D.forEach(d=>desk(d[0], d[1]));
-roundTable(-9.3, 2.7);
-plant(-14, -4.2); plant(-4.9, 4); plant(4.9, -4.2); plant(14, 4);
-board(-3.4, -4.7); board(13.2, -4.7); board(-14.3, 2.5);
-coffee(3.6, -4.5);
-trophy(-9.3, -5.1);
-
-const SP = [[[-11,2.7],[-7.6,2.7],[-9.3,4.1]],[[-3.4,-3.6],[3.4,-3.6],[0,2.5]],[[13.2,-3.6],[6,3.5],[11,3.4]]];
-
-/* ============ CHARACTERS ============ */
-const SKN = [0x3b2416, 0x5a3825, 0x7a4a2e, 0x9b6a45, 0xc58f66];
-const SHI = [0x2f6f8f, 0xb4533a, 0x4a7c59, 0x8a6fb0, 0xcfa13a, 0x5b6b7a, 0x3d5a98, 0xa3405a];
-
-function buildChar(i){
-  const g = new THREE.Group();
-  const isBoss = i === 0;
-  const skin = SKN[(i*2+1) % SKN.length];
-  const shirt = isBoss ? 0x1c2742 : SHI[i % SHI.length];
-  const pants = isBoss ? 0x0a0a10 : 0x2a3040;
-
-  function makeLeg(side){
-    const hip = new THREE.Group(); hip.position.set(side * .11, .85, 0);
-    const thigh = new THREE.Mesh(new THREE.BoxGeometry(.17,.42,.19), M(pants));
-    thigh.position.y = -.21; thigh.castShadow = true; hip.add(thigh);
-    const knee = new THREE.Group(); knee.position.y = -.42; hip.add(knee);
-    const shin = new THREE.Mesh(new THREE.BoxGeometry(.16,.42,.18), M(pants));
-    shin.position.y = -.21; shin.castShadow = true; knee.add(shin);
-    const shoe = new THREE.Mesh(new THREE.BoxGeometry(.18,.09,.3), M(0x0a0a0a,{roughness:.4}));
-    shoe.position.set(0,-.44,.05); shoe.castShadow = true; knee.add(shoe);
-    g.add(hip); return {hip, knee};
-  }
-  const legL = makeLeg(-1), legR = makeLeg(1);
-
-  const torso = new THREE.Mesh(new THREE.BoxGeometry(.52,.68,.3), M(shirt,{roughness:.7}));
-  torso.position.y = 1.2; torso.castShadow = true; g.add(torso);
-  const belt = new THREE.Mesh(new THREE.BoxGeometry(.54,.06,.32), M(0x101010,{roughness:.4}));
-  belt.position.y = .88; g.add(belt);
-
-  function makeArm(side){
-    const sh = new THREE.Group(); sh.position.set(side * .34, 1.45, 0);
-    const up = new THREE.Mesh(new THREE.BoxGeometry(.13,.32,.15), M(shirt));
-    up.position.y = -.16; up.castShadow = true; sh.add(up);
-    const elbow = new THREE.Group(); elbow.position.y = -.32; sh.add(elbow);
-    const lo = new THREE.Mesh(new THREE.BoxGeometry(.11,.3,.13), M(shirt));
-    lo.position.y = -.15; lo.castShadow = true; elbow.add(lo);
-    const hand = new THREE.Mesh(new THREE.SphereGeometry(.075,12,8), M(skin));
-    hand.position.y = -.32; hand.castShadow = true; elbow.add(hand);
-    g.add(sh); return {sh, elbow};
-  }
-  const armL = makeArm(-1), armR = makeArm(1);
-
-  const neck = new THREE.Mesh(new THREE.CylinderGeometry(.08,.09,.1,12), M(skin));
-  neck.position.y = 1.6; g.add(neck);
-  const head = new THREE.Mesh(new THREE.SphereGeometry(.2,20,16), M(skin,{roughness:.6}));
-  head.position.y = 1.78; head.castShadow = true; g.add(head);
-
-  const hs = i % 4;
-  if(hs === 0){
-    const h = new THREE.Mesh(new THREE.SphereGeometry(.215,20,12,0,TAU,0,Math.PI*.55), M(0x0f0a08,{roughness:.9}));
-    h.position.y = 1.81; g.add(h);
-  } else if(hs === 1){
-    const h = new THREE.Mesh(new THREE.SphereGeometry(.21,20,12,0,TAU,0,Math.PI*.7), M(0x2a1a0e,{roughness:.9}));
-    h.position.y = 1.80; h.scale.set(1,1.05,1); g.add(h);
-  } else if(hs === 2){
-    const h = new THREE.Mesh(new THREE.SphereGeometry(.218,20,12,0,TAU,0,Math.PI*.4), M(0x080608,{roughness:.9}));
-    h.position.y = 1.84; g.add(h);
-  } else {
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(.212,20,10,0,TAU,0,Math.PI*.5), M(0x1a3a5c,{roughness:.85}));
-    cap.position.y = 1.80; g.add(cap);
-    const brim = new THREE.Mesh(new THREE.BoxGeometry(.28,.02,.14), M(0x1a3a5c,{roughness:.85}));
-    brim.position.set(0, 1.80, .18); g.add(brim);
-  }
-
-  const eyeMat = M(0x080808);
-  const eyeL = new THREE.Mesh(new THREE.SphereGeometry(.022,8,6), eyeMat);
-  eyeL.position.set(-.07, 1.80, .18); g.add(eyeL);
-  const eyeR = eyeL.clone(); eyeR.position.x = .07; g.add(eyeR);
-
-  if(i % 5 === 2){
-    const frame = new THREE.Mesh(new THREE.BoxGeometry(.3,.015,.015), M(0x111111,{roughness:.5}));
-    frame.position.set(0, 1.83, .19); g.add(frame);
-    const lensMat = new THREE.MeshStandardMaterial({color:0x88aaff, transparent:true, opacity:.35, roughness:.1, metalness:.4});
-    [-.08, .08].forEach(x=>{
-      const lens = new THREE.Mesh(new THREE.CircleGeometry(.05,16), lensMat);
-      lens.position.set(x, 1.80, .20); g.add(lens);
-    });
-  }
-  if(isBoss){
-    const tie = new THREE.Mesh(new THREE.BoxGeometry(.07,.35,.02), M(0xb91c1c,{roughness:.4}));
-    tie.position.set(0,1.22,.16); g.add(tie);
-  }
-  if(i % 7 === 3){
-    const band = new THREE.Mesh(new THREE.TorusGeometry(.2,.02,8,20,Math.PI), M(0x1a1a1a,{roughness:.5}));
-    band.rotation.x = Math.PI/2; band.position.y = 1.95; g.add(band);
-    [-.19, .19].forEach(x=>{
-      const cup = new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,.06,16), M(0x1a1a1a,{roughness:.5}));
-      cup.rotation.z = Math.PI/2; cup.position.set(x,1.82,0); g.add(cup);
-    });
-  }
-
-  g.traverse(o=>{ o.userData.i = i; });
-  return {g, legL, legR, armL, armR, torso, head};
-}
-
-const AG = A.map((a, i)=>{
-  const c = buildChar(i);
-  const d = D[i];
-  c.g.position.set(d[0], -.35, d[1] + .85);
-  c.g.rotation.y = Math.PI;
-  sc.add(c.g);
-  const k = document.createElement("canvas"); k.width = 320; k.height = 72;
-  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k), depthTest:false, transparent:true}));
-  sp.scale.set(2.1, .48, 1); sp.position.y = 2.35; sp.renderOrder = 9;
-  c.g.add(sp);
-  const p = Object.assign(c, {i, d, k, sp, st:"sit", t:6+Math.random()*12, q:[], ph:Math.random()*6, baseY:Math.PI});
-  labelChar(p); return p;
-});
-
-function labelChar(p){
-  const g = p.k.getContext("2d");
-  g.clearRect(0,0,320,72);
-  g.fillStyle = "rgba(10,14,20,.85)"; roundRect(g,6,14,308,44,22); g.fill();
-  g.strokeStyle = "rgba(251,146,60,.7)"; g.lineWidth = 2; roundRect(g,6,14,308,44,22); g.stroke();
-  g.fillStyle = "#fff"; g.font = "bold 26px system-ui";
-  g.textAlign = "center"; g.textBaseline = "middle";
-  g.fillText(nm(p.i), 160, 37);
-  p.sp.material.map.needsUpdate = true;
-}
-function roundRect(g,x,y,w,h,r){
-  g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r);
-  g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath();
-}
-function sitPose(p){
-  p.g.position.y = -.4;
-  p.legL.hip.rotation.x = -1.55; p.legR.hip.rotation.x = -1.55;
-  p.legL.knee.rotation.x = 1.5; p.legR.knee.rotation.x = 1.5;
-  p.armL.sh.rotation.x = -1.1; p.armR.sh.rotation.x = -1.1;
-  p.armL.elbow.rotation.x = -.4; p.armR.elbow.rotation.x = -.4;
-}
-function standPose(p){
-  p.g.position.y = 0;
-  p.legL.hip.rotation.x = 0; p.legR.hip.rotation.x = 0;
-  p.legL.knee.rotation.x = 0; p.legR.knee.rotation.x = 0;
-  p.armL.sh.rotation.x = 0; p.armR.sh.rotation.x = 0;
-  p.armL.elbow.rotation.x = 0; p.armR.elbow.rotation.x = 0;
-}
-AG.forEach(p=>{ sitPose(p); });
-function go(p,x,z){ p.q.push([x,z]); }
+function label(p){const g=p.k.getContext("2d");g.clearRect(0,0,256,64);g.fillStyle="rgba(15,20,28,.8)";g.fillRect(6,10,244,44);g.fillStyle="#fff";g.font="bold 26px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,42);p.sp.material.map.needsUpdate=true}
+function sitPose(p){p.g.position.y=-.33;p.L.rotation.x=p.R.rotation.x=-1.45}
+function standPose(p){p.g.position.y=0;p.L.rotation.x=p.R.rotation.x=0;p.AL.rotation.x=p.AR.rotation.x=0}
+AG.forEach(p=>{sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1});
+function go(p,x,z){p.q.push([x,z])}
 function tick(p,dt,T){
-  const g = p.g;
-  const br = Math.sin(T*2 + p.ph) * 0.008;
-  p.torso.scale.set(1 + br, 1 + br, 1 + br);
-  if(p.st === "sit"){
-    p.armL.elbow.rotation.x = -.4 + Math.sin(T*8 + p.ph) * .1;
-    p.armR.elbow.rotation.x = -.4 + Math.cos(T*8 + p.ph) * .1;
-    p.head.rotation.y = Math.sin(T*.8 + p.ph) * .25;
-    p.t -= dt;
-    if(p.t < 0){
+  const g=p.g;
+  if(p.st=="sit"){
+    p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;
+    p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1;
+    p.t-=dt;
+    if(p.t<0){
       standPose(p);
-      const s = SP[A[p.i].r];
-      const w = s[Math.floor(Math.random()*s.length)];
-      go(p, p.d[0], p.d[1] + 1.7);
-      go(p, w[0] + (Math.random()-.5)*.6, w[1]);
-      p.st = "walk"; p.next = "idle";
+      const s=SP[A[p.i].r];
+      const w=s[Math.floor(Math.random()*s.length)];
+      go(p,p.d[0],p.d[1]+1.7);go(p,w[0]+(Math.random()-.5)*.6,w[1]);
+      p.st="walk";p.next="idle";
     }
     return;
   }
-  if(p.st === "idle"){
-    p.t -= dt;
-    g.rotation.y = p.baseY + Math.sin(T*.8 + p.ph) * .3;
-    p.armL.sh.rotation.z = Math.sin(T*1.5 + p.ph) * .08;
-    p.armR.sh.rotation.z = Math.sin(T*1.5 + p.ph + 1) * .08;
-    p.head.rotation.y = Math.sin(T*.6 + p.ph) * .35;
-    if(p.t < 0){
-      p.armL.sh.rotation.z = 0; p.armR.sh.rotation.z = 0;
-      go(p, p.d[0], p.d[1] + 1.7);
-      go(p, p.d[0], p.d[1] + .85);
-      p.st = "walk"; p.next = "sit";
+  if(p.st=="idle"){
+    p.t-=dt;
+    g.rotation.y=p.baseY+Math.sin(T*.8+p.ph)*.25;
+    p.AL.rotation.x=Math.sin(T*2+p.ph)*.12;
+    p.AR.rotation.x=-.5+Math.sin(T*3)*.2;
+    if(p.t<0){
+      p.AR.rotation.x=0;
+      go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0],p.d[1]+.85);
+      p.st="walk";p.next="sit";
     }
     return;
   }
-  const q = p.q[0];
+  const q=p.q[0];
   if(!q){
-    if(p.next === "sit"){
-      g.rotation.y = Math.PI;
-      sitPose(p);
-      p.st = "sit"; p.t = 8 + Math.random()*14;
-    } else {
-      p.baseY = g.rotation.y;
-      p.st = "idle"; p.t = 3 + Math.random()*4;
+    if(p.next=="sit"){
+      g.rotation.y=Math.PI;sitPose(p);
+      p.AL.rotation.x=p.AR.rotation.x=-1;
+      p.st="sit";p.t=8+Math.random()*14;
+    }else{
+      p.baseY=g.rotation.y;
+      p.st="idle";p.t=3+Math.random()*4;
     }
-    p.legL.hip.rotation.x = 0; p.legR.hip.rotation.x = 0;
-    p.legL.knee.rotation.x = 0; p.legR.knee.rotation.x = 0;
-    p.armL.sh.rotation.x = 0; p.armR.sh.rotation.x = 0;
+    p.L.rotation.x=p.R.rotation.x=0;
     return;
   }
-  const dx = q[0] - g.position.x, dz = q[1] - g.position.z;
-  const d = Math.hypot(dx, dz);
-  if(d < .08){ p.q.shift(); return; }
-  const a = Math.atan2(dx, dz);
-  let df = a - g.rotation.y;
-  df = Math.atan2(Math.sin(df), Math.cos(df));
-  g.rotation.y += df * Math.min(1, dt*9);
-  const sp = Math.min(d, 1.4 * dt);
-  g.position.x += dx/d * sp;
-  g.position.z += dz/d * sp;
-  p.ph += dt * 9;
-  const s = Math.sin(p.ph) * .7;
-  p.legL.hip.rotation.x = s; p.legR.hip.rotation.x = -s;
-  p.legL.knee.rotation.x = Math.max(0, -s) * .8;
-  p.legR.knee.rotation.x = Math.max(0, s) * .8;
-  p.armL.sh.rotation.x = -s * .7; p.armR.sh.rotation.x = s * .7;
+  const dx=q[0]-g.position.x,dz=q[1]-g.position.z,d=Math.hypot(dx,dz);
+  if(d<.08){p.q.shift();return;}
+  const a=Math.atan2(dx,dz);let df=a-g.rotation.y;df=Math.atan2(Math.sin(df),Math.cos(df));
+  g.rotation.y+=df*Math.min(1,dt*9);
+  const sp=Math.min(d,1.35*dt);
+  g.position.x+=dx/d*sp;g.position.z+=dz/d*sp;
+  p.ph+=dt*9;const s=Math.sin(p.ph)*.7;
+  p.L.rotation.x=s;p.R.rotation.x=-s;p.AL.rotation.x=-s*.7;p.AR.rotation.x=s*.7;
 }
 
-/* ============ ENV MAP ============ */
-try {
-  const pmrem = new THREE.PMREMGenerator(ren);
-  pmrem.compileEquirectangularShader();
-  const envRT = pmrem.fromScene(sc, 0.04);
-  sc.environment = envRT.texture;
-  floorMat.envMap = envRT.texture; floorMat.envMapIntensity = 1.0;
-  deskMat.envMap = envRT.texture; deskMat.envMapIntensity = .7;
-} catch(e){}
-
-/* ============ DUST ============ */
-{
-  const N = 500;
-  const pos = new Float32Array(N*3);
-  for(let i=0;i<N;i++){
-    pos[i*3] = (Math.random()-.5) * 28;
-    pos[i*3+1] = Math.random() * 4.5 + .3;
-    pos[i*3+2] = (Math.random()-.5) * 10;
-  }
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-  const c = document.createElement("canvas"); c.width = c.height = 32;
-  const g = c.getContext("2d");
-  const grd = g.createRadialGradient(16,16,0,16,16,16);
-  grd.addColorStop(0, "rgba(255,255,255,1)");
-  grd.addColorStop(1, "rgba(255,255,255,0)");
-  g.fillStyle = grd; g.fillRect(0,0,32,32);
-  const mat = new THREE.PointsMaterial({
-    size:.06, map:new THREE.CanvasTexture(c), transparent:true, opacity:.55,
-    depthWrite:false, blending:THREE.AdditiveBlending, color:0xffeedd
-  });
-  const dust = new THREE.Points(geo, mat); sc.add(dust);
-  window.__dust = geo;
-}
-
-/* ============ INFO SCREEN ============ */
-const sk = document.createElement("canvas"); sk.width = 1024; sk.height = 420;
-const sg = sk.getContext("2d");
-const stex = new THREE.CanvasTexture(sk); stex.encoding = THREE.sRGBEncoding;
-const infoScreen = new THREE.Mesh(new THREE.PlaneGeometry(6.6, 2.7),
-  new THREE.MeshStandardMaterial({map:stex, emissive:0xffffff, emissiveMap:stex, emissiveIntensity:.85, roughness:.3}));
-infoScreen.position.set(RX[0], 2.4, -5.11); sc.add(infoScreen);
-const bezel = new THREE.Mesh(new THREE.BoxGeometry(6.9, 3, .08), M(0x0a0a0a));
-bezel.position.set(RX[0], 2.4, -5.16); sc.add(bezel);
-const glowHalo = new THREE.Mesh(new THREE.PlaneGeometry(8, 4),
-  new THREE.MeshBasicMaterial({color:0x38c4ff, transparent:true, opacity:.08, blending:THREE.AdditiveBlending, depthWrite:false}));
-glowHalo.position.set(RX[0], 2.4, -5.2); sc.add(glowHalo);
-
-function drawInfoScreen(){
-  sg.fillStyle = "#0a1622"; sg.fillRect(0,0,1024,420);
-  sg.fillStyle = "#fb923c"; sg.fillRect(0,0,1024,60);
-  sg.fillStyle = "#0a1622"; sg.font = "bold 34px system-ui";
-  sg.fillText("INFOS DU JOUR", 30, 42);
-  sg.fillStyle = "#0a1622"; sg.font = "18px system-ui";
-  const dt = REP && REP.date ? REP.date + " · heure du Tchad" : "En attente du rapport…";
-  sg.textAlign = "right"; sg.fillText(dt, 994, 42); sg.textAlign = "left";
-  const lines = (REP && REP.lines && REP.lines.length) ? REP.lines : ["Ouvre « 📋 INFOS DU JOUR »","pour saisir le programme du jour."];
-  lines.slice(0,8).forEach((l, i)=>{
-    sg.fillStyle = "#38c4ff"; sg.beginPath(); sg.arc(44, 100 + i*38, 6, 0, TAU); sg.fill();
-    sg.fillStyle = "#e8eef5"; sg.font = "22px system-ui";
-    sg.fillText(String(l).slice(0, 60), 64, 108 + i*38);
-  });
-  sg.strokeStyle = "#38c4ff"; sg.lineWidth = 3;
-  sg.beginPath(); sg.moveTo(1024-60, 80); sg.lineTo(1024-20, 80); sg.lineTo(1024-20, 120); sg.stroke();
-  sg.strokeStyle = "#fb923c";
-  sg.beginPath(); sg.moveTo(20, 380); sg.lineTo(60, 380); sg.lineTo(60, 340); sg.stroke();
-  stex.needsUpdate = true;
-}
-drawInfoScreen();
-
-/* ============ POST-PROCESSING ============ */
-let composer = null, bloomPass = null;
-try {
-  if(THREE.EffectComposer && THREE.RenderPass && THREE.UnrealBloomPass && THREE.ShaderPass && THREE.CopyShader){
-    composer = new THREE.EffectComposer(ren);
-    composer.addPass(new THREE.RenderPass(sc, cam));
-    bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.55, 0.6, 0.82);
-    composer.addPass(bloomPass);
-    const gammaPass = new THREE.ShaderPass({
-      uniforms:{ tDiffuse:{value:null} },
-      vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
-      fragmentShader:`uniform sampler2D tDiffuse; varying vec2 vUv;
-        vec3 lin2srgb(vec3 c){ return mix(pow(c, vec3(0.41666))*1.055 - vec3(0.055), c*12.92, step(c, vec3(0.0031308))); }
-        void main(){ vec4 t = texture2D(tDiffuse, vUv); gl_FragColor = vec4(lin2srgb(t.rgb), t.a); }`
-    });
-    composer.addPass(gammaPass);
-  }
-} catch(e){ composer = null; }
-
-/* ============ CAMERA ============ */
-let th = 0, ph = .95, di = 40, ddi = 40;
-const tg = new THREE.Vector3(0, 1, 0), ttg = tg.clone();
-let fol = -1;
-const portrait = () => innerWidth < innerHeight;
-const ALL = () => portrait() ? 62 : 32;
-const ROOM = () => portrait() ? 22 : 17;
+/* caméra */
+let th=0,ph=.95,di=40,ddi=40,tg=new THREE.Vector3(0,1,0),ttg=tg.clone(),fol=-1;
+const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?62:32,ROOM=()=>portrait()?22:17;
 function view(k){
-  fol = -1; th = 0; ph = .95;
-  if(k < 0){ ttg.set(0, 1, 0); ddi = ALL(); }
-  else { ttg.set(RX[k], 1.2, 0); ddi = ROOM(); }
+  fol=-1;th=0;ph=.95;
+  if(k<0){ttg.set(0,1,0);ddi=ALL();}
+  else{ttg.set(RX[k],1,0);ddi=ROOM();}
 }
-function onResize(){
-  ren.setSize(innerWidth, innerHeight);
-  cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix();
-  if(composer) composer.setSize(innerWidth, innerHeight);
-  if(bloomPass) bloomPass.setSize(innerWidth, innerHeight);
-  if(fol < 0) ddi = ALL();
-}
-addEventListener("resize", onResize);
-onResize(); ddi = di = ALL();
-
-const P = new Map(); let dn = null, pd = 0;
-cv.addEventListener("pointerdown", e=>{
-  cv.setPointerCapture(e.pointerId);
-  P.set(e.pointerId, [e.clientX, e.clientY]);
-  dn = [e.clientX, e.clientY, Date.now()]; pd = 0;
-});
-cv.addEventListener("pointermove", e=>{
-  const o = P.get(e.pointerId); if(!o) return;
-  if(P.size === 1){
-    th -= (e.clientX - o[0]) * .006;
-    ph = Math.max(.2, Math.min(1.45, ph - (e.clientY - o[1]) * .005));
-  }
-  P.set(e.pointerId, [e.clientX, e.clientY]);
-  if(P.size === 2){
-    const [a, b] = [...P.values()];
-    const d = Math.hypot(a[0]-b[0], a[1]-b[1]);
-    if(pd) ddi = Math.max(5, Math.min(80, ddi * pd / d));
-    pd = d;
-  }
-});
-cv.addEventListener("pointerup", e=>{
-  P.delete(e.pointerId); pd = 0;
-  if(dn && Math.hypot(e.clientX-dn[0], e.clientY-dn[1]) < 7 && Date.now()-dn[2] < 450) pick(e);
-  dn = null;
-});
-cv.addEventListener("pointercancel", e=>{ P.delete(e.pointerId); pd = 0; });
-cv.addEventListener("wheel", e=>{ ddi = Math.max(5, Math.min(80, ddi * (1 + e.deltaY * .001))); e.preventDefault(); }, {passive:false});
-
-const rc = new THREE.Raycaster();
+function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
+addEventListener("resize",()=>{resize();if(fol<0)ddi=ALL()});resize();ddi=di=ALL();
+const P=new Map();let dn=null,pd=0;
+cv.addEventListener("pointerdown",e=>{cv.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);dn=[e.clientX,e.clientY,Date.now()];pd=0});
+cv.addEventListener("pointermove",e=>{const o=P.get(e.pointerId);if(!o)return;if(P.size==1){th-=(e.clientX-o[0])*.006;ph=Math.max(.2,Math.min(1.45,ph-(e.clientY-o[1])*.005))}P.set(e.pointerId,[e.clientX,e.clientY]);if(P.size==2){const[a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)ddi=Math.max(5,Math.min(80,ddi*pd/d));pd=d}});
+cv.addEventListener("pointerup",e=>{P.delete(e.pointerId);pd=0;if(dn&&Math.hypot(e.clientX-dn[0],e.clientY-dn[1])<7&&Date.now()-dn[2]<450)pick(e);dn=null});
+cv.addEventListener("pointercancel",e=>{P.delete(e.pointerId);pd=0});
+cv.addEventListener("wheel",e=>{ddi=Math.max(5,Math.min(80,ddi*(1+e.deltaY*.001)));e.preventDefault()},{passive:false});
+const rc=new THREE.Raycaster();
 function pick(e){
-  const nx = e.clientX / innerWidth * 2 - 1;
-  const ny = -(e.clientY / innerHeight) * 2 + 1;
-  rc.setFromCamera({x:nx, y:ny}, cam);
-  const hits = rc.intersectObjects(AG.map(p=>p.g), true);
-  const hit = hits.find(h => h.object.userData.i !== undefined);
-  if(hit) open(hit.object.userData.i);
+  rc.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
+  const hits=rc.intersectObjects(AG.map(p=>p.g),true);
+  const hit=hits.find(h=>h.object.userData.i!==undefined);
+  if(hit)open(hit.object.userData.i);
 }
-
-/* ============ LOOP ============ */
-const clk = new THREE.Clock();
-function loop(){
+const clk=new THREE.Clock();
+(function loop(){
   requestAnimationFrame(loop);
-  const dt = Math.min(.05, clk.getDelta()), T = clk.elapsedTime;
-  AG.forEach(p=>tick(p, dt, T));
-  if(window.__dust){
-    const arr = window.__dust.attributes.position.array;
-    for(let i=0;i<arr.length;i+=3){
-      arr[i+1] += Math.sin(T*.4 + i) * .002;
-      if(arr[i+1] > 5) arr[i+1] = .2;
-    }
-    window.__dust.attributes.position.needsUpdate = true;
-  }
-  if(fol >= 0){ const g = AG[fol].g; ttg.set(g.position.x, 1.2, g.position.z); }
-  tg.lerp(ttg, .07); di += (ddi - di) * .07;
-  cam.position.set(
-    tg.x + di * Math.sin(ph) * Math.sin(th),
-    tg.y + di * Math.cos(ph),
-    tg.z + di * Math.sin(ph) * Math.cos(th)
-  );
+  const dt=Math.min(.05,clk.getDelta()),T=clk.elapsedTime;
+  AG.forEach(p=>tick(p,dt,T));
+  if(fol>=0){const g=AG[fol].g;ttg.set(g.position.x,1.2,g.position.z)}
+  tg.lerp(ttg,.07);di+=(ddi-di)*.07;
+  cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));
   cam.lookAt(tg);
-  infoScreen.material.emissiveIntensity = 0.85 + Math.sin(T*3) * .05;
-  if(composer) composer.render(); else ren.render(sc, cam);
-}
-loop();
+  scrs.forEach((s,k)=>s.material.color.setHex((Math.sin(T*1.3+k)>.97)?0xffffff:0x5cc8ff));
+  ren.render(sc,cam);
+})();
 
-/* ============ LOCAL CHAT ENGINE ============ */
-const DISCLAIMER = "⚠️ Un pronostic est une probabilité estimée, jamais une certitude. Aucun pari n'est « sûr ».";
-const NO_DATA = "Sans données vérifiées dans « 📋 INFOS DU JOUR », je ne peux pas te répondre précisément. C'est la règle du bureau : rien d'inventé.";
-
-const PER = {
-  0: {
-    pred: "Je ne rends un pronostic que si trois maillons sont solides : données vérifiées de la veille, modèle probabiliste du labo, comparaison cote/proba du parieur. Tant qu'un maillon manque, je refuse de valider.",
-    meth: "Ma méthode : croiser trois sources, dater chaque info, refuser les fragiles. Une info non recoupée ne sert à rien. Une info périmée est pire qu'une absence d'info.",
-    team: "Mon équipe : trois traqueurs (blessures, forme, cotes), quatre testeurs (Liga, Premier League, Ligue des champions, modèle de buts/scénarios), un parieur, un contrôleur de code promo. Chacun livre un avis daté, je synthétise.",
-    code: "Le contrôleur lit les conditions, le parieur tient le bilan. Un code promo ne doit jamais pousser à parier plus. C'est un outil, pas une stratégie.",
-    fallback: "Pose ta question sur un match, un pronostic, un code promo, ou demande-moi comment fonctionne l'équipe."
-  },
-  1: {
-    pred: "Mon critère est simple : probabilité estimée × cote > 1. Si la cote affichée dépasse ce que ma proba implique, c'est un avantage. Sinon, je passe sans regret.",
-    data: "Sans cotes à jour et sans données vérifiées, je ne peux rien comparer. Ajoute les cotes dans « INFOS DU JOUR » et je te donne un avis chiffré.",
-    meth: "Value betting basique : ne miser que si la cote est plus haute que ce que la proba réelle implique. Le reste, c'est de la discipline — ne pas chasser les pertes.",
-    bilan: "Bilan actuel : 0 pari enregistré. C'est volontaire : sans données vérifiées, pas de mise.",
-    fallback: "Demande-moi de comparer une cote à une probabilité, ou pose une question sur le bilan."
-  },
-  2: {
-    code: "Avant d'utiliser un code, vérifie : mise minimale, marchés exclus, délais de retrait, conditions de rollover. Un bonus avec un rollover élevé sur des cotes faibles ne vaut souvent rien.",
-    meth: "Un code n'est intéressant que si la mise demandée est atteignable dans un délai raisonnable. Sinon, c'est un piège marketing.",
-    pred: "Un code promo ne rend pas un mauvais pari bon. C'est un outil qui allège le coût, pas une stratégie.",
-    fallback: "Envoie-moi les conditions d'un code, je te dirai ce qu'il vaut vraiment."
-  },
-  3: {
-    data: "Je relève blessés, suspendus et compositions probables. Chaque info doit venir de deux sources indépendantes. Une info unique n'est pas une info.",
-    meth: "Sites officiels des clubs, ligues, UEFA, médias reconnus. Je date tout. Si je ne peux pas vérifier, je le dis.",
-    pred: "Je ne fais pas de pronostic, je fournis la matière : qui manque, qui revient, quand. Le labo et le directeur s'en servent.",
-    fallback: "Demande-moi des infos blessures/compos pour un club précis, ou comment je vérifie."
-  },
-  4: {
-    data: "Je regarde les cinq derniers matchs, à domicile et à l'extérieur, plus les xG. La dynamique récente pèse plus que le classement.",
-    meth: "Forme = tendance pondérée. Attention aux séries gonflées par des adversaires faibles. Je signale les données manquantes.",
-    pred: "La forme ne prédit pas seule. Elle pondère une analyse. Si les données manquent, je le signale clairement.",
-    fallback: "Demande-moi la forme récente d'une équipe, ou comment je la mesure."
-  },
-  5: {
-    data: "Je relève les cotes et l'heure de vérification. Je suis les mouvements significatifs. Je n'écoute pas les rumeurs anonymes.",
-    meth: "Une cote qui bouge fortement sans info publique = suspect. Je préfère ignorer que suivre.",
-    pred: "Les cotes disent ce que le marché pense. Elles ne disent pas la vérité. Mon rôle est de comparer, pas de deviner.",
-    fallback: "Demande-moi une cote, un mouvement de cote, ou comment je relève les marchés."
-  },
-  6: {
-    pred: "Pour la Liga, je regarde les matchs à venir, puis j'estime un résultat probable. Sans données à jour, impossible. Renseigne les matchs dans « INFOS DU JOUR ».",
-    meth: "Je croise les infos de la veille avec mon modèle. Score probable + probabilité. Si l'écart-type est trop large, je renonce.",
-    data: "La Liga a un rythme technique mais très physique en défense. Les séries à domicile y sont significatives.",
-    fallback: "Demande-moi un match de Liga à tester, ou comment je procède."
-  },
-  7: {
-    pred: "La Premier League est dense : rythme élevé, calendrier chargé. Le repos entre matchs compte autant que la forme.",
-    meth: "Même méthode que les autres ligues, avec une pondération plus forte sur la fatigue. Le calendrier anglais est brutal.",
-    data: "Les petites équipes anglaises sont plus solides à domicile qu'ailleurs. Le public pèse.",
-    fallback: "Demande-moi un match de Premier League, ou la spécificité de cette ligue."
-  },
-  8: {
-    pred: "En Ligue des champions, l'écart entre phases de groupes et éliminatoires est énorme. Un match aller ne dit rien du retour.",
-    meth: "Je traite les matchs aller et retour différemment. Les stratégies ne sont pas les mêmes. Un 1-0 à l'aller change tout.",
-    data: "L'expérience européenne compte. Un club habitué aux phases finales gère mieux la pression.",
-    fallback: "Demande-moi un match de Ligue des champions, ou la spécificité des matchs à élimination."
-  },
-  9: {
-    pred: "Modèle de Poisson : je calcule les buts attendus de chaque équipe, puis la distribution. Scores probables, plus/moins 2,5 buts. Sans forces offensives/défensives à jour, je ne peux pas.",
-    meth: "Le Poisson suppose l'indépendance des buts. C'est une approximation, pas une vérité. Je le dis clairement. Les vrais modèles mélangent plusieurs distributions.",
-    data: "Les xG sont plus fiables que les buts marqués pour prédire. Un club qui surperforme ses xG va régresser.",
-    fallback: "Demande-moi une probabilité de score, de plus/moins 2,5, ou comment fonctionne le Poisson."
-  },
-  10: {
-    pred: "Je rejoue le match en trois scénarios : favorable, neutre, défavorable. Ce qui compte, c'est ce qui ferait échouer le pronostic.",
-    meth: "Le but n'est pas de prédire LE résultat, mais de comprendre pourquoi le pronostic pourrait rater. Une absence, un carton, un rythme.",
-    data: "Un scénario défavorable n'est pas une prédiction. C'est un test de robustesse. Si le pronostic tient dans les trois scénarios, il est solide.",
-    fallback: "Demande-moi de tester un pronostic en trois scénarios, ou comment je procède."
-  }
-};
-
-function detect(q){
-  const l = q.toLowerCase();
-  return {
-    pred: /pronostic|prédiction|pari|résultat|probable|chance|gagner|mise|parier/.test(l),
-    data: /cote|classement|bless|xg|stat|forme|composition|effectif|donnée|info/.test(l),
-    code: /code|promo|bonus/.test(l),
-    meth: /comment|pourquoi|méthode|calcul|modèle|fonctionne|explique|procède|marche/.test(l),
-    team: /équipe|tout le monde|ensemble|résume|qui fait quoi/.test(l),
-    bilan: /bilan|résultat|gains|pertes|historique/.test(l),
-    help: /aide|help|utiliser|démarrer|commencer/.test(l)
-  };
-}
-
-function localReply(idx, q){
-  const d = detect(q);
-  if(idx < 0){
-    const parts = ["🏛️ Directeur : " + PER[0].pred, "💰 Parieur : " + PER[1].pred, "🎯 Testeur buts : " + PER[9].pred];
-    return parts.join("\n\n") + "\n\n" + DISCLAIMER + "\n\n" + NO_DATA;
-  }
-  const p = PER[idx] || {};
-  if(d.help) return "Je suis " + nm(idx) + ", " + A[idx].t + ".\n\n" + (p.meth || p.fallback) + "\n\n" + NO_DATA;
-  if(d.team && p.team) return p.team;
-  if(d.code && p.code) return p.code;
-  if(d.meth && p.meth) return p.meth;
-  if(d.bilan && p.bilan) return p.bilan;
-  if(d.pred && p.pred) return p.pred + "\n\n" + DISCLAIMER;
-  if(d.data && p.data) return p.data + "\n\n" + NO_DATA;
-  return (p.fallback || "Pose ta question sur un match, un pronostic, un code promo, ou demande-moi comment je procède.") + "\n\n" + NO_DATA;
-}
-
-/* ============ UI ============ */
-const bar = document.getElementById("bar");
-const sh = document.getElementById("sh");
-
-[["Tout", ()=>view(-1)],["Direction", ()=>view(0)],["Veille", ()=>view(1)],["Labo", ()=>view(2)],["📋 INFOS DU JOUR", ()=>open(-2), 1],["💬 Équipe", ()=>open(-1)],["ℹ️ Aide", ()=>open(-3)]].forEach(b=>{
-  const e = document.createElement("button");
-  e.textContent = b[0];
-  if(b[2]) e.className = "h";
-  e.onclick = b[1];
-  bar.append(e);
+/* ============ INTERFACE ============ */
+const bar=$("#bar"),sh=$("#sh");
+[["← Site",()=>{location.href="index.html"}],["Tout",()=>view(-1)],["Direction",()=>view(0)],["Veille",()=>view(1)],["Labo",()=>view(2)],["📋 INFOS DU JOUR",()=>open(-2),1],["💬 Équipe",()=>open(-1)]].forEach(b=>{
+  const e=document.createElement("button");e.textContent=b[0];if(b[2])e.className="h";e.onclick=b[1];bar.append(e);
 });
-
-function div(c, t, p){
-  const e = document.createElement("div");
-  if(c) e.className = c;
-  if(t !== undefined) e.textContent = t;
-  (p || sh).append(e); return e;
-}
-function close(){ sh.className = ""; fol = -1; }
-
+function div(c,t,p){const e=document.createElement("div");if(c)e.className=c;if(t!==undefined)e.textContent=t;(p||sh).append(e);return e}
+function close(){sh.className="";fol=-1}
 function open(i){
-  sh.className = "on"; sh.textContent = "";
-  if(i === -3){ renderHelp(); return; }
-  if(i < 0){ fol = -1; th = 0; ph = .95; ddi = ALL(); }
-
-  const top = div("hd");
-  if(i >= 0){
-    fol = i; ddi = 8; th = Math.PI * .1;
-    const w = div("", undefined, top); w.style.flex = "1";
-    const inp = document.createElement("input");
-    inp.maxLength = 30; inp.value = N[i] || "";
-    inp.placeholder = "Donne-lui un nom";
-    inp.setAttribute("aria-label", "Nom");
-    inp.oninput = ()=>{ N[i] = inp.value.trim(); saveNames(); labelChar(AG[i]); };
-    w.append(inp);
-    div("k", A[i].t, w);
-  } else {
-    const t = div("", i === -1 ? "💬 Toute l’équipe" : "📋 INFOS DU JOUR", top);
-    t.style.cssText = "font-weight:700;font-size:17px;flex:1";
+  sh.className="on";sh.textContent="";H[i]=H[i]||[];
+  if(i<0){fol=-1;th=0;ph=.95;ddi=ALL();}
+  const top=div("hd");
+  if(i>=0){
+    fol=i;ddi=8;th=Math.PI*.1;
+    const w=div("",undefined,top);w.style.flex="1";
+    const inp=document.createElement("input");inp.maxLength=30;inp.value=N[i]||"";inp.placeholder="Donne-lui un nom";inp.setAttribute("aria-label","Nom");
+    inp.oninput=()=>{N[i]=inp.value.trim();saveNames();label(AG[i])};
+    w.append(inp);div("k",A[i].t,w);
+  }else{
+    const t=div("",i==-1?"💬 Toute l’équipe":"📋 INFOS DU JOUR",top);
+    t.style.cssText="font-weight:700;font-size:17px;flex:1";
   }
-  const x = document.createElement("button");
-  x.className = "x"; x.textContent = "✕"; x.onclick = close;
-  top.append(x);
-
-  if(i >= 0){
-    const a = A[i];
-    div("k", "Formation / profil"); div("", a.f);
-    div("k", "Missions");
-    const u = document.createElement("ul");
-    a.m.forEach(t=>{ const l = document.createElement("li"); l.textContent = t; u.append(l); });
-    sh.append(u);
-    div("k", "Objectif"); div("", a.g);
+  const x=document.createElement("button");x.className="x";x.textContent="✕";x.onclick=close;top.append(x);
+  if(i>=0){
+    const a=A[i];div("k","Formation / profil");div("",a.f);
+    div("k","Missions");const u=document.createElement("ul");
+    a.m.forEach(t=>{const l=document.createElement("li");l.textContent=t;u.append(l)});sh.append(u);
+    div("k","Objectif");div("",a.g);
   }
-
-  if(i === -2){ renderInfosEditor(); return; }
-
-  div("k", "Discussion");
-  const log = div("");
-  (H[i] || []).forEach(m=>div("m " + m[0], m[1], log));
-  const row = div("row");
-  const ta = document.createElement("textarea");
-  ta.rows = 2; ta.placeholder = "Ta question…";
-  const b = document.createElement("button");
-  b.className = "go"; b.textContent = "Envoyer";
-  b.onclick = ()=>ask(i, ta, log);
-  ta.addEventListener("keydown", e=>{ if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); b.click(); } });
-  row.append(ta, b);
+  if(i==-2){renderEditor();return;}
+  div("k","Discussion");
+  const log=div("");H[i].forEach(m=>div("m "+m[0],m[1],log));
+  const row=div("row");const ta=document.createElement("textarea");ta.rows=2;ta.placeholder="Ta question…";
+  const b=document.createElement("button");b.className="go";b.textContent="Envoyer";
+  b.onclick=()=>ask(i,ta,log);
+  ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();b.click();}});
+  row.append(ta,b);
 }
+function renderEditor(){
+  const dateInp=document.createElement("input");
+  dateInp.type="text";dateInp.value=(REP&&REP.date)||"";
+  dateInp.placeholder=new Date().toLocaleDateString("fr-FR");
+  div("k","Date du rapport");sh.append(dateInp);
 
-function renderHelp(){
-  sh.textContent = "";
-  const top = div("hd");
-  div("", "ℹ️ Aide", top).style.cssText = "font-weight:700;font-size:17px;flex:1";
-  const x = document.createElement("button"); x.className = "x"; x.textContent = "✕"; x.onclick = close;
-  top.append(x);
-  div("k", "Navigation 3D");
-  div("", "Glisse pour tourner · pince ou molette pour zoomer · tape un employé pour ouvrir sa fiche.");
-  div("k", "Les 3 salles");
-  div("", "Direction & contrôle (orange) · Veille Web (bleu) · Laboratoire de tests (violet).");
-  div("k", "Discuter");
-  div("", "Ouvre « 💬 Équipe » pour interroger tout le bureau, ou tape un employé pour lui parler seul. Chaque personnage répond selon son rôle.");
-  div("k", "Données du jour");
-  div("", "Ouvre « 📋 INFOS DU JOUR » et saisis les matchs, cotes ou blessures que tu veux suivre. L'écran mural du bureau se met à jour instantanément, et le contexte est injecté dans le chat.");
-  div("k", "Personnalisation");
-  div("", "Chaque employé peut être renommé en tapant son nom en haut de sa fiche. Tout est conservé dans ton navigateur.");
-  div("k", "Règle du bureau");
-  div("", "Aucune donnée inventée. Si une information n'est pas dans INFOS DU JOUR, le chat te le dira. Un pronostic reste une probabilité.");
-}
+  const ta=document.createElement("textarea");ta.rows=6;
+  ta.placeholder="Liga : Real - Barça samedi 21h\nPremier : United - Liverpool dimanche 17h\nBlessure : Vinicius out 2 semaines…";
+  ta.value=((REP&&REP.lines)||[]).join("\n");
+  div("k","Lignes (une info par ligne)");sh.append(ta);
 
-function renderInfosEditor(){
-  const date = (REP && REP.date) || "";
-  const lines = (REP && REP.lines) || [];
-
-  div("k", "Date du rapport");
-  const dateInp = document.createElement("input");
-  dateInp.type = "text"; dateInp.value = date;
-  dateInp.placeholder = new Date().toLocaleDateString("fr-FR");
-  sh.append(dateInp);
-
-  div("k", "Lignes (une info par ligne)");
-  const ta = document.createElement("textarea");
-  ta.rows = 6;
-  ta.placeholder = "Liga : Real - Barça samedi 21h\nPremier : United - Liverpool dimanche 17h\nBlessure : Vinicius out 2 semaines…";
-  ta.value = lines.join("\n");
-  sh.append(ta);
-
-  const btn = document.createElement("button");
-  btn.className = "go"; btn.textContent = "Mettre à jour l'écran";
-  btn.style.cssText = "margin-top:10px;width:100%";
-  btn.onclick = ()=>{
-    REP = {
-      date: dateInp.value.trim() || new Date().toLocaleDateString("fr-FR"),
-      lines: ta.value.split("\n").map(l=>l.trim()).filter(Boolean)
-    };
-    saveInfos(); drawInfoScreen();
-    btn.textContent = "✓ Écran mis à jour";
-    setTimeout(()=>{ btn.textContent = "Mettre à jour l'écran"; }, 1400);
+  const btn=document.createElement("button");btn.className="go";btn.textContent="Mettre à jour l'écran et le site";
+  btn.style.cssText="margin-top:10px;width:100%";
+  btn.onclick=()=>{
+    REP={date:dateInp.value.trim()||new Date().toLocaleDateString("fr-FR"),lines:ta.value.split("\n").map(l=>l.trim()).filter(Boolean)};
+    saveInfos();drawScr();
+    btn.textContent="✓ Publié sur le site et l'écran";
+    setTimeout(()=>btn.textContent="Mettre à jour l'écran et le site",1800);
   };
   sh.append(btn);
 
-  div("k", "Astuce");
-  div("", "Ces infos apparaissent sur l'écran mural de la salle Direction, et servent de contexte au chat. Elles sont conservées dans ton navigateur.");
+  div("k","Info");
+  div("","Ces infos apparaissent sur l'écran du bureau ET dans la section Pronostics de index.html. Elles sont sauvegardées dans ton navigateur.");
 }
 
-async function ask(i, ta, log){
-  const q = ta.value.trim(); if(!q) return;
-  ta.value = "";
-  div("m me", q, log);
-  const w = div("m ai", "…", log);
-  H[i] = H[i] || [];
-  H[i].push(["me", q]);
-  await new Promise(r=>setTimeout(r, 350 + Math.random()*300));
-  const reply = localReply(i, q);
-  w.textContent = reply;
-  H[i].push(["ai", reply]);
-  saveChat();
+/* ============ MOTEUR DE CHAT LOCAL ============ */
+const DISCLAIMER="⚠️ Un pronostic est une probabilité estimée, jamais une certitude. Aucun pari n'est « sûr ».";
+const NO_DATA="Sans données vérifiées dans « 📋 INFOS DU JOUR », je ne peux pas te répondre précisément. C'est la règle du bureau : rien d'inventé.";
+const PER={
+  0:{pred:"Je rends un pronostic seulement si trois maillons sont solides : données vérifiées, modèle probabiliste, comparaison cote/proba. Tant qu'un maillon manque, je refuse de valider.",meth:"Ma méthode : croiser trois sources, dater chaque info, refuser les fragiles. Une info non recoupée ne sert à rien. Une info périmée est pire qu'une absence d'info.",team:"Mon équipe : trois traqueurs (blessures, forme, cotes), quatre testeurs, un parieur, un contrôleur. Chacun livre un avis daté, je synthétise.",code:"Le contrôleur lit les conditions, le parieur tient le bilan. Un code promo ne doit jamais pousser à parier plus.",fallback:"Pose ta question sur un match, un pronostic, un code promo, ou demande-moi comment fonctionne l'équipe."},
+  1:{pred:"Mon critère : probabilité estimée × cote > 1. Si la cote dépasse ce que ma proba implique, c'est un avantage. Sinon, je passe sans regret.",data:"Sans cotes à jour et sans données vérifiées, je ne peux rien comparer. Ajoute les cotes dans « INFOS DU JOUR ».",meth:"Value betting basique : ne miser que si la cote est plus haute que ce que la proba réelle implique.",bilan:"Bilan actuel : 0 pari enregistré. Sans données vérifiées, pas de mise.",fallback:"Demande-moi de comparer une cote à une probabilité."},
+  2:{code:"Avant d'utiliser un code, vérifie : mise minimale, marchés exclus, délais de retrait, conditions de rollover.",meth:"Un code n'est intéressant que si la mise demandée est atteignable dans un délai raisonnable.",pred:"Un code promo ne rend pas un mauvais pari bon. C'est un outil, pas une stratégie.",fallback:"Envoie-moi les conditions d'un code, je te dirai ce qu'il vaut."},
+  3:{data:"Je relève blessés, suspendus et compositions probables. Chaque info doit venir de deux sources indépendantes.",meth:"Sites officiels, ligues, UEFA, médias reconnus. Je date tout.",pred:"Je ne fais pas de pronostic, je fournis la matière.",fallback:"Demande-moi des infos blessures/compos pour un club."},
+  4:{data:"Je regarde les cinq derniers matchs, à domicile et à l'extérieur, plus les xG.",meth:"Forme = tendance pondérée. Attention aux séries gonflées.",pred:"La forme ne prédit pas seule.",fallback:"Demande-moi la forme récente d'une équipe."},
+  5:{data:"Je relève les cotes et l'heure de vérification. Je n'écoute pas les rumeurs anonymes.",meth:"Une cote qui bouge fortement sans info publique = suspect.",pred:"Les cotes disent ce que le marché pense. Pas la vérité.",fallback:"Demande-moi une cote ou un mouvement de cote."},
+  6:{pred:"Pour la Liga, j'estime un résultat probable. Sans données à jour, impossible.",meth:"Score probable + probabilité. Si l'écart-type est trop large, je renonce.",data:"La Liga est technique mais physique en défense.",fallback:"Demande-moi un match de Liga à tester."},
+  7:{pred:"La Premier League est dense : repos entre matchs compte autant que forme.",meth:"Même méthode, avec pondération plus forte sur la fatigue.",data:"Les petites équipes anglaises sont plus solides à domicile.",fallback:"Demande-moi un match de Premier League."},
+  8:{pred:"En Ligue des champions, l'écart entre phases est énorme. Aller ≠ retour.",meth:"Je traite aller et retour différemment. Un 1-0 à l'aller change tout.",data:"L'expérience européenne compte.",fallback:"Demande-moi un match de Ligue des champions."},
+  9:{pred:"Modèle de Poisson : je calcule les buts attendus, puis la distribution. Sans forces à jour, impossible.",meth:"Poisson suppose l'indépendance des buts. Approximation, pas vérité.",data:"Les xG sont plus fiables que les buts marqués.",fallback:"Demande-moi une probabilité de score."},
+  10:{pred:"Je rejoue le match en trois scénarios : favorable, neutre, défavorable.",meth:"Le but n'est pas de prédire, mais de comprendre pourquoi ça peut rater.",data:"Un scénario défavorable est un test de robustesse.",fallback:"Demande-moi de tester un pronostic en trois scénarios."}
+};
+function detect(q){
+  const l=q.toLowerCase();
+  return{
+    pred:/pronostic|prédiction|pari|résultat|probable|chance|gagner|mise|parier/.test(l),
+    data:/cote|classement|bless|xg|stat|forme|composition|effectif|donnée|info/.test(l),
+    code:/code|promo|bonus/.test(l),
+    meth:/comment|pourquoi|méthode|calcul|modèle|fonctionne|explique/.test(l),
+    team:/équipe|tout le monde|ensemble|résume|qui fait quoi/.test(l),
+    bilan:/bilan|gains|pertes|historique/.test(l)
+  };
+}
+function localReply(idx,q){
+  const d=detect(q);
+  if(idx<0){
+    return "🏛️ Directeur : "+PER[0].pred+"\n\n💰 Parieur : "+PER[1].pred+"\n\n🎯 Testeur : "+PER[9].pred+"\n\n"+DISCLAIMER+"\n\n"+NO_DATA;
+  }
+  const p=PER[idx]||{};
+  if(d.team&&p.team)return p.team;
+  if(d.code&&p.code)return p.code;
+  if(d.meth&&p.meth)return p.meth;
+  if(d.bilan&&p.bilan)return p.bilan;
+  if(d.pred&&p.pred)return p.pred+"\n\n"+DISCLAIMER;
+  if(d.data&&p.data)return p.data+"\n\n"+NO_DATA;
+  return (p.fallback||"Pose ta question sur un match, un pronostic, un code promo.")+"\n\n"+NO_DATA;
+}
+function ask(i,ta,log){
+  const q=ta.value.trim();if(!q)return;
+  ta.value="";
+  div("m me",q,log);
+  const w=div("m ai","…",log);
+  H[i]=H[i]||[];
+  H[i].push(["me",q]);
+  setTimeout(()=>{
+    const reply=localReply(i,q);
+    w.textContent=reply;
+    H[i].push(["ai",reply]);
+    saveChat();
+  },350+Math.random()*350);
 }
 
-/* ============ HIDE LOADER ============ */
-setTimeout(()=>{ document.getElementById("load").classList.add("hide"); }, 400);
-
+/* Sync live : si l'autre onglet publie, on rafraîchit */
+window.addEventListener("storage",e=>{
+  if(e.key==="bn3_infos"){
+    try{const r=JSON.parse(e.newValue);if(r&&typeof r==="object"){REP=r;drawScr();}}catch(_){}
+  }
+  if(e.key==="bn3"){
+    try{const s=JSON.parse(e.newValue);if(Array.isArray(s)&&s.length===11){for(let k=0;k<11;k++)N[k]=s[k];AG.forEach(p=>label(p));}}catch(_){}
+  }
+});
 })();
 </script>
 </body>
