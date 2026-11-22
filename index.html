@@ -2,363 +2,610 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bureau d’analyse football 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Desk de Trading Football · QG</title>
 <style>
-:root{--bg:#10141a;--card:#1b222c;--ink:#eceae4;--mut:#9aa0a8;--line:#323945;--acc:#fb923c;color-scheme:dark}
+:root{--bg:#0a0d14;--card:#141a24;--ink:#e2e8f0;--mut:#8b95a3;--line:#2a3340;--acc:#fb923c;--green:#4ade80;--red:#f87171;--blue:#38bdf8;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
 canvas{display:block;width:100%;height:100%;touch-action:none}
-#bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#10141acc,#10141a00);z-index:10;scrollbar-width:none}
+#bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#0a0d14cc,#0a0d1400);z-index:10;scrollbar-width:none}
 #bar::-webkit-scrollbar{display:none}
 button{font:inherit;color:inherit;cursor:pointer}
-#bar button{flex:none;background:#1b222cdd;border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap}
-#bar button.h{background:var(--acc);color:#111;border-color:var(--acc);font-weight:700}
-#hint{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:#fffc;font-size:12px;text-shadow:0 1px 3px #000;pointer-events:none}
-#sh{position:fixed;left:0;right:0;bottom:0;max-height:52vh;overflow:auto;background:var(--card);border-top:3px solid var(--acc);border-radius:16px 16px 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:none;max-width:760px;margin-inline:auto;z-index:20}
-@media (orientation:landscape) and (max-height:560px){#sh{max-height:82vh}}
-#sh.on{display:block}
-.hd{display:flex;gap:10px;align-items:center}
+#bar button{flex:none;background:#141a24dd;border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap;font-weight:600}
+#bar button.h{background:var(--acc);color:#000;border-color:var(--acc)}
+#bar button.bankroll-btn{background:#1e293b;color:var(--green);border-color:var(--green);display:flex;align-items:center;gap:6px}
+#hint{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:#fff8;font-size:12px;pointer-events:none;z-index:5}
+#sh{position:fixed;left:0;right:0;bottom:0;max-height:75vh;overflow-y:auto;background:var(--card);border-top:3px solid var(--acc);border-radius:16px 16px 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:none;max-width:800px;margin-inline:auto;z-index:20;box-shadow:0 -10px 40px #000c}
+#sh.on{display:block;animation:up .2s ease}
+@keyframes up{from{transform:translateY(15px);opacity:0}to{transform:translateY(0);opacity:1}}
+.hd{display:flex;gap:10px;align-items:center;margin-bottom:8px}
 .hd input{font:inherit;font-weight:700;width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
-.x{margin-left:auto;background:none;border:0;font-size:22px;color:var(--mut)}
-.k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:10px 0 2px}
-#sh ul{margin:0;padding-left:18px}
-.m{padding:7px 10px;border-radius:10px;max-width:92%;white-space:pre-wrap;margin-top:6px;font-size:13.5px;line-height:1.5}
-.me{margin-left:auto;background:var(--acc);color:#111}
-.ai{background:var(--bg);border:1px solid var(--line)}
-.row{display:flex;gap:8px;margin-top:8px}
-textarea{flex:1;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px;resize:none;width:100%}
-input[type=text]{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px;width:100%}
-.go{background:var(--acc);color:#111;border:0;border-radius:10px;padding:8px 14px;font-weight:700}
+.x{margin-left:auto;background:none;border:0;font-size:24px;color:var(--mut);padding:0 4px}
+.k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:10px 0 4px;font-weight:700}
+#sh ul{margin:0;padding-left:18px;font-size:13px}
+.m{padding:10px 14px;border-radius:12px;max-width:95%;white-space:pre-wrap;margin-top:8px;font-size:14px;line-height:1.55;border:1px solid transparent}
+.m b{color:#fff;font-weight:700}
+.m ul, .m ol{padding-left:18px;margin:6px 0}
+.m li{margin-bottom:3px}
+.me{margin-left:auto;background:var(--acc);color:#000;border-bottom-right-radius:4px}
+.ai{background:#10151d;border-color:var(--line);border-bottom-left-radius:4px}
+.sys{background:#1e242f;color:#a1aab8;font-size:12px;text-align:center;max-width:100%;border-radius:8px;margin:8px auto;padding:8px;border:1px dashed #333}
+.row{display:flex;gap:8px;margin-top:10px;position:sticky;bottom:0;background:var(--card);padding-top:8px;padding-bottom:4px;z-index:2}
+textarea{flex:1;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px;resize:none;height:48px;max-height:120px}
+input[type="text"], input[type="number"]{width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin-bottom:8px;font:inherit}
+.go{background:var(--acc);color:#000;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.go:disabled{opacity:.5;cursor:not-allowed}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{background:#1e242f;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px;color:#cbd5e1;cursor:pointer;transition:.2s;font-weight:600}
+.tag:hover{background:var(--acc);color:#000;border-color:var(--acc)}
+.tool-box{background:#141a24;border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:12px;box-shadow:0 4px 15px #0005}
+.tool-box h4{margin:0 0 10px 0;font-size:14px;color:var(--acc);display:flex;align-items:center;gap:6px}
+.tool-box button{background:var(--acc);color:#000;font-weight:bold;border:none;border-radius:8px;padding:10px;width:100%;cursor:pointer;margin-top:4px}
+.copy-btn{background:none;border:none;color:var(--mut);font-size:11px;margin-top:8px;cursor:pointer;text-decoration:underline;display:inline-block}
+.clear-btn{background:none;border:1px solid var(--line);color:var(--mut);font-size:11px;padding:4px 8px;border-radius:6px;cursor:pointer;margin-left:auto}
+.clear-btn:hover{border-color:var(--red);color:var(--red)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.status-ok{color:var(--green);font-size:12px;margin-top:8px;display:block}
+.status-err{color:var(--red);font-size:12px;margin-top:8px;display:block}
+.typing::after{content:"▋";animation:blink 1s infinite;margin-left:2px;color:var(--acc)}
+@keyframes blink{50%{opacity:0}}
 </style>
 </head>
 <body>
 <div id="bar"></div>
-<div id="hint">Glisse pour tourner · pince pour zoomer · touche un employé pour le suivre</div>
+<div id="hint">Glisse pour tourner · pince pour zoomer · touche un employé</div>
 <aside id="sh"></aside>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (()=>{
-if(!window.THREE){document.body.textContent="Le moteur 3D n’a pas pu se charger.";return}
+if(!window.THREE){document.body.textContent="Moteur 3D non chargé.";return}
 const $=s=>document.querySelector(s),TAU=Math.PI*2;
-const R=["Direction et contrôle","Veille Web (sources publiques)","Laboratoire de tests"],RX=[-9.3,0,9.3];
-const TS=["Teste les matchs à venir de ","Donne le résultat le plus probable avec un pourcentage estimé","Indique le scénario qui ferait échouer le pronostic"];
-const ts=(t,x)=>({r:2,t,m:[TS[0]+x,TS[1],TS[2]],g:"Un résultat probable honnête, pas une certitude."});
-const A=[
-{r:0,t:"Directeur — chef d’équipe et superviseur",f:"Docteur en analyse, économie, gestion et finance",m:["Répartit le travail entre les trois salles","Croise les avis et écarte les pronostics fragiles","Rend la décision finale, avec ses raisons"],g:"Décider avec rigueur : savoir refuser un pari fait partie du métier."},
-{r:0,t:"Parieur",f:"Comparaison cote / probabilité",m:["Transforme les analyses en choix de marché","Compare la cote affichée à la probabilité estimée","Tient le bilan réel : 0 pari enregistré"],g:"Chercher un avantage positif sur la durée, mesuré sur les résultats réels."},
-{r:0,t:"Contrôleur du code promo",f:"Lecture des conditions du code",m:["Lit les conditions (mise minimale, délais, marchés exclus)","Signale les pièges avant utilisation","Rappelle qu’un bonus ne justifie jamais un pari"],g:"Que le code serve la personne, jamais l’inverse."},
-{r:1,t:"Traqueur : blessures et compositions",f:"Sites des clubs, ligues, UEFA, médias reconnus",m:["Relève blessés, suspendus, compositions probables","Vérifie chaque info sur deux sources","Date et source pour chaque information"],g:"Rien d’inventé, rien de non vérifié."},
-{r:1,t:"Traqueur : forme et statistiques",f:"Sites statistiques spécialisés",m:["Cinq derniers matchs, domicile / extérieur, xG","Classements, enjeu, fatigue, calendrier","Signale les données manquantes"],g:"Des chiffres fiables et datés."},
-{r:1,t:"Traqueur : cotes et marchés",f:"Site Pariez Cash, actualités publiques",m:["Relève les cotes et l’heure de vérification","Suit les mouvements de cotes","Écarte les rumeurs anonymes et les « tuyaux »"],g:"Des cotes réelles, jamais devinées."},
-ts("Testeur Liga","la Liga"),ts("Testeur Premier League","la Premier League"),ts("Testeur Ligue des champions","la Ligue des champions"),
-{r:2,t:"Testeur modèle de buts",f:"Modèle de Poisson, totaux de buts",m:["Estime les buts attendus de chaque équipe","Calcule scores probables et plus/moins 2,5 buts","Précise quand les données sont insuffisantes"],g:"Des chiffres prudents, jamais gonflés."},
-{r:2,t:"Testeur scénarios",f:"Scénarios favorable, neutre, défavorable",m:["Rejoue chaque match dans trois scénarios","Mesure l’effet d’une absence ou de la fatigue","Dit quand le pronostic ne tient plus"],g:"Voir les failles avant le match."}];
 
-/* ============ STATE + PERSISTANCE ============ */
-let N=["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","",""];
+/* ============ EXPERTS ============ */
+const R=["Direction","Veille","Labo"],RX=[-9.3,0,9.3];
+const TS=["Analyse ","Donne la proba exacte","Indique le scénario noir"];
+const ts=(t,x)=>({r:2,t,m:["Analyse "+x,"Proba exacte","Scénario noir"],g:"Honnête.",sys:`Tu es l'Analyste Expert pour ${x}. Tu maîtrises l'Overround, le CLV, les xG et la fatigue. Sois direct et professionnel.`});
+
+const A=[
+{r:0,t:"Directeur Exécutif",f:"Stratège",m:["Décision finale","Arbitrage","Validation"],sys:"Tu es le Directeur Exécutif. Tu synthétises. Tu ne valides un pari que si l'EV est positif et que l'overround est < 6%. Tu parles avec autorité."},
+{r:0,t:"Expert Value (EV/CLV)",f:"Mathématicien / Trader",m:["Calcule l'EV","Traque le CLV","Kelly"],sys:"Tu es le Parieur Pro. Tu ne jures que par l'Expected Value et la marge (overround). Tu recommandes des mises via Kelly. Tu détestes les paris émotifs.", tools:["kelly","overround"]},
+{r:0,t:"Auditeur Promo",f:"Juriste",m:["Détecte les pièges","Calcule le rollover","Protège le capital"],sys:"Tu es l'Auditeur des conditions promo. Tu calcules les rollovers et vérifies les mises. Ton but est d'empêcher le piège.", tools:["rollover"]},
+{r:1,t:"Scout Terrain",f:"Journaliste",m:["Blessures","Impact tactique","Zéro rumeur"],sys:"Tu es le Scout. Tu ne valides que les infos officielles. Analyse l'impact tactique d'une absence."},
+{r:1,t:"Data Scientist",f:"Statisticien",m:["xG et xGA","Surperformance","Séries"],sys:"Tu es le Data Scientist. Tu ne regardes que les xG. Tu repères les équipes qui gagnent par chance."},
+{r:1,t:"Trader Marché (LDP)",f:"Flux / LDP",m:["Mouvements de cotes","LDP","Alertes"],sys:"Tu es le Trader. Tu surveilles les baisses de cotes suspectes et l'argent intelligent (LDP).", tools:["overround"]},
+ts("Testeur Liga","la Liga"),ts("Testeur Premier League","la Premier League"),ts("Testeur Ligue des champions","la Ligue des champions"),
+{r:2,t:"Modélisateur",f:"Mathématicien",m:["Poisson","Over/Under","Scores"],sys:"Tu es le Mathématicien. Tu utilises la Loi de Poisson. Tu expliques tes calculs simplement.", tools:["poisson"]},
+{r:2,t:"Scénariste (Risques)",f:"Pre-mortem",m:["Scénarios noirs","Résilience","Failles"],sys:"Tu es l'Analyste de risque. Ton rôle est d'imaginer le pire (blessure, carton rouge, terrain). Cherche les failles."}
+];
+
+/* ============ STATE ============ */
+let N=["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","Karim","Sofiane"];
 let REP=null;
+let BANK=parseFloat(localStorage.getItem("bn3_bank")||"10000");
 const H={};
+let API_KEY=localStorage.getItem("bn3_api_key")||"";
+let API_MODEL=localStorage.getItem("bn3_api_model")||"google/gemini-2.0-flash-exp:free";
+
 try{const s=JSON.parse(localStorage.getItem("bn3")||"null");if(Array.isArray(s)&&s.length===11)N=s;}catch(e){}
 try{const r=JSON.parse(localStorage.getItem("bn3_infos")||"null");if(r&&typeof r==="object")REP=r;}catch(e){}
 try{const c=JSON.parse(localStorage.getItem("bn3_chat")||"null");if(c&&typeof c==="object")Object.assign(H,c);}catch(e){}
+
 const nm=i=>N[i]||"À nommer";
 function saveNames(){try{localStorage.setItem("bn3",JSON.stringify(N));}catch(e){}}
 function saveInfos(){try{localStorage.setItem("bn3_infos",JSON.stringify(REP));}catch(e){}}
-function saveChat(){try{const t={};Object.keys(H).forEach(k=>{t[k]=H[k].slice(-20);});localStorage.setItem("bn3_chat",JSON.stringify(t));}catch(e){}}
+function saveChat(){try{const t={};Object.keys(H).forEach(k=>{t[k]=H[k].slice(-15);});localStorage.setItem("bn3_chat",JSON.stringify(t));}catch(e){}}
+function saveApi(){try{localStorage.setItem("bn3_api_key",API_KEY);localStorage.setItem("bn3_api_model",API_MODEL);}catch(e){}}
+function saveBank(){try{localStorage.setItem("bn3_bank",BANK);}catch(e){}}
 
-/* ---------- scène ---------- */
+/* ---------- SCÈNE 3D (Trading) ---------- */
 const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));ren.shadowMap.enabled=true;ren.shadowMap.type=THREE.PCFSoftShadowMap;
 document.body.prepend(ren.domElement);const cv=ren.domElement;
-const sc=new THREE.Scene(),SKY=0xa9cbe8;sc.background=new THREE.Color(SKY);sc.fog=new THREE.Fog(SKY,50,110);
-const cam=new THREE.PerspectiveCamera(48,1,.1,200);
-sc.add(new THREE.HemisphereLight(0xffffff,0x8a7a68,.8));
-const sun=new THREE.DirectionalLight(0xfff0d8,.9);sun.position.set(8,20,14);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-22,right:22,top:14,bottom:-14,near:1,far:60});sc.add(sun);
-const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.7,metalness:.05},o||{}));
+const sc=new THREE.Scene(),SKY=0x0a0d14;sc.background=new THREE.Color(SKY);sc.fog=new THREE.Fog(SKY,30,90);
+const cam=new THREE.PerspectiveCamera(45,1,.1,200);
+sc.add(new THREE.HemisphereLight(0xffffff,0x333333,.6));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(5,20,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-22,right:22,top:14,bottom:-14,near:1,far:60});sc.add(sun);
+RX.forEach((x,i)=>{const l=new THREE.PointLight([0xfb923c,0x38bdf8,0x8b5cf6][i],1.5,15);l.position.set(x,4,0);sc.add(l)});
+
+const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:.2},o||{}));
 function bx(w,h,d,c,x,y,z,o,p){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c,o));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;(p||sc).add(m);return m}
 function cyl(r,h,c,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,20),M(c));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;sc.add(m);return m}
 function ball(r,c,x,y,z,p){const m=new THREE.Mesh(new THREE.SphereGeometry(r,16,12),M(c));m.position.set(x,y,z);m.castShadow=true;(p||sc).add(m);return m}
-function wood(){const c=document.createElement("canvas");c.width=c.height=512;const g=c.getContext("2d");for(let i=0;i<16;i++){g.fillStyle=`hsl(28,${35+Math.random()*10}%,${40+Math.random()*12}%)`;g.fillRect(0,i*32,512,31)}for(let i=0;i<500;i++){g.fillStyle="rgba(60,30,10,.09)";g.fillRect(Math.random()*512,Math.random()*512,40+Math.random()*70,1)}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(7,3);t.anisotropy=4;return t}
-const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11),M(0xffffff,{map:wood(),roughness:.55}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
-const ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),M(0x6f8f6a));ground.rotation.x=-Math.PI/2;ground.position.y=-.05;ground.receiveShadow=true;sc.add(ground);
-const RC=[0xc2410c,0x0e7490,0x7c3aed];
-RX.forEach((x,i)=>{const r=new THREE.Mesh(new THREE.PlaneGeometry(6.5,4.2),M(RC[i],{roughness:.95}));r.rotation.x=-Math.PI/2;r.position.set(x,.01,i==0?2.5:i==1?2.2:2.6);r.receiveShadow=true;sc.add(r)});
-bx(29,4.6,.3,0xe9e1d1,0,2.3,-5.3);bx(.3,4.6,10.8,0xe9e1d1,-14.6,2.3,0);bx(.3,4.6,10.8,0xe9e1d1,14.6,2.3,0);bx(29,.15,.35,0x4b3a2a,0,.07,-5.2);
-[-4.6,4.6].forEach(x=>{bx(.08,3.2,10.5,0x9fd0ff,x,1.6,0,{transparent:true,opacity:.2,roughness:.1});bx(.12,3.4,.12,0x333b47,x,1.7,-5);bx(.12,3.4,.12,0x333b47,x,1.7,5)});
-[0,9.3].forEach(c=>[-2.6,2.6].forEach(o=>{bx(2.8,2.1,.1,0xf5f5f5,c+o,2.5,-5.1);const w=new THREE.Mesh(new THREE.PlaneGeometry(2.5,1.8),new THREE.MeshBasicMaterial({color:0xcfe8ff}));w.position.set(c+o,2.5,-5.03);sc.add(w)}));
-function plate(t,x,c){const k=document.createElement("canvas");k.width=512;k.height=96;const g=k.getContext("2d");g.fillStyle="#1b222c";g.fillRect(0,0,512,96);g.fillStyle=c;g.fillRect(0,86,512,10);g.fillStyle="#fff";g.font="bold 34px system-ui";g.textAlign="center";g.fillText(t,256,58);const m=new THREE.Mesh(new THREE.PlaneGeometry(4.6,.86),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(k)}));m.position.set(x,4.0,-5.1);sc.add(m)}
-plate(R[0],RX[0],"#c2410c");plate("Veille Web",RX[1],"#0e7490");plate(R[2],RX[2],"#7c3aed");
 
-/* écran INFOS DU JOUR */
+// Sol style Bourse
+const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11),M(0x11161d,{roughness:.4,metalness:.6}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),M(0x0a0d14));ground.rotation.x=-Math.PI/2;ground.position.y=-.05;ground.receiveShadow=true;sc.add(ground);
+const RC=[0x331a0f,0x0f2533,0x1a0f33];
+RX.forEach((x,i)=>{const r=new THREE.Mesh(new THREE.PlaneGeometry(6.5,4.2),M(RC[i],{roughness:.9}));r.rotation.x=-Math.PI/2;r.position.set(x,.01,i==0?2.5:i==1?2.2:2.6);r.receiveShadow=true;sc.add(r)});
+
+// Murs
+bx(29,4.6,.3,0x0f141b,0,2.3,-5.3);bx(.3,4.6,10.8,0x0f141b,-14.6,2.3,0);bx(.3,4.6,10.8,0x0f141b,14.6,2.3,0);bx(29,.15,.35,0x222,0,.07,-5.2);
+[-4.6,4.6].forEach(x=>{bx(.08,3.2,10.5,0x38bdf8,x,1.6,0,{transparent:true,opacity:.1,roughness:.1});bx(.12,3.4,.12,0x111,x,1.7,-5);bx(.12,3.4,.12,0x111,x,1.7,5)});
+
+// Écran géant
 const sk=document.createElement("canvas");sk.width=1024;sk.height=420;const sg=sk.getContext("2d"),stex=new THREE.CanvasTexture(sk);
-const scr=new THREE.Mesh(new THREE.PlaneGeometry(6.6,2.7),new THREE.MeshBasicMaterial({map:stex}));scr.position.set(RX[0],2.4,-5.12);sc.add(scr);bx(6.8,2.9,.08,0x111111,RX[0],2.4,-5.18);
+const scr=new THREE.Mesh(new THREE.PlaneGeometry(6.6,2.7),new THREE.MeshBasicMaterial({map:stex}));scr.position.set(RX[0],2.4,-5.12);sc.add(scr);bx(6.8,2.9,.08,0x000000,RX[0],2.4,-5.18);
 function drawScr(){
-  sg.fillStyle="#0b1626";sg.fillRect(0,0,1024,420);
-  sg.fillStyle="#fb923c";sg.font="bold 44px system-ui";sg.fillText("INFOS DU JOUR",36,60);
-  sg.fillStyle="#9fb3c8";sg.font="26px system-ui";
-  sg.fillText(REP&&REP.date?REP.date+" · heure du Tchad":"En attente du rapport…",36,98);
-  sg.fillStyle="#fff";sg.font="28px system-ui";
-  const lines=(REP&&REP.lines&&REP.lines.length)?REP.lines:["Ouvre « 📋 INFOS DU JOUR »","pour saisir le programme du jour."];
-  lines.slice(0,7).forEach((l,i)=>sg.fillText(String(l).slice(0,58),36,150+i*38));
+  sg.fillStyle="#0a0d14";sg.fillRect(0,0,1024,420);
+  sg.fillStyle="#fb923c";sg.font="bold 44px monospace";sg.fillText("TRADING DESK",36,60);
+  sg.fillStyle="#4ade80";sg.font="26px monospace";
+  sg.fillText(REP&&REP.match? "LIVE: "+REP.match : "En attente des données...",36,98);
+  if(REP&&REP.match){
+    sg.fillStyle="#fff";sg.font="28px monospace";
+    sg.fillText(`1: ${REP.c1||'-'} | X: ${REP.cx||'-'} | 2: ${REP.c2||'-'}`,36,150);
+    sg.fillStyle="#fb923c";sg.fillText(`Overround estimé: ${calcOverround(REP.c1,REP.cx,REP.c2).over.toFixed(1)}%`,36,200);
+    sg.fillStyle="#aaa";sg.font="22px monospace";sg.fillText(`Note: ${REP.note||'Aucune'}`,36,250);
+  } else {
+    sg.fillStyle="#666";sg.font="26px monospace";sg.fillText("Saisir les données dans INFOS DU JOUR",36,150);
+  }
   stex.needsUpdate=true;
 }
 drawScr();
 
-/* mobilier */
+// Bureaux Trading (Double écran)
 const scrs=[];
-function desk(x,z){bx(1.8,.08,.9,0x8b5e3c,x,.76,z);bx(.06,.72,.8,0x6b4a30,x-.82,.38,z);bx(.06,.72,.8,0x6b4a30,x+.82,.38,z);bx(.1,.2,.1,0x222222,x,.9,z-.22);bx(.82,.5,.05,0x0d0d0d,x,1.2,z-.24);const s=new THREE.Mesh(new THREE.PlaneGeometry(.74,.42),new THREE.MeshBasicMaterial({color:0x5cc8ff}));s.position.set(x,1.2,z-.21);sc.add(s);scrs.push(s);bx(.5,.03,.18,0x222222,x,.82,z+.12);
-bx(.55,.07,.55,0x2b2f38,x,.45,z+.9);bx(.55,.6,.07,0x2b2f38,x,.82,z+1.17);bx(.08,.4,.08,0x555,x,.22,z+.9)}
-function plant(x,z){cyl(.28,.5,0x9a5b3a,x,.25,z);ball(.4,0x2f7d3b,x,.85,z);ball(.3,0x3a9448,x+.12,1.15,z)}
-function board(x,z){bx(2.6,1.5,.06,0xffffff,x,1.5,z);bx(.06,1.4,.06,0x555,x-1.1,.7,z+.05);bx(.06,1.4,.06,0x555,x+1.1,.7,z+.05);bx(2.0,.04,.01,0x2563eb,x,1.7,z+.04);bx(1.5,.04,.01,0xdc2626,x,1.4,z+.04)}
-function coffee(x,z){bx(.9,.9,.6,0x333b47,x,.45,z);bx(.5,.5,.4,0x1d4ed8,x,1.15,z)}
+function desk(x,z){
+  bx(2.2,.08,1.0,0x1a1f28,x,.76,z); // Plateau
+  bx(.06,.72,.8,0x111,x-.9,.38,z);bx(.06,.72,.8,0x111,x+.9,.38,z); // Pieds
+  // Double écran
+  bx(.9,.55,.05,0x000,x-.4,1.2,z-.24); 
+  const s1=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x1a3a3a}));s1.position.set(x-.4,1.2,z-.21);sc.add(s1);scrs.push(s1);
+  bx(.9,.55,.05,0x000,x+.4,1.2,z-.24);
+  const s2=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x2a1a1a}));s2.position.set(x+.4,1.2,z-.21);sc.add(s2);scrs.push(s2);
+  bx(.6,.03,.2,0x000,x,.82,z+.15); // Clavier
+  // Chaise
+  bx(.55,.07,.55,0x111,x,.45,z+.9);bx(.55,.6,.07,0x111,x,.82,z+1.17);bx(.08,.4,.08,0x333,x,.22,z+.9);
+}
+
 const D=[[-11.8,-2.6],[-9.3,-2.6],[-6.8,-2.6],[-2.5,-2.6],[0,-2.6],[2.5,-2.6],[6.8,-2.6],[9.3,-2.6],[11.8,-2.6],[8.05,.9],[10.55,.9]];
 D.forEach(d=>desk(d[0],d[1]));
-cyl(1.25,.08,0xcbb48a,RX[0],.76,2.7);cyl(.12,.7,0x444444,RX[0],.38,2.7);
-plant(-13.6,-4.2);plant(-4.9,3.9);plant(4.9,-4.2);plant(13.6,3.9);board(-3.4,-4.6);board(13.2,-4.6);coffee(3.6,-4.5);
-const SP=[[[-11,2.7],[-7.6,2.7],[-9.3,4.1]],[[-3.4,-3.6],[3.4,-3.6],[0,2.5]],[[13.2,-3.6],[6,3.5],[11,3.4]]];
 
-/* personnages */
-const SKN=[0x3b2416,0x5a3825,0x7a4a2e,0x9b6a45,0xc58f66],SHI=[0x2f6f8f,0xb4533a,0x4a7c59,0x8a6fb0,0xcfa13a,0x5b6b7a,0x3d5a98,0xa3405a];
+// Personnages (Style Trader)
+const SKN=[0x3b2416,0x5a3825,0x7a4a2e,0x9b6a45,0xc58f66],SHI=[0x111111,0x1a1a2e,0x0f2a3f,0x1f1a1a];
 function limb(w,h,d,c,x,y,p){const g=new THREE.Group();g.position.set(x,y,0);const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c));m.position.y=-h/2;m.castShadow=true;g.add(m);p.add(g);return g}
 function person(i){
-  const g=new THREE.Group(),sk=SKN[(i*2+1)%5],boss=i==0,sh=boss?0x1c2742:SHI[i%8];
-  const L=limb(.18,.8,.2,boss?0x15151d:0x2c3445,-.12,.8,g),Rr=limb(.18,.8,.2,boss?0x15151d:0x2c3445,.12,.8,g);
-  bx(.5,.62,.28,sh,0,1.11,0,null,g);const AL=limb(.14,.56,.14,sh,-.33,1.4,g),AR=limb(.14,.56,.14,sh,.33,1.4,g);
+  const g=new THREE.Group(),sk=SKN[i%5],boss=i==0,sh=boss?0x0a0a0a:SHI[i%4];
+  const L=limb(.18,.8,.2,0x1a1f28,-.12,.8,g),Rr=limb(.18,.8,.2,0x1a1f28,.12,.8,g);
+  bx(.5,.62,.28,sh,0,1.11,0,null,g);
+  const AL=limb(.14,.56,.14,sh,-.33,1.4,g),AR=limb(.14,.56,.14,sh,.33,1.4,g);
   bx(.13,.1,.13,sk,0,-.6,0,null,AL);bx(.13,.1,.13,sk,0,-.6,0,null,AR);
   bx(.1,.12,.1,sk,0,1.46,0,null,g);ball(.19,sk,0,1.66,0,g);
-  const h=new THREE.Mesh(new THREE.SphereGeometry(.205,16,10,0,TAU,0,Math.PI*.55),M(0x121212));h.position.set(0,1.69,-.01);g.add(h);
-  ball(.025,0x111111,-.07,1.68,.18,g);ball(.025,0x111111,.07,1.68,.18,g);
-  if(boss||i%3==1)bx(.2,.1,.06,0x181818,0,1.44,.15,null,g);
-  if(boss)bx(.07,.3,.03,0xb91c1c,0,1.15,.15,null,g);
+  // Cheveux
+  const h=new THREE.Mesh(new THREE.SphereGeometry(.205,16,10,0,TAU,0,Math.PI*.55),M(0x111));h.position.set(0,1.69,-.01);g.add(h);
+  // Cravate (pour les traders)
+  if(i<6) bx(.06,.3,.02,[0xff0000,0x0000ff,0xffd700,0x00ff00][i%4],0,1.2,.15,null,g);
+  // Casque audio (pour certains)
+  if(i%3==0){
+    const band=new THREE.Mesh(new THREE.TorusGeometry(.2,.02,8,20,Math.PI),M(0x222));band.rotation.x=Math.PI/2;band.position.y=1.85;g.add(band);
+    [-.2,.2].forEach(x=>{const cup=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.07,16),M(0x222));cup.rotation.z=Math.PI/2;cup.position.set(x,1.75,0);g.add(cup)});
+  }
   g.traverse(o=>{o.userData.i=i});return{g,L,R:Rr,AL,AR};
 }
 const AG=A.map((a,i)=>{
   const p=person(i),d=D[i];
   p.g.position.set(d[0],-.33,d[1]+.85);p.g.rotation.y=Math.PI;sc.add(p.g);
   const k=document.createElement("canvas");k.width=256;k.height=64;
-  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k),depthTest:false,transparent:true}));
-  sp.scale.set(1.7,.42,1);sp.position.y=2.15;sp.renderOrder=9;p.g.add(sp);
-  Object.assign(p,{i,d,k,sp,st:"sit",t:6+Math.random()*10,q:[],ph:Math.random()*6,baseY:Math.PI});
-  label(p);return p;
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k),depthTest:false,transparent:true}));sp.scale.set(1.7,.42,1);sp.position.y=2.15;sp.renderOrder=9;p.g.add(sp);
+  Object.assign(p,{i,d,k,sp,st:"sit",t:6+Math.random()*10,q:[],ph:Math.random()*6,baseY:Math.PI});label(p);return p;
 });
-function label(p){const g=p.k.getContext("2d");g.clearRect(0,0,256,64);g.fillStyle="rgba(15,20,28,.8)";g.fillRect(6,10,244,44);g.fillStyle="#fff";g.font="bold 26px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,42);p.sp.material.map.needsUpdate=true}
+function label(p){const g=p.k.getContext("2d");g.clearRect(0,0,256,64);g.fillStyle="rgba(10,14,20,.85)";g.fillRect(6,10,244,44);g.fillStyle="#fff";g.font="bold 20px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,38);p.sp.material.map.needsUpdate=true}
 function sitPose(p){p.g.position.y=-.33;p.L.rotation.x=p.R.rotation.x=-1.45}
 function standPose(p){p.g.position.y=0;p.L.rotation.x=p.R.rotation.x=0;p.AL.rotation.x=p.AR.rotation.x=0}
 AG.forEach(p=>{sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1});
 function go(p,x,z){p.q.push([x,z])}
 function tick(p,dt,T){
   const g=p.g;
-  if(p.st=="sit"){
-    p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;
-    p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1;
-    p.t-=dt;
-    if(p.t<0){
-      standPose(p);
-      const s=SP[A[p.i].r];
-      const w=s[Math.floor(Math.random()*s.length)];
-      go(p,p.d[0],p.d[1]+1.7);go(p,w[0]+(Math.random()-.5)*.6,w[1]);
-      p.st="walk";p.next="idle";
-    }
-    return;
-  }
-  if(p.st=="idle"){
-    p.t-=dt;
-    g.rotation.y=p.baseY+Math.sin(T*.8+p.ph)*.25;
-    p.AL.rotation.x=Math.sin(T*2+p.ph)*.12;
-    p.AR.rotation.x=-.5+Math.sin(T*3)*.2;
-    if(p.t<0){
-      p.AR.rotation.x=0;
-      go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0],p.d[1]+.85);
-      p.st="walk";p.next="sit";
-    }
-    return;
-  }
-  const q=p.q[0];
-  if(!q){
-    if(p.next=="sit"){
-      g.rotation.y=Math.PI;sitPose(p);
-      p.AL.rotation.x=p.AR.rotation.x=-1;
-      p.st="sit";p.t=8+Math.random()*14;
-    }else{
-      p.baseY=g.rotation.y;
-      p.st="idle";p.t=3+Math.random()*4;
-    }
-    p.L.rotation.x=p.R.rotation.x=0;
-    return;
-  }
-  const dx=q[0]-g.position.x,dz=q[1]-g.position.z,d=Math.hypot(dx,dz);
-  if(d<.08){p.q.shift();return;}
-  const a=Math.atan2(dx,dz);let df=a-g.rotation.y;df=Math.atan2(Math.sin(df),Math.cos(df));
-  g.rotation.y+=df*Math.min(1,dt*9);
-  const sp=Math.min(d,1.35*dt);
-  g.position.x+=dx/d*sp;g.position.z+=dz/d*sp;
-  p.ph+=dt*9;const s=Math.sin(p.ph)*.7;
+  if(p.st=="sit"){p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1;p.t-=dt;
+    if(p.t<0){standPose(p);go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0]+(Math.random()-.5),p.d[1]+2);p.st="walk";p.next="idle"}return}
+  if(p.st=="idle"){p.t-=dt;g.rotation.y=p.baseY+Math.sin(T*.8+p.ph)*.25;
+    if(p.t<0){go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0],p.d[1]+.85);p.st="walk";p.next="sit"}return}
+  const q=p.q[0];if(!q){if(p.next=="sit"){g.rotation.y=Math.PI;sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1;p.st="sit";p.t=8+Math.random()*14}else{p.baseY=g.rotation.y;p.st="idle";p.t=3+Math.random()*4}p.L.rotation.x=p.R.rotation.x=0;return}
+  const dx=q[0]-g.position.x,dz=q[1]-g.position.z,d=Math.hypot(dx,dz);if(d<.08){p.q.shift();return}
+  const a=Math.atan2(dx,dz);let df=a-g.rotation.y;df=Math.atan2(Math.sin(df),Math.cos(df));g.rotation.y+=df*Math.min(1,dt*9);
+  const sp=Math.min(d,1.35*dt);g.position.x+=dx/d*sp;g.position.z+=dz/d*sp;p.ph+=dt*9;const s=Math.sin(p.ph)*.7;
   p.L.rotation.x=s;p.R.rotation.x=-s;p.AL.rotation.x=-s*.7;p.AR.rotation.x=s*.7;
 }
 
-/* caméra */
-let th=0,ph=.95,di=40,ddi=40,tg=new THREE.Vector3(0,1,0),ttg=tg.clone(),fol=-1;
-const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?62:32,ROOM=()=>portrait()?22:17;
-function view(k){
-  fol=-1;th=0;ph=.95;
-  if(k<0){ttg.set(0,1,0);ddi=ALL();}
-  else{ttg.set(RX[k],1,0);ddi=ROOM();}
-}
+/* Caméra */
+let th=0,ph=.85,di=40,ddi=40,tg=new THREE.Vector3(0,1,0),ttg=tg.clone(),fol=-1;
+const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?70:38,ROOM=()=>portrait()?24:18;
+function view(k){fol=-1;th=0;ph=.85;if(k<0){ttg.set(0,1,0);ddi=ALL()}else{ttg.set(RX[k],1,0);ddi=ROOM()}}
 function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
 addEventListener("resize",()=>{resize();if(fol<0)ddi=ALL()});resize();ddi=di=ALL();
 const P=new Map();let dn=null,pd=0;
 cv.addEventListener("pointerdown",e=>{cv.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);dn=[e.clientX,e.clientY,Date.now()];pd=0});
 cv.addEventListener("pointermove",e=>{const o=P.get(e.pointerId);if(!o)return;if(P.size==1){th-=(e.clientX-o[0])*.006;ph=Math.max(.2,Math.min(1.45,ph-(e.clientY-o[1])*.005))}P.set(e.pointerId,[e.clientX,e.clientY]);if(P.size==2){const[a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)ddi=Math.max(5,Math.min(80,ddi*pd/d));pd=d}});
 cv.addEventListener("pointerup",e=>{P.delete(e.pointerId);pd=0;if(dn&&Math.hypot(e.clientX-dn[0],e.clientY-dn[1])<7&&Date.now()-dn[2]<450)pick(e);dn=null});
-cv.addEventListener("pointercancel",e=>{P.delete(e.pointerId);pd=0});
 cv.addEventListener("wheel",e=>{ddi=Math.max(5,Math.min(80,ddi*(1+e.deltaY*.001)));e.preventDefault()},{passive:false});
 const rc=new THREE.Raycaster();
-function pick(e){
-  rc.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
-  const hits=rc.intersectObjects(AG.map(p=>p.g),true);
-  const hit=hits.find(h=>h.object.userData.i!==undefined);
-  if(hit)open(hit.object.userData.i);
-}
+function pick(e){rc.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);const hits=rc.intersectObjects(AG.map(p=>p.g),true);const hit=hits.find(h=>h.object.userData.i!==undefined);if(hit)open(hit.object.userData.i)}
 const clk=new THREE.Clock();
-(function loop(){
-  requestAnimationFrame(loop);
-  const dt=Math.min(.05,clk.getDelta()),T=clk.elapsedTime;
-  AG.forEach(p=>tick(p,dt,T));
-  if(fol>=0){const g=AG[fol].g;ttg.set(g.position.x,1.2,g.position.z)}
-  tg.lerp(ttg,.07);di+=(ddi-di)*.07;
-  cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));
-  cam.lookAt(tg);
-  scrs.forEach((s,k)=>s.material.color.setHex((Math.sin(T*1.3+k)>.97)?0xffffff:0x5cc8ff));
-  ren.render(sc,cam);
-})();
+(function loop(){requestAnimationFrame(loop);const dt=Math.min(.05,clk.getDelta()),T=clk.elapsedTime;AG.forEach(p=>tick(p,dt,T));
+if(fol>=0){const g=AG[fol].g;ttg.set(g.position.x,1.2,g.position.z)}tg.lerp(ttg,.07);di+=(ddi-di)*.07;
+cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));cam.lookAt(tg);
+scrs.forEach((s,k)=>s.material.color.setHex((Math.sin(T*2+k)>.95)?0x00ff00:0x111111));ren.render(sc,cam)})();
 
 /* ============ INTERFACE ============ */
 const bar=$("#bar"),sh=$("#sh");
-[["← Site",()=>{location.href="index.html"}],["Tout",()=>view(-1)],["Direction",()=>view(0)],["Veille",()=>view(1)],["Labo",()=>view(2)],["📋 INFOS DU JOUR",()=>open(-2),1],["💬 Équipe",()=>open(-1)]].forEach(b=>{
+[["← Site",()=>{location.href="index.html"}],["Tout",()=>view(-1)],["Direction",()=>view(0)],["Veille",()=>view(1)],["Labo",()=>view(2)],["📋 INFOS",()=>open(-2),1],["💬 Conseil",()=>open(-1)],["⚙️ API",()=>open(-3)]].forEach(b=>{
   const e=document.createElement("button");e.textContent=b[0];if(b[2])e.className="h";e.onclick=b[1];bar.append(e);
 });
+// Bouton Bankroll
+const bankBtn=document.createElement("button");bankBtn.className="bankroll-btn";bankBtn.onclick=()=>open(-4);
+bar.append(bankBtn);
+function updateBankBtn(){bankBtn.innerHTML=`💰 ${BANK.toLocaleString()} FCFA`}
+updateBankBtn();
+
 function div(c,t,p){const e=document.createElement("div");if(c)e.className=c;if(t!==undefined)e.textContent=t;(p||sh).append(e);return e}
 function close(){sh.className="";fol=-1}
+
+function formatText(txt){
+  if(!txt) return "";
+  let html = txt.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  html = html.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  html = html.replace(/`([^`]+)`/g, "<code style='background:#222;padding:1px 4px;border-radius:3px;font-size:12px;color:#fb923c'>$1</code>");
+  const lines = html.split("\n");
+  let inList = false, inOl = false, result = [];
+  for(let line of lines){
+    const bullet = line.match(/^[\s]*[-•*]\s+(.*)$/);
+    const numbered = line.match(/^[\s]*(\d+)[.)]\s+(.*)$/);
+    if(bullet){ if(!inList){ result.push("<ul>"); inList=true; inOl=false; } result.push("<li>"+bullet[1]+"</li>"); }
+    else if(numbered){ if(!inOl){ if(inList) result.push("</ul>"); result.push("<ol>"); inOl=true; inList=false; } result.push("<li>"+numbered[2]+"</li>"); }
+    else { if(inList){ result.push("</ul>"); inList=false; } if(inOl){ result.push("</ol>"); inOl=false; } result.push(line); }
+  }
+  if(inList) result.push("</ul>");
+  if(inOl) result.push("</ol>");
+  return result.join("\n").replace(/\n/g, "<br>");
+}
+
 function open(i){
   sh.className="on";sh.textContent="";H[i]=H[i]||[];
-  if(i<0){fol=-1;th=0;ph=.95;ddi=ALL();}
+  if(i<0){fol=-1;th=0;ph=.85;ddi=ALL()}
   const top=div("hd");
   if(i>=0){
     fol=i;ddi=8;th=Math.PI*.1;
     const w=div("",undefined,top);w.style.flex="1";
-    const inp=document.createElement("input");inp.maxLength=30;inp.value=N[i]||"";inp.placeholder="Donne-lui un nom";inp.setAttribute("aria-label","Nom");
+    const inp=document.createElement("input");inp.maxLength=30;inp.value=N[i]||"";inp.placeholder="Nom";
     inp.oninput=()=>{N[i]=inp.value.trim();saveNames();label(AG[i])};
     w.append(inp);div("k",A[i].t,w);
-  }else{
-    const t=div("",i==-1?"💬 Toute l’équipe":"📋 INFOS DU JOUR",top);
-    t.style.cssText="font-weight:700;font-size:17px;flex:1";
+  } else {
+    let title = i==-1?"🏛️ Conseil de Direction":i==-2?"📋 INFOS DU JOUR":i==-3?"⚙️ Configuration API":"💰 Gestion Bankroll";
+    const t=div("",title,top);t.style.cssText="font-weight:800;font-size:17px;flex:1;color:var(--acc)";
   }
   const x=document.createElement("button");x.className="x";x.textContent="✕";x.onclick=close;top.append(x);
+  
   if(i>=0){
-    const a=A[i];div("k","Formation / profil");div("",a.f);
-    div("k","Missions");const u=document.createElement("ul");
-    a.m.forEach(t=>{const l=document.createElement("li");l.textContent=t;u.append(l)});sh.append(u);
-    div("k","Objectif");div("",a.g);
+    const a=A[i];div("k","Spécialité");div("",a.f);
+    div("k","Missions");const u=document.createElement("ul");a.m.forEach(t=>{const l=document.createElement("li");l.textContent=t;u.append(l)});sh.append(u);
   }
-  if(i==-2){renderEditor();return;}
-  div("k","Discussion");
-  const log=div("");H[i].forEach(m=>div("m "+m[0],m[1],log));
-  const row=div("row");const ta=document.createElement("textarea");ta.rows=2;ta.placeholder="Ta question…";
+  
+  if(i==-2){renderEditor();return}
+  if(i==-3){renderApiConfig();return}
+  if(i==-4){renderBankroll();return}
+
+  const discHeader = div("k");discHeader.style.display="flex";discHeader.style.alignItems="center";discHeader.textContent="Discussion";
+  if(H[i] && H[i].length){
+    const clr=document.createElement("button");clr.className="clear-btn";clr.textContent="Effacer";
+    clr.onclick=()=>{ if(confirm("Effacer l'historique ?")){ H[i]=[];saveChat();open(i); } };
+    discHeader.append(clr);
+  }
+  sh.append(discHeader);
+
+  const log=div("");
+  H[i].forEach(m=>{ const msgDiv = div("m "+m[0],"",log); msgDiv.innerHTML=formatText(m[1]); if(m[0]==="ai") addCopyBtn(msgDiv, m[1]); });
+  
+  if(i>=0 && A[i].tools){
+    const toolRow=div("tags");
+    if(A[i].tools.includes("kelly")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Kelly";b.onclick=()=>showKellyTool(log); toolRow.append(b); }
+    if(A[i].tools.includes("poisson")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Poisson";b.onclick=()=>showPoissonTool(log); toolRow.append(b); }
+    if(A[i].tools.includes("rollover")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Rollover";b.onclick=()=>showRolloverTool(log); toolRow.append(b); }
+    if(A[i].tools.includes("overround")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Overround";b.onclick=()=>showOverroundTool(log); toolRow.append(b); }
+    sh.append(toolRow);
+  }
+
+  if(i>=0){
+    const tags=div("tags");
+    ["Point sur ta spécialité","Ton plus gros doute ?","Conseil pro","Analyse ce match"].forEach(act=>{
+      const t=document.createElement("div");t.className="tag";t.textContent=act;
+      t.onclick=()=>{const ta=document.querySelector("#sh textarea");if(ta){ta.value=act;document.querySelector(".go").click();}};
+      tags.append(t);
+    });
+    sh.append(tags);
+  } else if(i===-1){
+    const tags=div("tags");
+    ["Briefing du matin","Verdict sur un match","Gestion bankroll","Alertes du jour"].forEach(act=>{
+      const t=document.createElement("div");t.className="tag";t.textContent=act;
+      t.onclick=()=>{const ta=document.querySelector("#sh textarea");if(ta){ta.value=act;document.querySelector(".go").click();}};
+      tags.append(t);
+    });
+    sh.append(tags);
+  }
+
+  const row=div("row");
+  const ta=document.createElement("textarea");ta.rows=1;ta.placeholder=API_KEY?"Pose ta question...":"⚙️ Configure ta clé API";
   const b=document.createElement("button");b.className="go";b.textContent="Envoyer";
-  b.onclick=()=>ask(i,ta,log);
-  ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();b.click();}});
+  b.onclick=()=>ask(i,ta,log,b);
+  ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();b.click()}});
   row.append(ta,b);
+  setTimeout(()=>ta.focus(),100);
+  sh.scrollTop = sh.scrollHeight;
 }
+
+/* ============ OUTILS (JS PUR) ============ */
+function showKellyTool(log){
+  const box=document.createElement("div");box.className="m ai tool-box";
+  box.innerHTML=`<h4>🧮 Critère de Kelly (Half-Kelly)</h4>
+  <input type="number" id="k_cote" placeholder="Cote (ex: 2.10)" value="2.10">
+  <input type="number" id="k_prob" placeholder="Proba estimée en % (ex: 55)" value="55">
+  <button onclick="window.calcKelly(this)">Calculer la mise</button>
+  <div id="k_result" style="margin-top:12px;font-weight:bold;color:var(--green);font-size:14px"></div>`;
+  log.append(box); sh.scrollTop=sh.scrollHeight;
+}
+window.calcKelly = function(btn){
+  const cote = parseFloat(btn.parentNode.querySelector('#k_cote').value) || 0;
+  const prob = (parseFloat(btn.parentNode.querySelector('#k_prob').value) || 0) / 100;
+  const b = cote - 1; const q = 1 - prob; const f = (b * prob - q) / b;
+  const res = btn.parentNode.querySelector('#k_result');
+  if(f <= 0 || cote<=1) { res.innerHTML = "❌ <b>Ne pas parier.</b> Expected Value négatif."; return; }
+  const mise = Math.round(BANK * f * 0.5);
+  res.innerHTML = `✅ Mise conseillée : <b>${mise.toLocaleString()} FCFA</b><br><small>Edge: +${(f*100).toFixed(1)}% · Full Kelly: ${Math.round(BANK*f).toLocaleString()}</small>`;
+};
+
+function showPoissonTool(log){
+  const box=document.createElement("div");box.className="m ai tool-box";
+  box.innerHTML=`<h4>🧮 Loi de Poisson</h4>
+  <input type="number" step="0.1" id="p_home" placeholder="xG Domicile (ex: 1.5)" value="1.5">
+  <input type="number" step="0.1" id="p_away" placeholder="xG Extérieur (ex: 1.2)" value="1.2">
+  <button onclick="window.calcPoisson(this)">Calculer</button>
+  <div id="p_result" style="margin-top:12px;font-weight:bold;color:var(--green);font-size:13px;line-height:1.6"></div>`;
+  log.append(box); sh.scrollTop=sh.scrollHeight;
+}
+window.calcPoisson = function(btn){
+  const h = parseFloat(btn.parentNode.querySelector('#p_home').value) || 0;
+  const a = parseFloat(btn.parentNode.querySelector('#p_away').value) || 0;
+  const fact = n => { let r=1; for(let i=2;i<=n;i++) r*=i; return r; };
+  const poisson = (k, lambda) => (Math.pow(lambda, k) * Math.exp(-lambda)) / fact(k);
+  let p1=0, pX=0, p2=0, pOver=0, pUnder=0;
+  for(let i=0; i<=6; i++) for(let j=0; j<=6; j++){
+    const prob = poisson(i,h)*poisson(j,a);
+    if(i>j) p1+=prob; else if(i===j) pX+=prob; else p2+=prob;
+    if(i+j > 2.5) pOver+=prob; else pUnder+=prob;
+  }
+  const res = btn.parentNode.querySelector('#p_result');
+  res.innerHTML = `
+  <b>1X2</b><br>Victoire Domicile : <b>${(p1*100).toFixed(1)}%</b><br>Match Nul : <b>${(pX*100).toFixed(1)}%</b><br>Victoire Extérieur : <b>${(p2*100).toFixed(1)}%</b><br><br>
+  <b>Buts</b><br>Over 2.5 : <b>${(pOver*100).toFixed(1)}%</b> · Under 2.5 : <b>${(pUnder*100).toFixed(1)}%</b>`;
+};
+
+function showRolloverTool(log){
+  const box=document.createElement("div");box.className="m ai tool-box";
+  box.innerHTML=`<h4>🧮 Calculateur Rollover</h4>
+  <input type="number" id="r_bonus" placeholder="Bonus (ex: 5000 FCFA)" value="5000">
+  <input type="number" id="r_roll" placeholder="Rollover (ex: 5)" value="5">
+  <input type="number" id="r_mise" placeholder="Mise par pari (ex: 500)" value="500">
+  <button onclick="window.calcRollover(this)">Calculer l'effort</button>
+  <div id="r_result" style="margin-top:12px;font-weight:bold;color:var(--green);font-size:13px"></div>`;
+  log.append(box); sh.scrollTop=sh.scrollHeight;
+}
+window.calcRollover = function(btn){
+  const bonus = parseFloat(btn.parentNode.querySelector('#r_bonus').value) || 0;
+  const roll = parseFloat(btn.parentNode.querySelector('#r_roll').value) || 0;
+  const mise = parseFloat(btn.parentNode.querySelector('#r_mise').value) || 1;
+  const total = bonus * roll; const nbParis = Math.ceil(total / mise);
+  const res = btn.parentNode.querySelector('#r_result');
+  res.innerHTML = `⚠️ Volume total : <b>${total.toLocaleString()} FCFA</b><br>Soit <b>${nbParis} paris</b> de ${mise} FCFA.<br><small style="color:var(--red)">Risque de perte du capital.</small>`;
+};
+
+function showOverroundTool(log){
+  const box=document.createElement("div");box.className="m ai tool-box";
+  box.innerHTML=`<h4>🧮 Overround (Marge Bookmaker)</h4>
+  <div class="grid-2">
+    <input type="number" step="0.01" id="o_c1" placeholder="Cote 1" value="2.10">
+    <input type="number" step="0.01" id="o_cx" placeholder="Cote X" value="3.40">
+  </div>
+  <input type="number" step="0.01" id="o_c2" placeholder="Cote 2" value="3.50">
+  <button onclick="window.calcOverround2(this)">Calculer la marge</button>
+  <div id="o_result" style="margin-top:12px;font-weight:bold;color:var(--green);font-size:13px;line-height:1.6"></div>`;
+  log.append(box); sh.scrollTop=sh.scrollHeight;
+}
+function calcOverround(c1,cx,c2){
+  if(!c1||!cx||!c2||c1<=1||cx<=1||c2<=1) return {over:0, p1:0, px:0, p2:0};
+  const i1=1/c1, ix=1/cx, i2=1/c2; const sum=i1+ix+i2;
+  return { over:(sum-1)*100, p1:(i1/sum)*100, px:(ix/sum)*100, p2:(i2/sum)*100 };
+}
+window.calcOverround2 = function(btn){
+  const c1=parseFloat(btn.parentNode.querySelector('#o_c1').value)||0;
+  const cx=parseFloat(btn.parentNode.querySelector('#o_cx').value)||0;
+  const c2=parseFloat(btn.parentNode.querySelector('#o_c2').value)||0;
+  const res=btn.parentNode.querySelector('#o_result');
+  const r=calcOverround(c1,cx,c2);
+  if(!r.over && r.over!==0){ res.innerHTML="❌ Cotes invalides."; return; }
+  let q = r.over < 4 ? "🟢 Excellent" : r.over < 6 ? "🟡 Correct" : "🔴 Élevé";
+  res.innerHTML = `<b>Marge : ${r.over.toFixed(2)}%</b> ${q}<br><br>
+  <b>Proba nette :</b><br>1: <b>${r.p1.toFixed(1)}%</b> | X: <b>${r.px.toFixed(1)}%</b> | 2: <b>${r.p2.toFixed(1)}%</b>`;
+};
+
+function addCopyBtn(container, text){
+  const btn=document.createElement("button");btn.className="copy-btn";btn.textContent="📋 Copier";
+  btn.onclick=()=>{ navigator.clipboard.writeText(text).then(()=>{btn.textContent="✓ Copié !";setTimeout(()=>btn.textContent="📋 Copier",2000);}); };
+  container.append(document.createElement("br"), btn);
+}
+
+/* ============ EDITEURS ============ */
 function renderEditor(){
-  const dateInp=document.createElement("input");
-  dateInp.type="text";dateInp.value=(REP&&REP.date)||"";
-  dateInp.placeholder=new Date().toLocaleDateString("fr-FR");
-  div("k","Date du rapport");sh.append(dateInp);
+  div("k","Match (ex: Real Madrid - Barça)");
+  const matchInp=document.createElement("input");matchInp.type="text";matchInp.value=(REP&&REP.match)||"";matchInp.placeholder="Équipe A - Équipe B";
+  sh.append(matchInp);
 
-  const ta=document.createElement("textarea");ta.rows=6;
-  ta.placeholder="Liga : Real - Barça samedi 21h\nPremier : United - Liverpool dimanche 17h\nBlessure : Vinicius out 2 semaines…";
-  ta.value=((REP&&REP.lines)||[]).join("\n");
-  div("k","Lignes (une info par ligne)");sh.append(ta);
+  div("k","Cotes 1X2 (Bookmaker)");
+  const g=document.createElement("div");g.className="grid-2";
+  const c1=document.createElement("input");c1.type="number";c1.step="0.01";c1.value=(REP&&REP.c1)||"";c1.placeholder="Cote 1 (Domicile)";
+  const cx=document.createElement("input");cx.type="number";cx.step="0.01";cx.value=(REP&&REP.cx)||"";cx.placeholder="Cote X (Nul)";
+  const c2=document.createElement("input");c2.type="number";c2.step="0.01";c2.value=(REP&&REP.c2)||"";c2.placeholder="Cote 2 (Extérieur)";c2.style.gridColumn="span 2";
+  g.append(c1,cx,c2);sh.append(g);
 
-  const btn=document.createElement("button");btn.className="go";btn.textContent="Mettre à jour l'écran et le site";
-  btn.style.cssText="margin-top:10px;width:100%";
+  div("k","Note / Blessures / Contexte");
+  const noteInp=document.createElement("input");noteInp.type="text";noteInp.value=(REP&&REP.note)||"";noteInp.placeholder="Ex: Bellingham absent, pluie prévue...";
+  sh.append(noteInp);
+
+  const btn=document.createElement("button");btn.className="go";btn.textContent="Publier sur l'écran de trading";btn.style.cssText="margin-top:15px;width:100%;height:44px";
   btn.onclick=()=>{
-    REP={date:dateInp.value.trim()||new Date().toLocaleDateString("fr-FR"),lines:ta.value.split("\n").map(l=>l.trim()).filter(Boolean)};
-    saveInfos();drawScr();
-    btn.textContent="✓ Publié sur le site et l'écran";
-    setTimeout(()=>btn.textContent="Mettre à jour l'écran et le site",1800);
+    REP={
+      match:matchInp.value.trim(),
+      c1:parseFloat(c1.value)||null,
+      cx:parseFloat(cx.value)||null,
+      c2:parseFloat(c2.value)||null,
+      note:noteInp.value.trim()
+    };
+    saveInfos();drawScr();btn.textContent="✓ Publié !";setTimeout(()=>btn.textContent="Publier sur l'écran de trading",1500);
   };
   sh.append(btn);
-
-  div("k","Info");
-  div("","Ces infos apparaissent sur l'écran du bureau ET dans la section Pronostics de index.html. Elles sont sauvegardées dans ton navigateur.");
 }
 
-/* ============ MOTEUR DE CHAT LOCAL ============ */
-const DISCLAIMER="⚠️ Un pronostic est une probabilité estimée, jamais une certitude. Aucun pari n'est « sûr ».";
-const NO_DATA="Sans données vérifiées dans « 📋 INFOS DU JOUR », je ne peux pas te répondre précisément. C'est la règle du bureau : rien d'inventé.";
-const PER={
-  0:{pred:"Je rends un pronostic seulement si trois maillons sont solides : données vérifiées, modèle probabiliste, comparaison cote/proba. Tant qu'un maillon manque, je refuse de valider.",meth:"Ma méthode : croiser trois sources, dater chaque info, refuser les fragiles. Une info non recoupée ne sert à rien. Une info périmée est pire qu'une absence d'info.",team:"Mon équipe : trois traqueurs (blessures, forme, cotes), quatre testeurs, un parieur, un contrôleur. Chacun livre un avis daté, je synthétise.",code:"Le contrôleur lit les conditions, le parieur tient le bilan. Un code promo ne doit jamais pousser à parier plus.",fallback:"Pose ta question sur un match, un pronostic, un code promo, ou demande-moi comment fonctionne l'équipe."},
-  1:{pred:"Mon critère : probabilité estimée × cote > 1. Si la cote dépasse ce que ma proba implique, c'est un avantage. Sinon, je passe sans regret.",data:"Sans cotes à jour et sans données vérifiées, je ne peux rien comparer. Ajoute les cotes dans « INFOS DU JOUR ».",meth:"Value betting basique : ne miser que si la cote est plus haute que ce que la proba réelle implique.",bilan:"Bilan actuel : 0 pari enregistré. Sans données vérifiées, pas de mise.",fallback:"Demande-moi de comparer une cote à une probabilité."},
-  2:{code:"Avant d'utiliser un code, vérifie : mise minimale, marchés exclus, délais de retrait, conditions de rollover.",meth:"Un code n'est intéressant que si la mise demandée est atteignable dans un délai raisonnable.",pred:"Un code promo ne rend pas un mauvais pari bon. C'est un outil, pas une stratégie.",fallback:"Envoie-moi les conditions d'un code, je te dirai ce qu'il vaut."},
-  3:{data:"Je relève blessés, suspendus et compositions probables. Chaque info doit venir de deux sources indépendantes.",meth:"Sites officiels, ligues, UEFA, médias reconnus. Je date tout.",pred:"Je ne fais pas de pronostic, je fournis la matière.",fallback:"Demande-moi des infos blessures/compos pour un club."},
-  4:{data:"Je regarde les cinq derniers matchs, à domicile et à l'extérieur, plus les xG.",meth:"Forme = tendance pondérée. Attention aux séries gonflées.",pred:"La forme ne prédit pas seule.",fallback:"Demande-moi la forme récente d'une équipe."},
-  5:{data:"Je relève les cotes et l'heure de vérification. Je n'écoute pas les rumeurs anonymes.",meth:"Une cote qui bouge fortement sans info publique = suspect.",pred:"Les cotes disent ce que le marché pense. Pas la vérité.",fallback:"Demande-moi une cote ou un mouvement de cote."},
-  6:{pred:"Pour la Liga, j'estime un résultat probable. Sans données à jour, impossible.",meth:"Score probable + probabilité. Si l'écart-type est trop large, je renonce.",data:"La Liga est technique mais physique en défense.",fallback:"Demande-moi un match de Liga à tester."},
-  7:{pred:"La Premier League est dense : repos entre matchs compte autant que forme.",meth:"Même méthode, avec pondération plus forte sur la fatigue.",data:"Les petites équipes anglaises sont plus solides à domicile.",fallback:"Demande-moi un match de Premier League."},
-  8:{pred:"En Ligue des champions, l'écart entre phases est énorme. Aller ≠ retour.",meth:"Je traite aller et retour différemment. Un 1-0 à l'aller change tout.",data:"L'expérience européenne compte.",fallback:"Demande-moi un match de Ligue des champions."},
-  9:{pred:"Modèle de Poisson : je calcule les buts attendus, puis la distribution. Sans forces à jour, impossible.",meth:"Poisson suppose l'indépendance des buts. Approximation, pas vérité.",data:"Les xG sont plus fiables que les buts marqués.",fallback:"Demande-moi une probabilité de score."},
-  10:{pred:"Je rejoue le match en trois scénarios : favorable, neutre, défavorable.",meth:"Le but n'est pas de prédire, mais de comprendre pourquoi ça peut rater.",data:"Un scénario défavorable est un test de robustesse.",fallback:"Demande-moi de tester un pronostic en trois scénarios."}
-};
-function detect(q){
-  const l=q.toLowerCase();
-  return{
-    pred:/pronostic|prédiction|pari|résultat|probable|chance|gagner|mise|parier/.test(l),
-    data:/cote|classement|bless|xg|stat|forme|composition|effectif|donnée|info/.test(l),
-    code:/code|promo|bonus/.test(l),
-    meth:/comment|pourquoi|méthode|calcul|modèle|fonctionne|explique/.test(l),
-    team:/équipe|tout le monde|ensemble|résume|qui fait quoi/.test(l),
-    bilan:/bilan|gains|pertes|historique/.test(l)
-  };
+function renderApiConfig(){
+  div("k","Clé API OpenRouter");
+  const help=div("sys","1. openrouter.ai → Keys → Create Key\n2. Colle la clé ci-dessous. Modèles gratuits acceptés.");
+  const keyInp=document.createElement("input");keyInp.type="password";keyInp.value=API_KEY;keyInp.placeholder="sk-or-v1-...";keyInp.style.cssText="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:#fff;margin-top:10px";
+  sh.append(keyInp);
+  
+  div("k","Modèle IA (Fallback auto inclus)");
+  const sel=document.createElement("select");sel.style.cssText="width:100%;padding:10px;border-radius:10px;background:var(--bg);color:#fff;border:1px solid var(--line);margin-top:5px";
+  [
+    ["google/gemini-2.0-flash-exp:free","Gemini 2.0 Flash (Free)"],
+    ["meta-llama/llama-3.3-70b-instruct:free","Llama 3.3 70B (Free)"],
+    ["mistralai/mistral-small-3.2-24b-instruct:free","Mistral Small (Free)"]
+  ].forEach(o=>{const op=document.createElement("option");op.value=o[0];op.textContent=o[1];if(API_MODEL===o[0])op.selected=true;sel.append(op)});
+  sh.append(sel);
+
+  const status = div("", API_KEY ? "✅ Clé enregistrée" : "⚠️ Aucune clé");status.className = API_KEY ? "status-ok" : "status-err";
+  sh.append(status);
+
+  const btn=document.createElement("button");btn.className="go";btn.textContent="Sauvegarder";btn.style.cssText="margin-top:15px;width:100%;height:40px";
+  btn.onclick=()=>{ API_KEY=keyInp.value.trim();API_MODEL=sel.value;saveApi();status.textContent=API_KEY?"✅ Clé enregistrée":"⚠️ Aucune clé";status.className=API_KEY?"status-ok":"status-err";btn.textContent="✓ Sauvegardé";setTimeout(()=>btn.textContent="Sauvegarder",1200); };
+  sh.append(btn);
 }
-function localReply(idx,q){
-  const d=detect(q);
-  if(idx<0){
-    return "🏛️ Directeur : "+PER[0].pred+"\n\n💰 Parieur : "+PER[1].pred+"\n\n🎯 Testeur : "+PER[9].pred+"\n\n"+DISCLAIMER+"\n\n"+NO_DATA;
-  }
-  const p=PER[idx]||{};
-  if(d.team&&p.team)return p.team;
-  if(d.code&&p.code)return p.code;
-  if(d.meth&&p.meth)return p.meth;
-  if(d.bilan&&p.bilan)return p.bilan;
-  if(d.pred&&p.pred)return p.pred+"\n\n"+DISCLAIMER;
-  if(d.data&&p.data)return p.data+"\n\n"+NO_DATA;
-  return (p.fallback||"Pose ta question sur un match, un pronostic, un code promo.")+"\n\n"+NO_DATA;
+
+function renderBankroll(){
+  div("k","Capital actuel");
+  const disp=div("",BANK.toLocaleString()+" FCFA");disp.style.cssText="font-size:28px;font-weight:800;color:var(--green);text-align:center;margin:10px 0;padding:15px;background:#111;border-radius:10px;border:1px solid var(--line)";
+  sh.append(disp);
+
+  div("k","Ajuster le capital (Gain / Perte)");
+  const amt=document.createElement("input");amt.type="number";amt.placeholder="Montant en FCFA (ex: 500)";sh.append(amt);
+  
+  const g=document.createElement("div");g.className="grid-2";
+  const winBtn=document.createElement("button");winBtn.className="go";winBtn.textContent="+ Gain";winBtn.style.background="var(--green)";
+  winBtn.onclick=()=>{ const v=parseFloat(amt.value); if(!v)return; BANK+=v; saveBank(); updateBankBtn(); open(-4); };
+  const lossBtn=document.createElement("button");lossBtn.className="go";lossBtn.textContent="- Perte";lossBtn.style.background="var(--red)";
+  lossBtn.onclick=()=>{ const v=parseFloat(amt.value); if(!v)return; BANK-=v; saveBank(); updateBankBtn(); open(-4); };
+  g.append(winBtn,lossBtn);sh.append(g);
+
+  div("k","Réinitialiser");
+  const res=document.createElement("button");res.className="tag";res.textContent="Remettre à 10 000 FCFA";res.style.width="100%";
+  res.onclick=()=>{ if(confirm("Réinitialiser la bankroll ?")){ BANK=10000;saveBank();updateBankBtn();open(-4); } };
+  sh.append(res);
 }
-function ask(i,ta,log){
+
+/* ============ APPEL API (FALLBACK + STREAMING) ============ */
+async function ask(i,ta,log,btn){
   const q=ta.value.trim();if(!q)return;
+  if(!API_KEY){alert("Veuillez configurer votre clé API (⚙️)");return}
   ta.value="";
-  div("m me",q,log);
-  const w=div("m ai","…",log);
+  const meDiv = div("m me","",log); meDiv.innerHTML=formatText(q);
+  const w=div("m ai typing","",log);
+  w.textContent="🤖 Analyse en cours...";
   H[i]=H[i]||[];
   H[i].push(["me",q]);
-  setTimeout(()=>{
-    const reply=localReply(i,q);
-    w.textContent=reply;
-    H[i].push(["ai",reply]);
-    saveChat();
-  },350+Math.random()*350);
-}
+  btn.disabled=true;
+  sh.scrollTop = sh.scrollHeight;
 
-/* Sync live : si l'autre onglet publie, on rafraîchit */
-window.addEventListener("storage",e=>{
-  if(e.key==="bn3_infos"){
-    try{const r=JSON.parse(e.newValue);if(r&&typeof r==="object"){REP=r;drawScr();}}catch(_){}
+  let context = `[CONTEXTE] : Bureau Top 5 + LDC. Overround, CLV, LDP, Kelly, Poisson.`;
+  if(REP && REP.match) {
+    const r = calcOverround(REP.c1,REP.cx,REP.c2);
+    context += `\n\n[DONNÉES] :\nMatch: ${REP.match}\nCote 1: ${REP.c1||'-'} | Cote X: ${REP.cx||'-'} | Cote 2: ${REP.c2||'-'}\nMarge (Overround): ${r.over.toFixed(2)}%\nProba nette: 1=${r.p1.toFixed(1)}%, X=${r.px.toFixed(1)}%, 2=${r.p2.toFixed(1)}%\nNote: ${REP.note||'-'}`;
   }
-  if(e.key==="bn3"){
-    try{const s=JSON.parse(e.newValue);if(Array.isArray(s)&&s.length===11){for(let k=0;k<11;k++)N[k]=s[k];AG.forEach(p=>label(p));}}catch(_){}
+
+  let sysPrompt = "";
+  if(i < 0) {
+    sysPrompt = `Tu es le Conseil de Direction. Simule un débat structuré entre :
+🏛️ **Directeur Exécutif** : décision
+💰 **Expert Value** : EV, CLV, Kelly
+📊 **Data Scientist** : xG, forme
+🎯 **Verdict Final** : Parier / Passer
+Sois concis, utilise **gras**.` + "\n\n" + context;
+  } else {
+    sysPrompt = A[i].sys + `\n\nRègles : Max 10 lignes, direct, structuré, **gras** pour les points clés.` + "\n\n" + context;
   }
-});
+
+  const messages = [{ role: "system", content: sysPrompt }];
+  H[i].slice(-6, -1).forEach(m => { messages.push({ role: m[0] === "me" ? "user" : "assistant", content: m[1] }); });
+  messages.push({ role: "user", content: q });
+
+  const models = [API_MODEL, "meta-llama/llama-3.3-70b-instruct:free", "google/gemini-2.0-flash-exp:free"];
+  let success = false;
+  let lastError = "";
+
+  for(let m of models){
+    if(success) break;
+    try {
+      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + API_KEY, "Content-Type": "application/json", "HTTP-Referer": location.origin, "X-Title": "Desk Trading" },
+        body: JSON.stringify({ model: m, messages: messages, temperature: 0.6, stream: true })
+      });
+
+      if (!res.ok) {
+        if(res.status === 429) { lastError = "Modèle saturé (429). Bascule..."; continue; }
+        const errData = await res.json().catch(()=>({}));
+        throw new Error(errData.error?.message || `HTTP ${res.status}`);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let full = ""; let buffer = "";
+      w.classList.add("typing"); w.textContent = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed || !trimmed.startsWith("data: ")) continue;
+          const data = trimmed.slice(6);
+          if (data === "[DONE]") continue;
+          try {
+            const json = JSON.parse(data);
+            const content = json.choices?.[0]?.delta?.content || "";
+            if (content) { full += content; w.innerHTML = formatText(full); sh.scrollTop = sh.scrollHeight; }
+          } catch (e) {}
+        }
+      }
+      
+      w.classList.remove("typing");
+      if (!full.trim()) throw new Error("Réponse vide");
+      w.innerHTML = formatText(full);
+      addCopyBtn(w, full);
+      H[i].push(["ai", full]);
+      saveChat();
+      success = true;
+      break;
+    } catch(e) {
+      lastError = e.message;
+      w.textContent = `⚠️ Erreur (${m.split('/')[1]}). Bascule...`;
+    }
+  }
+
+  if(!success) {
+    w.classList.remove("typing");
+    w.innerHTML = "⚠️ <b>Échec de tous les modèles.</b> " + lastError;
+    w.style.color = "#f87171";
+  }
+  btn.disabled = false;
+  sh.scrollTop = sh.scrollHeight;
+}
 })();
 </script>
 </body>
