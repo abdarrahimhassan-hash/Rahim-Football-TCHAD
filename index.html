@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<title>Desk de Trading Football · QG 3D</title>
+<title>Rahim Football Tchad · Bureau du Directeur</title>
 <style>
-:root{--bg:#0f172a;--card:rgba(30, 41, 59, 0.85);--ink:#f8fafc;--mut:#94a3b8;--line:#334155;--acc:#f97316;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;color-scheme:dark}
+:root{--bg:#0f172a;--card:rgba(30, 41, 59, 0.95);--ink:#f8fafc;--mut:#94a3b8;--line:#334155;--acc:#f97316;--green:#22c55e;--red:#ef4444;color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 canvas{display:block;width:100%;height:100%;touch-action:none}
 #bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#0f172acc,#0f172a00);z-index:10;scrollbar-width:none}
 #bar::-webkit-scrollbar{display:none}
@@ -15,53 +15,47 @@ button{font:inherit;color:inherit;cursor:pointer}
 #bar button{flex:none;background:rgba(30,41,59,.8);backdrop-filter:blur(4px);border:1px solid var(--line);border-radius:999px;padding:8px 14px;white-space:nowrap;font-weight:600;transition:.2s}
 #bar button:hover{background:var(--line)}
 #bar button.h{background:var(--acc);color:#fff;border-color:var(--acc)}
-#bar button.bankroll-btn{background:#1e293b;color:var(--green);border-color:var(--green);display:flex;align-items:center;gap:6px}
-#hint{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:#fff;text-shadow:0 2px 4px #000;font-size:12px;pointer-events:none;z-index:5;font-weight:600}
-#sh{position:fixed;left:0;right:0;bottom:0;max-height:75vh;overflow-y:auto;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:2px solid var(--acc);border-radius:20px 20px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));display:none;max-width:800px;margin-inline:auto;z-index:20;box-shadow:0 -10px 40px rgba(0,0,0,0.5)}
-#sh.on{display:block;animation:up .3s cubic-bezier(0.16, 1, 0.3, 1)}
+#hint{position:fixed;left:0;right:0;bottom:calc(80px + env(safe-area-inset-bottom,0px));text-align:center;color:#fff;text-shadow:0 2px 4px #000;font-size:13px;pointer-events:none;z-index:5;font-weight:600;background:rgba(0,0,0,0.5);padding:6px;border-radius:20px;width:max-content;margin:0 auto}
+#sh{position:fixed;left:0;right:0;bottom:0;height:85vh;overflow-y:auto;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:2px solid var(--acc);border-radius:24px 24px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));display:none;max-width:800px;margin-inline:auto;z-index:20;box-shadow:0 -10px 50px rgba(0,0,0,0.6)}
+#sh.on{display:flex;flex-direction:column;animation:up .3s cubic-bezier(0.16, 1, 0.3, 1)}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.hd{display:flex;gap:12px;align-items:center;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px}
+.hd{display:flex;gap:12px;align-items:center;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;flex:none}
 .hd input{font:inherit;font-weight:800;font-size:16px;width:100%;background:rgba(0,0,0,0.2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .x{margin-left:auto;background:rgba(255,255,255,0.1);border:0;font-size:20px;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:.2s}
 .x:hover{background:var(--red)}
-.k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:14px 0 6px;font-weight:800}
+.k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:14px 0 6px;font-weight:800;flex:none}
 #sh ul{margin:0;padding-left:18px;font-size:13px;color:var(--mut)}
+#log-container{flex:1;overflow-y:auto;padding-bottom:10px}
 .m{padding:12px 16px;border-radius:14px;max-width:95%;white-space:pre-wrap;margin-top:10px;font-size:14px;line-height:1.6;box-shadow:0 4px 6px rgba(0,0,0,0.1)}
 .m b{color:#fff;font-weight:700}
 .m ul, .m ol{padding-left:18px;margin:8px 0}
 .m li{margin-bottom:4px}
 .me{margin-left:auto;background:var(--acc);color:#fff;border-bottom-right-radius:2px}
-.ai{background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.05);border-bottom-left-radius:2px}
+.ai{background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.05);border-bottom-left-radius:2px}
 .sys{background:rgba(0,0,0,0.3);color:var(--mut);font-size:12px;text-align:center;border-radius:8px;margin:10px auto;padding:10px;border:1px dashed var(--line)}
-.row{display:flex;gap:10px;margin-top:12px;position:sticky;bottom:0;background:var(--card);padding-top:10px;padding-bottom:4px;z-index:2}
+.row{display:flex;gap:10px;margin-top:auto;padding-top:12px;background:var(--card);flex:none}
 textarea{flex:1;font:inherit;background:rgba(0,0,0,0.3);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;resize:none;height:50px;max-height:120px}
 textarea:focus{outline:none;border-color:var(--acc)}
 input[type="text"], input[type="number"], input[type="password"]{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,0.2);color:var(--ink);margin-bottom:10px;font:inherit;font-weight:600}
-input:focus{outline:none;border-color:var(--acc)}
 select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#1e293b;color:var(--ink);margin-bottom:10px;font:inherit}
 .go{background:var(--acc);color:#fff;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
-.go:active{transform:scale(0.95)}
 .go:disabled{opacity:.5;cursor:not-allowed}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:12px;color:#cbd5e1;cursor:pointer;transition:.2s;font-weight:600}
-.tag:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
-.tool-box{background:rgba(0,0,0,0.2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px}
-.tool-box h4{margin:0 0 12px 0;font-size:14px;color:var(--acc);display:flex;align-items:center;gap:8px}
-.tool-box button{background:var(--acc);color:#fff;font-weight:bold;border:none;border-radius:8px;padding:12px;width:100%;cursor:pointer;transition:.2s}
-.copy-btn{background:none;border:none;color:var(--mut);font-size:11px;margin-top:10px;cursor:pointer;text-decoration:underline;display:inline-block}
-.clear-btn{background:none;border:1px solid var(--line);color:var(--mut);font-size:11px;padding:6px 10px;border-radius:8px;cursor:pointer;margin-left:auto}
-.clear-btn:hover{border-color:var(--red);color:var(--red)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .status-ok{color:var(--green);font-size:12px;margin-top:10px;display:block;font-weight:bold}
 .status-err{color:var(--red);font-size:12px;margin-top:10px;display:block;font-weight:bold}
 .typing::after{content:"▋";animation:blink 1s infinite;margin-left:2px;color:var(--acc)}
 @keyframes blink{50%{opacity:0}}
+
+/* BOUTON FLOTTANT GÉANT */
+#fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;border:none;border-radius:30px;padding:16px 32px;font-size:16px;font-weight:800;box-shadow:0 10px 25px rgba(249,115,22,0.4);z-index:15;display:flex;align-items:center;gap:10px;cursor:pointer;animation:pulse 2s infinite}
+@keyframes pulse{0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}100%{transform:translateX(-50%) scale(1)}}
 </style>
 </head>
 <body>
 <div id="bar"></div>
-<div id="hint">Glisse pour tourner · Clique sur un employé</div>
+<div id="hint">Clique sur le bouton orange pour parler au Directeur</div>
+<button id="fab" onclick="open(-1)">💬 PARLER AU DIRECTEUR</button>
 <aside id="sh"></aside>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (()=>{
@@ -74,25 +68,23 @@ const TS=["Analyse ","Donne la proba exacte","Indique le scénario noir"];
 const ts=(t,x)=>({r:2,t,m:["Analyse "+x,"Proba exacte","Scénario noir"],g:"Honnête.",sys:`Tu es l'Analyste Expert pour ${x}. Tu maîtrises l'Overround, le CLV, les xG et la fatigue. Sois direct et professionnel.`});
 
 const A=[
-{r:0,t:"Directeur Exécutif",f:"Stratège",m:["Décision finale","Arbitrage","Validation"],sys:"Tu es le Directeur Exécutif. Tu synthétises. Tu ne valides un pari que si l'EV est positif et que l'overround est < 6%. Tu parles avec autorité."},
-{r:0,t:"Expert Value (EV/CLV)",f:"Mathématicien / Trader",m:["Calcule l'EV","Traque le CLV","Kelly"],sys:"Tu es le Parieur Pro. Tu ne jures que par l'Expected Value et la marge (overround). Tu recommandes des mises via Kelly. Tu détestes les paris émotifs.", tools:["kelly","overround"]},
-{r:0,t:"Auditeur Promo",f:"Juriste",m:["Détecte les pièges","Calcule le rollover","Protège le capital"],sys:"Tu es l'Auditeur des conditions promo. Tu calcules les rollovers et vérifies les mises. Ton but est d'empêcher le piège.", tools:["rollover"]},
-{r:1,t:"Scout Terrain",f:"Journaliste",m:["Blessures","Impact tactique","Zéro rumeur"],sys:"Tu es le Scout. Tu ne valides que les infos officielles. Analyse l'impact tactique d'une absence."},
-{r:1,t:"Data Scientist",f:"Statisticien",m:["xG et xGA","Surperformance","Séries"],sys:"Tu es le Data Scientist. Tu ne regardes que les xG. Tu repères les équipes qui gagnent par chance."},
-{r:1,t:"Trader Marché (LDP)",f:"Flux / LDP",m:["Mouvements de cotes","LDP","Alertes"],sys:"Tu es le Trader. Tu surveilles les baisses de cotes suspectes et l'argent intelligent (LDP).", tools:["overround"]},
-ts("Testeur Liga","la Liga"),ts("Testeur Premier League","la Premier League"),ts("Testeur Ligue des champions","la Ligue des champions"),
-{r:2,t:"Modélisateur",f:"Mathématicien",m:["Poisson","Over/Under","Scores"],sys:"Tu es le Mathématicien. Tu utilises la Loi de Poisson. Tu expliques tes calculs simplement.", tools:["poisson"]},
-{r:2,t:"Scénariste (Risques)",f:"Pre-mortem",m:["Scénarios noirs","Résilience","Failles"],sys:"Tu es l'Analyste de risque. Ton rôle est d'imaginer le pire (blessure, carton rouge, terrain). Cherche les failles."}
+{r:0,t:"Directeur Exécutif",f:"Stratège / Chef d'Orchestre",m:["Reçoit tes demandes","Ordonne aux experts","Synthétise le verdict"],sys:"Tu es Abdarrahim, le Directeur Exécutif. Tu es le chef. Quand l'utilisateur te demande d'analyser un match, TU NE RÉPONDS PAS SEUL. Tu dois OBLIGATOIREMENT convoquer tes experts. Structure ta réponse ainsi :\n\n🏛️ **Directeur Abdarrahim** : Je convoque mon équipe pour ce match.\n🎯 **Testeur (Liga/LDC/L1)** : [Ordonne-lui de donner les stats xG et la forme]\n📊 **Data Scientist** : [Ordonne-lui de vérifier les blessures et l'impact]\n💰 **Expert Value** : [Ordonne-lui de calculer l'EV et la marge]\n⚖️ **VERDICT FINAL DU BUREAU** : [Ta décision claire : Parier ou Passer, et pourquoi].\n\nUtilise un ton autoritaire et professionnel."},
+{r:0,t:"Expert Value (EV/CLV)",f:"Mathématicien / Trader",m:["Calcule l'EV","Traque le CLV","Kelly"],sys:"Tu es le Parieur Pro. Tu ne jures que par l'Expected Value et la marge (overround). Tu recommandes des mises via Kelly."},
+{r:0,t:"Auditeur Promo",f:"Juriste",m:["Détecte les pièges","Calcule le rollover","Protège le capital"],sys:"Tu es l'Auditeur des conditions promo. Tu calcules les rollovers."},
+{r:1,t:"Scout Terrain",f:"Journaliste",m:["Blessures","Impact tactique","Zéro rumeur"],sys:"Tu es le Scout. Tu ne valides que les infos officielles sur les blessures."},
+{r:1,t:"Data Scientist",f:"Statisticien",m:["xG et xGA","Surperformance","Séries"],sys:"Tu es le Data Scientist. Tu ne regardes que les xG."},
+{r:1,t:"Trader Marché (LDP)",f:"Flux / LDP",m:["Mouvements de cotes","LDP","Alertes"],sys:"Tu es le Trader. Tu surveilles les baisses de cotes."},
+ts("Testeur Liga","la Liga"),ts("Testeur Ligue 1","la Ligue 1"),ts("Testeur Ligue des champions","la Ligue des champions"),
+{r:2,t:"Modélisateur",f:"Mathématicien",m:["Poisson","Over/Under","Scores"],sys:"Tu es le Mathématicien. Tu utilises la Loi de Poisson."},
+{r:2,t:"Scénariste (Risques)",f:"Pre-mortem",m:["Scénarios noirs","Résilience","Failles"],sys:"Tu es l'Analyste de risque. Cherche les failles du match."}
 ];
 
 /* ============ STATE ============ */
 let N=["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","Karim","Sofiane"];
 let REP=null;
-let BANK=parseFloat(localStorage.getItem("bn3_bank")||"10000");
 const H={};
 let API_KEY=localStorage.getItem("bn3_api_key")||"";
 let API_MODEL=localStorage.getItem("bn3_api_model")||"google/gemini-2.0-flash-exp:free";
-let DEMO_MODE = localStorage.getItem("bn3_demo")==="1";
 
 try{const s=JSON.parse(localStorage.getItem("bn3")||"null");if(Array.isArray(s)&&s.length===11)N=s;}catch(e){}
 try{const r=JSON.parse(localStorage.getItem("bn3_infos")||"null");if(r&&typeof r==="object")REP=r;}catch(e){}
@@ -102,130 +94,51 @@ const nm=i=>N[i]||"À nommer";
 function saveNames(){try{localStorage.setItem("bn3",JSON.stringify(N));}catch(e){}}
 function saveInfos(){try{localStorage.setItem("bn3_infos",JSON.stringify(REP));}catch(e){}}
 function saveChat(){try{const t={};Object.keys(H).forEach(k=>{t[k]=H[k].slice(-15);});localStorage.setItem("bn3_chat",JSON.stringify(t));}catch(e){}}
-function saveApi(){try{localStorage.setItem("bn3_api_key",API_KEY);localStorage.setItem("bn3_api_model",API_MODEL);localStorage.setItem("bn3_demo",DEMO_MODE?"1":"0");}catch(e){}}
-function saveBank(){try{localStorage.setItem("bn3_bank",BANK);}catch(e){}}
+function saveApi(){try{localStorage.setItem("bn3_api_key",API_KEY);localStorage.setItem("bn3_api_model",API_MODEL);}catch(e){}}
 
-/* ---------- SCÈNE 3D CORRIGÉE (LUMINEUSE) ---------- */
-const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));ren.shadowMap.enabled=true;ren.shadowMap.type=THREE.PCFSoftShadowMap;
+/* ---------- SCÈNE 3D ---------- */
+const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));ren.shadowMap.enabled=true;
 document.body.prepend(ren.domElement);const cv=ren.domElement;
-const sc=new THREE.Scene();
-sc.background=new THREE.Color(0x1e293b); // Fond bleu-gris clair
-sc.fog=new THREE.Fog(0x1e293b, 20, 70);
-
+const sc=new THREE.Scene();sc.background=new THREE.Color(0x0f172a);sc.fog=new THREE.Fog(0x0f172a, 20, 70);
 const cam=new THREE.PerspectiveCamera(45,1,.1,200);
-
-// LUMIÈRES
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-sc.add(ambientLight);
-
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.8);
-sc.add(hemiLight);
-
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-dirLight.position.set(10, 20, 10);
-dirLight.castShadow = true;
-dirLight.shadow.mapSize.width = 2048;
-dirLight.shadow.mapSize.height = 2048;
-dirLight.shadow.camera.left = -25;
-dirLight.shadow.camera.right = 25;
-dirLight.shadow.camera.top = 25;
-dirLight.shadow.camera.bottom = -25;
-sc.add(dirLight);
-
-// Lumières d'accentuation par salle
-RX.forEach((x,i)=>{
-  const spot = new THREE.PointLight([0xf97316, 0x3b82f6, 0x8b5cf6][i], 1.5, 20);
-  spot.position.set(x, 5, 0);
-  sc.add(spot);
-});
+sc.add(new THREE.AmbientLight(0xffffff, 0.6));sc.add(new THREE.HemisphereLight(0xffffff, 0x444444, 0.8));
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);dirLight.position.set(10, 20, 10);dirLight.castShadow = true;sc.add(dirLight);
+RX.forEach((x,i)=>{const spot = new THREE.PointLight([0xf97316, 0x3b82f6, 0x8b5cf6][i], 1.5, 20);spot.position.set(x, 5, 0);sc.add(spot)});
 
 const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:.2},o||{}));
 function bx(w,h,d,c,x,y,z,o,p){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c,o));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;(p||sc).add(m);return m}
-function cyl(r,h,c,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,20),M(c));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;sc.add(m);return m}
-function ball(r,c,x,y,z,p){const m=new THREE.Mesh(new THREE.SphereGeometry(r,16,12),M(c));m.position.set(x,y,z);m.castShadow=true;(p||sc).add(m);return m}
 
-// SOL VISIBLE ET TEXTURÉ
-const floorMat = new THREE.MeshStandardMaterial({color:0x334155, roughness:0.4, metalness:0.1});
-const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11), floorMat);
-fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
+// Sol
+const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11), M(0x334155,{roughness:.4}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
+sc.add(new THREE.GridHelper(29, 20, 0x475569, 0x1e293b)).position.y = 0.02;
 
-// Grille sur le sol pour l'effet "High Tech"
-const grid = new THREE.GridHelper(29, 20, 0x475569, 0x1e293b);
-grid.position.y = 0.02;
-sc.add(grid);
+// Murs
+bx(29,5,.3,0x475569,0,2.5,-5.3);bx(.3,5,11,0x475569,-14.6,2.5,0);bx(.3,5,11,0x475569,14.6,2.5,0);
 
-// MURS VISIBLES
-const wallMat = M(0x475569, {roughness:0.8});
-bx(29,5,.3,0x475569,0,2.5,-5.3);
-bx(.3,5,11,0x475569,-14.6,2.5,0);
-bx(.3,5,11,0x475569,14.6,2.5,0);
-bx(29,.15,.35,0x1e293b,0,.07,-5.2);
-
-// TAPIS DE COULEUR
+// Tapis
 const RC=[0x7c2d12,0x1e3a8a,0x4c1d95];
 RX.forEach((x,i)=>{const r=new THREE.Mesh(new THREE.PlaneGeometry(7,5),M(RC[i],{roughness:.9}));r.rotation.x=-Math.PI/2;r.position.set(x,.03,i==0?2.5:i==1?2.2:2.6);r.receiveShadow=true;sc.add(r)});
 
-// ÉCRAN GÉANT
-const sk=document.createElement("canvas");sk.width=1024;sk.height=420;const sg=sk.getContext("2d"),stex=new THREE.CanvasTexture(sk);
-const scr=new THREE.Mesh(new THREE.PlaneGeometry(6.6,2.7),new THREE.MeshBasicMaterial({map:stex}));scr.position.set(RX[0],2.8,-5.1);sc.add(scr);bx(6.8,2.9,.08,0x000000,RX[0],2.8,-5.18);
-function drawScr(){
-  sg.fillStyle="#0f172a";sg.fillRect(0,0,1024,420);
-  sg.fillStyle="#f97316";sg.font="bold 44px monospace";sg.fillText("TRADING DESK",36,60);
-  sg.fillStyle="#22c55e";sg.font="26px monospace";
-  sg.fillText(REP&&REP.match? "LIVE: "+REP.match : "En attente des données...",36,98);
-  if(REP&&REP.match){
-    sg.fillStyle="#fff";sg.font="28px monospace";
-    sg.fillText(`1: ${REP.c1||'-'} | X: ${REP.cx||'-'} | 2: ${REP.c2||'-'}`,36,150);
-    sg.fillStyle="#f97316";sg.fillText(`Marge: ${calcOverround(REP.c1,REP.cx,REP.c2).over.toFixed(1)}%`,36,200);
-    sg.fillStyle="#94a3b8";sg.font="22px monospace";sg.fillText(`Note: ${REP.note||'Aucune'}`,36,250);
-  } else {
-    sg.fillStyle="#64748b";sg.font="26px monospace";sg.fillText("Saisir les données dans INFOS DU JOUR",36,150);
-  }
-  stex.needsUpdate=true;
-}
-drawScr();
-
-// BUREAUX
+// Bureau
 const scrs=[];
 function desk(x,z){
-  // Plateau
-  bx(2.2,.1,1.1,0x1e293b,x,.76,z);
-  // Pieds
-  bx(.1,.72,.9,0x0f172a,x-1,.36,z);bx(.1,.72,.9,0x0f172a,x+1,.36,z);
-  // Double écrans
-  bx(.9,.55,.05,0x000000,x-.4,1.2,z-.24); 
-  const s1=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x1e3a8a}));s1.position.set(x-.4,1.2,z-.21);sc.add(s1);scrs.push(s1);
-  bx(.9,.55,.05,0x000000,x+.4,1.2,z-.24);
-  const s2=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x7c2d12}));s2.position.set(x+.4,1.2,z-.21);sc.add(s2);scrs.push(s2);
-  // Clavier
-  bx(.6,.03,.2,0x000000,x,.82,z+.2); 
-  // Chaise
-  bx(.6,.1,.6,0x0f172a,x,.45,z+.9);bx(.6,.7,.1,0x0f172a,x,.8,z+1.2);bx(.1,.4,.1,0x475569,x,.2,z+.9);
+  bx(2.2,.1,1.1,0x1e293b,x,.76,z);bx(.1,.72,.9,0x0f172a,x-1,.36,z);bx(.1,.72,.9,0x0f172a,x+1,.36,z);
+  bx(.9,.55,.05,0x000000,x-.4,1.2,z-.24);const s1=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x1e3a8a}));s1.position.set(x-.4,1.2,z-.21);sc.add(s1);scrs.push(s1);
+  bx(.9,.55,.05,0x000000,x+.4,1.2,z-.24);const s2=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x7c2d12}));s2.position.set(x+.4,1.2,z-.21);sc.add(s2);scrs.push(s2);
+  bx(.6,.03,.2,0x000000,x,.82,z+.2);bx(.6,.1,.6,0x0f172a,x,.45,z+.9);bx(.6,.7,.1,0x0f172a,x,.8,z+1.2);
 }
-
 const D=[[-11.8,-2.6],[-9.3,-2.6],[-6.8,-2.6],[-2.5,-2.6],[0,-2.6],[2.5,-2.6],[6.8,-2.6],[9.3,-2.6],[11.8,-2.6],[8.05,.9],[10.55,.9]];
 D.forEach(d=>desk(d[0],d[1]));
 
-// PERSONNAGES (Style Trader Pro)
+// Personnages
 const SKN=[0xfcd34d,0xfbbf24,0x78350f,0x451a03,0x1c1917],SHI=[0x1e293b,0x0f172a,0x334155,0x111827];
 function limb(w,h,d,c,x,y,p){const g=new THREE.Group();g.position.set(x,y,0);const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c));m.position.y=-h/2;m.castShadow=true;g.add(m);p.add(g);return g}
 function person(i){
   const g=new THREE.Group(),sk=SKN[i%5],boss=i==0,sh=boss?0x000000:SHI[i%4];
   const L=limb(.2,.8,.22,0x1e293b,-.13,.8,g),Rr=limb(.2,.8,.22,0x1e293b,.13,.8,g);
-  bx(.55,.65,.3,sh,0,1.12,0,null,g);
-  const AL=limb(.15,.58,.15,sh,-.36,1.42,g),AR=limb(.15,.58,.15,sh,.36,1.42,g);
-  bx(.14,.1,.14,sk,0,-.62,0,null,AL);bx(.14,.1,.14,sk,0,-.62,0,null,AR);
-  bx(.12,.14,.12,sk,0,1.5,0,null,g);ball(.21,sk,0,1.72,0,g);
-  // Cheveux / Casque
-  if(i%3==0){
-    const band=new THREE.Mesh(new THREE.TorusGeometry(.22,.03,8,20,Math.PI),M(0x000000));band.rotation.x=Math.PI/2;band.position.y=1.88;g.add(band);
-    [-.22,.22].forEach(x=>{const cup=new THREE.Mesh(new THREE.CylinderGeometry(.08,.08,.08,16),M(0x000000));cup.rotation.z=Math.PI/2;cup.position.set(x,1.72,0);g.add(cup)});
-  } else {
-    const h=new THREE.Mesh(new THREE.SphereGeometry(.22,16,10,0,TAU,0,Math.PI*.55),M(0x111111));h.position.set(0,1.75,-.02);g.add(h);
-  }
-  // Cravate
+  bx(.55,.65,.3,sh,0,1.12,0,null,g);const AL=limb(.15,.58,.15,sh,-.36,1.42,g),AR=limb(.15,.58,.15,sh,.36,1.42,g);
+  bx(.14,.1,.14,sk,0,-.62,0,null,AL);bx(.14,.1,.14,sk,0,-.62,0,null,AR);bx(.12,.14,.12,sk,0,1.5,0,null,g);new THREE.Mesh(new THREE.SphereGeometry(.21,16,12),M(sk)).position.set(0,1.72,0);g.add(new THREE.Mesh(new THREE.SphereGeometry(.21,16,12),M(sk))).position.set(0,1.72,0);
   if(i<6) bx(.08,.35,.02,[0xef4444,0x3b82f6,0xfbbf24,0x22c55e][i%4],0,1.2,.16,null,g);
-  
   g.traverse(o=>{o.userData.i=i});return{g,L,R:Rr,AL,AR};
 }
 const AG=A.map((a,i)=>{
@@ -235,84 +148,32 @@ const AG=A.map((a,i)=>{
   const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k),depthTest:false,transparent:true}));sp.scale.set(2,.5,1);sp.position.y=2.3;sp.renderOrder=9;p.g.add(sp);
   Object.assign(p,{i,d,k,sp,st:"sit",t:6+Math.random()*10,q:[],ph:Math.random()*6,baseY:Math.PI});label(p);return p;
 });
-function label(p){
-  const g=p.k.getContext("2d");g.clearRect(0,0,256,64);
-  g.fillStyle="rgba(15,23,42,.9)";g.beginPath();g.roundRect(6,10,244,44,8);g.fill();
-  g.strokeStyle="#f97316";g.lineWidth=2;g.stroke();
-  g.fillStyle="#fff";g.font="bold 22px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,40);
-  p.sp.material.map.needsUpdate=true;
-}
+function label(p){const g=p.k.getContext("2d");g.clearRect(0,0,256,64);g.fillStyle="rgba(15,23,42,.9)";g.beginPath();g.roundRect(6,10,244,44,8);g.fill();g.strokeStyle="#f97316";g.lineWidth=2;g.stroke();g.fillStyle="#fff";g.font="bold 22px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,40);p.sp.material.map.needsUpdate=true}
 function sitPose(p){p.g.position.y=-.33;p.L.rotation.x=p.R.rotation.x=-1.45}
-function standPose(p){p.g.position.y=0;p.L.rotation.x=p.R.rotation.x=0;p.AL.rotation.x=p.AR.rotation.x=0}
 AG.forEach(p=>{sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1});
-function go(p,x,z){p.q.push([x,z])}
-function tick(p,dt,T){
-  const g=p.g;
-  if(p.st=="sit"){p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1;p.t-=dt;
-    if(p.t<0){standPose(p);go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0]+(Math.random()-.5),p.d[1]+2);p.st="walk";p.next="idle"}return}
-  if(p.st=="idle"){p.t-=dt;g.rotation.y=p.baseY+Math.sin(T*.8+p.ph)*.25;
-    if(p.t<0){go(p,p.d[0],p.d[1]+1.7);go(p,p.d[0],p.d[1]+.85);p.st="walk";p.next="sit"}return}
-  const q=p.q[0];if(!q){if(p.next=="sit"){g.rotation.y=Math.PI;sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1;p.st="sit";p.t=8+Math.random()*14}else{p.baseY=g.rotation.y;p.st="idle";p.t=3+Math.random()*4}p.L.rotation.x=p.R.rotation.x=0;return}
-  const dx=q[0]-g.position.x,dz=q[1]-g.position.z,d=Math.hypot(dx,dz);if(d<.08){p.q.shift();return}
-  const a=Math.atan2(dx,dz);let df=a-g.rotation.y;df=Math.atan2(Math.sin(df),Math.cos(df));g.rotation.y+=df*Math.min(1,dt*9);
-  const sp=Math.min(d,1.35*dt);g.position.x+=dx/d*sp;g.position.z+=dz/d*sp;p.ph+=dt*9;const s=Math.sin(p.ph)*.7;
-  p.L.rotation.x=s;p.R.rotation.x=-s;p.AL.rotation.x=-s*.7;p.AR.rotation.x=s*.7;
-}
 
-/* CAMÉRA ET INTERACTION "JEU" */
-let th=0,ph=.85,di=45,ddi=45,tg=new THREE.Vector3(0,1,0),ttg=tg.clone(),fol=-1;
-const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?65:35,ROOM=()=>portrait()?25:18;
-function view(k){fol=-1;th=0;ph=.85;if(k<0){ttg.set(0,1.5,0);ddi=ALL()}else{ttg.set(RX[k],1.5,0);ddi=ROOM()}}
-function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
+// Caméra Loop
+let th=0,ph=.85,di=45,ddi=45,tg=new THREE.Vector3(0,1.5,0),ttg=tg.clone();
+const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?65:35;
+function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();}
 addEventListener("resize",()=>{resize();if(fol<0)ddi=ALL()});resize();ddi=di=ALL();
-
-const P=new Map();let dn=null,pd=0;
-cv.addEventListener("pointerdown",e=>{cv.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);dn=[e.clientX,e.clientY,Date.now()];pd=0});
-cv.addEventListener("pointermove",e=>{const o=P.get(e.pointerId);if(!o)return;if(P.size==1){th-=(e.clientX-o[0])*.006;ph=Math.max(.2,Math.min(1.45,ph-(e.clientY-o[1])*.005))}P.set(e.pointerId,[e.clientX,e.clientY]);if(P.size==2){const[a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)ddi=Math.max(8,Math.min(80,ddi*pd/d));pd=d}});
-cv.addEventListener("pointerup",e=>{P.delete(e.pointerId);pd=0;if(dn&&Math.hypot(e.clientX-dn[0],e.clientY-dn[1])<7&&Date.now()-dn[2]<450)pick(e);dn=null});
-cv.addEventListener("wheel",e=>{ddi=Math.max(8,Math.min(80,ddi*(1+e.deltaY*.001)));e.preventDefault()},{passive:false});
-
-const rc=new THREE.Raycaster();
-function pick(e){
-  rc.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
-  const hits=rc.intersectObjects(AG.map(p=>p.g),true);
-  const hit=hits.find(h=>h.object.userData.i!==undefined);
-  if(hit) open(hit.object.userData.i);
-}
-
+let fol=-1;
 const clk=new THREE.Clock();
-(function loop(){
+function loop(){
   requestAnimationFrame(loop);
   const dt=Math.min(.05,clk.getDelta()),T=clk.elapsedTime;
-  AG.forEach(p=>tick(p,dt,T));
-  
-  if(fol>=0){
-    const g=AG[fol].g;
-    ttg.set(g.position.x,1.4,g.position.z);
-  }
-  
-  tg.lerp(ttg,.08);
-  di+=(ddi-di)*.08;
-  
-  // Inertie de rotation
-  cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));
-  cam.lookAt(tg);
-  
-  // Clignotement des écrans
+  AG.forEach(p=>{
+    if(p.st=="sit"){p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1}
+  });
+  tg.lerp(ttg,.08);di+=(ddi-di)*.08;
+  cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));cam.lookAt(tg);
   scrs.forEach((s,k)=>s.material.color.setHex((Math.sin(T*3+k)>.9)?0xffffff:0x1e3a8a));
   ren.render(sc,cam);
-})();
+}
+loop();
 
-/* ============ INTERFACE & UI ============ */
-const bar=$("#bar"),sh=$("#sh");
-[["← Site",()=>{location.href="index.html"}],["Tout",()=>view(-1)],["Direction",()=>view(0)],["Veille",()=>view(1)],["Labo",()=>view(2)],["📋 INFOS",()=>open(-2),1],["💬 Conseil",()=>open(-1)],["⚙️ API",()=>open(-3)]].forEach(b=>{
-  const e=document.createElement("button");e.textContent=b[0];if(b[2])e.className="h";e.onclick=b[1];bar.append(e);
-});
-const bankBtn=document.createElement("button");bankBtn.className="bankroll-btn";bankBtn.onclick=()=>open(-4);
-bar.append(bankBtn);
-function updateBankBtn(){bankBtn.innerHTML=`💰 ${BANK.toLocaleString()} F`}
-updateBankBtn();
-
+/* ============ INTERFACE ============ */
+const sh=$("#sh");
 function div(c,t,p){const e=document.createElement("div");if(c)e.className=c;if(t!==undefined)e.textContent=t;(p||sh).append(e);return e}
 function close(){sh.className="";fol=-1}
 
@@ -320,9 +181,7 @@ function formatText(txt){
   if(!txt) return "";
   let html = txt.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   html = html.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
-  html = html.replace(/`([^`]+)`/g, "<code style='background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-size:12px;color:#f97316'>$1</code>");
-  const lines = html.split("\n");
-  let inList = false, result = [];
+  const lines = html.split("\n");let inList=false, result=[];
   for(let line of lines){
     const bullet = line.match(/^[\s]*[-•*]\s+(.*)$/);
     if(bullet){ if(!inList){ result.push("<ul>"); inList=true; } result.push("<li>"+bullet[1]+"</li>"); }
@@ -334,275 +193,110 @@ function formatText(txt){
 
 function open(i){
   sh.className="on";sh.textContent="";H[i]=H[i]||[];
-  if(i<0){fol=-1;th=0;ph=.85;ddi=ALL()}
   const top=div("hd");
-  if(i>=0){
-    fol=i;ddi=12;th=Math.PI*.1; // Zoom jeu vidéo
-    const w=div("",undefined,top);w.style.flex="1";
-    const inp=document.createElement("input");inp.maxLength=30;inp.value=N[i]||"";inp.placeholder="Nom";
-    inp.oninput=()=>{N[i]=inp.value.trim();saveNames();label(AG[i])};
-    w.append(inp);div("k",A[i].t,w);
-  } else {
-    let title = i==-1?"🏛️ Conseil":i==-2?"📋 INFOS":i==-3?"⚙️ API":"💰 Bankroll";
-    const t=div("",title,top);t.style.cssText="font-weight:800;font-size:18px;flex:1;color:var(--acc)";
-  }
+  if(i>=0){ fol=i;ddi=12; }
+  else { fol=-1;th=0;ph=.85;ddi=ALL(); }
+  
+  let title = i==-1?"🏛️ Bureau du Directeur":i==-2?"⚙️ Configuration API":"";
+  if(i>=0){ title = "Fiche : "+nm(i); }
+  const t=div("",title,top);t.style.cssText="font-weight:800;font-size:18px;flex:1;color:var(--acc)";
+  
   const x=document.createElement("button");x.className="x";x.textContent="✕";x.onclick=close;top.append(x);
   
-  if(i>=0){
-    const a=A[i];div("k","Spécialité");div("",a.f);
-    div("k","Missions");const u=document.createElement("ul");a.m.forEach(t=>{const l=document.createElement("li");l.textContent=t;u.append(l)});sh.append(u);
-  }
+  if(i==-2){ renderApiConfig(); return; }
+
+  // Zone de log
+  const logContainer=div("",undefined);logContainer.id="log-container";
   
-  if(i==-2){renderEditor();return}
-  if(i==-3){renderApiConfig();return}
-  if(i==-4){renderBankroll();return}
-
-  const discHeader = div("k");discHeader.style.display="flex";discHeader.style.alignItems="center";discHeader.textContent="Discussion";
-  if(H[i] && H[i].length){
-    const clr=document.createElement("button");clr.className="clear-btn";clr.textContent="Effacer";
-    clr.onclick=()=>{ if(confirm("Effacer ?")){ H[i]=[];saveChat();open(i); } };
-    discHeader.append(clr);
+  // Message d'accueil si vide
+  if(!H[i] || H[i].length===0){
+    if(i<0){
+      const welcome = "Bonjour, je suis **Abdarrahim**, le Directeur Exécutif.\n\nDonnez-moi un match (ex: *Real Madrid - Barcelone en Liga* ou *PSG - Bayern en Ligue des Champions*). Je vais immédiatement convoquer mes experts (Data Scientist, Trader, etc.) pour analyser le match et vous donner un verdict clair.\n\n⚠️ **Note** : Assurez-vous d'avoir configuré votre clé API dans ⚙️ pour que je puisse travailler.";
+      const msgDiv = div("m ai","",logContainer); msgDiv.innerHTML=formatText(welcome);
+    }
   }
-  sh.append(discHeader);
 
-  const log=div("");
-  H[i].forEach(m=>{ const msgDiv = div("m "+m[0],"",log); msgDiv.innerHTML=formatText(m[1]); if(m[0]==="ai") addCopyBtn(msgDiv, m[1]); });
+  H[i].forEach(m=>{ const msgDiv = div("m "+m[0],"",logContainer); msgDiv.innerHTML=formatText(m[1]); });
   
-  if(i>=0 && A[i].tools){
-    const toolRow=div("tags");
-    if(A[i].tools.includes("kelly")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Kelly";b.onclick=()=>showKellyTool(log); toolRow.append(b); }
-    if(A[i].tools.includes("poisson")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Poisson";b.onclick=()=>showPoissonTool(log); toolRow.append(b); }
-    if(A[i].tools.includes("rollover")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Rollover";b.onclick=()=>showRolloverTool(log); toolRow.append(b); }
-    if(A[i].tools.includes("overround")){ const b=document.createElement("button");b.className="tag";b.textContent="🧮 Overround";b.onclick=()=>showOverroundTool(log); toolRow.append(b); }
-    sh.append(toolRow);
-  }
-
+  // Zone de saisie
   const row=div("row");
-  const ta=document.createElement("textarea");ta.rows=1;ta.placeholder="Pose ta question...";
+  const ta=document.createElement("textarea");ta.rows=1;
+  ta.placeholder="Demandez un match (ex: Real - Barça)...";
   const b=document.createElement("button");b.className="go";b.textContent="Envoyer";
-  b.onclick=()=>ask(i,ta,log,b);
+  b.onclick=()=>ask(i,ta,logContainer,b);
   ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();b.click()}});
   row.append(ta,b);
-  setTimeout(()=>ta.focus(),100);
-  sh.scrollTop = sh.scrollHeight;
-}
-
-/* ============ OUTILS ============ */
-function showKellyTool(log){
-  const box=document.createElement("div");box.className="m ai tool-box";
-  box.innerHTML=`<h4>🧮 Critère de Kelly</h4>
-  <input type="number" id="k_cote" placeholder="Cote (ex: 2.10)" value="2.10">
-  <input type="number" id="k_prob" placeholder="Proba estimée % (ex: 55)" value="55">
-  <button onclick="window.calcKelly(this)">Calculer</button>
-  <div id="k_result" style="margin-top:10px;font-weight:bold;color:var(--green);font-size:14px"></div>`;
-  log.append(box); sh.scrollTop=sh.scrollHeight;
-}
-window.calcKelly = function(btn){
-  const cote = parseFloat(btn.parentNode.querySelector('#k_cote').value) || 0;
-  const prob = (parseFloat(btn.parentNode.querySelector('#k_prob').value) || 0) / 100;
-  const b = cote - 1; const q = 1 - prob; const f = (b * prob - q) / b;
-  const res = btn.parentNode.querySelector('#k_result');
-  if(f <= 0 || cote<=1) { res.innerHTML = "❌ <b>Ne pas parier.</b> EV négatif."; return; }
-  const mise = Math.round(BANK * f * 0.5);
-  res.innerHTML = `✅ Mise : <b>${mise.toLocaleString()} F</b><br><small>Edge: +${(f*100).toFixed(1)}%</small>`;
-};
-
-function showPoissonTool(log){
-  const box=document.createElement("div");box.className="m ai tool-box";
-  box.innerHTML=`<h4>🧮 Loi de Poisson</h4>
-  <input type="number" step="0.1" id="p_home" placeholder="xG Domicile (ex: 1.5)" value="1.5">
-  <input type="number" step="0.1" id="p_away" placeholder="xG Extérieur (ex: 1.2)" value="1.2">
-  <button onclick="window.calcPoisson(this)">Calculer</button>
-  <div id="p_result" style="margin-top:10px;font-weight:bold;color:var(--green);font-size:13px;line-height:1.6"></div>`;
-  log.append(box); sh.scrollTop=sh.scrollHeight;
-}
-window.calcPoisson = function(btn){
-  const h = parseFloat(btn.parentNode.querySelector('#p_home').value) || 0;
-  const a = parseFloat(btn.parentNode.querySelector('#p_away').value) || 0;
-  const fact = n => { let r=1; for(let i=2;i<=n;i++) r*=i; return r; };
-  const poisson = (k, lambda) => (Math.pow(lambda, k) * Math.exp(-lambda)) / fact(k);
-  let p1=0, pX=0, p2=0, pOver=0;
-  for(let i=0; i<=6; i++) for(let j=0; j<=6; j++){
-    const prob = poisson(i,h)*poisson(j,a);
-    if(i>j) p1+=prob; else if(i===j) pX+=prob; else p2+=prob;
-    if(i+j > 2.5) pOver+=prob;
-  }
-  const res = btn.parentNode.querySelector('#p_result');
-  res.innerHTML = `1: <b>${(p1*100).toFixed(1)}%</b> | X: <b>${(pX*100).toFixed(1)}%</b> | 2: <b>${(p2*100).toFixed(1)}%</b><br>Over 2.5: <b>${(pOver*100).toFixed(1)}%</b>`;
-};
-
-function showRolloverTool(log){
-  const box=document.createElement("div");box.className="m ai tool-box";
-  box.innerHTML=`<h4>🧮 Rollover</h4>
-  <input type="number" id="r_bonus" placeholder="Bonus (ex: 5000 F)" value="5000">
-  <input type="number" id="r_roll" placeholder="Rollover (ex: 5)" value="5">
-  <input type="number" id="r_mise" placeholder="Mise (ex: 500 F)" value="500">
-  <button onclick="window.calcRollover(this)">Calculer</button>
-  <div id="r_result" style="margin-top:10px;font-weight:bold;color:var(--green);font-size:13px"></div>`;
-  log.append(box); sh.scrollTop=sh.scrollHeight;
-}
-window.calcRollover = function(btn){
-  const bonus = parseFloat(btn.parentNode.querySelector('#r_bonus').value) || 0;
-  const roll = parseFloat(btn.parentNode.querySelector('#r_roll').value) || 0;
-  const mise = parseFloat(btn.parentNode.querySelector('#r_mise').value) || 1;
-  const total = bonus * roll; const nbParis = Math.ceil(total / mise);
-  const res = btn.parentNode.querySelector('#r_result');
-  res.innerHTML = `Total : <b>${total.toLocaleString()} F</b><br>Soit <b>${nbParis} paris</b> de ${mise} F.`;
-};
-
-function showOverroundTool(log){
-  const box=document.createElement("div");box.className="m ai tool-box";
-  box.innerHTML=`<h4>🧮 Overround</h4>
-  <div class="grid-2">
-    <input type="number" step="0.01" id="o_c1" placeholder="Cote 1" value="2.10">
-    <input type="number" step="0.01" id="o_cx" placeholder="Cote X" value="3.40">
-  </div>
-  <input type="number" step="0.01" id="o_c2" placeholder="Cote 2" value="3.50">
-  <button onclick="window.calcOverround2(this)">Calculer</button>
-  <div id="o_result" style="margin-top:10px;font-weight:bold;color:var(--green);font-size:13px;line-height:1.6"></div>`;
-  log.append(box); sh.scrollTop=sh.scrollHeight;
-}
-function calcOverround(c1,cx,c2){
-  if(!c1||!cx||!c2||c1<=1||cx<=1||c2<=1) return {over:0, p1:0, px:0, p2:0};
-  const i1=1/c1, ix=1/cx, i2=1/c2; const sum=i1+ix+i2;
-  return { over:(sum-1)*100, p1:(i1/sum)*100, px:(ix/sum)*100, p2:(i2/sum)*100 };
-}
-window.calcOverround2 = function(btn){
-  const c1=parseFloat(btn.parentNode.querySelector('#o_c1').value)||0;
-  const cx=parseFloat(btn.parentNode.querySelector('#o_cx').value)||0;
-  const c2=parseFloat(btn.parentNode.querySelector('#o_c2').value)||0;
-  const res=btn.parentNode.querySelector('#o_result');
-  const r=calcOverround(c1,cx,c2);
-  res.innerHTML = `<b>Marge : ${r.over.toFixed(2)}%</b><br>1: ${r.p1.toFixed(1)}% | X: ${r.px.toFixed(1)}% | 2: ${r.p2.toFixed(1)}%`;
-};
-
-function addCopyBtn(container, text){
-  const btn=document.createElement("button");btn.className="copy-btn";btn.textContent="📋 Copier";
-  btn.onclick=()=>{ navigator.clipboard.writeText(text).then(()=>{btn.textContent="✓ Copié";setTimeout(()=>btn.textContent="📋 Copier",2000);}); };
-  container.append(document.createElement("br"), btn);
-}
-
-/* ============ EDITEURS ============ */
-function renderEditor(){
-  div("k","Match");
-  const matchInp=document.createElement("input");matchInp.type="text";matchInp.value=(REP&&REP.match)||"";matchInp.placeholder="Équipe A - Équipe B";
-  sh.append(matchInp);
-
-  div("k","Cotes");
-  const g=document.createElement("div");g.className="grid-2";
-  const c1=document.createElement("input");c1.type="number";c1.step="0.01";c1.value=(REP&&REP.c1)||"";c1.placeholder="Cote 1";
-  const cx=document.createElement("input");cx.type="number";cx.step="0.01";cx.value=(REP&&REP.cx)||"";cx.placeholder="Cote X";
-  const c2=document.createElement("input");c2.type="number";c2.step="0.01";c2.value=(REP&&REP.c2)||"";c2.placeholder="Cote 2";c2.style.gridColumn="span 2";
-  g.append(c1,cx,c2);sh.append(g);
-
-  div("k","Note / Blessures");
-  const noteInp=document.createElement("input");noteInp.type="text";noteInp.value=(REP&&REP.note)||"";noteInp.placeholder="Ex: Bellingham absent...";
-  sh.append(noteInp);
-
-  const btn=document.createElement("button");btn.className="go";btn.textContent="Publier";btn.style.cssText="margin-top:15px;width:100%;height:48px;font-size:16px";
-  btn.onclick=()=>{ REP={match:matchInp.value.trim(),c1:parseFloat(c1.value)||null,cx:parseFloat(cx.value)||null,c2:parseFloat(c2.value)||null,note:noteInp.value.trim()};saveInfos();drawScr();btn.textContent="✓ Publié";setTimeout(()=>btn.textContent="Publier",1500); };
-  sh.append(btn);
+  
+  // Bouton Config API rapide
+  const apiBtn=document.createElement("button");
+  apiBtn.style.cssText="margin-top:10px;font-size:12px;color:var(--mut);text-decoration:underline;background:none;border:none;width:100%;text-align:center;flex:none";
+  apiBtn.textContent="⚙️ Configurer la clé API (OpenRouter)";
+  apiBtn.onclick=()=>open(-2);
+  sh.append(apiBtn);
+  
+  setTimeout(()=>{ logContainer.scrollTop = logContainer.scrollHeight; ta.focus(); },100);
 }
 
 function renderApiConfig(){
-  div("k","Clé API OpenRouter");
-  const help=div("sys","Créez une clé gratuite sur openrouter.ai. Sans clé, le Mode Démo est activé.");
+  div("k","Clé API OpenRouter (Gratuite)");
+  const help=div("sys","1. Allez sur openrouter.ai → Keys\n2. Créez une clé\n3. Collez-la ici");
   const keyInp=document.createElement("input");keyInp.type="password";keyInp.value=API_KEY;keyInp.placeholder="sk-or-v1-...";
   sh.append(keyInp);
-  
   div("k","Modèle");
   const sel=document.createElement("select");
   [
-    ["google/gemini-2.0-flash-exp:free","Gemini 2.0 Flash (Free)"],
-    ["meta-llama/llama-3.3-70b-instruct:free","Llama 3.3 70B (Free)"],
-    ["mistralai/mistral-small-3.2-24b-instruct:free","Mistral Small (Free)"]
+    ["google/gemini-2.0-flash-exp:free","Gemini 2.0 Flash (Rapide)"],
+    ["meta-llama/llama-3.3-70b-instruct:free","Llama 3.3 70B (Intelligent)"],
+    ["mistralai/mistral-small-3.2-24b-instruct:free","Mistral Small"]
   ].forEach(o=>{const op=document.createElement("option");op.value=o[0];op.textContent=o[1];if(API_MODEL===o[0])op.selected=true;sel.append(op)});
   sh.append(sel);
-
-  div("k","Options");
-  const demoLabel=document.createElement("label");demoLabel.style.cssText="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:15px;cursor:pointer";
-  const demoChk=document.createElement("input");demoChk.type="checkbox";demoChk.checked=DEMO_MODE;demoChk.style.width="20px";demoChk.style.height="20px";
-  demoLabel.append(demoChk, " Activer le Mode Démo (sans clé API)");
-  sh.append(demoLabel);
-
-  const btn=document.createElement("button");btn.className="go";btn.textContent="Sauvegarder";btn.style.cssText="width:100%;height:48px";
-  btn.onclick=()=>{ API_KEY=keyInp.value.trim();API_MODEL=sel.value;DEMO_MODE=demoChk.checked;saveApi();btn.textContent="✓ Sauvegardé";setTimeout(()=>{btn.textContent="Sauvegarder";close();},1000); };
+  const status = div("", API_KEY ? "✅ Clé enregistrée" : "⚠️ Aucune clé configurée");status.className = API_KEY ? "status-ok" : "status-err";sh.append(status);
+  const btn=document.createElement("button");btn.className="go";btn.textContent="Sauvegarder";btn.style.cssText="margin-top:15px;width:100%;height:48px";
+  btn.onclick=()=>{ API_KEY=keyInp.value.trim();API_MODEL=sel.value;saveApi();status.textContent=API_KEY?"✅ Clé enregistrée":"⚠️ Aucune clé";status.className=API_KEY?"status-ok":"status-err";setTimeout(()=>close(),800); };
   sh.append(btn);
 }
 
-function renderBankroll(){
-  div("k","Capital actuel");
-  const disp=div("",BANK.toLocaleString()+" FCFA");disp.style.cssText="font-size:32px;font-weight:800;color:var(--green);text-align:center;margin:15px 0;padding:20px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid var(--line)";
-  sh.append(disp);
-
-  div("k","Ajuster (Gain / Perte)");
-  const amt=document.createElement("input");amt.type="number";amt.placeholder="Montant en FCFA";sh.append(amt);
-  
-  const g=document.createElement("div");g.className="grid-2";
-  const winBtn=document.createElement("button");winBtn.className="go";winBtn.textContent="+ Gain";winBtn.style.background="var(--green)";
-  winBtn.onclick=()=>{ const v=parseFloat(amt.value); if(!v)return; BANK+=v; saveBank(); updateBankBtn(); open(-4); };
-  const lossBtn=document.createElement("button");lossBtn.className="go";lossBtn.textContent="- Perte";lossBtn.style.background="var(--red)";
-  lossBtn.onclick=()=>{ const v=parseFloat(amt.value); if(!v)return; BANK-=v; saveBank(); updateBankBtn(); open(-4); };
-  g.append(winBtn,lossBtn);sh.append(g);
-}
-
-/* ============ APPEL API (MODE DÉMO / FALLBACK) ============ */
+/* ============ APPEL API : ORCHESTRATION DU DIRECTEUR ============ */
 async function ask(i,ta,log,btn){
   const q=ta.value.trim();if(!q)return;
-  
-  if(!API_KEY && !DEMO_MODE){
-    // Ouvre automatiquement la config API au lieu de bloquer
-    close(); setTimeout(()=>open(-3), 300);
-    return;
-  }
+  if(!API_KEY){ close(); setTimeout(()=>{open(-2); alert("Veuillez d'abord configurer votre clé API pour que le Directeur puisse travailler.");}, 300); return; }
 
   ta.value="";
   const meDiv = div("m me","",log); meDiv.innerHTML=formatText(q);
   const w=div("m ai typing","",log);
-  w.textContent="🤖 Analyse en cours...";
+  w.textContent="🤖 Le Directeur convoque son équipe...";
   H[i]=H[i]||[];
   H[i].push(["me",q]);
   btn.disabled=true;
-  sh.scrollTop = sh.scrollHeight;
+  log.scrollTop = log.scrollHeight;
 
-  // --- MODE DÉMO (Si pas de clé) ---
-  if(DEMO_MODE || !API_KEY){
-    setTimeout(()=>{
-      w.classList.remove("typing");
-      const demoReplies = [
-        "🏛️ **Analyse Démo** : Le bureau a bien reçu votre question. En mode réel, je croiserai les xG, l'overround et les blessures pour vous donner un verdict clair. Ici, c'est juste une démonstration de l'interface.",
-        "💰 **Expert Value** : Sans cotes réelles, je ne peux pas calculer l'EV. Configurez une clé API OpenRouter dans ⚙️ pour discuter avec la vraie IA.",
-        "📊 **Data Scientist** : Le mode démo vous permet de tester les calculateurs (Kelly, Overround) et l'interface. Allez dans ⚙️ API pour brancher un cerveau (Gemini/Llama)."
-      ];
-      const rep = demoReplies[Math.floor(Math.random()*demoReplies.length)];
-      w.innerHTML = formatText(rep);
-      H[i].push(["ai", rep]); saveChat();
-      btn.disabled=false;
-    }, 1000);
-    return;
-  }
-
-  // --- MODE API RÉEL ---
-  let context = `[CONTEXTE] : Bureau Top 5 + LDC. Overround, CLV, LDP, Kelly, Poisson.`;
+  // Injection du contexte si le formulaire a été rempli
+  let context = "";
   if(REP && REP.match) {
-    const r = calcOverround(REP.c1,REP.cx,REP.c2);
-    context += `\n\n[DONNÉES] :\nMatch: ${REP.match}\nCote 1: ${REP.c1||'-'} | Cote X: ${REP.cx||'-'} | Cote 2: ${REP.c2||'-'}\nMarge (Overround): ${r.over.toFixed(2)}%\nProba nette: 1=${r.p1.toFixed(1)}%, X=${r.px.toFixed(1)}%, 2=${r.p2.toFixed(1)}%\nNote: ${REP.note||'-'}`;
+    context = `\n\n[INFO TERRAIN] Match: ${REP.match} | Cotes: ${REP.c1}-${REP.cx}-${REP.c2} | Note: ${REP.note}`;
   }
 
   let sysPrompt = "";
   if(i < 0) {
-    sysPrompt = `Tu es le Conseil de Direction. Simule un débat structuré entre :
-🏛️ **Directeur Exécutif** : décision
-💰 **Expert Value** : EV, CLV, Kelly
-📊 **Data Scientist** : xG, forme
-🎯 **Verdict Final** : Parier / Passer
-Sois concis, utilise **gras**.` + "\n\n" + context;
+    // PROMPT DU DIRECTEUR (Orchestrateur)
+    sysPrompt = `Tu es Abdarrahim, le Directeur Exécutif du bureau d'analyse football. 
+Tu parles avec autorité. L'utilisateur vient de te demander d'analyser un match (Liga, Ligue 1, ou Ligue des Champions).
+Tu ne réponds JAMAIS tout seul. Tu dois convoquer ton équipe et simuler leur intervention.
+
+Structure EXACTE de ta réponse :
+🏛️ **Directeur Abdarrahim** : "Je prends la direction de cette analyse. J'ordonne à mon équipe de se mettre au travail."
+🎯 **Testeur (Liga/PL/L1)** : "[Donne un ordre au testeur, puis écris sa réponse avec les stats xG et la forme]"
+📊 **Data Scientist** : "[Donne un ordre au data scientist, puis écris sa réponse sur les blessures]"
+💰 **Expert Value** : "[Donne un ordre au parieur, puis écris sa réponse sur l'EV et la marge]"
+⚖️ **VERDICT FINAL DU BUREAU** : "[Ta conclusion finale, claire et nette : PARIER ou PASSER, et pourquoi]"
+
+Rappel : Sois professionnel, utilise du gras, et donne l'impression d'un vrai travail d'équipe coordonné par un chef.` + context;
   } else {
-    sysPrompt = A[i].sys + `\n\nRègles : Max 10 lignes, direct, structuré, **gras** pour les points clés.` + "\n\n" + context;
+    sysPrompt = A[i].sys + context;
   }
 
   const messages = [{ role: "system", content: sysPrompt }];
-  H[i].slice(-6, -1).forEach(m => { messages.push({ role: m[0] === "me" ? "user" : "assistant", content: m[1] }); });
+  H[i].slice(-4, -1).forEach(m => { messages.push({ role: m[0] === "me" ? "user" : "assistant", content: m[1] }); });
   messages.push({ role: "user", content: q });
 
   const models = [API_MODEL, "meta-llama/llama-3.3-70b-instruct:free", "google/gemini-2.0-flash-exp:free"];
@@ -643,7 +337,7 @@ Sois concis, utilise **gras**.` + "\n\n" + context;
           try {
             const json = JSON.parse(data);
             const content = json.choices?.[0]?.delta?.content || "";
-            if (content) { full += content; w.innerHTML = formatText(full); sh.scrollTop = sh.scrollHeight; }
+            if (content) { full += content; w.innerHTML = formatText(full); log.scrollTop = log.scrollHeight; }
           } catch (e) {}
         }
       }
@@ -651,24 +345,23 @@ Sois concis, utilise **gras**.` + "\n\n" + context;
       w.classList.remove("typing");
       if (!full.trim()) throw new Error("Réponse vide");
       w.innerHTML = formatText(full);
-      addCopyBtn(w, full);
       H[i].push(["ai", full]);
       saveChat();
       success = true;
       break;
     } catch(e) {
       lastError = e.message;
-      w.textContent = `⚠️ Erreur (${m.split('/')[1]}). Bascule...`;
+      w.textContent = `⚠️ Erreur. Bascule...`;
     }
   }
 
   if(!success) {
     w.classList.remove("typing");
-    w.innerHTML = "⚠️ <b>Échec de tous les modèles.</b> " + lastError;
+    w.innerHTML = "⚠️ <b>Échec de connexion.</b> Vérifiez votre clé API.";
     w.style.color = "#ef4444";
   }
   btn.disabled = false;
-  sh.scrollTop = sh.scrollHeight;
+  log.scrollTop = log.scrollHeight;
 }
 })();
 </script>
