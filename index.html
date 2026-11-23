@@ -3,715 +3,442 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
-<title>FCM 26 · Ultimate Manager Pro</title>
+<title>FCM 26 · Masterpiece Manager</title>
 <style>
 :root {
-  --bg: #0f1115; --card: #1c1f26; --card-lighter: #262a34;
-  --text: #ffffff; --text-muted: #8b92a5;
-  --orange: #ff6b00; --orange-glow: rgba(255, 107, 0, 0.4);
-  --green: #00ff88; --red: #ff4444; --blue: #3b82f6; --gold: #ffd700;
-  --border: #2a2e38; --nav-bg: rgba(15, 17, 21, 0.95);
+  --bg: #08090c;
+  --surface: #12141a;
+  --surface-light: #1c1f28;
+  --primary: #f97316;
+  --primary-gradient: linear-gradient(135deg, #f97316, #ea580c);
+  --green: #10b981;
+  --red: #ef4444;
+  --gold: #fbbf24;
+  --blue: #3b82f6;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: rgba(255,255,255,0.06);
+  --glow: 0 0 20px rgba(249, 115, 22, 0.3);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
-body { background: var(--bg); color: var(--text); height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg); color: var(--text-main); height: 100dvh; overflow: hidden; display: flex; flex-direction: column; user-select: none; }
 
 /* HEADER */
-.header { background: var(--card); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); z-index: 10; flex-shrink: 0; }
-.logo { font-size: 20px; font-weight: 900; letter-spacing: -1px; display: flex; }
-.logo span:nth-child(1) { color: #fff; }
-.logo span:nth-child(2) { color: var(--orange); }
-.header-stats { display: flex; gap: 8px; font-size: 12px; font-weight: 700; }
-.stat-box { background: #000; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); display: flex; align-items: center; gap: 4px; }
-.stat-box.money { color: var(--green); }
-.stat-box.tokens { color: var(--blue); }
+header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 10; }
+.brand { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
+.brand span { color: var(--primary); }
+.currency { display: flex; gap: 12px; font-weight: 700; font-size: 13px; }
+.cur-box { background: #000; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+.cur-money { color: var(--green); }
+.cur-gems { color: var(--blue); }
 
-/* MAIN CONTENT */
-.main-content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 90px; scroll-behavior: smooth; }
-.page { display: none; animation: slideUp 0.3s ease forwards; }
+/* MAIN SCROLL */
+main { flex: 1; overflow-y: auto; padding: 20px; padding-bottom: 100px; scroll-behavior: smooth; }
+.page { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .page.active { display: block; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* CARDS */
-.card { background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-.card-header { font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 12px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+/* HOME DASHBOARD */
+.hero-match { background: var(--surface-light); border-radius: 20px; padding: 24px; text-align: center; border: 1px solid var(--border); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.hero-match::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 60%); z-index: 0; }
+.hero-content { position: relative; z-index: 1; }
+.league-tag { font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.teams-versus { display: flex; justify-content: space-between; align-items: center; margin: 20px 0; }
+.team-block { flex: 1; }
+.team-logo { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; background: #000; border: 2px solid var(--border); }
+.team-logo.home { border-color: var(--primary); box-shadow: var(--glow); color: var(--primary); }
+.team-logo.away { border-color: var(--text-muted); color: var(--text-muted); }
+.team-name { font-size: 14px; font-weight: 700; }
+.vs-badge { font-size: 24px; font-weight: 900; color: var(--text-muted); font-style: italic; padding: 0 10px; }
+.weather-badge { display: inline-block; background: rgba(59, 130, 246, 0.2); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-top: 10px; }
+.btn-play { width: 100%; padding: 16px; background: var(--primary-gradient); color: #fff; border: none; border-radius: 14px; font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; box-shadow: var(--glow); cursor: pointer; transition: transform 0.1s; }
+.btn-play:active { transform: scale(0.96); }
 
-/* DASHBOARD */
-.match-banner { background: linear-gradient(135deg, #1c1f26 0%, #111317 100%); border-left: 4px solid var(--orange); }
-.match-teams { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
-.team { text-align: center; flex: 1; }
-.team-name { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
-.team-ovr { font-size: 12px; color: var(--text-muted); background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 10px; display: inline-block; }
-.vs { font-size: 24px; font-weight: 900; color: var(--orange); font-style: italic; }
-.btn-action { width: 100%; padding: 14px; background: var(--orange); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px var(--orange-glow); transition: 0.2s; }
-.btn-action:active { transform: scale(0.98); }
-.btn-action:disabled { background: #333; color: #888; box-shadow: none; cursor: not-allowed; }
-.btn-secondary { background: var(--card-lighter); color: #fff; border: 1px solid var(--border); padding: 12px; border-radius: 8px; width: 100%; font-size: 14px; font-weight: 800; cursor: pointer; margin-bottom: 8px; }
-.btn-secondary.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+/* LEAGUE TABLE */
+.section-title { font-size: 16px; font-weight: 800; margin: 24px 0 12px; display: flex; justify-content: space-between; align-items: center; }
+.table-container { background: var(--surface); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 12px 16px; color: var(--text-muted); font-weight: 700; font-size: 11px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+td { padding: 12px 16px; font-weight: 600; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; }
+tr.me { background: rgba(249, 115, 22, 0.1); color: var(--primary); }
 
-/* TABLEAU */
-.league-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.league-table th { text-align: left; padding: 8px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); }
-.league-table td { padding: 10px 8px; border-bottom: 1px solid #2a2e38; font-weight: 600; }
-.league-table tr:last-child td { border-bottom: none; }
-.league-table tr.my-team { background: rgba(255, 107, 0, 0.1); color: var(--orange); border-left: 3px solid var(--orange); }
+/* SQUAD (FUT CARDS) */
+.squad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.fut-card { background: linear-gradient(145deg, #1c1f28 0%, #12141a 100%); border: 1px solid var(--border); border-radius: 16px; padding: 16px; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); transition: 0.2s; }
+.fut-card:active { transform: scale(0.96); }
+.fut-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary); }
+.fut-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.fut-ovr { font-size: 28px; font-weight: 900; color: var(--text-main); line-height: 1; }
+.fut-pos { font-size: 11px; font-weight: 800; color: var(--text-muted); background: #000; padding: 2px 8px; border-radius: 4px; }
+.fut-name { font-size: 14px; font-weight: 800; margin-bottom: 12px; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fut-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.fut-stats span { color: var(--text-main); font-weight: 800; }
 
-/* EFFECTIF */
-.player-card { background: var(--card-lighter); border-radius: 8px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
-.player-card.starter { border-left: 3px solid var(--green); }
-.player-card:active { border-color: var(--orange); }
-.p-pos { width: 35px; font-size: 10px; font-weight: 800; color: var(--text-muted); text-align: center; }
-.p-info { flex: 1; margin-left: 10px; }
-.p-name { font-weight: 800; font-size: 14px; }
-.p-bars { display: flex; gap: 4px; margin-top: 4px; }
-.bar { height: 4px; border-radius: 2px; flex: 1; background: #333; }
-.bar-fill { height: 100%; border-radius: 2px; transition: 0.3s; }
-.bar-stamina .bar-fill { background: var(--green); }
-.bar-morale .bar-fill { background: var(--blue); }
-.p-ovr { font-size: 18px; font-weight: 900; color: var(--green); margin-left: 10px; }
-.form-arrow { font-size: 16px; margin-left: 8px; }
+/* MATCH LIVE */
+.live-container { display: flex; flex-direction: column; height: calc(100dvh - 180px); background: var(--surface); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; }
+.live-scoreboard { background: #000; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+.live-team { font-weight: 800; font-size: 14px; }
+.live-score { font-size: 32px; font-weight: 900; color: var(--primary); }
+.live-clock { font-size: 12px; color: var(--green); font-weight: 800; text-align: center; animation: pulse 1s infinite alternate; }
+@keyframes pulse { from { opacity: 0.5; } to { opacity: 1; } }
+.live-feed { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.feed-item { background: var(--surface-light); padding: 12px 16px; border-radius: 12px; font-size: 13px; line-height: 1.4; border-left: 3px solid var(--border); animation: slideIn 0.3s ease; }
+.feed-item.goal { border-left-color: var(--green); background: rgba(16, 185, 129, 0.1); font-weight: 800; font-size: 15px; }
+.feed-item.chance { border-left-color: var(--gold); }
+.feed-item.card { border-left-color: var(--red); }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 
-/* TERRAIN TACTIQUE */
-.pitch { background: #15291c; border-radius: 12px; height: 380px; position: relative; margin-bottom: 16px; border: 2px solid rgba(255,255,255,0.1); background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 10% 10%; }
-.pitch-player { position: absolute; width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 800; color: #fff; border: 2px solid #fff; transform: translate(-50%, -50%); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-.pitch-player.gk { background: #2b3a67; } .pitch-player.def { background: #1e5631; } .pitch-player.mid { background: #d98c00; } .pitch-player.att { background: #b91c1c; }
-
-/* CHAT IA */
-.chat-container { display: flex; flex-direction: column; height: calc(100dvh - 160px); background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-.chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.chat-msg { max-width: 90%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
-.chat-msg.user { background: var(--orange); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-.chat-msg.ai { background: #1a1d24; color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #2a2e38; }
-.chat-msg.ai b { color: var(--orange); }
-.chat-input-area { display: flex; gap: 8px; padding: 12px; background: #111317; border-top: 1px solid var(--border); }
-.chat-input-area input { flex: 1; background: #1a1d24; border: 1px solid var(--border); padding: 12px 16px; border-radius: 24px; color: #fff; font-size: 14px; outline: none; }
-.chat-input-area button { background: var(--orange); border: none; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; }
+/* TACTICS */
+.pitch-visual { background: #0f2e1a; border-radius: 20px; height: 400px; position: relative; border: 2px solid rgba(255,255,255,0.1); background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px); overflow: hidden; margin-bottom: 20px; }
+.pitch-line { position: absolute; background: rgba(255,255,255,0.2); }
+.player-node { position: absolute; width: 40px; height: 40px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 900; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 12px; }
+.player-node span { font-size: 8px; color: #fff; opacity: 0.8; }
+.tactic-controls { display: flex; gap: 8px; }
+.tactic-btn { flex: 1; padding: 12px; border-radius: 12px; background: var(--surface-light); border: 1px solid var(--border); color: var(--text-main); font-weight: 700; font-size: 13px; cursor: pointer; }
+.tactic-btn.active { background: var(--primary); border-color: var(--primary); }
 
 /* BOTTOM NAV */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--nav-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0; padding-bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 50; }
-.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 10px; font-weight: 700; padding: 4px 12px; cursor: pointer; transition: 0.2s; }
-.nav-item.active { color: var(--orange); transform: translateY(-2px); }
-.nav-icon { font-size: 20px; margin-bottom: 4px; }
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(18, 20, 26, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 12px 0; padding-bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 50; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 10px; font-weight: 800; gap: 6px; cursor: pointer; transition: 0.2s; }
+.nav-item.active { color: var(--primary); }
+.nav-item svg { width: 24px; height: 24px; fill: currentColor; }
 
-/* MODALS */
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; padding: 20px; }
-.modal.active { display: flex; animation: fadeIn 0.2s; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.modal-content { background: var(--card); border-radius: 16px; width: 100%; max-width: 400px; padding: 20px; border: 1px solid var(--border); max-height: 85vh; overflow-y: auto; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-.close-btn { background: var(--card-lighter); border: none; color: #fff; font-size: 18px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
-.input-group { margin-bottom: 12px; }
-.input-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; font-weight: 700; }
-.input-group input, .input-group select { width: 100%; background: #111317; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 8px; font-size: 14px; outline: none; }
+/* MODALS & MISC */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 100; display: none; justify-content: center; align-items: flex-end; }
+.modal.active { display: flex; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-panel { background: var(--surface); width: 100%; max-width: 500px; border-radius: 24px 24px 0 0; padding: 24px; border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo"><span>FCM</span><span>26</span></div>
-  <div class="header-stats">
-    <div class="stat-box money" id="ui-money">💰 12.5M</div>
-    <div class="stat-box tokens" id="ui-tokens">💎 50</div>
-    <div class="stat-box" id="ui-matchday">J-1</div>
+<header>
+  <div class="brand">FCM<span>26</span></div>
+  <div class="currency">
+    <div class="cur-box cur-money">💰 <span id="ui-money">12.5M</span></div>
+    <div class="cur-box cur-gems">💎 <span id="ui-gems">50</span></div>
   </div>
 </header>
 
-<main class="main-content">
-  <!-- ACCUEIL -->
+<main>
+  <!-- PAGE ACCUEIL -->
   <div class="page active" id="page-home">
-    <div class="card match-banner">
-      <div class="card-header">Prochain Match <span id="ui-weather" style="color:var(--blue);">☀️ Ensoleillé</span></div>
-      <div class="match-teams">
-        <div class="team">
-          <div class="team-name">Rahim FC</div>
-          <div class="team-ovr" id="ui-my-ovr">OVR 82</div>
+    <div class="hero-match">
+      <div class="hero-content">
+        <div class="league-tag">Liga · Journée <span id="ui-matchday">1</span></div>
+        <div class="teams-versus">
+          <div class="team-block">
+            <div class="team-logo home" id="ui-my-ovr">82</div>
+            <div class="team-name">Rahim FC</div>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="team-block">
+            <div class="team-logo away" id="ui-opp-ovr">88</div>
+            <div class="team-name" id="ui-opp-name">Real Madrid</div>
+          </div>
         </div>
-        <div class="vs">VS</div>
-        <div class="team">
-          <div class="team-name" id="ui-opp-team">Real Madrid</div>
-          <div class="team-ovr" id="ui-opp-ovr">OVR 88</div>
-        </div>
+        <div class="weather-badge" id="ui-weather">☀️ 24°C · Ensoleillé</div>
+        <button class="btn-play" onclick="startLiveMatch()">Coup d'envoi</button>
       </div>
-      <button class="btn-action" id="btn-play" onclick="playMatch(this)">SIMULER LE MATCH</button>
-      <div id="match-result" style="display:none; text-align:center; margin-top:15px; font-size:15px; font-weight:800; line-height:1.6;"></div>
     </div>
 
-    <div class="card">
-      <div class="card-header">Classement Liga</div>
-      <table class="league-table">
-        <thead><tr><th>#</th><th>Équipe</th><th>Pts</th></tr></thead>
-        <tbody id="ui-league-table"></tbody>
+    <div class="section-title">Classement</div>
+    <div class="table-container">
+      <table>
+        <thead><tr><th>#</th><th>Club</th><th>Pts</th></tr></thead>
+        <tbody id="ui-league"></tbody>
       </table>
     </div>
-
-    <div class="card">
-      <div class="card-header">Passe de Combat (Sponsor)</div>
-      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted); margin-bottom:8px;">
-        <span>Niveau <b id="ui-bp-level" style="color:#fff;">1</b></span>
-        <span><b id="ui-bp-points" style="color:#fff;">0</b> / 100 pts</span>
-      </div>
-      <div class="bar" style="height:8px; background:#333; border-radius:4px; margin-bottom:8px;">
-        <div class="bar-fill" id="ui-bp-bar" style="width:0%; background:var(--orange);"></div>
-      </div>
-      <p style="font-size:11px; color:var(--text-muted);">Gagnez des matchs pour débloquer des Tokens (💎).</p>
-    </div>
   </div>
 
-  <!-- EFFECTIF -->
+  <!-- PAGE EFFECTIF -->
   <div class="page" id="page-squad">
-    <div class="card">
-      <div class="card-header">Effectif Pro <span id="ui-squad-count" style="color:var(--text-muted);">(11/18)</span></div>
-      <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Les 11 premiers joueurs (bordure verte) sont titulaires.</p>
-      <div id="ui-squad-list"></div>
+    <div class="section-title">
+      <span>Effectif</span>
+      <span style="font-size: 12px; color: var(--text-muted);" id="ui-squad-count">11/18</span>
     </div>
+    <div class="squad-grid" id="ui-squad-grid"></div>
   </div>
 
-  <!-- TACTIQUES -->
-  <div class="page" id="page-tactics">
-    <div class="card">
-      <div class="card-header">
-        Formation
-        <select id="ui-formation" onchange="changeFormation(this.value)" style="background:var(--border); color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:bold;">
-          <option value="433">4-3-3</option>
-          <option value="442">4-4-2</option>
-          <option value="352">3-5-2</option>
-        </select>
-      </div>
-      <div class="pitch" id="ui-pitch"></div>
-    </div>
-    <div class="card">
-      <div class="card-header">Mentalité Tactique</div>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-secondary" id="btn-def" onclick="setMentality('Defensive', this)">🛡️ Défensif</button>
-        <button class="btn-secondary active" id="btn-bal" onclick="setMentality('Balanced', this)">⚖️ Équilibré</button>
-        <button class="btn-secondary" id="btn-att" onclick="setMentality('Attacking', this)">⚔️ Offensif</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- BUREAU DU DIRECTEUR (IA) -->
-  <div class="page" id="page-analysis">
-    <div class="chat-container">
-      <div class="card-header" style="padding:12px 16px; background:#1a1d24; margin:0; border-bottom:1px solid var(--border); flex-shrink:0;">🏛️ Bureau du Directeur Abdarrahim</div>
-      <div class="chat-messages" id="chat-messages">
-        <div class="chat-msg ai">
-          Monsieur, je suis à votre disposition. J'ai accès à l'état de votre effectif, votre tactique, la météo et vos finances. Demandez-moi une analyse pour le prochain match.
+  <!-- PAGE MATCH LIVE -->
+  <div class="page" id="page-match">
+    <div class="live-container">
+      <div class="live-scoreboard">
+        <div class="live-team">Rahim FC</div>
+        <div style="text-align: center;">
+          <div class="live-score" id="ui-live-score">0 - 0</div>
+          <div class="live-clock" id="ui-live-clock">1'</div>
         </div>
+        <div class="live-team" id="ui-live-opp">Real Madrid</div>
       </div>
-      <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Ex: Comment battre le Real Madrid ?">
-        <button onclick="sendMessage()">➤</button>
+      <div class="live-feed" id="ui-live-feed"></div>
+      <div style="padding: 16px; background: #000;">
+        <button class="btn-play" style="margin: 0;" onclick="nav('home')">Quitter le match</button>
       </div>
     </div>
   </div>
 
-  <!-- MARCHÉ -->
-  <div class="page" id="page-market">
-    <div class="card">
-      <div class="card-header">Marché des Transferts</div>
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Recrutez de nouveaux joueurs (Max 18 joueurs).</p>
-      <div id="ui-market-list"></div>
+  <!-- PAGE TACTIQUES -->
+  <div class="page" id="page-tactics">
+    <div class="section-title">Plan de Jeu</div>
+    <div class="pitch-visual" id="ui-pitch">
+      <!-- Les joueurs seront générés en JS -->
     </div>
-    <div class="card">
-      <div class="card-header">Loot Box (Pack de Joueurs)</div>
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Taux de drop : 70% Bronze, 25% Argent, 5% Or.</p>
-      <button class="btn-action" onclick="openLootBox()" style="background:var(--blue); box-shadow:0 4px 15px rgba(59,130,246,0.4);">OUVRIR UN PACK (50 💎)</button>
+    <div class="tactic-controls">
+      <button class="tactic-btn" onclick="setTactic('Defensive')">Défensif</button>
+      <button class="tactic-btn active" onclick="setTactic('Balanced')">Équilibré</button>
+      <button class="tactic-btn" onclick="setTactic('Attacking')">Offensif</button>
     </div>
   </div>
 
-  <!-- CLUB & CONFIG -->
-  <div class="page" id="page-club">
-    <div class="card">
-      <div class="card-header">Centre d'Entraînement</div>
-      <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Améliorez les statistiques de votre équipe.</p>
-      <button class="btn-secondary" onclick="trainTeam()">💪 Entraîner l'équipe (Coût: 1M€)</button>
-    </div>
-    <div class="card">
-      <div class="card-header">⚙️ Configuration IA</div>
-      <div class="input-group">
-        <label>Clé API OpenRouter</label>
-        <input type="password" id="ui-api-key" placeholder="sk-or-v1-...">
-      </div>
-      <button class="btn-action" onclick="saveApiKey()">SAUVEGARDER</button>
+  <!-- PAGE IA -->
+  <div class="page" id="page-ai">
+    <div class="section-title">Directeur Abdarrahim</div>
+    <div style="background: var(--surface); border-radius: 16px; padding: 20px; text-align: center; border: 1px solid var(--border);">
+      <div style="font-size: 40px; margin-bottom: 10px;">🏛️</div>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;">
+        "Monsieur, j'ai analysé la forme de l'équipe et la météo. Je vous conseille de jouer en <b>4-3-3 Offensif</b> car leur défense centrale est lente."
+      </p>
+      <button class="tactic-btn" onclick="alert('Connectez votre clé API OpenRouter dans le code source pour discuter avec l\'IA.')">Discuter avec le Directeur</button>
     </div>
   </div>
 </main>
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <div class="nav-item active" id="nav-home" onclick="nav('home', this)"><span class="nav-icon">🏠</span>Accueil</div>
-  <div class="nav-item" id="nav-squad" onclick="nav('squad', this)"><span class="nav-icon">👥</span>Effectif</div>
-  <div class="nav-item" id="nav-tactics" onclick="nav('tactics', this)"><span class="nav-icon">📋</span>Tactiques</div>
-  <div class="nav-item" id="nav-analysis" onclick="nav('analysis', this)"><span class="nav-icon">💬</span>Directeur</div>
-  <div class="nav-item" id="nav-market" onclick="nav('market', this)"><span class="nav-icon">🛒</span>Marché</div>
-  <div class="nav-item" id="nav-club" onclick="nav('club', this)"><span class="nav-icon">⚙️</span>Club</div>
+  <div class="nav-item active" onclick="nav('home', this)">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>Accueil</span>
+  </div>
+  <div class="nav-item" onclick="nav('squad', this)">
+    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+    <span>Effectif</span>
+  </div>
+  <div class="nav-item" onclick="nav('tactics', this)">
+    <svg viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h10v10H7V7z"/></svg>
+    <span>Tactiques</span>
+  </div>
+  <div class="nav-item" onclick="nav('ai', this)">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    <span>Directeur</span>
+  </div>
 </nav>
 
-<!-- MODAL JOUEUR -->
-<div class="modal" id="modal-player">
-  <div class="modal-content">
-    <div class="modal-header">
-      <div style="font-size:20px; font-weight:900;" id="m-name">Joueur</div>
-      <button class="close-btn" onclick="closeModal()">✕</button>
-    </div>
-    <div style="display:flex; justify-content:space-between; margin-bottom:15px; background:#111317; padding:12px; border-radius:8px;">
-      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">POSTE</div><div id="m-pos" style="font-weight:800; font-size:16px;">BU</div></div>
-      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">OVR</div><div id="m-ovr" style="font-weight:800; font-size:16px; color:var(--green);">90</div></div>
-      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">FORME</div><div id="m-form" style="font-weight:800; font-size:16px;">🔥</div></div>
-    </div>
-    <div style="margin-bottom:15px;">
-      <div style="font-size:12px;color:var(--text-muted); margin-bottom:4px;">Endurance</div>
-      <div class="bar bar-stamina" style="height:8px; background:#333; border-radius:4px;"><div class="bar-fill" id="m-stamina" style="width:80%;"></div></div>
-    </div>
-    <button class="btn-action" onclick="askAIAnalysisPlayer()">Demander conseil au Directeur</button>
-  </div>
-</div>
-
 <script>
-// ================= GAME DATA =================
-const opponentsList = [
-  { name: "Real Madrid", ovr: 88 }, { name: "FC Barcelone", ovr: 86 },
-  { name: "Atletico Madrid", ovr: 84 }, { name: "Séville FC", ovr: 80 },
-  { name: "Villarreal", ovr: 79 }
-];
-
-const defaultMarket = [
-  { id: 101, pos: 'BU', name: 'V. Osimhen', ovr: 87, price: 120 },
-  { id: 102, pos: 'MC', name: 'J. Bellingham', ovr: 90, price: 180 },
-  { id: 103, pos: 'DC', name: 'W. Saliba', ovr: 85, price: 80 },
-  { id: 104, pos: 'AD', name: 'B. Saka', ovr: 86, price: 110 },
-];
-
-const weatherConditions = [
-  { name: "☀️ Ensoleillé", effect: "Aucun effet", icon: "☀️" },
-  { name: "🌧️ Pluie battante", effect: "Précision -10%", icon: "🌧️" },
-  { name: "🔥 Canicule (40°C)", effect: "Endurance -20%", icon: "🔥" },
-  { name: "💨 Vent fort", effect: "Passes longues -15%", icon: "💨" },
-];
-
-let game = {
+// ================= GAME ENGINE =================
+const game = {
   money: 12.5,
-  tokens: 50,
+  gems: 50,
   matchday: 1,
-  mentality: 'Balanced',
-  formation: '433',
-  currentOpponent: opponentsList[0],
-  currentWeather: weatherConditions[0],
-  battlePass: { level: 1, points: 0 },
-  market: [...defaultMarket],
-  lastMatch: null,
+  currentOpponent: { name: "Real Madrid", ovr: 88 },
+  tactic: 'Balanced',
+  weather: { icon: "☀️", text: "Ensoleillé" },
   squad: [
-    { id: 1, pos: 'GB', name: 'A. Onana', ovr: 82, stamina: 95, morale: 80, form: '🔥' },
-    { id: 2, pos: 'DD', name: 'A. Hakimi', ovr: 84, stamina: 88, morale: 90, form: '↗️' },
-    { id: 3, pos: 'DC', name: 'K. Koulibaly', ovr: 83, stamina: 70, morale: 60, form: '↘️' },
-    { id: 4, pos: 'DC', name: 'W. Saliba', ovr: 85, stamina: 92, morale: 85, form: '🔥' },
-    { id: 5, pos: 'DG', name: 'T. Hernández', ovr: 84, stamina: 85, morale: 75, form: '➡️' },
-    { id: 6, pos: 'MDC', name: 'D. Rice', ovr: 86, stamina: 90, morale: 88, form: '↗️' },
-    { id: 7, pos: 'MC', name: 'J. Bellingham', ovr: 90, stamina: 95, morale: 95, form: '🔥' },
-    { id: 8, pos: 'MC', name: 'Pedri', ovr: 86, stamina: 75, morale: 80, form: '➡️' },
-    { id: 9, pos: 'AD', name: 'B. Saka', ovr: 86, stamina: 88, morale: 85, form: '↗️' },
-    { id: 10, pos: 'BU', name: 'V. Osimhen', ovr: 87, stamina: 92, morale: 90, form: '🔥' },
-    { id: 11, pos: 'AG', name: 'K. Mbappé', ovr: 91, stamina: 85, morale: 95, form: '🔥' }
+    { pos: 'ST', name: 'Mbappé', ovr: 91, pac: 97, sho: 90, pas: 80 },
+    { pos: 'RW', name: 'Saka', ovr: 86, pac: 88, sho: 85, pas: 84 },
+    { pos: 'CM', name: 'Bellingham', ovr: 90, pac: 80, sho: 86, pas: 88 },
+    { pos: 'CM', name: 'Pedri', ovr: 86, pac: 75, sho: 78, pas: 91 },
+    { pos: 'CDM', name: 'Rice', ovr: 86, pac: 74, sho: 70, pas: 82 },
+    { pos: 'LW', name: 'Osimhen', ovr: 87, pac: 90, sho: 89, pas: 75 },
+    { pos: 'LB', name: 'Hernández', ovr: 84, pac: 92, sho: 65, pas: 80 },
+    { pos: 'CB', name: 'Saliba', ovr: 85, pac: 85, sho: 40, pas: 70 },
+    { pos: 'CB', name: 'Koulibaly', ovr: 83, pac: 75, sho: 45, pas: 68 },
+    { pos: 'RB', name: 'Hakimi', ovr: 84, pac: 94, sho: 70, pas: 82 },
+    { pos: 'GK', name: 'Onana', ovr: 82, pac: 60, sho: 30, pas: 65 }
   ],
   league: [
-    { pos: 1, team: "Real Madrid", pts: 85 }, { pos: 2, team: "FC Barcelone", pts: 82 },
-    { pos: 3, team: "Rahim FC", pts: 78, me: true }, { pos: 4, team: "Atletico Madrid", pts: 75 },
-    { pos: 5, team: "Séville FC", pts: 68 }
+    { pos: 1, name: "Real Madrid", pts: 85 },
+    { pos: 2, name: "FC Barcelone", pts: 82 },
+    { pos: 3, name: "Rahim FC", pts: 78, me: true },
+    { pos: 4, name: "Atlético", pts: 75 }
   ]
 };
 
-const formations = {
-  "433": [ {pos:'GB',x:50,y:90}, {pos:'DD',x:20,y:70}, {pos:'DC',x:40,y:75}, {pos:'DC',x:60,y:75}, {pos:'DG',x:80,y:70}, {pos:'MDC',x:50,y:55}, {pos:'MC',x:30,y:45}, {pos:'MC',x:70,y:45}, {pos:'AD',x:20,y:25}, {pos:'BU',x:50,y:15}, {pos:'AG',x:80,y:25} ],
-  "442": [ {pos:'GB',x:50,y:90}, {pos:'DD',x:20,y:70}, {pos:'DC',x:40,y:75}, {pos:'DC',x:60,y:75}, {pos:'DG',x:80,y:70}, {pos:'MD',x:20,y:50}, {pos:'MC',x:40,y:55}, {pos:'MC',x:60,y:55}, {pos:'MG',x:80,y:50}, {pos:'BU',x:40,y:20}, {pos:'BU',x:60,y:20} ],
-  "352": [ {pos:'GB',x:50,y:90}, {pos:'DC',x:25,y:75}, {pos:'DC',x:50,y:75}, {pos:'DC',x:75,y:75}, {pos:'MD',x:10,y:50}, {pos:'MC',x:35,y:55}, {pos:'MC',x:65,y:55}, {pos:'MG',x:90,y:50}, {pos:'BU',x:30,y:20}, {pos:'BU',x:70,y:20}, {pos:'MOC',x:50,y:35} ]
-};
-
-// ================= UTILS & SÉCURITÉ =================
-function escapeHTML(str) {
-  return str.replace(/[&<>'"]/g, tag => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-  }[tag] || tag));
-}
-
-function sortSquad() {
-  game.squad.sort((a, b) => b.ovr - a.ovr); // Les meilleurs en premier (titulaires)
-}
-
-// ================= INIT & STORAGE =================
-function initGame() {
-  const saved = localStorage.getItem('fcm_save_pro_v3'); 
-  if (saved) {
-    const parsed = JSON.parse(saved);
-    if (parsed.squad && Array.isArray(parsed.squad) && parsed.squad.length >= 11) {
-      game = parsed;
-      if(!game.market) game.market = [...defaultMarket];
-      if(!game.lastMatch) game.lastMatch = null;
-    }
-  }
-  updateUI();
+// ================= INITIALIZATION =================
+function init() {
+  renderHome();
+  renderSquad();
   renderPitch();
-  renderMarket();
-  document.getElementById('ui-api-key').value = localStorage.getItem('fcm_key') || '';
 }
 
-function saveGame() {
-  localStorage.setItem('fcm_save_pro_v3', JSON.stringify(game));
-}
-
-// ================= UI UPDATES =================
-function updateUI() {
-  document.getElementById('ui-money').innerText = `💰 ${game.money.toFixed(1)}M`;
-  document.getElementById('ui-tokens').innerText = `💎 ${game.tokens}`;
-  document.getElementById('ui-matchday').innerText = `J-${game.matchday}`;
-  document.getElementById('ui-opp-team').innerText = game.currentOpponent.name;
-  document.getElementById('ui-opp-ovr').innerText = `OVR ${game.currentOpponent.ovr}`;
-  document.getElementById('ui-weather').innerText = game.currentWeather.icon + " " + game.currentWeather.name;
-  document.getElementById('ui-squad-count').innerText = `(${game.squad.length}/18)`;
-  
-  // Calcul de l'OVR de l'équipe (11 premiers)
-  const starting11 = game.squad.slice(0, 11);
-  const teamOvr = Math.round(starting11.reduce((acc, p) => acc + p.ovr, 0) / 11);
-  document.getElementById('ui-my-ovr').innerText = `OVR ${teamOvr}`;
-
-  // Classement
-  const tbody = document.getElementById('ui-league-table');
-  tbody.innerHTML = game.league.map(l => `
-    <tr class="${l.me ? 'my-team' : ''}">
-      <td>${l.pos}</td><td>${l.team}</td><td>${l.pts}</td>
-    </tr>
-  `).join('');
-
-  // Effectif
-  const list = document.getElementById('ui-squad-list');
-  list.innerHTML = game.squad.map((p, index) => `
-    <div class="player-card ${index < 11 ? 'starter' : ''}" onclick="openPlayer(${p.id})">
-      <div class="p-pos">${p.pos}</div>
-      <div class="p-info">
-        <div class="p-name">${p.name}</div>
-        <div class="p-bars">
-          <div class="bar bar-stamina" style="flex:1;"><div class="bar-fill" style="width:${p.stamina}%"></div></div>
-          <div class="bar bar-morale" style="flex:1;"><div class="bar-fill" style="width:${p.morale}%"></div></div>
-        </div>
-      </div>
-      <div class="form-arrow">${p.form}</div>
-      <div class="p-ovr">${p.ovr}</div>
-    </div>
-  `).join('');
-  
-  // Battle Pass
-  document.getElementById('ui-bp-level').innerText = game.battlePass.level;
-  document.getElementById('ui-bp-points').innerText = game.battlePass.points;
-  const bpProgress = (game.battlePass.points % 100);
-  document.getElementById('ui-bp-bar').style.width = bpProgress + '%';
-
-  saveGame();
-}
-
-function renderMarket() {
-  const list = document.getElementById('ui-market-list');
-  if(game.market.length === 0) {
-    list.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center;">Aucun joueur disponible pour le moment.</p>';
-    return;
-  }
-  list.innerHTML = game.market.map(p => `
-    <div class="player-card" onclick="buyPlayer(${p.id})">
-      <div class="p-pos">${p.pos}</div>
-      <div class="p-info"><div class="p-name">${p.name}</div></div>
-      <div class="p-ovr" style="font-size:14px; color:var(--gold);">${p.price}M€</div>
-    </div>
-  `).join('');
-}
-
-// ================= NAVIGATION =================
+// ================= UI RENDERING =================
 function nav(pageId, el) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
-  if(el) el.classList.add('active');
-  document.querySelector('.main-content').scrollTop = 0;
-  if(pageId === 'tactics') renderPitch();
+  el.classList.add('active');
+  document.querySelector('main').scrollTop = 0;
 }
 
-// ================= TERRAIN =================
+function renderHome() {
+  document.getElementById('ui-money').innerText = game.money.toFixed(1) + 'M';
+  document.getElementById('ui-gems').innerText = game.gems;
+  document.getElementById('ui-matchday').innerText = game.matchday;
+  document.getElementById('ui-opp-name').innerText = game.currentOpponent.name;
+  document.getElementById('ui-opp-ovr').innerText = game.currentOpponent.ovr;
+  document.getElementById('ui-weather').innerText = `${game.weather.icon} ${game.weather.text}`;
+  
+  const avgOvr = Math.round(game.squad.reduce((a, b) => a + b.ovr, 0) / 11);
+  document.getElementById('ui-my-ovr').innerText = avgOvr;
+
+  const tbody = document.getElementById('ui-league');
+  tbody.innerHTML = game.league.map(l => `
+    <tr class="${l.me ? 'me' : ''}">
+      <td>${l.pos}</td><td>${l.name}</td><td>${l.pts}</td>
+    </tr>
+  `).join('');
+}
+
+function renderSquad() {
+  document.getElementById('ui-squad-count').innerText = `${game.squad.length}/18`;
+  const grid = document.getElementById('ui-squad-grid');
+  grid.innerHTML = game.squad.map(p => `
+    <div class="fut-card">
+      <div class="fut-header">
+        <div class="fut-ovr">${p.ovr}</div>
+        <div class="fut-pos">${p.pos}</div>
+      </div>
+      <div class="fut-name">${p.name}</div>
+      <div class="fut-stats">
+        <div>PAC <span>${p.pac}</span></div>
+        <div>SHO <span>${p.sho}</span></div>
+        <div>PAS <span>${p.pas}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
 function renderPitch() {
   const pitch = document.getElementById('ui-pitch');
   pitch.innerHTML = '';
-  formations[game.formation].forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'pitch-player ' + (p.pos==='GB'?'gk':['DD','DC','DG'].includes(p.pos)?'def':['MDC','MC','MOC','MD','MG'].includes(p.pos)?'mid':'att');
-    div.style.left = p.x + '%'; div.style.top = p.y + '%';
-    div.textContent = p.pos;
-    pitch.appendChild(div);
+  
+  // Ligne médiane
+  const midLine = document.createElement('div');
+  midLine.className = 'pitch-line';
+  midLine.style.cssText = 'top: 50%; left: 0; width: 100%; height: 2px;';
+  pitch.appendChild(midLine);
+
+  // Cercle central
+  const circle = document.createElement('div');
+  circle.style.cssText = 'position: absolute; top: 50%; left: 50%; width: 80px; height: 80px; border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; transform: translate(-50%, -50%);';
+  pitch.appendChild(circle);
+
+  // Positions des joueurs (Simulation 4-3-3)
+  const positions = [
+    { x: 50, y: 90 }, { x: 20, y: 75 }, { x: 40, y: 80 }, { x: 60, y: 80 }, { x: 80, y: 75 },
+    { x: 30, y: 55 }, { x: 50, y: 60 }, { x: 70, y: 55 },
+    { x: 25, y: 30 }, { x: 50, y: 20 }, { x: 75, y: 30 }
+  ];
+
+  game.squad.forEach((p, i) => {
+    const node = document.createElement('div');
+    node.className = 'player-node';
+    node.style.left = positions[i].x + '%';
+    node.style.top = positions[i].y + '%';
+    node.innerHTML = `${p.pos}<br><span>${p.name.substring(0,3)}</span>`;
+    pitch.appendChild(node);
   });
 }
-function changeFormation(val) { game.formation = val; renderPitch(); saveGame(); }
-function setMentality(ment, btn) { 
-  game.mentality = ment; 
-  document.querySelectorAll('#page-tactics .btn-secondary').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  saveGame();
+
+function setTactic(t) {
+  game.tactic = t;
+  document.querySelectorAll('.tactic-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
 }
 
-// ================= MATCH ENGINE (POISSON DISTRIBUTION) =================
-// Générateur de nombre aléatoire suivant une loi de Poisson
-function getPoissonGoals(lambda) {
-    let L = Math.exp(-lambda), k = 0, p = 1;
-    do { k++; p *= Math.random(); } while (p > L);
-    return k - 1;
-}
+// ================= MATCH LIVE ENGINE =================
+let liveMatchInterval = null;
 
-function playMatch(btn) {
-  btn.innerText = "MATCH EN COURS..."; btn.disabled = true;
-  const resDiv = document.getElementById('match-result');
-  resDiv.style.display = 'block';
-  resDiv.innerHTML = "⏱️ 1ère Mi-temps...";
-
-  setTimeout(() => resDiv.innerHTML = "⏱️ 45' - Mi-temps", 1500);
+function startLiveMatch() {
+  nav('match', document.querySelectorAll('.nav-item')[0]); // Fake nav pour le style
+  const feed = document.getElementById('ui-live-feed');
+  const scoreEl = document.getElementById('ui-live-score');
+  const clockEl = document.getElementById('ui-live-clock');
+  const oppEl = document.getElementById('ui-live-opp');
   
-  setTimeout(() => {
-    // 1. Récupération des 11 titulaires
-    const starting11 = game.squad.slice(0, 11);
-    let myPower = starting11.reduce((acc, p) => acc + p.ovr, 0) / 11;
-    let oppPower = game.currentOpponent.ovr;
-    let staminaLoss = 15;
+  feed.innerHTML = '';
+  oppEl.innerText = game.currentOpponent.name;
+  
+  let myScore = 0;
+  let oppScore = 0;
+  let minute = 1;
+  let matchOver = false;
 
-    // 2. Application mentalité
-    if(game.mentality === 'Attacking') { myPower += 2; }
-    if(game.mentality === 'Defensive') { myPower -= 1; }
+  function addEvent(text, type = '') {
+    const el = document.createElement('div');
+    el.className = `feed-item ${type}`;
+    el.innerHTML = `<b>${minute}'</b> - ${text}`;
+    feed.appendChild(el);
+    feed.scrollTop = feed.scrollHeight;
+  }
 
-    // 3. Application météo
-    if(game.currentWeather.name.includes("Pluie")) { myPower -= 2; oppPower -= 2; }
-    if(game.currentWeather.name.includes("Canicule")) { staminaLoss = 25; }
-    if(game.currentWeather.name.includes("Vent")) { myPower -= 1; oppPower -= 1; }
+  addEvent("Coup d'envoi ! Le match commence.", "chance");
 
-    // 4. Impact de l'endurance des titulaires
-    const avgStamina = starting11.reduce((acc, p) => acc + p.stamina, 0) / 11;
-    if(avgStamina < 50) myPower -= 5;
-    else if(avgStamina > 80) myPower += 1;
-
-    // 5. Génération des buts (Loi de Poisson)
-    // Ratio de force pour ajuster les lambda (moyenne de buts attendus)
-    const myRatio = myPower / oppPower;
-    const oppRatio = oppPower / myPower;
+  liveMatchInterval = setInterval(() => {
+    if (matchOver) return;
     
-    // Lambda de base: ~1.4 buts par équipe. On ajuste selon le ratio.
-    let myLambda = 1.4 * myRatio;
-    let oppLambda = 1.4 * oppRatio;
+    minute++;
+    clockEl.innerText = `${minute}'`;
 
-    const myScore = getPoissonGoals(myLambda);
-    const oppScore = getPoissonGoals(oppLambda);
-
-    resDiv.innerHTML = `⏱️ 90'<br>Rahim FC <b>${myScore}</b> - <b>${oppScore}</b> ${game.currentOpponent.name}`;
-    
-    // 6. Gestion des gains et finances
-    let matchEarnings = 0;
-    let resultStr = "";
-    if(myScore > oppScore) {
-      resultStr = "VICTOIRE";
-      resDiv.innerHTML += `<br><span style="color:var(--green)">VICTOIRE ! +3 pts (+1.5M€)</span>`;
-      game.league[2].pts += 3; matchEarnings = 1.5;
-      game.battlePass.points += 50;
-    } else if(myScore === oppScore) {
-      resultStr = "MATCH NUL";
-      resDiv.innerHTML += `<br><span style="color:var(--text-muted)">MATCH NUL (+1 pt, +0.5M€)</span>`;
-      game.league[2].pts += 1; matchEarnings = 0.5;
-      game.battlePass.points += 20;
-    } else {
-      resultStr = "DÉFAITE";
-      resDiv.innerHTML += `<br><span style="color:var(--red)">DÉFAITE (0 pt)</span>`;
-      game.battlePass.points += 10;
+    if (minute > 90) {
+      clearInterval(liveMatchInterval);
+      clockEl.innerText = "90'";
+      clockEl.style.color = "var(--red)";
+      addEvent("Fin du match !", "goal");
+      
+      // Mise à jour de la ligue
+      if (myScore > oppScore) {
+        game.league[2].pts += 3;
+        game.money += 2.0;
+        addEvent("VICTOIRE ! +3 points, +2.0M€", "goal");
+      } else if (myScore === oppScore) {
+        game.league[2].pts += 1;
+        game.money += 1.0;
+        addEvent("Match nul. +1 point, +1.0M€", "chance");
+      } else {
+        addEvent("Défaite. Aucun point.", "card");
+      }
+      
+      game.matchday++;
+      game.currentOpponent = { name: "FC Barcelone", ovr: 86 }; // Prochain adversaire
+      renderHome();
+      return;
     }
 
-    // Sauvegarde du dernier match pour l'IA
-    game.lastMatch = `Journée ${game.matchday} : Rahim FC ${myScore} - ${oppScore} ${game.currentOpponent.name} (${resultStr})`;
+    // Logique d'événement aléatoire
+    const rand = Math.random();
+    const myPower = 82 + (game.tactic === 'Attacking' ? 5 : game.tactic === 'Defensive' ? -2 : 0);
+    const oppPower = game.currentOpponent.ovr;
+    const diff = myPower - oppPower;
 
-    // 7. Finances (Salaires variables selon la taille de l'effectif)
-    const wages = (game.squad.length * 0.1).toFixed(1); // 0.1M par joueur
-    game.money += (matchEarnings - parseFloat(wages));
-    resDiv.innerHTML += `<br><small style="color:var(--text-muted)">Finances : +${matchEarnings}M€ (Gains) - ${wages}M€ (Salaires) = ${(matchEarnings - parseFloat(wages)).toFixed(1)}M€</small>`;
-
-    // 8. Battle Pass Level Up
-    while(game.battlePass.points >= 100) {
-      game.battlePass.level++;
-      game.battlePass.points -= 100;
-      game.tokens += 10;
-      resDiv.innerHTML += `<br><span style="color:var(--gold)">🎉 NIVEAU DE PASSE SUPÉRIEUR ! +10 💎</span>`;
+    if (rand < 0.05) {
+      // But
+      if (Math.random() < 0.5 + (diff * 0.01)) {
+        myScore++;
+        scoreEl.innerText = `${myScore} - ${oppScore}`;
+        addEvent("⚽ BUUUT ! L'équipe marque !", "goal");
+      } else {
+        oppScore++;
+        scoreEl.innerText = `${myScore} - ${oppScore}`;
+        addEvent("😔 But de l'adversaire...", "card");
+      }
+    } else if (rand < 0.15) {
+      addEvent("Belle occasion de but, mais le gardien sauve !", "chance");
+    } else if (rand < 0.20) {
+      addEvent("Carton jaune pour une faute tactique.", "card");
+    } else if (rand < 0.25) {
+      addEvent("Changement tactique effectué.", "");
+    } else if (rand < 0.30) {
+      addEvent("Passe décisive, mais hors-jeu.", "");
+    } else if (rand < 0.35) {
+      addEvent("Corner pour Rahim FC.", "");
     }
-
-    // 9. Fatigue (Uniquement les titulaires)
-    starting11.forEach(p => { p.stamina = Math.max(10, p.stamina - staminaLoss); });
-
-    // 10. Prochain match
-    game.matchday++;
-    const nextOppIndex = game.matchday % opponentsList.length;
-    game.currentOpponent = opponentsList[nextOppIndex];
-    const weatherIndex = Math.floor(Math.random() * weatherConditions.length);
-    game.currentWeather = weatherConditions[weatherIndex];
-
-    updateUI();
-    btn.innerText = "MATCH SUIVANT"; btn.disabled = false;
-
-  }, 3000);
+  }, 800); // 800ms = 1 minute de jeu
 }
 
-// ================= JOUEURS & ENTRAINEMENT =================
-let currentPlayerId = null;
-function openPlayer(id) {
-  currentPlayerId = id;
-  const p = game.squad.find(x => x.id === id);
-  if(!p) return;
-  
-  document.getElementById('m-name').innerText = p.name;
-  document.getElementById('m-pos').innerText = p.pos;
-  document.getElementById('m-ovr').innerText = p.ovr;
-  document.getElementById('m-form').innerText = p.form;
-  document.getElementById('m-stamina').style.width = p.stamina + '%';
-  document.getElementById('modal-player').classList.add('active');
-}
-function closeModal() { document.getElementById('modal-player').classList.remove('active'); }
-
-function trainTeam() {
-  if(game.money < 1) { alert("Pas assez d'argent en caisse !"); return; }
-  game.money -= 1;
-  game.squad.forEach(p => {
-    p.stamina = 100;
-    p.morale = Math.min(100, p.morale + 10);
-    if(Math.random() > 0.8) p.ovr += 1;
-  });
-  sortSquad(); // On retrie l'équipe
-  updateUI();
-  alert("✅ Équipe entraînée ! Endurance restaurée, moral remonté et effectif réorganisé.");
-}
-
-// ================= MARCHÉ & LOOT BOX =================
-function buyPlayer(id) {
-  if(game.squad.length >= 18) { alert("Effectif complet (18 joueurs maximum) !"); return; }
-  
-  const pIndex = game.market.findIndex(x => x.id === id);
-  if(pIndex === -1) return;
-  const p = game.market[pIndex];
-
-  if(game.money < p.price) { alert("Pas assez d'argent !"); return; }
-  
-  game.money -= p.price;
-  game.squad.push({ ...p, stamina: 100, morale: 80, form: '➡️' });
-  game.market.splice(pIndex, 1);
-  
-  sortSquad(); // Le nouveau joueur est placé selon son OVR
-  
-  updateUI(); 
-  renderMarket();
-  alert(`✅ ${p.name} a rejoint l'équipe et a été placé dans l'effectif !`);
-}
-
-function openLootBox() {
-  if(game.squad.length >= 18) { alert("Effectif complet (18 joueurs maximum) !"); return; }
-  if(game.tokens < 50) { alert("Pas assez de 💎 (Tokens) !"); return; }
-  
-  game.tokens -= 50;
-  const rand = Math.random();
-  let newPlayer;
-  // ID unique garanti
-  const uniqueId = Date.now() + Math.floor(Math.random() * 1000);
-
-  if(rand < 0.7) {
-    newPlayer = { id: uniqueId, pos: 'MC', name: 'Joueur Bronze', ovr: 65, stamina: 100, morale: 50, form: '➡️' };
-  } else if(rand < 0.95) {
-    newPlayer = { id: uniqueId, pos: 'MC', name: 'Joueur Argent', ovr: 75, stamina: 100, morale: 50, form: '➡️' };
-  } else {
-    newPlayer = { id: uniqueId, pos: 'BU', name: 'Joueur Or (Star)', ovr: 85, stamina: 100, morale: 50, form: '🔥' };
-  }
-  
-  game.squad.push(newPlayer);
-  sortSquad();
-  updateUI();
-  alert(`🎁 Vous avez obtenu : ${newPlayer.name} (OVR ${newPlayer.ovr}) !`);
-}
-
-// ================= IA DIRECTOR =================
-async function sendMessage() {
-  const input = document.getElementById('chat-input');
-  const text = input.value.trim();
-  if(!text) return;
-
-  const API_KEY = localStorage.getItem('fcm_key');
-  if(!API_KEY) {
-    alert("⚠️ Veuillez configurer votre clé API dans l'onglet Club.");
-    nav('club', document.getElementById('nav-club'));
-    return;
-  }
-
-  addMessage('user', text);
-  input.value = '';
-  const loading = addMessage('ai', '🤖 Analyse de la situation...');
-
-  const squadInfo = game.squad.map(p => `${p.name} (${p.pos}, OVR ${p.ovr}, Endurance: ${p.stamina}%)`).join(' | ');
-  const lastMatchStr = game.lastMatch ? `Dernier match : ${game.lastMatch}` : "Aucun match joué récemment.";
-
-  const systemPrompt = `Tu es Abdarrahim, Directeur Exécutif du Rahim FC. 
-  Tu es un manager d'élite (style Football Manager).
-  État actuel :
-  - Argent : ${game.money.toFixed(1)}M€, Tokens : ${game.tokens}💎
-  - Prochain match : Journée ${game.matchday} contre ${game.currentOpponent.name} (OVR ${game.currentOpponent.ovr})
-  - Météo prévue : ${game.currentWeather.name} (${game.currentWeather.effect})
-  - Tactique : ${game.formation} (Mentalité : ${game.mentality})
-  - ${lastMatchStr}
-  - Effectif : ${squadInfo}
-
-  Réponds de manière autoritaire, professionnelle et stratégique. Si un joueur est fatigué, dis-le. Si la météo est mauvaise, adapte la tactique. Utilise du gras et des listes.`;
-
-  try {
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-exp:free',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: text }
-        ]
-      })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error.message);
-    loading.innerHTML = formatMarkdown(data.choices[0].message.content);
-  } catch(err) {
-    loading.innerHTML = `<span style="color:var(--red)">⚠️ Erreur : ${err.message}</span>`;
-  }
-}
-
-function askAIAnalysisPlayer() {
-  const p = game.squad.find(x => x.id === currentPlayerId);
-  closeModal();
-  nav('analysis', document.getElementById('nav-analysis'));
-  document.getElementById('chat-input').value = `Analyse les performances de ${p.name} (Endurance: ${p.stamina}%) et dis-moi quoi faire avec lui.`;
-  sendMessage();
-}
-
-function addMessage(role, text) {
-  const container = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = `chat-msg ${role}`;
-  // Sécurisation de l'affichage
-  div.innerHTML = formatMarkdown(text);
-  container.appendChild(div);
-  container.scrollTop = container.scrollHeight;
-  return div;
-}
-
-// Formatage sécurisé
-function formatMarkdown(t) { 
-  let safe = escapeHTML(t);
-  return safe.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>'); 
-}
-
-function saveApiKey() {
-  const key = document.getElementById('ui-api-key').value.trim();
-  localStorage.setItem('fcm_key', key);
-  alert("✅ Clé API sauvegardée");
-}
-
-// Lancement
-initGame();
+init();
 </script>
 </body>
 </html>
