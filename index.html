@@ -2,368 +2,716 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<title>Rahim Football Tchad · Bureau du Directeur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>FCM 26 · Ultimate Manager Pro</title>
 <style>
-:root{--bg:#0f172a;--card:rgba(30, 41, 59, 0.95);--ink:#f8fafc;--mut:#94a3b8;--line:#334155;--acc:#f97316;--green:#22c55e;--red:#ef4444;color-scheme:dark}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-canvas{display:block;width:100%;height:100%;touch-action:none}
-#bar{position:fixed;left:0;right:0;top:0;display:flex;gap:6px;overflow-x:auto;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#0f172acc,#0f172a00);z-index:10;scrollbar-width:none}
-#bar::-webkit-scrollbar{display:none}
-button{font:inherit;color:inherit;cursor:pointer}
-#bar button{flex:none;background:rgba(30,41,59,.8);backdrop-filter:blur(4px);border:1px solid var(--line);border-radius:999px;padding:8px 14px;white-space:nowrap;font-weight:600;transition:.2s}
-#bar button:hover{background:var(--line)}
-#bar button.h{background:var(--acc);color:#fff;border-color:var(--acc)}
-#hint{position:fixed;left:0;right:0;bottom:calc(80px + env(safe-area-inset-bottom,0px));text-align:center;color:#fff;text-shadow:0 2px 4px #000;font-size:13px;pointer-events:none;z-index:5;font-weight:600;background:rgba(0,0,0,0.5);padding:6px;border-radius:20px;width:max-content;margin:0 auto}
-#sh{position:fixed;left:0;right:0;bottom:0;height:85vh;overflow-y:auto;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:2px solid var(--acc);border-radius:24px 24px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));display:none;max-width:800px;margin-inline:auto;z-index:20;box-shadow:0 -10px 50px rgba(0,0,0,0.6)}
-#sh.on{display:flex;flex-direction:column;animation:up .3s cubic-bezier(0.16, 1, 0.3, 1)}
-@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.hd{display:flex;gap:12px;align-items:center;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;flex:none}
-.hd input{font:inherit;font-weight:800;font-size:16px;width:100%;background:rgba(0,0,0,0.2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
-.x{margin-left:auto;background:rgba(255,255,255,0.1);border:0;font-size:20px;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:.2s}
-.x:hover{background:var(--red)}
-.k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:14px 0 6px;font-weight:800;flex:none}
-#sh ul{margin:0;padding-left:18px;font-size:13px;color:var(--mut)}
-#log-container{flex:1;overflow-y:auto;padding-bottom:10px}
-.m{padding:12px 16px;border-radius:14px;max-width:95%;white-space:pre-wrap;margin-top:10px;font-size:14px;line-height:1.6;box-shadow:0 4px 6px rgba(0,0,0,0.1)}
-.m b{color:#fff;font-weight:700}
-.m ul, .m ol{padding-left:18px;margin:8px 0}
-.m li{margin-bottom:4px}
-.me{margin-left:auto;background:var(--acc);color:#fff;border-bottom-right-radius:2px}
-.ai{background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.05);border-bottom-left-radius:2px}
-.sys{background:rgba(0,0,0,0.3);color:var(--mut);font-size:12px;text-align:center;border-radius:8px;margin:10px auto;padding:10px;border:1px dashed var(--line)}
-.row{display:flex;gap:10px;margin-top:auto;padding-top:12px;background:var(--card);flex:none}
-textarea{flex:1;font:inherit;background:rgba(0,0,0,0.3);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;resize:none;height:50px;max-height:120px}
-textarea:focus{outline:none;border-color:var(--acc)}
-input[type="text"], input[type="number"], input[type="password"]{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,0.2);color:var(--ink);margin-bottom:10px;font:inherit;font-weight:600}
-select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#1e293b;color:var(--ink);margin-bottom:10px;font:inherit}
-.go{background:var(--acc);color:#fff;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
-.go:disabled{opacity:.5;cursor:not-allowed}
-.status-ok{color:var(--green);font-size:12px;margin-top:10px;display:block;font-weight:bold}
-.status-err{color:var(--red);font-size:12px;margin-top:10px;display:block;font-weight:bold}
-.typing::after{content:"▋";animation:blink 1s infinite;margin-left:2px;color:var(--acc)}
-@keyframes blink{50%{opacity:0}}
+:root {
+  --bg: #0f1115; --card: #1c1f26; --card-lighter: #262a34;
+  --text: #ffffff; --text-muted: #8b92a5;
+  --orange: #ff6b00; --orange-glow: rgba(255, 107, 0, 0.4);
+  --green: #00ff88; --red: #ff4444; --blue: #3b82f6; --gold: #ffd700;
+  --border: #2a2e38; --nav-bg: rgba(15, 17, 21, 0.95);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg); color: var(--text); height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
 
-/* BOUTON FLOTTANT GÉANT */
-#fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;border:none;border-radius:30px;padding:16px 32px;font-size:16px;font-weight:800;box-shadow:0 10px 25px rgba(249,115,22,0.4);z-index:15;display:flex;align-items:center;gap:10px;cursor:pointer;animation:pulse 2s infinite}
-@keyframes pulse{0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}100%{transform:translateX(-50%) scale(1)}}
+/* HEADER */
+.header { background: var(--card); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); z-index: 10; flex-shrink: 0; }
+.logo { font-size: 20px; font-weight: 900; letter-spacing: -1px; display: flex; }
+.logo span:nth-child(1) { color: #fff; }
+.logo span:nth-child(2) { color: var(--orange); }
+.header-stats { display: flex; gap: 8px; font-size: 12px; font-weight: 700; }
+.stat-box { background: #000; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); display: flex; align-items: center; gap: 4px; }
+.stat-box.money { color: var(--green); }
+.stat-box.tokens { color: var(--blue); }
+
+/* MAIN CONTENT */
+.main-content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 90px; scroll-behavior: smooth; }
+.page { display: none; animation: slideUp 0.3s ease forwards; }
+.page.active { display: block; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* CARDS */
+.card { background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.card-header { font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 12px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+
+/* DASHBOARD */
+.match-banner { background: linear-gradient(135deg, #1c1f26 0%, #111317 100%); border-left: 4px solid var(--orange); }
+.match-teams { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
+.team { text-align: center; flex: 1; }
+.team-name { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.team-ovr { font-size: 12px; color: var(--text-muted); background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 10px; display: inline-block; }
+.vs { font-size: 24px; font-weight: 900; color: var(--orange); font-style: italic; }
+.btn-action { width: 100%; padding: 14px; background: var(--orange); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px var(--orange-glow); transition: 0.2s; }
+.btn-action:active { transform: scale(0.98); }
+.btn-action:disabled { background: #333; color: #888; box-shadow: none; cursor: not-allowed; }
+.btn-secondary { background: var(--card-lighter); color: #fff; border: 1px solid var(--border); padding: 12px; border-radius: 8px; width: 100%; font-size: 14px; font-weight: 800; cursor: pointer; margin-bottom: 8px; }
+.btn-secondary.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+/* TABLEAU */
+.league-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.league-table th { text-align: left; padding: 8px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+.league-table td { padding: 10px 8px; border-bottom: 1px solid #2a2e38; font-weight: 600; }
+.league-table tr:last-child td { border-bottom: none; }
+.league-table tr.my-team { background: rgba(255, 107, 0, 0.1); color: var(--orange); border-left: 3px solid var(--orange); }
+
+/* EFFECTIF */
+.player-card { background: var(--card-lighter); border-radius: 8px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
+.player-card.starter { border-left: 3px solid var(--green); }
+.player-card:active { border-color: var(--orange); }
+.p-pos { width: 35px; font-size: 10px; font-weight: 800; color: var(--text-muted); text-align: center; }
+.p-info { flex: 1; margin-left: 10px; }
+.p-name { font-weight: 800; font-size: 14px; }
+.p-bars { display: flex; gap: 4px; margin-top: 4px; }
+.bar { height: 4px; border-radius: 2px; flex: 1; background: #333; }
+.bar-fill { height: 100%; border-radius: 2px; transition: 0.3s; }
+.bar-stamina .bar-fill { background: var(--green); }
+.bar-morale .bar-fill { background: var(--blue); }
+.p-ovr { font-size: 18px; font-weight: 900; color: var(--green); margin-left: 10px; }
+.form-arrow { font-size: 16px; margin-left: 8px; }
+
+/* TERRAIN TACTIQUE */
+.pitch { background: #15291c; border-radius: 12px; height: 380px; position: relative; margin-bottom: 16px; border: 2px solid rgba(255,255,255,0.1); background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 10% 10%; }
+.pitch-player { position: absolute; width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 800; color: #fff; border: 2px solid #fff; transform: translate(-50%, -50%); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.pitch-player.gk { background: #2b3a67; } .pitch-player.def { background: #1e5631; } .pitch-player.mid { background: #d98c00; } .pitch-player.att { background: #b91c1c; }
+
+/* CHAT IA */
+.chat-container { display: flex; flex-direction: column; height: calc(100dvh - 160px); background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.chat-msg { max-width: 90%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
+.chat-msg.user { background: var(--orange); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.chat-msg.ai { background: #1a1d24; color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #2a2e38; }
+.chat-msg.ai b { color: var(--orange); }
+.chat-input-area { display: flex; gap: 8px; padding: 12px; background: #111317; border-top: 1px solid var(--border); }
+.chat-input-area input { flex: 1; background: #1a1d24; border: 1px solid var(--border); padding: 12px 16px; border-radius: 24px; color: #fff; font-size: 14px; outline: none; }
+.chat-input-area button { background: var(--orange); border: none; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; }
+
+/* BOTTOM NAV */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--nav-bg); backdrop-filter: blur(10px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0; padding-bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 50; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 10px; font-weight: 700; padding: 4px 12px; cursor: pointer; transition: 0.2s; }
+.nav-item.active { color: var(--orange); transform: translateY(-2px); }
+.nav-icon { font-size: 20px; margin-bottom: 4px; }
+
+/* MODALS */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; padding: 20px; }
+.modal.active { display: flex; animation: fadeIn 0.2s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-content { background: var(--card); border-radius: 16px; width: 100%; max-width: 400px; padding: 20px; border: 1px solid var(--border); max-height: 85vh; overflow-y: auto; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.close-btn { background: var(--card-lighter); border: none; color: #fff; font-size: 18px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; }
+.input-group { margin-bottom: 12px; }
+.input-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; font-weight: 700; }
+.input-group input, .input-group select { width: 100%; background: #111317; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 8px; font-size: 14px; outline: none; }
 </style>
 </head>
 <body>
-<div id="bar"></div>
-<div id="hint">Clique sur le bouton orange pour parler au Directeur</div>
-<button id="fab" onclick="open(-1)">💬 PARLER AU DIRECTEUR</button>
-<aside id="sh"></aside>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<header class="header">
+  <div class="logo"><span>FCM</span><span>26</span></div>
+  <div class="header-stats">
+    <div class="stat-box money" id="ui-money">💰 12.5M</div>
+    <div class="stat-box tokens" id="ui-tokens">💎 50</div>
+    <div class="stat-box" id="ui-matchday">J-1</div>
+  </div>
+</header>
+
+<main class="main-content">
+  <!-- ACCUEIL -->
+  <div class="page active" id="page-home">
+    <div class="card match-banner">
+      <div class="card-header">Prochain Match <span id="ui-weather" style="color:var(--blue);">☀️ Ensoleillé</span></div>
+      <div class="match-teams">
+        <div class="team">
+          <div class="team-name">Rahim FC</div>
+          <div class="team-ovr" id="ui-my-ovr">OVR 82</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+          <div class="team-name" id="ui-opp-team">Real Madrid</div>
+          <div class="team-ovr" id="ui-opp-ovr">OVR 88</div>
+        </div>
+      </div>
+      <button class="btn-action" id="btn-play" onclick="playMatch(this)">SIMULER LE MATCH</button>
+      <div id="match-result" style="display:none; text-align:center; margin-top:15px; font-size:15px; font-weight:800; line-height:1.6;"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Classement Liga</div>
+      <table class="league-table">
+        <thead><tr><th>#</th><th>Équipe</th><th>Pts</th></tr></thead>
+        <tbody id="ui-league-table"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Passe de Combat (Sponsor)</div>
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted); margin-bottom:8px;">
+        <span>Niveau <b id="ui-bp-level" style="color:#fff;">1</b></span>
+        <span><b id="ui-bp-points" style="color:#fff;">0</b> / 100 pts</span>
+      </div>
+      <div class="bar" style="height:8px; background:#333; border-radius:4px; margin-bottom:8px;">
+        <div class="bar-fill" id="ui-bp-bar" style="width:0%; background:var(--orange);"></div>
+      </div>
+      <p style="font-size:11px; color:var(--text-muted);">Gagnez des matchs pour débloquer des Tokens (💎).</p>
+    </div>
+  </div>
+
+  <!-- EFFECTIF -->
+  <div class="page" id="page-squad">
+    <div class="card">
+      <div class="card-header">Effectif Pro <span id="ui-squad-count" style="color:var(--text-muted);">(11/18)</span></div>
+      <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">Les 11 premiers joueurs (bordure verte) sont titulaires.</p>
+      <div id="ui-squad-list"></div>
+    </div>
+  </div>
+
+  <!-- TACTIQUES -->
+  <div class="page" id="page-tactics">
+    <div class="card">
+      <div class="card-header">
+        Formation
+        <select id="ui-formation" onchange="changeFormation(this.value)" style="background:var(--border); color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:bold;">
+          <option value="433">4-3-3</option>
+          <option value="442">4-4-2</option>
+          <option value="352">3-5-2</option>
+        </select>
+      </div>
+      <div class="pitch" id="ui-pitch"></div>
+    </div>
+    <div class="card">
+      <div class="card-header">Mentalité Tactique</div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-secondary" id="btn-def" onclick="setMentality('Defensive', this)">🛡️ Défensif</button>
+        <button class="btn-secondary active" id="btn-bal" onclick="setMentality('Balanced', this)">⚖️ Équilibré</button>
+        <button class="btn-secondary" id="btn-att" onclick="setMentality('Attacking', this)">⚔️ Offensif</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUREAU DU DIRECTEUR (IA) -->
+  <div class="page" id="page-analysis">
+    <div class="chat-container">
+      <div class="card-header" style="padding:12px 16px; background:#1a1d24; margin:0; border-bottom:1px solid var(--border); flex-shrink:0;">🏛️ Bureau du Directeur Abdarrahim</div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg ai">
+          Monsieur, je suis à votre disposition. J'ai accès à l'état de votre effectif, votre tactique, la météo et vos finances. Demandez-moi une analyse pour le prochain match.
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ex: Comment battre le Real Madrid ?">
+        <button onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARCHÉ -->
+  <div class="page" id="page-market">
+    <div class="card">
+      <div class="card-header">Marché des Transferts</div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Recrutez de nouveaux joueurs (Max 18 joueurs).</p>
+      <div id="ui-market-list"></div>
+    </div>
+    <div class="card">
+      <div class="card-header">Loot Box (Pack de Joueurs)</div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Taux de drop : 70% Bronze, 25% Argent, 5% Or.</p>
+      <button class="btn-action" onclick="openLootBox()" style="background:var(--blue); box-shadow:0 4px 15px rgba(59,130,246,0.4);">OUVRIR UN PACK (50 💎)</button>
+    </div>
+  </div>
+
+  <!-- CLUB & CONFIG -->
+  <div class="page" id="page-club">
+    <div class="card">
+      <div class="card-header">Centre d'Entraînement</div>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Améliorez les statistiques de votre équipe.</p>
+      <button class="btn-secondary" onclick="trainTeam()">💪 Entraîner l'équipe (Coût: 1M€)</button>
+    </div>
+    <div class="card">
+      <div class="card-header">⚙️ Configuration IA</div>
+      <div class="input-group">
+        <label>Clé API OpenRouter</label>
+        <input type="password" id="ui-api-key" placeholder="sk-or-v1-...">
+      </div>
+      <button class="btn-action" onclick="saveApiKey()">SAUVEGARDER</button>
+    </div>
+  </div>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="nav-item active" id="nav-home" onclick="nav('home', this)"><span class="nav-icon">🏠</span>Accueil</div>
+  <div class="nav-item" id="nav-squad" onclick="nav('squad', this)"><span class="nav-icon">👥</span>Effectif</div>
+  <div class="nav-item" id="nav-tactics" onclick="nav('tactics', this)"><span class="nav-icon">📋</span>Tactiques</div>
+  <div class="nav-item" id="nav-analysis" onclick="nav('analysis', this)"><span class="nav-icon">💬</span>Directeur</div>
+  <div class="nav-item" id="nav-market" onclick="nav('market', this)"><span class="nav-icon">🛒</span>Marché</div>
+  <div class="nav-item" id="nav-club" onclick="nav('club', this)"><span class="nav-icon">⚙️</span>Club</div>
+</nav>
+
+<!-- MODAL JOUEUR -->
+<div class="modal" id="modal-player">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div style="font-size:20px; font-weight:900;" id="m-name">Joueur</div>
+      <button class="close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:15px; background:#111317; padding:12px; border-radius:8px;">
+      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">POSTE</div><div id="m-pos" style="font-weight:800; font-size:16px;">BU</div></div>
+      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">OVR</div><div id="m-ovr" style="font-weight:800; font-size:16px; color:var(--green);">90</div></div>
+      <div style="text-align:center;"><div style="font-size:10px;color:var(--text-muted);">FORME</div><div id="m-form" style="font-weight:800; font-size:16px;">🔥</div></div>
+    </div>
+    <div style="margin-bottom:15px;">
+      <div style="font-size:12px;color:var(--text-muted); margin-bottom:4px;">Endurance</div>
+      <div class="bar bar-stamina" style="height:8px; background:#333; border-radius:4px;"><div class="bar-fill" id="m-stamina" style="width:80%;"></div></div>
+    </div>
+    <button class="btn-action" onclick="askAIAnalysisPlayer()">Demander conseil au Directeur</button>
+  </div>
+</div>
+
 <script>
-(()=>{
-if(!window.THREE){document.body.textContent="Moteur 3D non chargé.";return}
-const $=s=>document.querySelector(s),TAU=Math.PI*2;
-
-/* ============ EXPERTS ============ */
-const R=["Direction","Veille","Labo"],RX=[-9.3,0,9.3];
-const TS=["Analyse ","Donne la proba exacte","Indique le scénario noir"];
-const ts=(t,x)=>({r:2,t,m:["Analyse "+x,"Proba exacte","Scénario noir"],g:"Honnête.",sys:`Tu es l'Analyste Expert pour ${x}. Tu maîtrises l'Overround, le CLV, les xG et la fatigue. Sois direct et professionnel.`});
-
-const A=[
-{r:0,t:"Directeur Exécutif",f:"Stratège / Chef d'Orchestre",m:["Reçoit tes demandes","Ordonne aux experts","Synthétise le verdict"],sys:"Tu es Abdarrahim, le Directeur Exécutif. Tu es le chef. Quand l'utilisateur te demande d'analyser un match, TU NE RÉPONDS PAS SEUL. Tu dois OBLIGATOIREMENT convoquer tes experts. Structure ta réponse ainsi :\n\n🏛️ **Directeur Abdarrahim** : Je convoque mon équipe pour ce match.\n🎯 **Testeur (Liga/LDC/L1)** : [Ordonne-lui de donner les stats xG et la forme]\n📊 **Data Scientist** : [Ordonne-lui de vérifier les blessures et l'impact]\n💰 **Expert Value** : [Ordonne-lui de calculer l'EV et la marge]\n⚖️ **VERDICT FINAL DU BUREAU** : [Ta décision claire : Parier ou Passer, et pourquoi].\n\nUtilise un ton autoritaire et professionnel."},
-{r:0,t:"Expert Value (EV/CLV)",f:"Mathématicien / Trader",m:["Calcule l'EV","Traque le CLV","Kelly"],sys:"Tu es le Parieur Pro. Tu ne jures que par l'Expected Value et la marge (overround). Tu recommandes des mises via Kelly."},
-{r:0,t:"Auditeur Promo",f:"Juriste",m:["Détecte les pièges","Calcule le rollover","Protège le capital"],sys:"Tu es l'Auditeur des conditions promo. Tu calcules les rollovers."},
-{r:1,t:"Scout Terrain",f:"Journaliste",m:["Blessures","Impact tactique","Zéro rumeur"],sys:"Tu es le Scout. Tu ne valides que les infos officielles sur les blessures."},
-{r:1,t:"Data Scientist",f:"Statisticien",m:["xG et xGA","Surperformance","Séries"],sys:"Tu es le Data Scientist. Tu ne regardes que les xG."},
-{r:1,t:"Trader Marché (LDP)",f:"Flux / LDP",m:["Mouvements de cotes","LDP","Alertes"],sys:"Tu es le Trader. Tu surveilles les baisses de cotes."},
-ts("Testeur Liga","la Liga"),ts("Testeur Ligue 1","la Ligue 1"),ts("Testeur Ligue des champions","la Ligue des champions"),
-{r:2,t:"Modélisateur",f:"Mathématicien",m:["Poisson","Over/Under","Scores"],sys:"Tu es le Mathématicien. Tu utilises la Loi de Poisson."},
-{r:2,t:"Scénariste (Risques)",f:"Pre-mortem",m:["Scénarios noirs","Résilience","Failles"],sys:"Tu es l'Analyste de risque. Cherche les failles du match."}
+// ================= GAME DATA =================
+const opponentsList = [
+  { name: "Real Madrid", ovr: 88 }, { name: "FC Barcelone", ovr: 86 },
+  { name: "Atletico Madrid", ovr: 84 }, { name: "Séville FC", ovr: 80 },
+  { name: "Villarreal", ovr: 79 }
 ];
 
-/* ============ STATE ============ */
-let N=["Abdarrahim","Abdoulaye","Abakar","Oumar","Marwan","Abdel Latif","Mahmoud","Abba","Elyou","Karim","Sofiane"];
-let REP=null;
-const H={};
-let API_KEY=localStorage.getItem("bn3_api_key")||"";
-let API_MODEL=localStorage.getItem("bn3_api_model")||"google/gemini-2.0-flash-exp:free";
+const defaultMarket = [
+  { id: 101, pos: 'BU', name: 'V. Osimhen', ovr: 87, price: 120 },
+  { id: 102, pos: 'MC', name: 'J. Bellingham', ovr: 90, price: 180 },
+  { id: 103, pos: 'DC', name: 'W. Saliba', ovr: 85, price: 80 },
+  { id: 104, pos: 'AD', name: 'B. Saka', ovr: 86, price: 110 },
+];
 
-try{const s=JSON.parse(localStorage.getItem("bn3")||"null");if(Array.isArray(s)&&s.length===11)N=s;}catch(e){}
-try{const r=JSON.parse(localStorage.getItem("bn3_infos")||"null");if(r&&typeof r==="object")REP=r;}catch(e){}
-try{const c=JSON.parse(localStorage.getItem("bn3_chat")||"null");if(c&&typeof c==="object")Object.assign(H,c);}catch(e){}
+const weatherConditions = [
+  { name: "☀️ Ensoleillé", effect: "Aucun effet", icon: "☀️" },
+  { name: "🌧️ Pluie battante", effect: "Précision -10%", icon: "🌧️" },
+  { name: "🔥 Canicule (40°C)", effect: "Endurance -20%", icon: "🔥" },
+  { name: "💨 Vent fort", effect: "Passes longues -15%", icon: "💨" },
+];
 
-const nm=i=>N[i]||"À nommer";
-function saveNames(){try{localStorage.setItem("bn3",JSON.stringify(N));}catch(e){}}
-function saveInfos(){try{localStorage.setItem("bn3_infos",JSON.stringify(REP));}catch(e){}}
-function saveChat(){try{const t={};Object.keys(H).forEach(k=>{t[k]=H[k].slice(-15);});localStorage.setItem("bn3_chat",JSON.stringify(t));}catch(e){}}
-function saveApi(){try{localStorage.setItem("bn3_api_key",API_KEY);localStorage.setItem("bn3_api_model",API_MODEL);}catch(e){}}
+let game = {
+  money: 12.5,
+  tokens: 50,
+  matchday: 1,
+  mentality: 'Balanced',
+  formation: '433',
+  currentOpponent: opponentsList[0],
+  currentWeather: weatherConditions[0],
+  battlePass: { level: 1, points: 0 },
+  market: [...defaultMarket],
+  lastMatch: null,
+  squad: [
+    { id: 1, pos: 'GB', name: 'A. Onana', ovr: 82, stamina: 95, morale: 80, form: '🔥' },
+    { id: 2, pos: 'DD', name: 'A. Hakimi', ovr: 84, stamina: 88, morale: 90, form: '↗️' },
+    { id: 3, pos: 'DC', name: 'K. Koulibaly', ovr: 83, stamina: 70, morale: 60, form: '↘️' },
+    { id: 4, pos: 'DC', name: 'W. Saliba', ovr: 85, stamina: 92, morale: 85, form: '🔥' },
+    { id: 5, pos: 'DG', name: 'T. Hernández', ovr: 84, stamina: 85, morale: 75, form: '➡️' },
+    { id: 6, pos: 'MDC', name: 'D. Rice', ovr: 86, stamina: 90, morale: 88, form: '↗️' },
+    { id: 7, pos: 'MC', name: 'J. Bellingham', ovr: 90, stamina: 95, morale: 95, form: '🔥' },
+    { id: 8, pos: 'MC', name: 'Pedri', ovr: 86, stamina: 75, morale: 80, form: '➡️' },
+    { id: 9, pos: 'AD', name: 'B. Saka', ovr: 86, stamina: 88, morale: 85, form: '↗️' },
+    { id: 10, pos: 'BU', name: 'V. Osimhen', ovr: 87, stamina: 92, morale: 90, form: '🔥' },
+    { id: 11, pos: 'AG', name: 'K. Mbappé', ovr: 91, stamina: 85, morale: 95, form: '🔥' }
+  ],
+  league: [
+    { pos: 1, team: "Real Madrid", pts: 85 }, { pos: 2, team: "FC Barcelone", pts: 82 },
+    { pos: 3, team: "Rahim FC", pts: 78, me: true }, { pos: 4, team: "Atletico Madrid", pts: 75 },
+    { pos: 5, team: "Séville FC", pts: 68 }
+  ]
+};
 
-/* ---------- SCÈNE 3D ---------- */
-const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));ren.shadowMap.enabled=true;
-document.body.prepend(ren.domElement);const cv=ren.domElement;
-const sc=new THREE.Scene();sc.background=new THREE.Color(0x0f172a);sc.fog=new THREE.Fog(0x0f172a, 20, 70);
-const cam=new THREE.PerspectiveCamera(45,1,.1,200);
-sc.add(new THREE.AmbientLight(0xffffff, 0.6));sc.add(new THREE.HemisphereLight(0xffffff, 0x444444, 0.8));
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);dirLight.position.set(10, 20, 10);dirLight.castShadow = true;sc.add(dirLight);
-RX.forEach((x,i)=>{const spot = new THREE.PointLight([0xf97316, 0x3b82f6, 0x8b5cf6][i], 1.5, 20);spot.position.set(x, 5, 0);sc.add(spot)});
+const formations = {
+  "433": [ {pos:'GB',x:50,y:90}, {pos:'DD',x:20,y:70}, {pos:'DC',x:40,y:75}, {pos:'DC',x:60,y:75}, {pos:'DG',x:80,y:70}, {pos:'MDC',x:50,y:55}, {pos:'MC',x:30,y:45}, {pos:'MC',x:70,y:45}, {pos:'AD',x:20,y:25}, {pos:'BU',x:50,y:15}, {pos:'AG',x:80,y:25} ],
+  "442": [ {pos:'GB',x:50,y:90}, {pos:'DD',x:20,y:70}, {pos:'DC',x:40,y:75}, {pos:'DC',x:60,y:75}, {pos:'DG',x:80,y:70}, {pos:'MD',x:20,y:50}, {pos:'MC',x:40,y:55}, {pos:'MC',x:60,y:55}, {pos:'MG',x:80,y:50}, {pos:'BU',x:40,y:20}, {pos:'BU',x:60,y:20} ],
+  "352": [ {pos:'GB',x:50,y:90}, {pos:'DC',x:25,y:75}, {pos:'DC',x:50,y:75}, {pos:'DC',x:75,y:75}, {pos:'MD',x:10,y:50}, {pos:'MC',x:35,y:55}, {pos:'MC',x:65,y:55}, {pos:'MG',x:90,y:50}, {pos:'BU',x:30,y:20}, {pos:'BU',x:70,y:20}, {pos:'MOC',x:50,y:35} ]
+};
 
-const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:.2},o||{}));
-function bx(w,h,d,c,x,y,z,o,p){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c,o));m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;(p||sc).add(m);return m}
-
-// Sol
-const fl=new THREE.Mesh(new THREE.PlaneGeometry(29,11), M(0x334155,{roughness:.4}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;sc.add(fl);
-sc.add(new THREE.GridHelper(29, 20, 0x475569, 0x1e293b)).position.y = 0.02;
-
-// Murs
-bx(29,5,.3,0x475569,0,2.5,-5.3);bx(.3,5,11,0x475569,-14.6,2.5,0);bx(.3,5,11,0x475569,14.6,2.5,0);
-
-// Tapis
-const RC=[0x7c2d12,0x1e3a8a,0x4c1d95];
-RX.forEach((x,i)=>{const r=new THREE.Mesh(new THREE.PlaneGeometry(7,5),M(RC[i],{roughness:.9}));r.rotation.x=-Math.PI/2;r.position.set(x,.03,i==0?2.5:i==1?2.2:2.6);r.receiveShadow=true;sc.add(r)});
-
-// Bureau
-const scrs=[];
-function desk(x,z){
-  bx(2.2,.1,1.1,0x1e293b,x,.76,z);bx(.1,.72,.9,0x0f172a,x-1,.36,z);bx(.1,.72,.9,0x0f172a,x+1,.36,z);
-  bx(.9,.55,.05,0x000000,x-.4,1.2,z-.24);const s1=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x1e3a8a}));s1.position.set(x-.4,1.2,z-.21);sc.add(s1);scrs.push(s1);
-  bx(.9,.55,.05,0x000000,x+.4,1.2,z-.24);const s2=new THREE.Mesh(new THREE.PlaneGeometry(.82,.48),new THREE.MeshBasicMaterial({color:0x7c2d12}));s2.position.set(x+.4,1.2,z-.21);sc.add(s2);scrs.push(s2);
-  bx(.6,.03,.2,0x000000,x,.82,z+.2);bx(.6,.1,.6,0x0f172a,x,.45,z+.9);bx(.6,.7,.1,0x0f172a,x,.8,z+1.2);
+// ================= UTILS & SÉCURITÉ =================
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[tag] || tag));
 }
-const D=[[-11.8,-2.6],[-9.3,-2.6],[-6.8,-2.6],[-2.5,-2.6],[0,-2.6],[2.5,-2.6],[6.8,-2.6],[9.3,-2.6],[11.8,-2.6],[8.05,.9],[10.55,.9]];
-D.forEach(d=>desk(d[0],d[1]));
 
-// Personnages
-const SKN=[0xfcd34d,0xfbbf24,0x78350f,0x451a03,0x1c1917],SHI=[0x1e293b,0x0f172a,0x334155,0x111827];
-function limb(w,h,d,c,x,y,p){const g=new THREE.Group();g.position.set(x,y,0);const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),M(c));m.position.y=-h/2;m.castShadow=true;g.add(m);p.add(g);return g}
-function person(i){
-  const g=new THREE.Group(),sk=SKN[i%5],boss=i==0,sh=boss?0x000000:SHI[i%4];
-  const L=limb(.2,.8,.22,0x1e293b,-.13,.8,g),Rr=limb(.2,.8,.22,0x1e293b,.13,.8,g);
-  bx(.55,.65,.3,sh,0,1.12,0,null,g);const AL=limb(.15,.58,.15,sh,-.36,1.42,g),AR=limb(.15,.58,.15,sh,.36,1.42,g);
-  bx(.14,.1,.14,sk,0,-.62,0,null,AL);bx(.14,.1,.14,sk,0,-.62,0,null,AR);bx(.12,.14,.12,sk,0,1.5,0,null,g);new THREE.Mesh(new THREE.SphereGeometry(.21,16,12),M(sk)).position.set(0,1.72,0);g.add(new THREE.Mesh(new THREE.SphereGeometry(.21,16,12),M(sk))).position.set(0,1.72,0);
-  if(i<6) bx(.08,.35,.02,[0xef4444,0x3b82f6,0xfbbf24,0x22c55e][i%4],0,1.2,.16,null,g);
-  g.traverse(o=>{o.userData.i=i});return{g,L,R:Rr,AL,AR};
+function sortSquad() {
+  game.squad.sort((a, b) => b.ovr - a.ovr); // Les meilleurs en premier (titulaires)
 }
-const AG=A.map((a,i)=>{
-  const p=person(i),d=D[i];
-  p.g.position.set(d[0],-.33,d[1]+.85);p.g.rotation.y=Math.PI;sc.add(p.g);
-  const k=document.createElement("canvas");k.width=256;k.height=64;
-  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(k),depthTest:false,transparent:true}));sp.scale.set(2,.5,1);sp.position.y=2.3;sp.renderOrder=9;p.g.add(sp);
-  Object.assign(p,{i,d,k,sp,st:"sit",t:6+Math.random()*10,q:[],ph:Math.random()*6,baseY:Math.PI});label(p);return p;
-});
-function label(p){const g=p.k.getContext("2d");g.clearRect(0,0,256,64);g.fillStyle="rgba(15,23,42,.9)";g.beginPath();g.roundRect(6,10,244,44,8);g.fill();g.strokeStyle="#f97316";g.lineWidth=2;g.stroke();g.fillStyle="#fff";g.font="bold 22px system-ui";g.textAlign="center";g.fillText(nm(p.i),128,40);p.sp.material.map.needsUpdate=true}
-function sitPose(p){p.g.position.y=-.33;p.L.rotation.x=p.R.rotation.x=-1.45}
-AG.forEach(p=>{sitPose(p);p.AL.rotation.x=p.AR.rotation.x=-1});
 
-// Caméra Loop
-let th=0,ph=.85,di=45,ddi=45,tg=new THREE.Vector3(0,1.5,0),ttg=tg.clone();
-const portrait=()=>innerWidth<innerHeight,ALL=()=>portrait()?65:35;
-function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();}
-addEventListener("resize",()=>{resize();if(fol<0)ddi=ALL()});resize();ddi=di=ALL();
-let fol=-1;
-const clk=new THREE.Clock();
-function loop(){
-  requestAnimationFrame(loop);
-  const dt=Math.min(.05,clk.getDelta()),T=clk.elapsedTime;
-  AG.forEach(p=>{
-    if(p.st=="sit"){p.AL.rotation.x=-1+Math.sin(T*9+p.ph)*.1;p.AR.rotation.x=-1+Math.cos(T*8+p.ph)*.1}
+// ================= INIT & STORAGE =================
+function initGame() {
+  const saved = localStorage.getItem('fcm_save_pro_v3'); 
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    if (parsed.squad && Array.isArray(parsed.squad) && parsed.squad.length >= 11) {
+      game = parsed;
+      if(!game.market) game.market = [...defaultMarket];
+      if(!game.lastMatch) game.lastMatch = null;
+    }
+  }
+  updateUI();
+  renderPitch();
+  renderMarket();
+  document.getElementById('ui-api-key').value = localStorage.getItem('fcm_key') || '';
+}
+
+function saveGame() {
+  localStorage.setItem('fcm_save_pro_v3', JSON.stringify(game));
+}
+
+// ================= UI UPDATES =================
+function updateUI() {
+  document.getElementById('ui-money').innerText = `💰 ${game.money.toFixed(1)}M`;
+  document.getElementById('ui-tokens').innerText = `💎 ${game.tokens}`;
+  document.getElementById('ui-matchday').innerText = `J-${game.matchday}`;
+  document.getElementById('ui-opp-team').innerText = game.currentOpponent.name;
+  document.getElementById('ui-opp-ovr').innerText = `OVR ${game.currentOpponent.ovr}`;
+  document.getElementById('ui-weather').innerText = game.currentWeather.icon + " " + game.currentWeather.name;
+  document.getElementById('ui-squad-count').innerText = `(${game.squad.length}/18)`;
+  
+  // Calcul de l'OVR de l'équipe (11 premiers)
+  const starting11 = game.squad.slice(0, 11);
+  const teamOvr = Math.round(starting11.reduce((acc, p) => acc + p.ovr, 0) / 11);
+  document.getElementById('ui-my-ovr').innerText = `OVR ${teamOvr}`;
+
+  // Classement
+  const tbody = document.getElementById('ui-league-table');
+  tbody.innerHTML = game.league.map(l => `
+    <tr class="${l.me ? 'my-team' : ''}">
+      <td>${l.pos}</td><td>${l.team}</td><td>${l.pts}</td>
+    </tr>
+  `).join('');
+
+  // Effectif
+  const list = document.getElementById('ui-squad-list');
+  list.innerHTML = game.squad.map((p, index) => `
+    <div class="player-card ${index < 11 ? 'starter' : ''}" onclick="openPlayer(${p.id})">
+      <div class="p-pos">${p.pos}</div>
+      <div class="p-info">
+        <div class="p-name">${p.name}</div>
+        <div class="p-bars">
+          <div class="bar bar-stamina" style="flex:1;"><div class="bar-fill" style="width:${p.stamina}%"></div></div>
+          <div class="bar bar-morale" style="flex:1;"><div class="bar-fill" style="width:${p.morale}%"></div></div>
+        </div>
+      </div>
+      <div class="form-arrow">${p.form}</div>
+      <div class="p-ovr">${p.ovr}</div>
+    </div>
+  `).join('');
+  
+  // Battle Pass
+  document.getElementById('ui-bp-level').innerText = game.battlePass.level;
+  document.getElementById('ui-bp-points').innerText = game.battlePass.points;
+  const bpProgress = (game.battlePass.points % 100);
+  document.getElementById('ui-bp-bar').style.width = bpProgress + '%';
+
+  saveGame();
+}
+
+function renderMarket() {
+  const list = document.getElementById('ui-market-list');
+  if(game.market.length === 0) {
+    list.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center;">Aucun joueur disponible pour le moment.</p>';
+    return;
+  }
+  list.innerHTML = game.market.map(p => `
+    <div class="player-card" onclick="buyPlayer(${p.id})">
+      <div class="p-pos">${p.pos}</div>
+      <div class="p-info"><div class="p-name">${p.name}</div></div>
+      <div class="p-ovr" style="font-size:14px; color:var(--gold);">${p.price}M€</div>
+    </div>
+  `).join('');
+}
+
+// ================= NAVIGATION =================
+function nav(pageId, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  if(el) el.classList.add('active');
+  document.querySelector('.main-content').scrollTop = 0;
+  if(pageId === 'tactics') renderPitch();
+}
+
+// ================= TERRAIN =================
+function renderPitch() {
+  const pitch = document.getElementById('ui-pitch');
+  pitch.innerHTML = '';
+  formations[game.formation].forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'pitch-player ' + (p.pos==='GB'?'gk':['DD','DC','DG'].includes(p.pos)?'def':['MDC','MC','MOC','MD','MG'].includes(p.pos)?'mid':'att');
+    div.style.left = p.x + '%'; div.style.top = p.y + '%';
+    div.textContent = p.pos;
+    pitch.appendChild(div);
   });
-  tg.lerp(ttg,.08);di+=(ddi-di)*.08;
-  cam.position.set(tg.x+di*Math.sin(ph)*Math.sin(th),tg.y+di*Math.cos(ph),tg.z+di*Math.sin(ph)*Math.cos(th));cam.lookAt(tg);
-  scrs.forEach((s,k)=>s.material.color.setHex((Math.sin(T*3+k)>.9)?0xffffff:0x1e3a8a));
-  ren.render(sc,cam);
 }
-loop();
-
-/* ============ INTERFACE ============ */
-const sh=$("#sh");
-function div(c,t,p){const e=document.createElement("div");if(c)e.className=c;if(t!==undefined)e.textContent=t;(p||sh).append(e);return e}
-function close(){sh.className="";fol=-1}
-
-function formatText(txt){
-  if(!txt) return "";
-  let html = txt.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-  html = html.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
-  const lines = html.split("\n");let inList=false, result=[];
-  for(let line of lines){
-    const bullet = line.match(/^[\s]*[-•*]\s+(.*)$/);
-    if(bullet){ if(!inList){ result.push("<ul>"); inList=true; } result.push("<li>"+bullet[1]+"</li>"); }
-    else { if(inList){ result.push("</ul>"); inList=false; } result.push(line); }
-  }
-  if(inList) result.push("</ul>");
-  return result.join("\n").replace(/\n/g, "<br>");
+function changeFormation(val) { game.formation = val; renderPitch(); saveGame(); }
+function setMentality(ment, btn) { 
+  game.mentality = ment; 
+  document.querySelectorAll('#page-tactics .btn-secondary').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  saveGame();
 }
 
-function open(i){
-  sh.className="on";sh.textContent="";H[i]=H[i]||[];
-  const top=div("hd");
-  if(i>=0){ fol=i;ddi=12; }
-  else { fol=-1;th=0;ph=.85;ddi=ALL(); }
-  
-  let title = i==-1?"🏛️ Bureau du Directeur":i==-2?"⚙️ Configuration API":"";
-  if(i>=0){ title = "Fiche : "+nm(i); }
-  const t=div("",title,top);t.style.cssText="font-weight:800;font-size:18px;flex:1;color:var(--acc)";
-  
-  const x=document.createElement("button");x.className="x";x.textContent="✕";x.onclick=close;top.append(x);
-  
-  if(i==-2){ renderApiConfig(); return; }
+// ================= MATCH ENGINE (POISSON DISTRIBUTION) =================
+// Générateur de nombre aléatoire suivant une loi de Poisson
+function getPoissonGoals(lambda) {
+    let L = Math.exp(-lambda), k = 0, p = 1;
+    do { k++; p *= Math.random(); } while (p > L);
+    return k - 1;
+}
 
-  // Zone de log
-  const logContainer=div("",undefined);logContainer.id="log-container";
+function playMatch(btn) {
+  btn.innerText = "MATCH EN COURS..."; btn.disabled = true;
+  const resDiv = document.getElementById('match-result');
+  resDiv.style.display = 'block';
+  resDiv.innerHTML = "⏱️ 1ère Mi-temps...";
+
+  setTimeout(() => resDiv.innerHTML = "⏱️ 45' - Mi-temps", 1500);
   
-  // Message d'accueil si vide
-  if(!H[i] || H[i].length===0){
-    if(i<0){
-      const welcome = "Bonjour, je suis **Abdarrahim**, le Directeur Exécutif.\n\nDonnez-moi un match (ex: *Real Madrid - Barcelone en Liga* ou *PSG - Bayern en Ligue des Champions*). Je vais immédiatement convoquer mes experts (Data Scientist, Trader, etc.) pour analyser le match et vous donner un verdict clair.\n\n⚠️ **Note** : Assurez-vous d'avoir configuré votre clé API dans ⚙️ pour que je puisse travailler.";
-      const msgDiv = div("m ai","",logContainer); msgDiv.innerHTML=formatText(welcome);
+  setTimeout(() => {
+    // 1. Récupération des 11 titulaires
+    const starting11 = game.squad.slice(0, 11);
+    let myPower = starting11.reduce((acc, p) => acc + p.ovr, 0) / 11;
+    let oppPower = game.currentOpponent.ovr;
+    let staminaLoss = 15;
+
+    // 2. Application mentalité
+    if(game.mentality === 'Attacking') { myPower += 2; }
+    if(game.mentality === 'Defensive') { myPower -= 1; }
+
+    // 3. Application météo
+    if(game.currentWeather.name.includes("Pluie")) { myPower -= 2; oppPower -= 2; }
+    if(game.currentWeather.name.includes("Canicule")) { staminaLoss = 25; }
+    if(game.currentWeather.name.includes("Vent")) { myPower -= 1; oppPower -= 1; }
+
+    // 4. Impact de l'endurance des titulaires
+    const avgStamina = starting11.reduce((acc, p) => acc + p.stamina, 0) / 11;
+    if(avgStamina < 50) myPower -= 5;
+    else if(avgStamina > 80) myPower += 1;
+
+    // 5. Génération des buts (Loi de Poisson)
+    // Ratio de force pour ajuster les lambda (moyenne de buts attendus)
+    const myRatio = myPower / oppPower;
+    const oppRatio = oppPower / myPower;
+    
+    // Lambda de base: ~1.4 buts par équipe. On ajuste selon le ratio.
+    let myLambda = 1.4 * myRatio;
+    let oppLambda = 1.4 * oppRatio;
+
+    const myScore = getPoissonGoals(myLambda);
+    const oppScore = getPoissonGoals(oppLambda);
+
+    resDiv.innerHTML = `⏱️ 90'<br>Rahim FC <b>${myScore}</b> - <b>${oppScore}</b> ${game.currentOpponent.name}`;
+    
+    // 6. Gestion des gains et finances
+    let matchEarnings = 0;
+    let resultStr = "";
+    if(myScore > oppScore) {
+      resultStr = "VICTOIRE";
+      resDiv.innerHTML += `<br><span style="color:var(--green)">VICTOIRE ! +3 pts (+1.5M€)</span>`;
+      game.league[2].pts += 3; matchEarnings = 1.5;
+      game.battlePass.points += 50;
+    } else if(myScore === oppScore) {
+      resultStr = "MATCH NUL";
+      resDiv.innerHTML += `<br><span style="color:var(--text-muted)">MATCH NUL (+1 pt, +0.5M€)</span>`;
+      game.league[2].pts += 1; matchEarnings = 0.5;
+      game.battlePass.points += 20;
+    } else {
+      resultStr = "DÉFAITE";
+      resDiv.innerHTML += `<br><span style="color:var(--red)">DÉFAITE (0 pt)</span>`;
+      game.battlePass.points += 10;
     }
-  }
 
-  H[i].forEach(m=>{ const msgDiv = div("m "+m[0],"",logContainer); msgDiv.innerHTML=formatText(m[1]); });
-  
-  // Zone de saisie
-  const row=div("row");
-  const ta=document.createElement("textarea");ta.rows=1;
-  ta.placeholder="Demandez un match (ex: Real - Barça)...";
-  const b=document.createElement("button");b.className="go";b.textContent="Envoyer";
-  b.onclick=()=>ask(i,ta,logContainer,b);
-  ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();b.click()}});
-  row.append(ta,b);
-  
-  // Bouton Config API rapide
-  const apiBtn=document.createElement("button");
-  apiBtn.style.cssText="margin-top:10px;font-size:12px;color:var(--mut);text-decoration:underline;background:none;border:none;width:100%;text-align:center;flex:none";
-  apiBtn.textContent="⚙️ Configurer la clé API (OpenRouter)";
-  apiBtn.onclick=()=>open(-2);
-  sh.append(apiBtn);
-  
-  setTimeout(()=>{ logContainer.scrollTop = logContainer.scrollHeight; ta.focus(); },100);
+    // Sauvegarde du dernier match pour l'IA
+    game.lastMatch = `Journée ${game.matchday} : Rahim FC ${myScore} - ${oppScore} ${game.currentOpponent.name} (${resultStr})`;
+
+    // 7. Finances (Salaires variables selon la taille de l'effectif)
+    const wages = (game.squad.length * 0.1).toFixed(1); // 0.1M par joueur
+    game.money += (matchEarnings - parseFloat(wages));
+    resDiv.innerHTML += `<br><small style="color:var(--text-muted)">Finances : +${matchEarnings}M€ (Gains) - ${wages}M€ (Salaires) = ${(matchEarnings - parseFloat(wages)).toFixed(1)}M€</small>`;
+
+    // 8. Battle Pass Level Up
+    while(game.battlePass.points >= 100) {
+      game.battlePass.level++;
+      game.battlePass.points -= 100;
+      game.tokens += 10;
+      resDiv.innerHTML += `<br><span style="color:var(--gold)">🎉 NIVEAU DE PASSE SUPÉRIEUR ! +10 💎</span>`;
+    }
+
+    // 9. Fatigue (Uniquement les titulaires)
+    starting11.forEach(p => { p.stamina = Math.max(10, p.stamina - staminaLoss); });
+
+    // 10. Prochain match
+    game.matchday++;
+    const nextOppIndex = game.matchday % opponentsList.length;
+    game.currentOpponent = opponentsList[nextOppIndex];
+    const weatherIndex = Math.floor(Math.random() * weatherConditions.length);
+    game.currentWeather = weatherConditions[weatherIndex];
+
+    updateUI();
+    btn.innerText = "MATCH SUIVANT"; btn.disabled = false;
+
+  }, 3000);
 }
 
-function renderApiConfig(){
-  div("k","Clé API OpenRouter (Gratuite)");
-  const help=div("sys","1. Allez sur openrouter.ai → Keys\n2. Créez une clé\n3. Collez-la ici");
-  const keyInp=document.createElement("input");keyInp.type="password";keyInp.value=API_KEY;keyInp.placeholder="sk-or-v1-...";
-  sh.append(keyInp);
-  div("k","Modèle");
-  const sel=document.createElement("select");
-  [
-    ["google/gemini-2.0-flash-exp:free","Gemini 2.0 Flash (Rapide)"],
-    ["meta-llama/llama-3.3-70b-instruct:free","Llama 3.3 70B (Intelligent)"],
-    ["mistralai/mistral-small-3.2-24b-instruct:free","Mistral Small"]
-  ].forEach(o=>{const op=document.createElement("option");op.value=o[0];op.textContent=o[1];if(API_MODEL===o[0])op.selected=true;sel.append(op)});
-  sh.append(sel);
-  const status = div("", API_KEY ? "✅ Clé enregistrée" : "⚠️ Aucune clé configurée");status.className = API_KEY ? "status-ok" : "status-err";sh.append(status);
-  const btn=document.createElement("button");btn.className="go";btn.textContent="Sauvegarder";btn.style.cssText="margin-top:15px;width:100%;height:48px";
-  btn.onclick=()=>{ API_KEY=keyInp.value.trim();API_MODEL=sel.value;saveApi();status.textContent=API_KEY?"✅ Clé enregistrée":"⚠️ Aucune clé";status.className=API_KEY?"status-ok":"status-err";setTimeout(()=>close(),800); };
-  sh.append(btn);
+// ================= JOUEURS & ENTRAINEMENT =================
+let currentPlayerId = null;
+function openPlayer(id) {
+  currentPlayerId = id;
+  const p = game.squad.find(x => x.id === id);
+  if(!p) return;
+  
+  document.getElementById('m-name').innerText = p.name;
+  document.getElementById('m-pos').innerText = p.pos;
+  document.getElementById('m-ovr').innerText = p.ovr;
+  document.getElementById('m-form').innerText = p.form;
+  document.getElementById('m-stamina').style.width = p.stamina + '%';
+  document.getElementById('modal-player').classList.add('active');
+}
+function closeModal() { document.getElementById('modal-player').classList.remove('active'); }
+
+function trainTeam() {
+  if(game.money < 1) { alert("Pas assez d'argent en caisse !"); return; }
+  game.money -= 1;
+  game.squad.forEach(p => {
+    p.stamina = 100;
+    p.morale = Math.min(100, p.morale + 10);
+    if(Math.random() > 0.8) p.ovr += 1;
+  });
+  sortSquad(); // On retrie l'équipe
+  updateUI();
+  alert("✅ Équipe entraînée ! Endurance restaurée, moral remonté et effectif réorganisé.");
 }
 
-/* ============ APPEL API : ORCHESTRATION DU DIRECTEUR ============ */
-async function ask(i,ta,log,btn){
-  const q=ta.value.trim();if(!q)return;
-  if(!API_KEY){ close(); setTimeout(()=>{open(-2); alert("Veuillez d'abord configurer votre clé API pour que le Directeur puisse travailler.");}, 300); return; }
+// ================= MARCHÉ & LOOT BOX =================
+function buyPlayer(id) {
+  if(game.squad.length >= 18) { alert("Effectif complet (18 joueurs maximum) !"); return; }
+  
+  const pIndex = game.market.findIndex(x => x.id === id);
+  if(pIndex === -1) return;
+  const p = game.market[pIndex];
 
-  ta.value="";
-  const meDiv = div("m me","",log); meDiv.innerHTML=formatText(q);
-  const w=div("m ai typing","",log);
-  w.textContent="🤖 Le Directeur convoque son équipe...";
-  H[i]=H[i]||[];
-  H[i].push(["me",q]);
-  btn.disabled=true;
-  log.scrollTop = log.scrollHeight;
+  if(game.money < p.price) { alert("Pas assez d'argent !"); return; }
+  
+  game.money -= p.price;
+  game.squad.push({ ...p, stamina: 100, morale: 80, form: '➡️' });
+  game.market.splice(pIndex, 1);
+  
+  sortSquad(); // Le nouveau joueur est placé selon son OVR
+  
+  updateUI(); 
+  renderMarket();
+  alert(`✅ ${p.name} a rejoint l'équipe et a été placé dans l'effectif !`);
+}
 
-  // Injection du contexte si le formulaire a été rempli
-  let context = "";
-  if(REP && REP.match) {
-    context = `\n\n[INFO TERRAIN] Match: ${REP.match} | Cotes: ${REP.c1}-${REP.cx}-${REP.c2} | Note: ${REP.note}`;
-  }
+function openLootBox() {
+  if(game.squad.length >= 18) { alert("Effectif complet (18 joueurs maximum) !"); return; }
+  if(game.tokens < 50) { alert("Pas assez de 💎 (Tokens) !"); return; }
+  
+  game.tokens -= 50;
+  const rand = Math.random();
+  let newPlayer;
+  // ID unique garanti
+  const uniqueId = Date.now() + Math.floor(Math.random() * 1000);
 
-  let sysPrompt = "";
-  if(i < 0) {
-    // PROMPT DU DIRECTEUR (Orchestrateur)
-    sysPrompt = `Tu es Abdarrahim, le Directeur Exécutif du bureau d'analyse football. 
-Tu parles avec autorité. L'utilisateur vient de te demander d'analyser un match (Liga, Ligue 1, ou Ligue des Champions).
-Tu ne réponds JAMAIS tout seul. Tu dois convoquer ton équipe et simuler leur intervention.
-
-Structure EXACTE de ta réponse :
-🏛️ **Directeur Abdarrahim** : "Je prends la direction de cette analyse. J'ordonne à mon équipe de se mettre au travail."
-🎯 **Testeur (Liga/PL/L1)** : "[Donne un ordre au testeur, puis écris sa réponse avec les stats xG et la forme]"
-📊 **Data Scientist** : "[Donne un ordre au data scientist, puis écris sa réponse sur les blessures]"
-💰 **Expert Value** : "[Donne un ordre au parieur, puis écris sa réponse sur l'EV et la marge]"
-⚖️ **VERDICT FINAL DU BUREAU** : "[Ta conclusion finale, claire et nette : PARIER ou PASSER, et pourquoi]"
-
-Rappel : Sois professionnel, utilise du gras, et donne l'impression d'un vrai travail d'équipe coordonné par un chef.` + context;
+  if(rand < 0.7) {
+    newPlayer = { id: uniqueId, pos: 'MC', name: 'Joueur Bronze', ovr: 65, stamina: 100, morale: 50, form: '➡️' };
+  } else if(rand < 0.95) {
+    newPlayer = { id: uniqueId, pos: 'MC', name: 'Joueur Argent', ovr: 75, stamina: 100, morale: 50, form: '➡️' };
   } else {
-    sysPrompt = A[i].sys + context;
+    newPlayer = { id: uniqueId, pos: 'BU', name: 'Joueur Or (Star)', ovr: 85, stamina: 100, morale: 50, form: '🔥' };
   }
-
-  const messages = [{ role: "system", content: sysPrompt }];
-  H[i].slice(-4, -1).forEach(m => { messages.push({ role: m[0] === "me" ? "user" : "assistant", content: m[1] }); });
-  messages.push({ role: "user", content: q });
-
-  const models = [API_MODEL, "meta-llama/llama-3.3-70b-instruct:free", "google/gemini-2.0-flash-exp:free"];
-  let success = false;
-  let lastError = "";
-
-  for(let m of models){
-    if(success) break;
-    try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: { "Authorization": "Bearer " + API_KEY, "Content-Type": "application/json", "HTTP-Referer": location.origin, "X-Title": "Desk Trading" },
-        body: JSON.stringify({ model: m, messages: messages, temperature: 0.6, stream: true })
-      });
-
-      if (!res.ok) {
-        if(res.status === 429) { lastError = "Modèle saturé (429). Bascule..."; continue; }
-        const errData = await res.json().catch(()=>({}));
-        throw new Error(errData.error?.message || `HTTP ${res.status}`);
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let full = ""; let buffer = "";
-      w.classList.add("typing"); w.textContent = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-        for (const line of lines) {
-          const trimmed = line.trim();
-          if (!trimmed || !trimmed.startsWith("data: ")) continue;
-          const data = trimmed.slice(6);
-          if (data === "[DONE]") continue;
-          try {
-            const json = JSON.parse(data);
-            const content = json.choices?.[0]?.delta?.content || "";
-            if (content) { full += content; w.innerHTML = formatText(full); log.scrollTop = log.scrollHeight; }
-          } catch (e) {}
-        }
-      }
-      
-      w.classList.remove("typing");
-      if (!full.trim()) throw new Error("Réponse vide");
-      w.innerHTML = formatText(full);
-      H[i].push(["ai", full]);
-      saveChat();
-      success = true;
-      break;
-    } catch(e) {
-      lastError = e.message;
-      w.textContent = `⚠️ Erreur. Bascule...`;
-    }
-  }
-
-  if(!success) {
-    w.classList.remove("typing");
-    w.innerHTML = "⚠️ <b>Échec de connexion.</b> Vérifiez votre clé API.";
-    w.style.color = "#ef4444";
-  }
-  btn.disabled = false;
-  log.scrollTop = log.scrollHeight;
+  
+  game.squad.push(newPlayer);
+  sortSquad();
+  updateUI();
+  alert(`🎁 Vous avez obtenu : ${newPlayer.name} (OVR ${newPlayer.ovr}) !`);
 }
-})();
+
+// ================= IA DIRECTOR =================
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+
+  const API_KEY = localStorage.getItem('fcm_key');
+  if(!API_KEY) {
+    alert("⚠️ Veuillez configurer votre clé API dans l'onglet Club.");
+    nav('club', document.getElementById('nav-club'));
+    return;
+  }
+
+  addMessage('user', text);
+  input.value = '';
+  const loading = addMessage('ai', '🤖 Analyse de la situation...');
+
+  const squadInfo = game.squad.map(p => `${p.name} (${p.pos}, OVR ${p.ovr}, Endurance: ${p.stamina}%)`).join(' | ');
+  const lastMatchStr = game.lastMatch ? `Dernier match : ${game.lastMatch}` : "Aucun match joué récemment.";
+
+  const systemPrompt = `Tu es Abdarrahim, Directeur Exécutif du Rahim FC. 
+  Tu es un manager d'élite (style Football Manager).
+  État actuel :
+  - Argent : ${game.money.toFixed(1)}M€, Tokens : ${game.tokens}💎
+  - Prochain match : Journée ${game.matchday} contre ${game.currentOpponent.name} (OVR ${game.currentOpponent.ovr})
+  - Météo prévue : ${game.currentWeather.name} (${game.currentWeather.effect})
+  - Tactique : ${game.formation} (Mentalité : ${game.mentality})
+  - ${lastMatchStr}
+  - Effectif : ${squadInfo}
+
+  Réponds de manière autoritaire, professionnelle et stratégique. Si un joueur est fatigué, dis-le. Si la météo est mauvaise, adapte la tactique. Utilise du gras et des listes.`;
+
+  try {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'google/gemini-2.0-flash-exp:free',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: text }
+        ]
+      })
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    loading.innerHTML = formatMarkdown(data.choices[0].message.content);
+  } catch(err) {
+    loading.innerHTML = `<span style="color:var(--red)">⚠️ Erreur : ${err.message}</span>`;
+  }
+}
+
+function askAIAnalysisPlayer() {
+  const p = game.squad.find(x => x.id === currentPlayerId);
+  closeModal();
+  nav('analysis', document.getElementById('nav-analysis'));
+  document.getElementById('chat-input').value = `Analyse les performances de ${p.name} (Endurance: ${p.stamina}%) et dis-moi quoi faire avec lui.`;
+  sendMessage();
+}
+
+function addMessage(role, text) {
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `chat-msg ${role}`;
+  // Sécurisation de l'affichage
+  div.innerHTML = formatMarkdown(text);
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+
+// Formatage sécurisé
+function formatMarkdown(t) { 
+  let safe = escapeHTML(t);
+  return safe.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>'); 
+}
+
+function saveApiKey() {
+  const key = document.getElementById('ui-api-key').value.trim();
+  localStorage.setItem('fcm_key', key);
+  alert("✅ Clé API sauvegardée");
+}
+
+// Lancement
+initGame();
 </script>
 </body>
 </html>
